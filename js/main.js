@@ -26,7 +26,7 @@ const translations = {
         cardDesc3: 'Off-road adrenaline in Strandzha mountain with traditional lunch included.',
         btnView: 'View Details',
         
-        // "Stay With Us" Section (NEW)
+        // Stay With Us
         stayTag: 'Partner Hotels',
         stayTitle: 'Don\'t Just Visit.<br><span class="text-brandGold">Live Here.</span>',
         stayDesc: 'Looking for the perfect base for your adventures? We partner with the top rated apartments and hotels in Burgas and Sozopol.',
@@ -37,6 +37,9 @@ const translations = {
         stayQuote: '"We booked our apartment through Stella Tours and it was right next to the Sea Garden. Perfect location."',
 
         // About & Contact
+        aboutTitle: 'Why Choose Stella Tours?',
+        aboutText1: 'We aren\'t a faceless booking engine. We are locals from Burgas who know every hidden beach, every forest path in Strandzha, and the best time to see the sunset over the pier.',
+        aboutText2: 'Since 2010, we have helped over 5,000 guests discover the real Bulgaria. No tourist traps. Just authentic memories.',
         contactTitle: 'Let\'s Plan Your Trip',
         contactSub: 'Have questions? We are ready to answer. Call us, text us, or visit our office.'
     },
@@ -65,7 +68,7 @@ const translations = {
         cardDesc3: 'Офроуд адреналин в Странджа планина с включен традиционен обяд.',
         btnView: 'Виж Детайли',
 
-        // "Stay With Us" Section (NEW)
+        // Stay With Us
         stayTag: 'Партньорски Хотели',
         stayTitle: 'Не бъди просто гост.<br><span class="text-brandGold">Живей тук.</span>',
         stayDesc: 'Търсите идеалното място за почивка? Работим с най-добрите хотели и апартаменти в Бургас и Созопол.',
@@ -76,23 +79,33 @@ const translations = {
         stayQuote: '"Запазихме апартамент чрез Stella Tours и беше точно до Морската градина. Перфектна локация."',
 
         // About & Contact
+        aboutTitle: 'Защо Stella Tours?',
+        aboutText1: 'Ние не сме просто сайт за резервации. Ние сме местни хора от Бургас, които познават всеки скрит плаж и всяка пътека в Странджа.',
+        aboutText2: 'От 2010 г. насам помогнахме на над 5,000 гости да открият истинската България. Без "туристически капани". Само истински спомени.',
         contactTitle: 'Планирайте пътуването си',
         contactSub: 'Имате въпроси? Готови сме да отговорим. Обадете се или ни пишете.'
     }
 };
 
+// Toggle Mobile Menu Visibility
+function toggleMobileMenu() {
+    const menu = document.getElementById('mobile-menu');
+    menu.classList.toggle('hidden');
+}
+
 function toggleLanguage() {
     currentLang = currentLang === 'en' ? 'bg' : 'en';
     const t = translations[currentLang];
 
-    // Common Elements
+    // Update Language Button Display (Desktop & Mobile)
     document.getElementById('lang-display').textContent = t.display;
+    document.getElementById('lang-display-mobile').textContent = t.display;
     
-    // Nav
-    document.querySelector('.lang-nav-tours').textContent = t.navTours;
-    document.querySelector('.lang-nav-about').textContent = t.navAbout;
-    document.querySelector('.lang-nav-contact').textContent = t.navContact;
-    document.querySelector('.lang-nav-call').textContent = t.navCall;
+    // Update Navigation (Using QuerySelectorAll to target BOTH desktop and mobile links)
+    document.querySelectorAll('.lang-nav-tours').forEach(el => el.textContent = t.navTours);
+    document.querySelectorAll('.lang-nav-about').forEach(el => el.textContent = t.navAbout);
+    document.querySelectorAll('.lang-nav-contact').forEach(el => el.textContent = t.navContact);
+    document.querySelectorAll('.lang-nav-call').forEach(el => el.textContent = t.navCall);
 
     // Hero
     document.querySelector('.lang-hero-title').textContent = t.heroTitle;
@@ -111,9 +124,9 @@ function toggleLanguage() {
     document.querySelectorAll('.lang-card-desc3').forEach(el => el.textContent = t.cardDesc3);
     document.querySelectorAll('.lang-btn-view').forEach(el => el.textContent = t.btnView);
 
-    // Stay With Us (NEW)
+    // Stay With Us
     document.querySelector('.lang-stay-tag').textContent = t.stayTag;
-    document.querySelector('.lang-stay-title').innerHTML = t.stayTitle; // Note: innerHTML for the span
+    document.querySelector('.lang-stay-title').innerHTML = t.stayTitle;
     document.querySelector('.lang-stay-desc').textContent = t.stayDesc;
     document.querySelector('.lang-stay-btn').textContent = t.stayBtn;
     document.querySelector('.lang-stay-guarantee').textContent = t.stayGuarantee;
@@ -121,7 +134,10 @@ function toggleLanguage() {
     document.querySelector('.lang-stay-partner-sub').textContent = t.stayPartnerSub;
     document.querySelector('.lang-stay-quote').textContent = t.stayQuote;
 
-    // Contact
+    // About & Contact
+    document.querySelector('.lang-about-title').textContent = t.aboutTitle;
+    document.querySelector('.lang-about-text1').textContent = t.aboutText1;
+    document.querySelector('.lang-about-text2').textContent = t.aboutText2;
     document.querySelector('.lang-contact-title').textContent = t.contactTitle;
     document.querySelector('.lang-contact-sub').textContent = t.contactSub;
 }
