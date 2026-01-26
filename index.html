@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stella Tours | Premium Burgas Excursions</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brandBlue: '#003580', // Hilton/Booking Blue
+                        brandGold: '#dcae1d', // Accent Gold
+                        surface: '#ffffff',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-white text-gray-900 antialiased relative">
+
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 bg-white/90 backdrop-blur-md border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex-shrink-0 flex items-center gap-2 cursor-pointer" onclick="window.scrollTo(0,0)">
+                    <div class="w-8 h-8 bg-brandBlue text-white flex items-center justify-center font-serif font-bold rounded shadow-sm">S</div>
+                    <span class="text-brandBlue text-xl font-bold tracking-tight uppercase">Stela<span class="text-brandGold">Tour</span></span>
+                </div>
+                
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#tours" class="text-gray-600 hover:text-brandBlue font-medium text-sm uppercase tracking-wide hover:scale-105 transition lang-nav-tours">Excursions</a>
+                    <a href="#reviews" class="text-gray-600 hover:text-brandBlue font-medium text-sm uppercase tracking-wide hover:scale-105 transition lang-nav-reviews">Reviews</a>
+                    
+                    <button onclick="toggleLanguage()" class="text-gray-900 font-bold hover:text-brandBlue flex items-center gap-1 text-sm border-l pl-6 border-gray-300 transition">
+                        <span class="text-lg">🌐</span> <span id="lang-display">EN</span>
+                    </button>
+
+                    <a href="tel:+359894060406" class="bg-brandBlue text-white px-6 py-2 rounded shadow-md font-bold text-sm hover:bg-blue-900 hover:shadow-lg transition transform hover:-translate-y-0.5 lang-nav-call">
+                        Call Now
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero-bg relative flex flex-col justify-center items-center h-[85vh]">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-black/30"></div>
+
+        <div class="relative z-10 text-center px-4 mb-12 animate-fade-in">
+            <h1 class="text-4xl md:text-6xl font-serif font-bold text-white drop-shadow-lg mb-4 lang-hero-title">
+                Your Escape to the Black Sea
+            </h1>
+            <p class="text-lg md:text-xl text-gray-200 max-w-2xl mx-auto font-light lang-hero-sub">
+                Premium excursions starting from Burgas, Sozopol, and Sunny Beach.
+            </p>
+        </div>
+
+        <div class="relative z-20 w-full max-w-5xl px-4 -mb-32">
+            <div class="bg-white rounded-xl shadow-2xl p-6 grid grid-cols-1 md:grid-cols-4 gap-4 items-end border-t-4 border-brandGold transform transition hover:scale-[1.01] duration-500">
+                
+                <div class="col-span-1">
+                    <label class="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-2 lang-label-where">Where to?</label>
+                    <div class="relative group">
+                        <select class="block w-full py-3 border-b-2 border-gray-200 focus:border-brandBlue focus:outline-none bg-transparent font-bold text-brandBlue transition cursor-pointer">
+                            <option class="lang-opt-any">Any Destination</option>
+                            <option class="lang-opt-island">St. Anastasia Island</option>
+                            <option>Sozopol Old Town</option>
+                            <option>Strandzha Safari</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-span-1">
+                    <label class="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-2 lang-label-when">When?</label>
+                    <input type="date" class="block w-full py-3 border-b-2 border-gray-200 focus:border-brandBlue focus:outline-none bg-transparent font-bold text-gray-900 cursor-pointer">
+                </div>
+
+                <div class="col-span-1">
+                    <label class="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-2 lang-label-guests">Guests</label>
+                    <select class="block w-full py-3 border-b-2 border-gray-200 focus:border-brandBlue focus:outline-none bg-transparent font-bold text-gray-900 cursor-pointer">
+                        <option>2 Adults</option>
+                        <option>Family (2+2)</option>
+                        <option>Large Group</option>
+                    </select>
+                </div>
+
+                <div class="col-span-1">
+                    <button onclick="document.getElementById('tours').scrollIntoView()" class="w-full bg-brandBlue hover:bg-blue-900 text-white font-bold py-4 px-6 rounded shadow-lg transform transition hover:-translate-y-1 active:scale-95 flex items-center justify-center gap-2">
+                        <span class="lang-btn-search">Find Adventure</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="h-40 bg-gray-50"></div>
+
+    <section id="tours" class="py-12 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-gray-900 mb-2 lang-tours-header">Our Exclusive Selection</h2>
+            <p class="text-gray-500 mb-10 lang-tours-sub">Curated experiences for the modern traveler.</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white rounded-lg shadow-sm hover:shadow-2xl transition-all duration-500 overflow-hidden group border border-gray-100 cursor-pointer">
+                    <div class="relative h-72 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1544550581-5f7ceaf7f992?q=80&w=2071&auto=format&fit=crop" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700">
+                        <div class="absolute bottom-0 left-0 bg-brandBlue text-white text-xs font-bold px-4 py-2 uppercase tracking-wider">Best Seller</div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold text-gray-900">St. Anastasia Island</h3>
+                            <span class="bg-gray-100 text-brandBlue text-xs font-bold px-2 py-1 rounded">4 hrs</span>
+                        </div>
+                        <p class="text-gray-500 text-sm mb-6 line-clamp-2 lang-card-desc1">A premium boat journey to the only inhabited island on the Bulgarian Black Sea coast.</p>
+                        <a href="https://wa.me/359894060406?text=Interested in Anastasia Island" class="block w-full text-center border-2 border-brandBlue text-brandBlue font-bold py-2 rounded hover:bg-brandBlue hover:text-white transition lang-btn-view">View Details</a>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-sm hover:shadow-2xl transition-all duration-500 overflow-hidden group border border-gray-100 cursor-pointer">
+                    <div class="relative h-72 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1599307767316-77891244e892?q=80&w=2070&auto=format&fit=crop" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold text-gray-900">Sozopol & Ropotamo</h3>
+                            <span class="bg-gray-100 text-brandBlue text-xs font-bold px-2 py-1 rounded">6 hrs</span>
+                        </div>
+                        <p class="text-gray-500 text-sm mb-6 line-clamp-2 lang-card-desc2">Relaxing river cruise followed by a guided historical walk in Old Town Sozopol.</p>
+                        <a href="https://wa.me/359894060406?text=Interested in Sozopol" class="block w-full text-center border-2 border-brandBlue text-brandBlue font-bold py-2 rounded hover:bg-brandBlue hover:text-white transition lang-btn-view">View Details</a>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-sm hover:shadow-2xl transition-all duration-500 overflow-hidden group border border-gray-100 cursor-pointer">
+                    <div class="relative h-72 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?q=80&w=2070&auto=format&fit=crop" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold text-gray-900">Jeep Safari</h3>
+                            <span class="bg-gray-100 text-brandBlue text-xs font-bold px-2 py-1 rounded">5 hrs</span>
+                        </div>
+                        <p class="text-gray-500 text-sm mb-6 line-clamp-2 lang-card-desc3">Off-road adrenaline in Strandzha mountain with traditional lunch included.</p>
+                        <a href="https://wa.me/359894060406?text=Interested in Safari" class="block w-full text-center border-2 border-brandBlue text-brandBlue font-bold py-2 rounded hover:bg-brandBlue hover:text-white transition lang-btn-view">View Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-brandBlue text-white py-12 mt-12">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <h3 class="text-2xl font-serif font-bold mb-6">Stela<span class="text-brandGold">Tour</span></h3>
+            <div class="flex justify-center gap-6 mb-8">
+                <a href="#" class="hover:text-brandGold transition">Instagram</a>
+                <a href="#" class="hover:text-brandGold transition">Facebook</a>
+                <a href="#" class="hover:text-brandGold transition">WhatsApp</a>
+            </div>
+            <p class="text-white/50 text-sm">&copy; 2025 Stella Tours Burgas. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
