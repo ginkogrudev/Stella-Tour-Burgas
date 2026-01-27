@@ -1,5 +1,8 @@
 let currentLang = 'en';
 
+// === GOOGLE ANALYTICS ID ===
+const GA_MEASUREMENT_ID = 'G-9YCTHHJSJE';
+
 const translations = {
     en: {
         display: 'EN',
@@ -22,7 +25,7 @@ const translations = {
         // Tours
         toursHeader: 'Our Exclusive Selection',
         cardDesc1: 'A premium boat journey to the only inhabited island on the Bulgarian Black Sea coast.',
-        cardDesc2: 'Relaxing river cruise followed by a guided historical walk in Old Town Sozopol.',
+        cardDesc2: 'Relaxing river cruise followed by a guided historical walk in Old Town Nesebar.',
         cardDesc3: 'Off-road adrenaline in Strandzha mountain with traditional lunch included.',
         btnView: 'View Details',
         
@@ -41,7 +44,12 @@ const translations = {
         aboutText1: 'We aren\'t a faceless booking engine. We are locals from Burgas who know every hidden beach, every forest path in Strandzha, and the best time to see the sunset over the pier.',
         aboutText2: 'Since 2010, we have helped over 5,000 guests discover the real Bulgaria. No tourist traps. Just authentic memories.',
         contactTitle: 'Let\'s Plan Your Trip',
-        contactSub: 'Have questions? We are ready to answer. Call us, text us, or visit our office.'
+        contactSub: 'Have questions? We are ready to answer. Call us, text us, or visit our office.',
+
+        // Cookie Banner
+        cookieText: 'We use cookies to enhance your experience and analyze our traffic. By clicking "Accept", you consent to our use of cookies.',
+        cookieAccept: 'Accept',
+        cookieDecline: 'Decline'
     },
     bg: {
         display: 'BG',
@@ -64,7 +72,7 @@ const translations = {
         // Tours
         toursHeader: 'Нашите Предложения',
         cardDesc1: 'Разходка с корабче до единствения обитаем остров на българското Черноморие.',
-        cardDesc2: 'Релаксиращ круиз по река Ропотамо, последвана от разходка в стария Созопол.',
+        cardDesc2: 'Релаксиращ круиз по река Ропотамо, последвана от разходка в стария Несебър.',
         cardDesc3: 'Офроуд адреналин в Странджа планина с включен традиционен обяд.',
         btnView: 'Виж Детайли',
 
@@ -83,25 +91,33 @@ const translations = {
         aboutText1: 'Ние не сме просто сайт за резервации. Ние сме местни хора от Бургас, които познават всеки скрит плаж и всяка пътека в Странджа.',
         aboutText2: 'От 2010 г. насам помогнахме на над 5,000 гости да открият истинската България. Без "туристически капани". Само истински спомени.',
         contactTitle: 'Планирайте пътуването си',
-        contactSub: 'Имате въпроси? Готови сме да отговорим. Обадете се или ни пишете.'
+        contactSub: 'Имате въпроси? Готови сме да отговорим. Обадете се или ни пишете.',
+
+        // Cookie Banner
+        cookieText: 'Използваме бисквитки, за да подобрим преживяването ви и да анализираме трафика. С натискането на "Приемам", вие се съгласявате с използването на бисквитки.',
+        cookieAccept: 'Приемам',
+        cookieDecline: 'Отказ'
     }
 };
 
-// Toggle Mobile Menu Visibility
+// === FUNCTIONS ===
+
+// 1. Mobile Menu
 function toggleMobileMenu() {
     const menu = document.getElementById('mobile-menu');
     menu.classList.toggle('hidden');
 }
 
+// 2. Language Toggle
 function toggleLanguage() {
     currentLang = currentLang === 'en' ? 'bg' : 'en';
     const t = translations[currentLang];
 
-    // Update Language Button Display (Desktop & Mobile)
+    // Common Elements
     document.getElementById('lang-display').textContent = t.display;
     document.getElementById('lang-display-mobile').textContent = t.display;
     
-    // Update Navigation (Using QuerySelectorAll to target BOTH desktop and mobile links)
+    // Nav
     document.querySelectorAll('.lang-nav-tours').forEach(el => el.textContent = t.navTours);
     document.querySelectorAll('.lang-nav-about').forEach(el => el.textContent = t.navAbout);
     document.querySelectorAll('.lang-nav-contact').forEach(el => el.textContent = t.navContact);
@@ -140,4 +156,80 @@ function toggleLanguage() {
     document.querySelector('.lang-about-text2').textContent = t.aboutText2;
     document.querySelector('.lang-contact-title').textContent = t.contactTitle;
     document.querySelector('.lang-contact-sub').textContent = t.contactSub;
+
+    // Cookie Banner
+    document.querySelector('.lang-cookie-text').textContent = t.cookieText;
+    document.querySelector('.lang-cookie-accept').textContent = t.cookieAccept;
+    document.querySelector('.lang-cookie-decline').textContent = t.cookieDecline;
 }
+
+// === COOKIE LOGIC ===
+
+function loadGoogleAnalytics() {
+    // Determine if script is already present
+    if(document.getElementById('ga-script')) return;
+
+    // Create Script Tag
+    const script = document.createElement('script');
+    script.id = 'ga-script';
+    script.src = `https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`;
+    script.async = true;
+    document.head.appendChild(script);
+
+    // Initialize DataLayer
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', GA_MEASUREMENT_ID);
+    
+    console.log("GA Loaded");
+}
+// === COOKIE LOGIC (Consent Mode v2) ===
+
+function acceptCookies() {
+    localStorage.setItem('cookieConsent', 'accepted');
+    document.getElementById('cookie-banner').classList.add('hidden');
+    
+    // The "Update" command - This tells Google "Go ahead and track"
+    gtag('consent', 'update', {
+        'ad_storage': 'granted',
+        'ad_user_data': 'granted',        // New v2 required parameter
+        'ad_personalization': 'granted',  // New v2 required parameter
+        'analytics_storage': 'granted'
+    });
+    
+    console.log("Consent Granted - Google Tags Active");
+}
+
+function declineCookies() {
+    localStorage.setItem('cookieConsent', 'declined');
+    document.getElementById('cookie-banner').classList.add('hidden');
+    
+    // Optional: Explicitly reaffirm denial (good practice)
+    gtag('consent', 'update', {
+        'ad_storage': 'denied',
+        'ad_user_data': 'denied',
+        'ad_personalization': 'denied',
+        'analytics_storage': 'denied'
+    });
+}
+
+// Check Logic on Load
+window.addEventListener('load', () => {
+    const consent = localStorage.getItem('cookieConsent');
+    
+    if (consent === 'accepted') {
+        // If they already accepted previously, run the update immediately
+        gtag('consent', 'update', {
+            'ad_storage': 'granted',
+            'ad_user_data': 'granted',
+            'ad_personalization': 'granted',
+            'analytics_storage': 'granted'
+        });
+    } else if (consent === 'declined') {
+        // Do nothing, default 'denied' from index.html applies
+    } else {
+        // Show banner if no choice made
+        document.getElementById('cookie-banner').classList.remove('hidden');
+    }
+});
