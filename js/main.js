@@ -1,14 +1,11 @@
 let currentLang = 'en';
 
-// === GOOGLE ANALYTICS ID ===
-const GA_MEASUREMENT_ID = 'G-9YCTHHJSJE';
-
 const translations = {
     en: {
         display: 'EN',
         // Nav
         navTours: 'Excursions',
-        navAbout: 'About Us',
+        navAbout: 'Reviews & Story',
         navContact: 'Contact',
         navCall: 'Call Now',
         
@@ -39,14 +36,25 @@ const translations = {
         stayPartnerSub: 'Verified Quality',
         stayQuote: '"We booked our apartment through Stella Tours and it was right next to the Sea Garden. Perfect location."',
 
-        // About & Contact
-        aboutTitle: 'Why Choose Stella Tours?',
-        aboutText1: 'We aren\'t a faceless booking engine. We are locals from Burgas who know every hidden beach, every forest path in Strandzha, and the best time to see the sunset over the pier.',
-        aboutText2: 'Since 2010, we have helped over 5,000 guests discover the real Bulgaria. No tourist traps. Just authentic memories.',
+        // === REVIEWS & COMMUNITY (Squid Section) ===
+        aboutHeader: 'Memories Made in Burgas',
+        aboutSub: 'Don\'t just take our word for it. See what our adventurers have to say.',
+        reviewQuote: '"The Jeep Safari was insane! The squid mascot is funny, but the views of Strandzha were serious beauty. Best day ever."',
+        reviewName: 'Elena & Friends',
+        
+        // Why Us Column
+        aboutTag: 'Local Experts since 2010',
+        aboutTitle: 'More Than Just a Tour.',
+        aboutText1: 'We aren\'t a faceless booking engine. We are locals from Burgas who know every hidden beach, the best spot for mussels, and the secret forest paths in Strandzha.',
+        
+        // Facebook Box
+        fbTitle: 'Have a cool photo or story?',
+        fbText: 'Did you snap a great pic of the sunset? Tag us @StellaToursBurgas on Facebook. We feature the best shots (and "Curious Squid" sightings) right here!',
+        fbBtn: 'Join the Community',
+
+        // Contact & Cookies
         contactTitle: 'Let\'s Plan Your Trip',
         contactSub: 'Have questions? We are ready to answer. Call us, text us, or visit our office.',
-
-        // Cookie Banner
         cookieText: 'We use cookies to enhance your experience and analyze our traffic. By clicking "Accept", you consent to our use of cookies.',
         cookieAccept: 'Accept',
         cookieDecline: 'Decline'
@@ -55,7 +63,7 @@ const translations = {
         display: 'BG',
         // Nav
         navTours: 'Екскурзии',
-        navAbout: 'За Нас',
+        navAbout: 'Отзиви и История',
         navContact: 'Контакт',
         navCall: 'Обади се',
         
@@ -86,14 +94,25 @@ const translations = {
         stayPartnerSub: 'Проверено качество',
         stayQuote: '"Запазихме апартамент чрез Stella Tours и беше точно до Морската градина. Перфектна локация."',
 
-        // About & Contact
-        aboutTitle: 'Защо Stella Tours?',
-        aboutText1: 'Ние не сме просто сайт за резервации. Ние сме местни хора от Бургас, които познават всеки скрит плаж и всяка пътека в Странджа.',
-        aboutText2: 'От 2010 г. насам помогнахме на над 5,000 гости да открият истинската България. Без "туристически капани". Само истински спомени.',
+        // === REVIEWS & COMMUNITY (Squid Section) ===
+        aboutHeader: 'Спомени от Бургас',
+        aboutSub: 'Не вярвайте само на думите ни. Вижте какво казват нашите приключенци.',
+        reviewQuote: '"Джип сафарито беше лудост! Калмарът е забавен, но гледките в Странджа бяха невероятно красиви. Най-добрият ден!"',
+        reviewName: 'Елена и приятели',
+
+        // Why Us Column
+        aboutTag: 'Местни експерти от 2010',
+        aboutTitle: 'Повече от просто екскурзия.',
+        aboutText1: 'Ние не сме безличен сайт за резервации. Ние сме местни хора от Бургас, които познават всеки скрит плаж, най-доброто място за миди и тайните пътеки в Странджа.',
+
+        // Facebook Box
+        fbTitle: 'Имаш яка снимка или история?',
+        fbText: 'Направи ли страхотна снимка на залеза? Тагни ни @StellaToursBurgas във Facebook. Най-добрите кадри (и снимки с калмара) показваме тук!',
+        fbBtn: 'Влез в групата',
+
+        // Contact & Cookies
         contactTitle: 'Планирайте пътуването си',
         contactSub: 'Имате въпроси? Готови сме да отговорим. Обадете се или ни пишете.',
-
-        // Cookie Banner
         cookieText: 'Използваме бисквитки, за да подобрим преживяването ви и да анализираме трафика. С натискането на "Приемам", вие се съгласявате с използването на бисквитки.',
         cookieAccept: 'Приемам',
         cookieDecline: 'Отказ'
@@ -150,10 +169,22 @@ function toggleLanguage() {
     document.querySelector('.lang-stay-partner-sub').textContent = t.stayPartnerSub;
     document.querySelector('.lang-stay-quote').textContent = t.stayQuote;
 
-    // About & Contact
+    // === NEW REVIEWS & SQUID SECTION ===
+    document.querySelector('.lang-about-header').textContent = t.aboutHeader;
+    document.querySelector('.lang-about-sub').textContent = t.aboutSub;
+    document.querySelector('.lang-review-quote').textContent = t.reviewQuote;
+    document.querySelector('.lang-review-name').textContent = t.reviewName;
+    
+    document.querySelector('.lang-about-tag').textContent = t.aboutTag;
     document.querySelector('.lang-about-title').textContent = t.aboutTitle;
     document.querySelector('.lang-about-text1').textContent = t.aboutText1;
-    document.querySelector('.lang-about-text2').textContent = t.aboutText2;
+
+    document.querySelector('.lang-fb-title').textContent = t.fbTitle;
+    document.querySelector('.lang-fb-text').textContent = t.fbText;
+    // Note: We use innerHTML here to keep the SVG icon inside the button
+    document.querySelector('.lang-fb-btn').innerHTML = '<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>' + t.fbBtn;
+
+    // About & Contact
     document.querySelector('.lang-contact-title').textContent = t.contactTitle;
     document.querySelector('.lang-contact-sub').textContent = t.contactSub;
 
@@ -163,27 +194,6 @@ function toggleLanguage() {
     document.querySelector('.lang-cookie-decline').textContent = t.cookieDecline;
 }
 
-// === COOKIE LOGIC ===
-
-function loadGoogleAnalytics() {
-    // Determine if script is already present
-    if(document.getElementById('ga-script')) return;
-
-    // Create Script Tag
-    const script = document.createElement('script');
-    script.id = 'ga-script';
-    script.src = `https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`;
-    script.async = true;
-    document.head.appendChild(script);
-
-    // Initialize DataLayer
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', GA_MEASUREMENT_ID);
-    
-    console.log("GA Loaded");
-}
 // === COOKIE LOGIC (Consent Mode v2) ===
 
 function acceptCookies() {
@@ -191,6 +201,7 @@ function acceptCookies() {
     document.getElementById('cookie-banner').classList.add('hidden');
     
     // The "Update" command - This tells Google "Go ahead and track"
+    // IMPORTANT: This works because the script is already loaded in <head> with 'denied' status
     gtag('consent', 'update', {
         'ad_storage': 'granted',
         'ad_user_data': 'granted',        // New v2 required parameter
@@ -205,7 +216,7 @@ function declineCookies() {
     localStorage.setItem('cookieConsent', 'declined');
     document.getElementById('cookie-banner').classList.add('hidden');
     
-    // Optional: Explicitly reaffirm denial (good practice)
+    // Optional: Explicitly reaffirm denial
     gtag('consent', 'update', {
         'ad_storage': 'denied',
         'ad_user_data': 'denied',
