@@ -47,6 +47,7 @@
             'wait_for_update': 500
         });
     </script>
+
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-9YCTHHJSJE"></script>
     <script>
         gtag('js', new Date());
@@ -101,7 +102,9 @@
 
     <section class="relative flex flex-col justify-center items-center h-[85vh]"
              style="background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.2)), url('img/Edirne-Shopping-Hero.png'); background-size: cover; background-position: center; background-attachment: fixed;">
+        
         <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/30"></div>
+
         <div class="relative z-10 text-center px-4 mb-12 animate-fade-in">
             <h1 class="text-4xl md:text-6xl font-serif font-bold text-white drop-shadow-lg mb-4">
                 Твоето бягство от забързания живот.
@@ -110,9 +113,43 @@
                 Премиум СПА почивки в България и уикенд пакети в Турция.
             </p>
         </div>
+
+        <div class="relative z-20 w-full max-w-5xl px-4 -mb-32">
+            <div class="bg-white rounded-xl shadow-2xl p-6 grid grid-cols-1 md:grid-cols-4 gap-4 items-end border-t-4 border-brandGold transform transition hover:scale-[1.01] duration-500">
+                <div class="col-span-1">
+                    <label class="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">Дестинация?</label>
+                    <div class="relative group">
+                        <select class="block w-full py-3 border-b-2 border-gray-200 focus:border-brandBlue focus:outline-none bg-transparent font-bold text-brandBlue transition cursor-pointer">
+                            <option>Всички Дестинации</option>
+                            <option>Инеада, Турция</option>
+                            <option>Лозенград (Odrin)</option>
+                            <option>Трявна (СПА)</option>
+                            <option>Ивайловград</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-span-1">
+                    <label class="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">Кога?</label>
+                    <input type="date" class="block w-full py-3 border-b-2 border-gray-200 focus:border-brandBlue focus:outline-none bg-transparent font-bold text-gray-900 cursor-pointer">
+                </div>
+                <div class="col-span-1">
+                    <label class="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">Гости</label>
+                    <select class="block w-full py-3 border-b-2 border-gray-200 focus:border-brandBlue focus:outline-none bg-transparent font-bold text-gray-900 cursor-pointer">
+                        <option>2 Възрастни</option>
+                        <option>Семейство (2+2)</option>
+                        <option>Голяма Група</option>
+                    </select>
+                </div>
+                <div class="col-span-1">
+                    <button onclick="document.getElementById('destination-split').scrollIntoView()" class="w-full bg-brandBlue hover:bg-blue-900 text-white font-bold py-4 px-6 rounded shadow-lg transform transition hover:-translate-y-1 active:scale-95 flex items-center justify-center gap-2">
+                        <span>Намери Почивка</span>
+                    </button>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <section id="destination-split" class="py-16 bg-white border-b border-gray-100 -mt-16 relative z-20">
+    <section id="destination-split" class="py-16 bg-white border-b border-gray-100 mt-16 relative z-20">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-10">
                 <h2 class="text-3xl font-bold text-gray-900 mb-2 font-serif">Изберете вашата дестинация</h2>
@@ -121,7 +158,7 @@
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <a href="#bulgaria-offers" class="group relative overflow-hidden rounded-2xl shadow-xl h-80 block cursor-pointer">
-                    <img src="img/kalina-palace-tryavna.jpg" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-700" alt="Bulgaria SPA">
+                    <img src="img/bulgaria-spa.jpg" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-700" alt="Bulgaria SPA">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-8 flex flex-col justify-end">
                         <div class="flex items-center gap-3 mb-2">
                             <span class="text-3xl">🇧🇬</span>
@@ -133,7 +170,7 @@
                 </a>
 
                 <a href="#turkey-offers" class="group relative overflow-hidden rounded-2xl shadow-xl h-80 block cursor-pointer">
-                    <img src="https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?q=80&w=2000" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-700" alt="Turkey Shopping">
+                    <img src="img/turkey-flag.jpg" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-700" alt="Turkey Shopping">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-8 flex flex-col justify-end">
                         <div class="flex items-center gap-3 mb-2">
                             <span class="text-3xl">🇹🇷</span>
@@ -217,7 +254,7 @@
                 <div class="bg-surface rounded-lg shadow-sm hover:shadow-2xl transition-all duration-500 overflow-hidden group border border-gray-100">
                     <div class="relative h-64 overflow-hidden">
                         <img src="img/hotel-İğneada-Resort-Spa.png" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700" alt="Igneada Resort Turkey">
-                        <div class="absolute top-4 right-4 bg-brandBlue text-white text-xs font-bold px-3 py-1 rounded shadow-lg uppercase tracking-wider">Турска Ривиера</div>
+                        <div class="absolute top-4 right-4 bg-brandBlue text-white text-xs font-bold px-3 py-1 rounded shadow-lg uppercase tracking-wider">Турска Ривиера 5*</div>
                     </div>
                     <div class="p-6">
                         <h3 class="text-xl font-bold text-gray-900 mb-2">İğneada Resort Hotel & SPA</h3>
@@ -273,7 +310,7 @@
             <div class="flex flex-col lg:flex-row items-center gap-12">
                 <div class="w-full lg:w-1/2 relative h-[500px] flex items-center justify-center">
                     <div class="absolute w-96 h-96 bg-brandGold/20 rounded-full blur-3xl -z-10 animate-pulse"></div>
-                    <img src="img/squidonwindmillnesebar.png" class="w-full h-full object-contain drop-shadow-2xl hover:scale-105 transition duration-500 transform" alt="Curious Squid Review">
+                    <img src="img/turkey-spices-stand.png" class="w-full h-full object-contain drop-shadow-2xl hover:scale-105 transition duration-500 transform" alt="Curious Squid Review">
                     
                     <div class="absolute bottom-10 left-4 right-4 bg-white/90 backdrop-blur-sm p-6 rounded-xl shadow-lg border-l-4 border-brandBlue">
                         <p class="text-gray-800 italic mb-2 font-serif text-lg">
@@ -400,7 +437,7 @@
             </div>
 
             <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-500">
-                <p>&copy; 2025 Stella Tours Burgas. Всички права запазени.</p>
+                <p>&copy; 2026 Stella Tours Burgas. Всички права запазени.</p>
                 <div class="flex items-center gap-1">
                     <span>Дизайн за конверсии от</span>
                     <a href="https://ginkogrudev.com" target="_blank" class="text-brandGold font-bold hover:text-white transition relative group">
