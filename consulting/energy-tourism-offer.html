@@ -1,0 +1,1823 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Пътят на Предците — Grand Slam Offer</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,600&family=JetBrains+Mono:wght@400;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #191919;
+    --surface: #202020;
+    --surface2: #2a2a2a;
+    --border: #333;
+    --text: #e8e8e8;
+    --muted: #888;
+    --gold: #dcae1d;
+    --gold-dim: rgba(220,174,29,0.15);
+    --blue: #003580;
+    --blue-light: #4a7fd4;
+    --red: #c0392b;
+    --green: #27ae60;
+    --purple: #7360f2;
+    --tag-bg: #2d2d2d;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+    min-height: 100vh;
+  }
+
+  /* ── SIDEBAR ── */
+  .sidebar {
+    position: fixed;
+    left: 0; top: 0; bottom: 0;
+    width: 240px;
+    background: var(--surface);
+    border-right: 1px solid var(--border);
+    padding: 20px 0;
+    overflow-y: auto;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .sidebar-logo {
+    display: flex; align-items: center; gap: 10px;
+    padding: 0 16px 20px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 16px;
+  }
+
+  .sidebar-logo .icon {
+    width: 32px; height: 32px;
+    background: var(--gold);
+    color: var(--blue);
+    border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Lora', serif;
+    font-weight: 700; font-size: 16px;
+  }
+
+  .sidebar-logo span {
+    font-size: 13px; font-weight: 600;
+    color: var(--text);
+    letter-spacing: 0.05em;
+  }
+
+  .sidebar-logo span em {
+    color: var(--gold);
+    font-style: normal;
+  }
+
+  .sidebar-section {
+    padding: 0 8px;
+    margin-bottom: 8px;
+  }
+
+  .sidebar-section-title {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: 4px 8px;
+    margin-bottom: 4px;
+  }
+
+  .sidebar-item {
+    display: flex; align-items: center; gap: 8px;
+    padding: 6px 8px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 13px;
+    color: var(--muted);
+    transition: all 0.15s;
+    text-decoration: none;
+  }
+
+  .sidebar-item:hover, .sidebar-item.active {
+    background: var(--surface2);
+    color: var(--text);
+  }
+
+  .sidebar-item .dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* ── MAIN ── */
+  .main {
+    margin-left: 240px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .topbar {
+    width: 100%;
+    height: 44px;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center;
+    padding: 0 32px;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--muted);
+    position: sticky; top: 0; z-index: 50;
+  }
+
+  .topbar .breadcrumb {
+    display: flex; align-items: center; gap: 6px;
+  }
+
+  .topbar .breadcrumb span { color: var(--muted); }
+  .topbar .breadcrumb .current { color: var(--text); font-weight: 500; }
+
+  .topbar-actions {
+    margin-left: auto;
+    display: flex; gap: 8px;
+  }
+
+  .btn-sm {
+    padding: 4px 12px;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    transition: all 0.15s;
+  }
+
+  .btn-gold { background: var(--gold); color: #1a1a00; }
+  .btn-ghost { background: var(--surface2); color: var(--text); }
+
+  /* ── CONTENT ── */
+  .content {
+    width: 100%;
+    max-width: 780px;
+    padding: 60px 40px 120px;
+  }
+
+  /* ── PAGE HEADER ── */
+  .page-emoji { font-size: 56px; margin-bottom: 16px; display: block; }
+
+  .page-title {
+    font-family: 'Lora', serif;
+    font-size: 40px;
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.2;
+    margin-bottom: 12px;
+  }
+
+  .page-meta {
+    display: flex; flex-wrap: wrap; gap: 8px;
+    margin-bottom: 32px;
+    padding-bottom: 32px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .tag {
+    display: inline-flex; align-items: center; gap: 5px;
+    padding: 3px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 500;
+  }
+
+  .tag-gold { background: var(--gold-dim); color: var(--gold); border: 1px solid rgba(220,174,29,0.3); }
+  .tag-blue { background: rgba(74,127,212,0.15); color: var(--blue-light); border: 1px solid rgba(74,127,212,0.3); }
+  .tag-red { background: rgba(192,57,43,0.15); color: #e74c3c; border: 1px solid rgba(192,57,43,0.3); }
+  .tag-green { background: rgba(39,174,96,0.15); color: #2ecc71; border: 1px solid rgba(39,174,96,0.3); }
+  .tag-purple { background: rgba(115,96,242,0.15); color: #a89cf7; border: 1px solid rgba(115,96,242,0.3); }
+  .tag-gray { background: var(--surface2); color: var(--muted); border: 1px solid var(--border); }
+
+  /* ── NOTION BLOCKS ── */
+  .block { margin-bottom: 4px; }
+
+  h1.n { font-family: 'Lora', serif; font-size: 28px; font-weight: 700; color: var(--text); margin: 40px 0 12px; }
+  h2.n { font-family: 'Lora', serif; font-size: 22px; font-weight: 600; color: var(--text); margin: 32px 0 10px; }
+  h3.n { font-family: 'Inter', sans-serif; font-size: 16px; font-weight: 600; color: var(--text); margin: 24px 0 8px; }
+
+  p.n { color: var(--text); margin-bottom: 8px; }
+
+  /* Divider */
+  .divider { border: none; border-top: 1px solid var(--border); margin: 32px 0; }
+
+  /* Callout */
+  .callout {
+    display: flex; gap: 12px;
+    padding: 14px 16px;
+    border-radius: 6px;
+    margin: 16px 0;
+  }
+
+  .callout-gold { background: var(--gold-dim); border: 1px solid rgba(220,174,29,0.25); }
+  .callout-blue { background: rgba(74,127,212,0.1); border: 1px solid rgba(74,127,212,0.25); }
+  .callout-red { background: rgba(192,57,43,0.1); border: 1px solid rgba(192,57,43,0.25); }
+  .callout-green { background: rgba(39,174,96,0.1); border: 1px solid rgba(39,174,96,0.25); }
+  .callout-purple { background: rgba(115,96,242,0.1); border: 1px solid rgba(115,96,242,0.25); }
+
+  .callout-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+  .callout-body { font-size: 14px; line-height: 1.6; }
+  .callout-body strong { font-weight: 600; }
+
+  /* Toggle */
+  details.toggle {
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    margin: 8px 0;
+    overflow: hidden;
+  }
+
+  details.toggle summary {
+    padding: 12px 16px;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 14px;
+    background: var(--surface2);
+    list-style: none;
+    display: flex; align-items: center; gap: 8px;
+    user-select: none;
+  }
+
+  details.toggle summary::-webkit-details-marker { display: none; }
+
+  details.toggle summary::before {
+    content: '▶';
+    font-size: 10px;
+    color: var(--muted);
+    transition: transform 0.2s;
+    display: inline-block;
+  }
+
+  details.toggle[open] summary::before { transform: rotate(90deg); }
+
+  details.toggle .toggle-content {
+    padding: 16px;
+    background: var(--bg);
+    border-top: 1px solid var(--border);
+  }
+
+  /* Table */
+  .n-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0;
+    font-size: 14px;
+  }
+
+  .n-table th {
+    background: var(--surface2);
+    color: var(--muted);
+    font-weight: 600;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 10px 14px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .n-table td {
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+
+  .n-table tr:last-child td { border-bottom: none; }
+  .n-table tr:hover td { background: var(--surface2); }
+
+  /* Bullet list */
+  .n-list { padding-left: 0; list-style: none; margin: 8px 0 16px; }
+  .n-list li {
+    padding: 4px 0 4px 24px;
+    position: relative;
+    font-size: 14px;
+    color: var(--text);
+  }
+  .n-list li::before {
+    content: '•';
+    position: absolute; left: 8px;
+    color: var(--muted);
+  }
+
+  .n-list.check li::before { content: '✓'; color: var(--green); font-weight: 700; }
+  .n-list.x li::before { content: '✗'; color: var(--red); }
+
+  /* Quote */
+  .n-quote {
+    border-left: 3px solid var(--gold);
+    padding: 8px 0 8px 16px;
+    margin: 16px 0;
+    font-family: 'Lora', serif;
+    font-style: italic;
+    font-size: 16px;
+    color: var(--muted);
+  }
+
+  /* Code inline */
+  code {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    background: var(--surface2);
+    padding: 2px 6px;
+    border-radius: 4px;
+    color: var(--gold);
+  }
+
+  /* ── TIMELINE ── */
+  .timeline { position: relative; padding-left: 24px; }
+  .timeline::before {
+    content: '';
+    position: absolute; left: 7px; top: 8px; bottom: 8px;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--gold), var(--blue-light), var(--purple));
+  }
+
+  .tl-item {
+    position: relative;
+    margin-bottom: 28px;
+  }
+
+  .tl-dot {
+    position: absolute;
+    left: -24px; top: 6px;
+    width: 16px; height: 16px;
+    border-radius: 50%;
+    border: 2px solid var(--bg);
+    z-index: 1;
+  }
+
+  .tl-dot.gold { background: var(--gold); }
+  .tl-dot.blue { background: var(--blue-light); }
+  .tl-dot.purple { background: var(--purple); }
+  .tl-dot.red { background: var(--red); }
+
+  .tl-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 4px;
+  }
+
+  .tl-title {
+    font-family: 'Lora', serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+
+  .tl-body { font-size: 13px; color: var(--muted); }
+
+  /* ── CARDS ── */
+  .cards { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 16px 0; }
+
+  @media (max-width: 600px) {
+    .cards { grid-template-columns: 1fr; }
+    .sidebar { display: none; }
+    .main { margin-left: 0; }
+    .content { padding: 40px 20px 80px; }
+    .page-title { font-size: 28px; }
+  }
+
+  .card {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px;
+    transition: border-color 0.2s;
+  }
+
+  .card:hover { border-color: var(--gold); }
+
+  .card-icon { font-size: 22px; margin-bottom: 8px; display: block; }
+  .card-title { font-weight: 600; font-size: 14px; margin-bottom: 4px; }
+  .card-body { font-size: 13px; color: var(--muted); line-height: 1.5; }
+
+  /* ── COLUMNS ── */
+  .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 16px 0; }
+  @media (max-width: 600px) { .cols { grid-template-columns: 1fr; } }
+
+  .col-block {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px;
+  }
+
+  /* ── STATUS BADGES ── */
+  .status {
+    display: inline-flex; align-items: center; gap: 5px;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  .status::before {
+    content: '';
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: currentColor;
+  }
+
+  .status-draft { background: rgba(136,136,136,0.15); color: var(--muted); }
+  .status-review { background: rgba(220,174,29,0.15); color: var(--gold); }
+  .status-live { background: rgba(39,174,96,0.15); color: #2ecc71; }
+
+  /* ── PRICE BLOCK ── */
+  .price-block {
+    background: linear-gradient(135deg, var(--surface2), var(--surface));
+    border: 1px solid var(--gold);
+    border-radius: 12px;
+    padding: 28px;
+    text-align: center;
+    margin: 24px 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .price-block::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(circle at top right, rgba(220,174,29,0.08), transparent 60%);
+  }
+
+  .price-block .price-label { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 8px; }
+  .price-block .price-main { font-family: 'Lora', serif; font-size: 52px; font-weight: 700; color: var(--gold); line-height: 1; }
+  .price-block .price-sub { font-size: 13px; color: var(--muted); margin-top: 6px; }
+  .price-block .price-compare { font-size: 14px; color: var(--muted); text-decoration: line-through; margin-top: 4px; }
+
+  /* ── ANCHOR LINKS ── */
+  .anchor { scroll-margin-top: 60px; }
+
+  /* ── PROGRESS ── */
+  .progress-bar {
+    background: var(--surface2);
+    border-radius: 100px;
+    height: 8px;
+    overflow: hidden;
+    margin-top: 4px;
+  }
+
+  .progress-bar .fill {
+    height: 100%;
+    border-radius: 100px;
+    background: linear-gradient(90deg, var(--gold), #f0c94d);
+  }
+
+  /* ── SECTION HEADER ── */
+  .section-header {
+    display: flex; align-items: center; gap: 10px;
+    margin-bottom: 4px;
+  }
+
+  .section-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--muted);
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    padding: 2px 7px;
+    border-radius: 4px;
+  }
+
+  /* ── CALCULATOR ── */
+  .calc-tab {
+    flex:1; padding:12px 8px; background:none; border:none; color:var(--muted);
+    font-size:13px; font-weight:600; cursor:pointer;
+    border-bottom:2px solid transparent; transition:all 0.15s; font-family:'Inter',sans-serif;
+  }
+  .calc-tab:hover { color:var(--text); }
+  .calc-tab-active { color:var(--gold) !important; border-bottom-color:var(--gold) !important; }
+  .calc-panel { padding:20px; }
+  .calc-section-label {
+    font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em;
+    color:var(--muted); margin:20px 0 10px; padding-bottom:6px; border-bottom:1px solid var(--border);
+  }
+  .calc-section-label:first-child { margin-top:0; }
+  .calc-row { display:flex; gap:12px; margin-bottom:12px; flex-wrap:wrap; }
+  .calc-field { flex:1; min-width:140px; }
+  .calc-label { display:block; font-size:12px; color:var(--muted); margin-bottom:6px; font-weight:500; }
+  .calc-input-wrap {
+    display:flex; align-items:center; background:var(--surface);
+    border:1px solid var(--border); border-radius:6px; overflow:hidden; transition:border-color 0.15s;
+  }
+  .calc-input-wrap:focus-within { border-color:var(--gold); }
+  .calc-currency {
+    padding:0 10px; font-size:12px; color:var(--muted); background:var(--bg);
+    border-right:1px solid var(--border); display:flex; align-items:center;
+    font-family:'JetBrains Mono',monospace; min-height:36px; white-space:nowrap;
+  }
+  .calc-input {
+    background:none; border:none; outline:none; color:var(--text);
+    font-size:14px; font-family:'JetBrains Mono',monospace; font-weight:600; padding:8px 10px; width:100%;
+  }
+  .calc-slider-wrap { display:flex; align-items:center; gap:10px; }
+  .calc-slider {
+    flex:1; -webkit-appearance:none; height:4px; border-radius:100px;
+    background:var(--border); outline:none; cursor:pointer;
+  }
+  .calc-slider::-webkit-slider-thumb {
+    -webkit-appearance:none; width:18px; height:18px; border-radius:50%;
+    background:var(--gold); cursor:pointer; box-shadow:0 0 0 3px rgba(220,174,29,0.2);
+  }
+  .calc-slider::-moz-range-thumb {
+    width:18px; height:18px; border-radius:50%; background:var(--gold); cursor:pointer; border:none;
+  }
+  .slider-val { font-family:'JetBrains Mono',monospace; font-weight:700; font-size:16px; color:var(--gold); min-width:28px; text-align:right; }
+  .breakdown-row { display:flex; justify-content:space-between; align-items:center; padding:5px 0; font-size:13px; color:var(--muted); }
+  .breakdown-row span:last-child { font-family:'JetBrains Mono',monospace; color:var(--text); font-size:13px; }
+
+  /* Sticky TOC indicator */
+  .toc-pill {
+    position: fixed;
+    bottom: 32px; right: 32px;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    padding: 8px 16px;
+    font-size: 12px;
+    color: var(--muted);
+    cursor: pointer;
+    transition: all 0.2s;
+    z-index: 200;
+  }
+
+  .toc-pill:hover { border-color: var(--gold); color: var(--gold); }
+
+  /* ── MOBILE ── */
+  @media (max-width: 768px) {
+    /* Hide sidebar, show content full width */
+    .sidebar { display: none; }
+    .main { margin-left: 0 !important; }
+    .content { padding: 24px 16px 80px; }
+
+    /* Topbar */
+    .topbar { padding: 0 16px; gap: 6px; font-size: 11px; }
+    .topbar-actions { gap: 6px; }
+    .btn-sm { padding: 3px 8px; font-size: 11px; }
+
+    /* Page header */
+    .page-emoji { font-size: 36px; }
+    .page-title { font-size: 26px !important; }
+    .page-meta { gap: 6px; }
+
+    /* Headings */
+    h1.n { font-size: 22px; }
+    h2.n { font-size: 18px; }
+
+    /* Two-column grids → single column */
+    .cols { grid-template-columns: 1fr !important; }
+    .cards { grid-template-columns: 1fr !important; }
+
+    /* Tables → horizontal scroll */
+    .n-table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; white-space: nowrap; }
+    .n-table th, .n-table td { white-space: normal; min-width: 100px; }
+
+    /* Timeline */
+    .timeline { padding-left: 18px; }
+    .tl-dot { left: -18px; }
+
+    /* Price block */
+    .price-block { padding: 20px 16px; }
+    .price-block .price-main { font-size: 38px !important; }
+
+    /* Calc tabs */
+    .calc-tab { font-size: 11px; padding: 10px 4px; }
+
+    /* Calc rows stack */
+    .calc-row { flex-direction: column; }
+    .calc-field { min-width: 100%; }
+
+    /* TOC pill */
+    .toc-pill { bottom: 16px; right: 16px; padding: 6px 12px; font-size: 11px; }
+
+    /* Section header */
+    .section-header { flex-wrap: wrap; }
+
+    /* Mobile nav bar at bottom */
+    .mobile-nav {
+      display: flex !important;
+      position: fixed; bottom: 0; left: 0; right: 0;
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      z-index: 200;
+      padding: 8px 0 env(safe-area-inset-bottom, 8px);
+    }
+    .mobile-nav a {
+      flex: 1; display: flex; flex-direction: column; align-items: center;
+      gap: 3px; font-size: 10px; color: var(--muted); text-decoration: none;
+      padding: 4px 0; transition: color 0.15s;
+    }
+    .mobile-nav a:hover, .mobile-nav a.active { color: var(--gold); }
+    .mobile-nav a .mn-icon { font-size: 18px; }
+    .content { padding-bottom: 100px; }
+  }
+
+  .mobile-nav { display: none; }
+</style>
+</head>
+<body>
+
+<!-- SIDEBAR -->
+<aside class="sidebar">
+  <div class="sidebar-logo">
+    <div class="icon">S</div>
+    <span>Stela<em>Tour</em> — Оферти</span>
+  </div>
+
+  <div class="sidebar-section">
+    <div class="sidebar-section-title">Стратегия</div>
+    <a href="#overview" class="sidebar-item active">
+      <div class="dot" style="background:var(--gold)"></div> Общ преглед
+    </a>
+    <a href="#avatar" class="sidebar-item">
+      <div class="dot" style="background:var(--blue-light)"></div> Аватар
+    </a>
+    <a href="#hook" class="sidebar-item">
+      <div class="dot" style="background:var(--purple)"></div> Хук & Наратив
+    </a>
+    <a href="#timeline" class="sidebar-item">
+      <div class="dot" style="background:var(--gold)"></div> Хронология
+    </a>
+    <a href="#locations" class="sidebar-item">
+      <div class="dot" style="background:var(--green)"></div> Локации
+    </a>
+    <a href="#routes" class="sidebar-item">
+      <div class="dot" style="background:var(--blue-light)"></div> Маршрути
+    </a>
+    <a href="#itinerary" class="sidebar-item">
+      <div class="dot" style="background:var(--gold)"></div> Програма
+    </a>
+    <a href="#bonuses" class="sidebar-item">
+      <div class="dot" style="background:var(--purple)"></div> Бонуси
+    </a>
+    <a href="#offer" class="sidebar-item">
+      <div class="dot" style="background:var(--gold)"></div> Офертата & P&L
+    </a>
+    <a href="#copy" class="sidebar-item">
+      <div class="dot" style="background:var(--red)"></div> Копи & Заглавие
+    </a>
+  </div>
+
+  <div class="sidebar-section" style="margin-top:auto; padding-top:16px; border-top:1px solid var(--border);">
+    <div class="sidebar-section-title">Статус</div>
+    <div style="padding: 8px;">
+      <div style="margin-bottom:10px;">
+        <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px;">
+          <span style="color:var(--muted)">Готовност</span>
+          <span style="color:var(--gold)">75%</span>
+        </div>
+        <div class="progress-bar"><div class="fill" style="width:75%"></div></div>
+      </div>
+      <span class="status status-review">В преглед</span>
+    </div>
+  </div>
+</aside>
+
+<!-- MAIN -->
+<div class="main">
+
+  <!-- TOPBAR -->
+  <div class="topbar">
+    <div class="breadcrumb">
+      <span>StelaTour</span>
+      <span>›</span>
+      <span>Оферти</span>
+      <span>›</span>
+      <span class="current">Пътят на Предците</span>
+    </div>
+    <div class="topbar-actions">
+      <span class="status status-review">В разработка</span>
+      <button class="btn-sm btn-ghost">Сподели</button>
+      <button class="btn-sm btn-gold">Публикувай</button>
+    </div>
+  </div>
+
+  <!-- CONTENT -->
+  <div class="content">
+
+    <!-- PAGE HEADER -->
+    <span class="page-emoji">🏛️</span>
+    <h1 class="page-title">Пътят на Предците<br><span style="color:var(--gold)">Grand Slam Оферта</span></h1>
+
+    <div class="page-meta">
+      <span class="tag tag-gold">⚡ Енерготуризъм</span>
+      <span class="tag tag-blue">🇧🇬 България</span>
+      <span class="tag tag-purple">👑 Висок клас</span>
+      <span class="tag tag-green">✅ Оферта #1</span>
+      <span class="tag tag-gray">📅 Q2 2025</span>
+    </div>
+
+    <div class="callout callout-gold">
+      <span class="callout-icon">💡</span>
+      <div class="callout-body">
+        <strong>Главна теза:</strong> Продаваме не туристическа обиколка. Продаваме <em>лично пътуване назад в историята</em> — с лукс, разказ и усещане, което остава завинаги. Клиентът трябва да усети, че е избран, а не просто записан.
+      </div>
+    </div>
+
+    <hr class="divider" id="overview">
+
+    <!-- ── SECTION 1: OVERVIEW ── -->
+    <div class="section-header anchor">
+      <span class="section-num">01</span>
+      <h1 class="n" style="margin:0">Общ преглед на офертата</h1>
+    </div>
+
+    <div class="cols">
+      <div class="col-block">
+        <div style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px">Продукт</div>
+        <div style="font-family:'Lora',serif;font-size:17px;font-weight:600;">Водена историческа<br>& духовна обиколка</div>
+      </div>
+      <div class="col-block">
+        <div style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px">Формат</div>
+        <div style="font-size:15px;font-weight:500;">3 дни / 2 нощувки<br><span style="color:var(--muted);font-size:13px">петък вечер → неделя обяд</span></div>
+      </div>
+      <div class="col-block">
+        <div style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px">Размер на групата</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:22px;color:var(--gold);font-weight:600;">MAX 8</div>
+        <div style="font-size:12px;color:var(--muted)">Изключително малки групи</div>
+      </div>
+      <div class="col-block">
+        <div style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px">Цена (ориентировъчна)</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:22px;color:var(--gold);font-weight:600;">299 – 449 лв</div>
+        <div style="font-size:12px;color:var(--muted)">всичко включено</div>
+      </div>
+    </div>
+
+    <hr class="divider" id="avatar">
+
+    <!-- ── SECTION 2: AVATAR ── -->
+    <div class="section-header anchor">
+      <span class="section-num">02</span>
+      <h1 class="n" style="margin:0">Целева аудитория — Аватарът</h1>
+    </div>
+
+    <div class="callout callout-blue">
+      <span class="callout-icon">👤</span>
+      <div class="callout-body">
+        <strong>Среща с Мария и Николай, 38–58 години.</strong> Живеят в Бургас, Варна или Пловдив. Имат стабилен доход. Пътували са — Гърция, Турция, може би Италия. Чувстват се "туристически изморени" от масовия туризъм. Четат. Интересуват се от история, не от плажове. Имат деца, но търсят почивка за двама или с приятели. <em>Искат история, разказана от някой, който я живее — не я чете от листче.</em>
+      </div>
+    </div>
+
+    <h3 class="n">Психологически задвижващи фактори</h3>
+    <table class="n-table">
+      <thead>
+        <tr>
+          <th>Болка</th>
+          <th>Желание (Dream Outcome)</th>
+          <th>Страх</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>"Всяко пътуване е едно и също"</td>
+          <td>Да преживеят нещо уникално, лично, незабравимо</td>
+          <td>Да платят и пак да е "автобус с туристи"</td>
+        </tr>
+        <tr>
+          <td>"Нямам идея какво е скрито в България"</td>
+          <td>Да разкрият страна, която не знаят</td>
+          <td>Организацията да е хаотична</td>
+        </tr>
+        <tr>
+          <td>"Нямам енергия и мотивация"</td>
+          <td>Да се върнат различни — заредени</td>
+          <td>Групата да е некомпатибилна</td>
+        </tr>
+        <tr>
+          <td>"Децата и работата ме изтощават"</td>
+          <td>3 дни само за себе си</td>
+          <td>Ядене да е лошо</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <hr class="divider" id="hook">
+
+    <!-- ── SECTION 3: HOOK ── -->
+    <div class="section-header anchor">
+      <span class="section-num">03</span>
+      <h1 class="n" style="margin:0">Хук, Ъгъл & Наратив</h1>
+    </div>
+
+    <p class="n" style="color:var(--muted)">Три исторически пласта — три различни емоционални ъгъла. Всеки ъгъл е <strong>различна оферта</strong> с различна целева аудитория.</p>
+
+    <details class="toggle">
+      <summary>⚔️ Ъгъл А — <strong>"Преди 100+ години: Войната, която оформи България"</strong></summary>
+      <div class="toggle-content">
+        <div class="callout callout-red">
+          <span class="callout-icon">🎯</span>
+          <div class="callout-body"><strong>Хук:</strong> "Ходихте ли по местата, където дядовците ни решиха съдбата на България? Това не е история от учебник. Това е земята под краката ти."</div>
+        </div>
+        <h3 class="n">Теми & Чувство</h3>
+        <ul class="n-list">
+          <li>Национална гордост, дълбока носталгия, идентичност</li>
+          <li>Балканските войни, Първа световна война — места на паметта</li>
+          <li>Церемониален елемент — поднасяне на цветя, минута мълчание</li>
+          <li>Чувство: <em>тежест, мъдрост, принадлежност</em></li>
+        </ul>
+        <h3 class="n">Потенциални локации</h3>
+        <ul class="n-list">
+          <li><strong>Велико Търново</strong> — Царевец, последната столица</li>
+          <li><strong>Плиска & Преслав</strong> — столиците на Първото и Второто царство</li>
+          <li><strong>Шумен / Марцианопол</strong> — пресечната точка на история</li>
+          <li><strong>Силистра / Дуросторум</strong> — Дунавският лимес на Рим</li>
+        </ul>
+        <div class="callout callout-gold">
+          <span class="callout-icon">💡</span>
+          <div class="callout-body"><strong>Целева аудитория:</strong> 45–65 г., мъже и жени с патриотична нагласа, почитатели на Bulgarian history content в социалните мрежи</div>
+        </div>
+      </div>
+    </details>
+
+    <details class="toggle">
+      <summary>🏛️ Ъгъл Б — <strong>"Преди 1000+ години: Царете, Църквите и Кръстовищата"</strong></summary>
+      <div class="toggle-content">
+        <div class="callout callout-purple">
+          <span class="callout-icon">🎯</span>
+          <div class="callout-body"><strong>Хук:</strong> "Преди Европа да знае думата 'цивилизация', тук е имало столица, закони и писменост. Ела да го видиш сам."</div>
+        </div>
+        <h3 class="n">Теми & Чувство</h3>
+        <ul class="n-list">
+          <li>Величие на Средновековна България — Симеон Велики, Самуил</li>
+          <li>Православна духовност — посещение на действащи исторически църкви</li>
+          <li>Архитектурна магия — Царевец на свещи/вечер</li>
+          <li>Чувство: <em>грандиозност, духовност, принадлежност към нещо велико</em></li>
+        </ul>
+        <h3 class="n">Потенциални локации</h3>
+        <ul class="n-list">
+          <li><strong>Велико Търново</strong> — Царевец, Трапезица, Преображенски манастир</li>
+          <li><strong>Плиска</strong> — Великата базилика, двореца</li>
+          <li><strong>Преслав</strong> — Кръглата църква "Симеон"</li>
+          <li><strong>Шумен</strong> — Шуменска крепост, Паметник 1300 години</li>
+        </ul>
+        <div class="callout callout-gold">
+          <span class="callout-icon">💡</span>
+          <div class="callout-body"><strong>Целева аудитория:</strong> Интелектуалци 35–55 г., хора с интерес към православие и история, семейства с деца над 12 г.</div>
+        </div>
+      </div>
+    </details>
+
+    <details class="toggle">
+      <summary>🌀 Ъгъл В — <strong>"Преди 10 000+ години: Преди Христа, преди историята"</strong> ⭐ Препоръчан</summary>
+      <div class="toggle-content">
+        <div class="callout callout-gold">
+          <span class="callout-icon">🎯</span>
+          <div class="callout-body"><strong>Хук:</strong> "Ванга е говорила за тази земя. Траките са я усещали. Какво ще усетиш ти, когато застанеш на Перперикон и погледнеш хоризонта?" </div>
+        </div>
+        <h3 class="n">Теми & Чувство</h3>
+        <ul class="n-list">
+          <li>Тракийска мистика — Орфей, Дионис, слънчевите светилища</li>
+          <li>Ванга — Петрич, Рупите, духовна сила на земята</li>
+          <li>Енергийни места — Белинташ, Перперикон, Крън</li>
+          <li>Мистика без клише — обяснена чрез наука и история едновременно</li>
+          <li>Чувство: <em>тайнственост, трепет, лична трансформация, разтоварване</em></li>
+        </ul>
+        <h3 class="n">Потенциални локации</h3>
+        <ul class="n-list">
+          <li><strong>Перперикон</strong> — тракийско светилище, Орфей, скален град</li>
+          <li><strong>Белинташ</strong> — слънчево светилище, каменен диск</li>
+          <li><strong>Рупите / Петрич</strong> — Ванга, храмът, термалните извори</li>
+          <li><strong>Пловдив</strong> — Античен театър, Стария град, тракийски некропол</li>
+          <li><strong>Велико Търново</strong> — Тракийска гробница, Тракийски музей</li>
+          <li><strong>Силистра</strong> — Дуросторум, Late Roman & праисторически пласт</li>
+        </ul>
+        <div class="callout callout-green">
+          <span class="callout-icon">💡</span>
+          <div class="callout-body"><strong>Целева аудитория:</strong> Жени 35–55 г., хора търсещи духовно изживяване, читатели на алтернативна история, "тихи авантюристи" с висок доход. <strong>Най-широко пазарно поле.</strong></div>
+        </div>
+      </div>
+    </details>
+
+    <hr class="divider" id="timeline">
+
+    <!-- ── SECTION 4: TIMELINE ── -->
+    <div class="section-header anchor">
+      <span class="section-num">04</span>
+      <h1 class="n" style="margin:0">Историческа хронология<br><span style="font-size:16px;color:var(--muted);font-family:'Inter',sans-serif;font-weight:400">Как да разказваме историята</span></h1>
+    </div>
+
+    <div class="callout callout-blue">
+      <span class="callout-icon">📖</span>
+      <div class="callout-body">Всяко пътуване трябва да има <strong>един главен исторически пласт</strong> — не да смесваме всичко. Наратив = сила. Хаос = слабост.</div>
+    </div>
+
+    <div class="timeline" style="margin-top:24px;">
+      <div class="tl-item">
+        <div class="tl-dot gold"></div>
+        <div class="tl-label">Преди 10 000+ години</div>
+        <div class="tl-title">⚡ Праисторически пласт — "Преди всичко"</div>
+        <div class="tl-body">Хора са живели, строили са и са вярвали в тази земя преди повечето цивилизации да съществуват. Каменни светилища, звездни наблюдения, тракийска митология. <span class="tag tag-purple" style="margin-left:4px;">Ъгъл В ⭐</span></div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot blue"></div>
+        <div class="tl-label">5 000 – 1 000 пр. Хр.</div>
+        <div class="tl-title">🏺 Траките — Орфей, Дионис, Слънцето</div>
+        <div class="tl-body">Перперикон, Белинташ, Тракийски гробници. Народ, писал за Орфей и Дионис преди гърците. Богати с злато, мъдрост и мистика. Сключваме пакт с тяхната история.</div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot blue"></div>
+        <div class="tl-label">1 – 300 сл. Хр.</div>
+        <div class="tl-title">🦅 Рим на Дунава — Дуросторум & Марцианопол</div>
+        <div class="tl-body"><strong>Силистра (Дуросторум)</strong> — римски легионерски лагер на Дунав. <strong>Шумен (Марцианопол)</strong> — римски провинциален град. Мозайки, монети, легиони. Невероятни за разказ.</div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot gold"></div>
+        <div class="tl-label">681 – 1393 сл. Хр.</div>
+        <div class="tl-title">👑 Средновековна България — Царете и Столиците</div>
+        <div class="tl-body"><strong>Плиска</strong> (681) → <strong>Преслав</strong> (893) → <strong>Велико Търново</strong> (1185). Три столици, три епохи, една непрекъсната нишка на народ. Царевец, Трапезица, Преображенски. <span class="tag tag-blue" style="margin-left:4px;">Ъгъл Б</span></div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot red"></div>
+        <div class="tl-label">1878 – 1945 сл. Хр.</div>
+        <div class="tl-title">⚔️ Модерна История — Войните, Свободата</div>
+        <div class="tl-body">Освобождението, Балканските войни, Световните войни. Места на паметта, гробища, паметници. Дълбоко емоционален пласт — подходящ за аудитория с национална идентичност. <span class="tag tag-red" style="margin-left:4px;">Ъгъл А</span></div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot purple"></div>
+        <div class="tl-label">20 век — до днес</div>
+        <div class="tl-title">🔮 Ванга — Феноменът, Земята, Легендата</div>
+        <div class="tl-body">Рупите, Петрич. Ванга не е суеверие — тя е феномен, признат от хиляди. Посещението там е <em>лично изживяване</em>. Термалните извори са бонус. Идеален финал за Ъгъл В.</div>
+      </div>
+    </div>
+
+    <hr class="divider" id="locations">
+
+    <!-- ── SECTION 5: LOCATIONS ── -->
+    <div class="section-header anchor">
+      <span class="section-num">05</span>
+      <h1 class="n" style="margin:0">Банка от локации</h1>
+    </div>
+
+    <p class="n" style="color:var(--muted);margin-bottom:16px;">Всяка локация е оценена по три критерия: <code>Визуален WOW</code> · <code>Историческа дълбочина</code> · <code>Лесен достъп</code></p>
+
+    <table class="n-table">
+      <thead>
+        <tr>
+          <th>Локация</th>
+          <th>Исторически пласт</th>
+          <th>WOW</th>
+          <th>Нощувка близо</th>
+          <th>Ъгъл</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>🗿 Перперикон</strong></td>
+          <td>Траки / пр. Хр.</td>
+          <td>⭐⭐⭐⭐⭐</td>
+          <td>Кърджали</td>
+          <td><span class="tag tag-gold">В</span></td>
+        </tr>
+        <tr>
+          <td><strong>🌞 Белинташ</strong></td>
+          <td>Тракийско светилище</td>
+          <td>⭐⭐⭐⭐⭐</td>
+          <td>Асеновград</td>
+          <td><span class="tag tag-gold">В</span></td>
+        </tr>
+        <tr>
+          <td><strong>🔮 Рупите / Ванга</strong></td>
+          <td>20 в. — духовен</td>
+          <td>⭐⭐⭐⭐</td>
+          <td>Петрич / Сандански</td>
+          <td><span class="tag tag-gold">В</span></td>
+        </tr>
+        <tr>
+          <td><strong>🏛️ Пловдив</strong></td>
+          <td>Гръцки & Римски</td>
+          <td>⭐⭐⭐⭐⭐</td>
+          <td>Пловдив (бутик)</td>
+          <td><span class="tag tag-gold">В</span></td>
+        </tr>
+        <tr>
+          <td><strong>👑 Велико Търново</strong></td>
+          <td>Средновековна Б-я</td>
+          <td>⭐⭐⭐⭐⭐</td>
+          <td>В.Търново (бутик)</td>
+          <td><span class="tag tag-blue">Б</span> <span class="tag tag-gold">В</span></td>
+        </tr>
+        <tr>
+          <td><strong>🏰 Плиска</strong></td>
+          <td>681 сл. Хр.</td>
+          <td>⭐⭐⭐</td>
+          <td>Шумен</td>
+          <td><span class="tag tag-blue">Б</span></td>
+        </tr>
+        <tr>
+          <td><strong>⚜️ Преслав</strong></td>
+          <td>893 сл. Хр.</td>
+          <td>⭐⭐⭐⭐</td>
+          <td>Шумен</td>
+          <td><span class="tag tag-blue">Б</span></td>
+        </tr>
+        <tr>
+          <td><strong>🦅 Шумен / Марцианопол</strong></td>
+          <td>Рим & Средновековие</td>
+          <td>⭐⭐⭐⭐</td>
+          <td>Шумен</td>
+          <td><span class="tag tag-red">А</span> <span class="tag tag-blue">Б</span></td>
+        </tr>
+        <tr>
+          <td><strong>🛡️ Силистра / Дуросторум</strong></td>
+          <td>Рим на Дунав</td>
+          <td>⭐⭐⭐⭐</td>
+          <td>Силистра</td>
+          <td><span class="tag tag-red">А</span></td>
+        </tr>
+        <tr>
+          <td><strong>⛪ Тракийска гробница — В.Търново</strong></td>
+          <td>Траки</td>
+          <td>⭐⭐⭐⭐</td>
+          <td>В.Търново</td>
+          <td><span class="tag tag-gold">В</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <hr class="divider" id="routes">
+
+    <!-- ── SECTION 6: ROUTES ── -->
+    <div class="section-header anchor">
+      <span class="section-num">06</span>
+      <h1 class="n" style="margin:0">Предложени маршрути<br><span style="font-size:16px;color:var(--muted);font-family:'Inter',sans-serif;font-weight:400">Стартова точка: Бургас</span></h1>
+    </div>
+
+    <details class="toggle">
+      <summary>🌀 Маршрут 1 — <strong>"Пътят на Орфей"</strong> (Ъгъл В ⭐ Препоръчан)</summary>
+      <div class="toggle-content">
+        <div class="callout callout-gold">
+          <span class="callout-icon">🎯</span>
+          <div class="callout-body"><strong>Мото:</strong> "Земята помни всичко. Ела да чуеш."</div>
+        </div>
+        <table class="n-table">
+          <thead><tr><th>Ден</th><th>Програма</th><th>Нощувка</th></tr></thead>
+          <tbody>
+            <tr>
+              <td><strong>Ден 1</strong><br><span style="color:var(--muted);font-size:12px">Пет. вечер</span></td>
+              <td>Тръгване от Бургас 17:00. Велико Търново — вечеря в стар ресторант с жива музика. Вечерна обиколка на Царевец (Звук и Светлина). Check-in в бутик хотел.</td>
+              <td>🏨 Велико Търново<br><em>Бутик, стар град</em></td>
+            </tr>
+            <tr>
+              <td><strong>Ден 2</strong><br><span style="color:var(--muted);font-size:12px">Събота</span></td>
+              <td>Закуска с местни продукти. Тракийска гробница + Тракийски музей. Обяд в местна механа. Пловдив — Античен театър, Стара Чаршия, тракийски некропол под Пловдив. Вечеря в Капана.</td>
+              <td>🏨 Пловдив<br><em>Бутик, Стария град</em></td>
+            </tr>
+            <tr>
+              <td><strong>Ден 3</strong><br><span style="color:var(--muted);font-size:12px">Неделя</span></td>
+              <td>Ранна закуска. Перперикон — водена обиколка с историк (2.5 ч). Белинташ (по избор). Обяд в подножието. Прибиране в Бургас до 19:00.</td>
+              <td>— Прибиране</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </details>
+
+    <details class="toggle">
+      <summary>👑 Маршрут 2 — <strong>"Три Столици"</strong> (Ъгъл Б)</summary>
+      <div class="toggle-content">
+        <div class="callout callout-purple">
+          <span class="callout-icon">🎯</span>
+          <div class="callout-body"><strong>Мото:</strong> "Плиска. Преслав. Велико Търново. Три столици, една непрекъсната история."</div>
+        </div>
+        <table class="n-table">
+          <thead><tr><th>Ден</th><th>Програма</th><th>Нощувка</th></tr></thead>
+          <tbody>
+            <tr>
+              <td><strong>Ден 1</strong></td>
+              <td>Тръгване от Бургас. Шумен — Шуменска крепост, Паметник 1300 г. Вечеря в Шумен. Check-in.</td>
+              <td>🏨 Шумен</td>
+            </tr>
+            <tr>
+              <td><strong>Ден 2</strong></td>
+              <td>Закуска. Плиска — Великата базилика, Тронна зала. Преслав — Кръглата църква. Обяд. Велико Търново — Царевец, Трапезица. Вечеря в стар хан.</td>
+              <td>🏨 Велико Търново</td>
+            </tr>
+            <tr>
+              <td><strong>Ден 3</strong></td>
+              <td>Закуска. Преображенски или Дряновски манастир. Обяд. Прибиране в Бургас.</td>
+              <td>— Прибиране</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </details>
+
+    <details class="toggle">
+      <summary>🛡️ Маршрут 3 — <strong>"Рим на Дунава"</strong> (Ъгъл А / Б)</summary>
+      <div class="toggle-content">
+        <div class="callout callout-red">
+          <span class="callout-icon">🎯</span>
+          <div class="callout-body"><strong>Мото:</strong> "Тук е минавал Юлий Цезар. Тук е пазил границите на Рим. Ела да стъпиш на тяхната земя."</div>
+        </div>
+        <table class="n-table">
+          <thead><tr><th>Ден</th><th>Програма</th><th>Нощувка</th></tr></thead>
+          <tbody>
+            <tr>
+              <td><strong>Ден 1</strong></td>
+              <td>Тръгване от Бургас. Шумен (Марцианопол) — Регионален музей, римски находки. Вечеря.</td>
+              <td>🏨 Шумен</td>
+            </tr>
+            <tr>
+              <td><strong>Ден 2</strong></td>
+              <td>Закуска. Силистра — Дуросторум, Римска гробница с мозайки (изключително!), Регионален музей. Обяд на Дунав. Разходка с лодка по Дунав. Вечеря с риба.</td>
+              <td>🏨 Силистра</td>
+            </tr>
+            <tr>
+              <td><strong>Ден 3</strong></td>
+              <td>Закуска. Свободно или Добруджа — Природен парк. Обяд. Прибиране.</td>
+              <td>— Прибиране</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </details>
+
+    <hr class="divider" id="itinerary">
+
+    <!-- ── SECTION 7: FULL ITINERARY ── -->
+    <div class="section-header anchor">
+      <span class="section-num">07</span>
+      <h1 class="n" style="margin:0">Детайлна програма<br><span style="font-size:16px;color:var(--muted);font-family:'Inter',sans-serif;font-weight:400">Маршрут "Пътят на Орфей" — пример</span></h1>
+    </div>
+
+    <div class="callout callout-gold">
+      <span class="callout-icon">⭐</span>
+      <div class="callout-body"><strong>Принципи на луксозното изживяване:</strong> Никога не бързаме. Малките детайли правят разликата — кафе с изглед, местно вино, историята разказана с емоция. Гостите трябва да се чувстват привилегировани, не "туристи".</div>
+    </div>
+
+    <h2 class="n">🌙 Ден 1 — Петък вечер: Пристигане & Царете</h2>
+
+    <table class="n-table">
+      <thead><tr><th>Час</th><th>Активност</th><th>Детайл</th></tr></thead>
+      <tbody>
+        <tr><td><code>17:00</code></td><td>Тръгване от Бургас</td><td>Комфортен микробус, max 8 души. Музика и welcome drink.</td></tr>
+        <tr><td><code>20:30</code></td><td>Пристигане В.Търново</td><td>Check-in в бутик хотел в Стария град</td></tr>
+        <tr><td><code>21:00</code></td><td>🍷 Вечеря</td><td>Ресторант с гледка към Янтра. Местна тракийска кухня, вино от Тракия. <em>Разказ за историята на вечерята.</em></td></tr>
+        <tr><td><code>22:30</code></td><td>🎆 Царевец — "Звук и Светлина"</td><td>Вечерното шоу (сезонно). Или нощна разходка около крепостта с водач.</td></tr>
+      </tbody>
+    </table>
+
+    <h2 class="n">☀️ Ден 2 — Събота: Траките & Античният Пловдив</h2>
+
+    <table class="n-table">
+      <thead><tr><th>Час</th><th>Активност</th><th>Детайл</th></tr></thead>
+      <tbody>
+        <tr><td><code>08:30</code></td><td>☕ Закуска</td><td>Обилна закуска с местни продукти в хотела. Мед, сирене, прясна пита.</td></tr>
+        <tr><td><code>09:30</code></td><td>🏺 Тракийска гробница</td><td>Казанлъшка гробница или Тракийски музей. Водач — историк. <em>45 мин.</em></td></tr>
+        <tr><td><code>11:30</code></td><td>Пътуване към Пловдив</td><td>1.5 ч. Аудио разказ в микробуса за Тракия.</td></tr>
+        <tr><td><code>13:00</code></td><td>🍽️ Обяд в Пловдив</td><td>Механа в Стария град. Шкембе, кебап, баница — автентично.</td></tr>
+        <tr><td><code>14:30</code></td><td>🏛️ Античен театър</td><td>Водена обиколка. История на Филипопол — гръцки, римски, тракийски пласт.</td></tr>
+        <tr><td><code>16:00</code></td><td>Стария град / Капана</td><td>Свободно разглеждане. Чаша кафе или вино по избор.</td></tr>
+        <tr><td><code>19:30</code></td><td>🍷 Вечеря в Капана</td><td>Модерен ресторант. Дегустация на тракийски вина от региона на Пловдив. <em>Бонус: сомелиер обяснява историята на виното.</em></td></tr>
+        <tr><td><code>21:30</code></td><td>Check-in</td><td>Бутик хотел в Стария град на Пловдив</td></tr>
+      </tbody>
+    </table>
+
+    <h2 class="n">🌄 Ден 3 — Неделя: Перперикон & Завръщане</h2>
+
+    <table class="n-table">
+      <thead><tr><th>Час</th><th>Активност</th><th>Детайл</th></tr></thead>
+      <tbody>
+        <tr><td><code>08:00</code></td><td>☕ Ранна закуска</td><td>Лека закуска преди пътуването</td></tr>
+        <tr><td><code>09:00</code></td><td>🚌 Тръгване за Перперикон</td><td>~1.5 ч. Пейзажен маршрут из Родопите.</td></tr>
+        <tr><td><code>10:30</code></td><td>🗿 Перперикон</td><td><strong>Основното изживяване.</strong> 2.5 часа с историк. Светилището на Дионис, пророчеството за Александър Велики, скалният град.</td></tr>
+        <tr><td><code>13:00</code></td><td>🍽️ Обяд в Кърджали</td><td>Родопска кухня. Каварма, мешана скара.</td></tr>
+        <tr><td><code>14:30</code></td><td>🌀 Белинташ (по избор)</td><td>Слънчевото светилище. 30 мин спиране.</td></tr>
+        <tr><td><code>16:00</code></td><td>🚌 Завръщане към Бургас</td><td>Снимки, разговори, спомени.</td></tr>
+        <tr><td><code>19:00</code></td><td>🏠 Пристигане Бургас</td><td>Обратно с подарък изненада.</td></tr>
+      </tbody>
+    </table>
+
+    <hr class="divider" id="bonuses">
+
+    <!-- ── SECTION 8: BONUSES ── -->
+    <div class="section-header anchor">
+      <span class="section-num">08</span>
+      <h1 class="n" style="margin:0">Бонус стек<br><span style="font-size:16px;color:var(--muted);font-family:'Inter',sans-serif;font-weight:400">Правим офертата неустоима</span></h1>
+    </div>
+
+    <div class="callout callout-purple">
+      <span class="callout-icon">🎁</span>
+      <div class="callout-body">Хормози принцип: <strong>Бонусите трябва да струват малко за теб, но да имат ВИСОКА perceived value за клиента.</strong> Всеки бонус трябва да решава конкретен страх или желание.</div>
+    </div>
+
+    <div class="cards">
+      <div class="card">
+        <span class="card-icon">🗺️</span>
+        <div class="card-title">Карта "Свещената Земя"</div>
+        <div class="card-body">Ламинирана персонализирана карта на всички енергийни места в България. Подарена при тръгване.<br><span class="tag tag-gold" style="margin-top:6px;display:inline-flex;">Perceived стойност: 35 лв</span></div>
+      </div>
+      <div class="card">
+        <span class="card-icon">📖</span>
+        <div class="card-title">PDF "Наследството на Траките"</div>
+        <div class="card-body">Кратко ръководство за тракийската митология, символите и ритуалите. Изпратено преди пътуването.<br><span class="tag tag-gold" style="margin-top:6px;display:inline-flex;">Perceived стойност: 25 лв</span></div>
+      </div>
+      <div class="card">
+        <span class="card-icon">📸</span>
+        <div class="card-title">Галерия с професионални снимки</div>
+        <div class="card-body">Фотограф придружава групата на Перперикон. 20 редактирани снимки за всеки участник — изпратени до 7 дни.<br><span class="tag tag-gold" style="margin-top:6px;display:inline-flex;">Perceived стойност: 150 лв</span></div>
+      </div>
+      <div class="card">
+        <span class="card-icon">🍷</span>
+        <div class="card-title">Дегустация на тракийски вина</div>
+        <div class="card-body">Включена вечерна дегустация на 4 вина с обяснение от сомелиер или водача. Органично свързва с Wine предложението.<br><span class="tag tag-gold" style="margin-top:6px;display:inline-flex;">Perceived стойност: 40 лв</span></div>
+      </div>
+      <div class="card">
+        <span class="card-icon">🎙️</span>
+        <div class="card-title">Лична предварителна консултация</div>
+        <div class="card-body">20-минутен разговор с водача преди пътуването за персонализиране на изживяването.<br><span class="tag tag-green" style="margin-top:6px;display:inline-flex;">Разход: нулев</span></div>
+      </div>
+      <div class="card">
+        <span class="card-icon">🌿</span>
+        <div class="card-title">Welcome kit в хотела</div>
+        <div class="card-body">Местен мед, билков чай, малка свещ с аромат на Родопите. Оставена в стаята при пристигане.<br><span class="tag tag-gold" style="margin-top:6px;display:inline-flex;">Разход: ~15 лв</span></div>
+      </div>
+    </div>
+
+    <hr class="divider" id="offer">
+
+    <!-- ── SECTION 9: THE OFFER ── -->
+    <div class="section-header anchor">
+      <span class="section-num">09</span>
+      <h1 class="n" style="margin:0">Структурата на офертата</h1>
+    </div>
+
+    <h3 class="n">✅ Какво е включено</h3>
+    <ul class="n-list check">
+      <li>Транспорт от/до Бургас (комфортен микробус)</li>
+      <li>2 нощувки в бутик хотели (двойна стая)</li>
+      <li>2 закуски (богати, с местни продукти)</li>
+      <li>2 вечери (включително дегустация на вина)</li>
+      <li>1 обяд (Ден 3)</li>
+      <li>Всички входни такси за обекти</li>
+      <li>Лицензиран историк-водач за целия маршрут</li>
+      <li>Снимки от пътуването (галерия)</li>
+      <li>Welcome kit в хотела</li>
+      <li>Карта "Свещената Земя" + PDF материали</li>
+    </ul>
+
+    <h3 class="n" style="margin-top:16px;">❌ Какво НЕ е включено</h3>
+    <ul class="n-list x">
+      <li>Лични разходи и допълнителни напитки</li>
+      <li>Обед на Ден 2 (свободно в Пловдив)</li>
+      <li>Бакшиши</li>
+    </ul>
+
+    <div class="price-block">
+      <div class="price-label">Цена на човек (включено всичко)</div>
+      <div class="price-main">349 лв</div>
+      <div class="price-sub">при ранно записване до 30 дни преди тръгване</div>
+      <div class="price-compare">Нормална цена: 449 лв</div>
+      <div style="display:flex;gap:12px;justify-content:center;margin-top:16px;flex-wrap:wrap;">
+        <span class="tag tag-gold">🏨 2 нощувки включени</span>
+        <span class="tag tag-green">🍽️ 5 хранения включени</span>
+        <span class="tag tag-blue">📸 Снимки включени</span>
+        <span class="tag tag-purple">🗺️ Водач включен</span>
+      </div>
+    </div>
+
+    <!-- ── PNL CALCULATOR ── -->
+    <div style="margin: 32px 0;">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px;">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--muted);background:var(--surface2);border:1px solid var(--border);padding:2px 7px;border-radius:4px;">ИНСТРУМЕНТ</span>
+        <h2 style="font-family:'Lora',serif;font-size:22px;font-weight:600;color:var(--text);margin:0;">📊 Калкулатор на рентабилността</h2>
+      </div>
+      <div class="callout callout-blue" style="margin-bottom:16px;">
+        <span class="callout-icon">💡</span>
+        <div class="callout-body">Играйте с числата в реално време. Калкулаторът изчислява вашите разходи, приходи и <strong>чиста печалба на пътуване</strong> — на момента.</div>
+      </div>
+
+      <div id="pnl-calc" style="background:var(--surface2);border:1px solid var(--border);border-radius:12px;overflow:hidden;">
+
+        <!-- CALC TABS -->
+        <div style="display:flex;border-bottom:1px solid var(--border);background:var(--surface);">
+          <button onclick="setTab('costs')" id="tab-costs" class="calc-tab calc-tab-active">💸 Разходи</button>
+          <button onclick="setTab('revenue')" id="tab-revenue" class="calc-tab">💰 Приходи</button>
+          <button onclick="setTab('result')" id="tab-result" class="calc-tab">📈 Резултат</button>
+        </div>
+
+        <!-- TAB: COSTS -->
+        <div id="panel-costs" class="calc-panel">
+          <div class="calc-section-label">🚌 Транспорт</div>
+          <div class="calc-row">
+            <div class="calc-field">
+              <label class="calc-label">Наем на микробус (лв/пътуване)</label>
+              <div class="calc-input-wrap">
+                <span class="calc-currency">лв</span>
+                <input type="number" id="c_transport" value="400" min="0" class="calc-input" oninput="recalc()">
+              </div>
+            </div>
+            <div class="calc-field">
+              <label class="calc-label">Гориво & такси (лв)</label>
+              <div class="calc-input-wrap">
+                <span class="calc-currency">лв</span>
+                <input type="number" id="c_fuel" value="120" min="0" class="calc-input" oninput="recalc()">
+              </div>
+            </div>
+          </div>
+
+          <div class="calc-section-label">🏨 Настаняване</div>
+          <div class="calc-row">
+            <div class="calc-field">
+              <label class="calc-label">Брой нощувки</label>
+              <div class="calc-slider-wrap">
+                <input type="range" id="c_nights" min="1" max="5" value="2" class="calc-slider" oninput="syncSlider('c_nights','sv_nights');recalc()">
+                <span class="slider-val" id="sv_nights">2</span>
+              </div>
+            </div>
+            <div class="calc-field">
+              <label class="calc-label">Цена на стая / нощ (лв)</label>
+              <div class="calc-input-wrap">
+                <span class="calc-currency">лв</span>
+                <input type="number" id="c_room" value="120" min="0" class="calc-input" oninput="recalc()">
+              </div>
+            </div>
+            <div class="calc-field">
+              <label class="calc-label">Брой стаи</label>
+              <div class="calc-slider-wrap">
+                <input type="range" id="c_rooms" min="1" max="8" value="4" class="calc-slider" oninput="syncSlider('c_rooms','sv_rooms');recalc()">
+                <span class="slider-val" id="sv_rooms">4</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="calc-section-label">🍽️ Хранене</div>
+          <div class="calc-row">
+            <div class="calc-field">
+              <label class="calc-label">Закуски — брой (дни)</label>
+              <div class="calc-slider-wrap">
+                <input type="range" id="c_bfast_n" min="0" max="5" value="2" class="calc-slider" oninput="syncSlider('c_bfast_n','sv_bfast_n');recalc()">
+                <span class="slider-val" id="sv_bfast_n">2</span>
+              </div>
+            </div>
+            <div class="calc-field">
+              <label class="calc-label">Цена закуска / човек (лв)</label>
+              <div class="calc-input-wrap">
+                <span class="calc-currency">лв</span>
+                <input type="number" id="c_bfast_p" value="18" min="0" class="calc-input" oninput="recalc()">
+              </div>
+            </div>
+          </div>
+          <div class="calc-row">
+            <div class="calc-field">
+              <label class="calc-label">Вечери — брой</label>
+              <div class="calc-slider-wrap">
+                <input type="range" id="c_dinner_n" min="0" max="5" value="2" class="calc-slider" oninput="syncSlider('c_dinner_n','sv_dinner_n');recalc()">
+                <span class="slider-val" id="sv_dinner_n">2</span>
+              </div>
+            </div>
+            <div class="calc-field">
+              <label class="calc-label">Цена вечеря / човек (лв)</label>
+              <div class="calc-input-wrap">
+                <span class="calc-currency">лв</span>
+                <input type="number" id="c_dinner_p" value="35" min="0" class="calc-input" oninput="recalc()">
+              </div>
+            </div>
+          </div>
+          <div class="calc-row">
+            <div class="calc-field">
+              <label class="calc-label">Обеди — брой</label>
+              <div class="calc-slider-wrap">
+                <input type="range" id="c_lunch_n" min="0" max="5" value="1" class="calc-slider" oninput="syncSlider('c_lunch_n','sv_lunch_n');recalc()">
+                <span class="slider-val" id="sv_lunch_n">1</span>
+              </div>
+            </div>
+            <div class="calc-field">
+              <label class="calc-label">Цена обяд / човек (лв)</label>
+              <div class="calc-input-wrap">
+                <span class="calc-currency">лв</span>
+                <input type="number" id="c_lunch_p" value="25" min="0" class="calc-input" oninput="recalc()">
+              </div>
+            </div>
+          </div>
+
+          <div class="calc-section-label">🎙️ Водач & Входни такси</div>
+          <div class="calc-row">
+            <div class="calc-field">
+              <label class="calc-label">Хонорар водач (лв/пътуване)</label>
+              <div class="calc-input-wrap">
+                <span class="calc-currency">лв</span>
+                <input type="number" id="c_guide" value="250" min="0" class="calc-input" oninput="recalc()">
+              </div>
+            </div>
+            <div class="calc-field">
+              <label class="calc-label">Входни такси / човек (лв)</label>
+              <div class="calc-input-wrap">
+                <span class="calc-currency">лв</span>
+                <input type="number" id="c_entry" value="20" min="0" class="calc-input" oninput="recalc()">
+              </div>
+            </div>
+          </div>
+
+          <div class="calc-section-label">🎁 Бонуси & Разни</div>
+          <div class="calc-row">
+            <div class="calc-field">
+              <label class="calc-label">Welcome kit / човек (лв)</label>
+              <div class="calc-input-wrap">
+                <span class="calc-currency">лв</span>
+                <input type="number" id="c_kit" value="15" min="0" class="calc-input" oninput="recalc()">
+              </div>
+            </div>
+            <div class="calc-field">
+              <label class="calc-label">Разни / непредвидени (лв)</label>
+              <div class="calc-input-wrap">
+                <span class="calc-currency">лв</span>
+                <input type="number" id="c_misc" value="100" min="0" class="calc-input" oninput="recalc()">
+              </div>
+            </div>
+          </div>
+
+          <div style="padding:16px;border-top:1px solid var(--border);display:flex;justify-content:flex-end;">
+            <button onclick="setTab('revenue')" style="background:var(--gold);color:#1a1a00;border:none;padding:8px 20px;border-radius:6px;font-weight:700;font-size:13px;cursor:pointer;">Продължи → Приходи</button>
+          </div>
+        </div>
+
+        <!-- TAB: REVENUE -->
+        <div id="panel-revenue" class="calc-panel" style="display:none;">
+          <div class="calc-section-label">👥 Участници</div>
+          <div class="calc-row">
+            <div class="calc-field" style="flex:1;">
+              <label class="calc-label">Брой участници</label>
+              <div class="calc-slider-wrap">
+                <input type="range" id="r_people" min="1" max="8" value="6" class="calc-slider" oninput="syncSlider('r_people','sv_people');recalc()">
+                <span class="slider-val" id="sv_people">6</span>
+              </div>
+              <div style="display:flex;justify-content:space-between;font-size:11px;color:var(--muted);margin-top:2px;">
+                <span>1</span><span style="color:var(--gold);font-weight:700;">MAX 8</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="calc-section-label">💳 Цена на продукта</div>
+          <div class="calc-row">
+            <div class="calc-field">
+              <label class="calc-label">Редовна цена / човек (лв)</label>
+              <div class="calc-input-wrap">
+                <span class="calc-currency">лв</span>
+                <input type="number" id="r_price" value="449" min="0" class="calc-input" oninput="recalc()">
+              </div>
+            </div>
+            <div class="calc-field">
+              <label class="calc-label">Ранна резервация / човек (лв)</label>
+              <div class="calc-input-wrap">
+                <span class="calc-currency">лв</span>
+                <input type="number" id="r_early" value="349" min="0" class="calc-input" oninput="recalc()">
+              </div>
+            </div>
+          </div>
+
+          <div class="calc-row">
+            <div class="calc-field" style="flex:1;">
+              <label class="calc-label">Ранни резервации (брой от групата)</label>
+              <div class="calc-slider-wrap">
+                <input type="range" id="r_early_n" min="0" max="8" value="3" class="calc-slider" oninput="syncSlider('r_early_n','sv_early_n');recalc()">
+                <span class="slider-val" id="sv_early_n">3</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Live Revenue Preview -->
+          <div style="margin:16px;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:16px;">
+            <div style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:12px;">Преглед на приходите</div>
+            <div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:6px;">
+              <span style="color:var(--muted)">Ранни резервации</span>
+              <span id="rv_early" style="font-family:'JetBrains Mono',monospace;color:var(--text);">0 лв</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:12px;">
+              <span style="color:var(--muted)">Редовна цена</span>
+              <span id="rv_regular" style="font-family:'JetBrains Mono',monospace;color:var(--text);">0 лв</span>
+            </div>
+            <div style="border-top:1px solid var(--border);padding-top:10px;display:flex;justify-content:space-between;align-items:center;">
+              <span style="font-weight:700;">Общо приходи</span>
+              <span id="rv_total" style="font-family:'JetBrains Mono',monospace;font-size:20px;color:var(--gold);font-weight:700;">0 лв</span>
+            </div>
+          </div>
+
+          <div style="padding:16px;border-top:1px solid var(--border);display:flex;justify-content:flex-end;">
+            <button onclick="setTab('result')" style="background:var(--gold);color:#1a1a00;border:none;padding:8px 20px;border-radius:6px;font-weight:700;font-size:13px;cursor:pointer;">Виж резултата → P&amp;L</button>
+          </div>
+        </div>
+
+        <!-- TAB: RESULT -->
+        <div id="panel-result" class="calc-panel" style="display:none;">
+
+          <!-- BIG NUMBERS -->
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:var(--border);border-bottom:1px solid var(--border);">
+            <div style="background:var(--surface2);padding:20px;text-align:center;">
+              <div style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:6px;">Общо разходи</div>
+              <div id="res_costs" style="font-family:'JetBrains Mono',monospace;font-size:24px;font-weight:700;color:#e74c3c;">0 лв</div>
+            </div>
+            <div style="background:var(--surface2);padding:20px;text-align:center;">
+              <div style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:6px;">Общо приходи</div>
+              <div id="res_rev" style="font-family:'JetBrains Mono',monospace;font-size:24px;font-weight:700;color:var(--blue-light);">0 лв</div>
+            </div>
+            <div style="background:var(--surface2);padding:20px;text-align:center;">
+              <div style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:6px;">Чиста печалба</div>
+              <div id="res_profit" style="font-family:'JetBrains Mono',monospace;font-size:24px;font-weight:700;color:var(--gold);">0 лв</div>
+            </div>
+          </div>
+
+          <!-- MARGIN BAR -->
+          <div style="padding:20px;border-bottom:1px solid var(--border);">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+              <span style="font-size:13px;font-weight:600;">Марж на печалбата</span>
+              <span id="res_margin_pct" style="font-family:'JetBrains Mono',monospace;font-size:18px;font-weight:700;color:var(--gold);">0%</span>
+            </div>
+            <div style="background:var(--surface);border-radius:100px;height:10px;overflow:hidden;border:1px solid var(--border);">
+              <div id="res_margin_bar" style="height:100%;border-radius:100px;background:linear-gradient(90deg,#e74c3c,var(--gold),#2ecc71);width:0%;transition:width 0.4s ease;"></div>
+            </div>
+            <div style="display:flex;justify-content:space-between;font-size:11px;color:var(--muted);margin-top:4px;">
+              <span>Загуба</span><span>Мин. 20%</span><span>Отлично 40%+</span>
+            </div>
+          </div>
+
+          <!-- BREAKDOWN TABLE -->
+          <div style="padding:20px;border-bottom:1px solid var(--border);">
+            <div style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:12px;">Разбивка на разходите</div>
+            <div class="breakdown-row"><span>🚌 Транспорт (микробус + гориво)</span><span id="br_transport">0 лв</span></div>
+            <div class="breakdown-row"><span>🏨 Настаняване</span><span id="br_accomm">0 лв</span></div>
+            <div class="breakdown-row"><span>🍳 Закуски</span><span id="br_bfast">0 лв</span></div>
+            <div class="breakdown-row"><span>🍷 Вечери</span><span id="br_dinner">0 лв</span></div>
+            <div class="breakdown-row"><span>🥗 Обеди</span><span id="br_lunch">0 лв</span></div>
+            <div class="breakdown-row"><span>🎙️ Водач</span><span id="br_guide">0 лв</span></div>
+            <div class="breakdown-row"><span>🎟️ Входни такси</span><span id="br_entry">0 лв</span></div>
+            <div class="breakdown-row"><span>🎁 Welcome kit</span><span id="br_kit">0 лв</span></div>
+            <div class="breakdown-row" style="border-top:1px solid var(--border);margin-top:8px;padding-top:10px;"><span>⚡ Разни / буфер</span><span id="br_misc">0 лв</span></div>
+            <div class="breakdown-row" style="font-weight:700;color:var(--text);margin-top:4px;"><span>ОБЩО РАЗХОДИ</span><span id="br_total" style="color:#e74c3c;">0 лв</span></div>
+          </div>
+
+          <!-- PER PERSON -->
+          <div style="padding:20px;border-bottom:1px solid var(--border);">
+            <div style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:12px;">На човек</div>
+            <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;">
+              <div style="background:var(--surface);border-radius:8px;padding:12px;text-align:center;border:1px solid var(--border);">
+                <div style="font-size:11px;color:var(--muted);margin-bottom:4px;">Себестойност</div>
+                <div id="pp_cost" style="font-family:'JetBrains Mono',monospace;font-weight:700;color:#e74c3c;">0 лв</div>
+              </div>
+              <div style="background:var(--surface);border-radius:8px;padding:12px;text-align:center;border:1px solid var(--border);">
+                <div style="font-size:11px;color:var(--muted);margin-bottom:4px;">Средна цена</div>
+                <div id="pp_price" style="font-family:'JetBrains Mono',monospace;font-weight:700;color:var(--blue-light);">0 лв</div>
+              </div>
+              <div style="background:var(--surface);border-radius:8px;padding:12px;text-align:center;border:1px solid var(--gold);background:var(--gold-dim);">
+                <div style="font-size:11px;color:var(--gold);margin-bottom:4px;">Печалба</div>
+                <div id="pp_profit" style="font-family:'JetBrains Mono',monospace;font-weight:700;color:var(--gold);">0 лв</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- VERDICT -->
+          <div style="padding:20px;">
+            <div id="verdict-box" style="border-radius:8px;padding:16px;border:1px solid var(--border);font-size:14px;line-height:1.6;">
+              <strong id="verdict-icon">⏳</strong> <span id="verdict-text">Въведете стойности за да видите анализа.</span>
+            </div>
+          </div>
+
+        </div><!-- /panel-result -->
+      </div><!-- /pnl-calc -->
+    </div><!-- /calculator wrapper -->
+
+    <h3 class="n">🛡️ Гаранцията (Risk Reversal)</h3>
+    <div class="callout callout-green">
+      <span class="callout-icon">✅</span>
+      <div class="callout-body">
+        <strong>"Гаранцията за заредена памет"</strong><br>
+        Ако след пътуването не се чувствате различно от когато тръгнахте — ако не се върнете с поне 3 истории, които ще разказвате години напред — ще ви върнем 50% от сумата. Без форми, без обяснения. Просто един телефонен разговор.
+      </div>
+    </div>
+
+    <h3 class="n">⏰ Дефицит & Спешност</h3>
+    <div class="cols">
+      <div class="col-block">
+        <div style="font-size:22px;font-weight:700;color:var(--gold);font-family:'JetBrains Mono',monospace;">MAX 8</div>
+        <div style="font-size:13px;color:var(--muted);margin-top:4px;">места на пътуване — структурно ограничение, не маркетинг трик</div>
+      </div>
+      <div class="col-block">
+        <div style="font-size:22px;font-weight:700;color:var(--gold);font-family:'JetBrains Mono',monospace;">1× / месец</div>
+        <div style="font-size:13px;color:var(--muted);margin-top:4px;">Пътуванията се провеждат веднъж месечно — пролет и есен</div>
+      </div>
+    </div>
+
+    <hr class="divider" id="copy">
+
+    <!-- ── SECTION 10: COPY ── -->
+    <div class="section-header anchor">
+      <span class="section-num">10</span>
+      <h1 class="n" style="margin:0">Копи & Заглавия за тестване</h1>
+    </div>
+
+    <p class="n" style="color:var(--muted);margin-bottom:16px;">Тествайте тези хедлайни в Facebook Ads и WhatsApp broadcast. Следете кой генерира повече запитвания.</p>
+
+    <details class="toggle">
+      <summary>🅰️ Вариант А — Тракийски / Мистичен</summary>
+      <div class="toggle-content">
+        <div class="n-quote">"Ванга е говорила за тази земя. Траките са я усещали. Какво ще усетиш ти, когато застанеш на Перперикон?"</div>
+        <p class="n" style="font-size:13px;color:var(--muted)">Субхедлайн: Малка група от 8 души. 3 дни, 2 нощи. Всичко включено. Само за хора, готови да погледнат назад, за да вървят напред.</p>
+      </div>
+    </details>
+
+    <details class="toggle">
+      <summary>🅱️ Вариант Б — Трансформационен</summary>
+      <div class="toggle-content">
+        <div class="n-quote">"Единственото пътуване, от което се завръщаш по-различен, отколкото си тръгнал."</div>
+        <p class="n" style="font-size:13px;color:var(--muted)">Субхедлайн: 3 дни в историческото сърце на България. Водач-историк. Бутик хотели. Снимки. Вина. Истории.</p>
+      </div>
+    </details>
+
+    <details class="toggle">
+      <summary>🆎 Вариант В — Статус / Изключителност</summary>
+      <div class="toggle-content">
+        <div class="n-quote">"Повечето хора живеят в България и не знаят какво крие. Ти ще знаеш."</div>
+        <p class="n" style="font-size:13px;color:var(--muted)">Субхедлайн: Максимум 8 участника. Перперикон, Пловдив, Велико Търново. Транспорт, хотел, храна и водач — всичко включено за 349 лв.</p>
+      </div>
+    </details>
+
+    <div class="callout callout-blue" style="margin-top:24px;">
+      <span class="callout-icon">📊</span>
+      <div class="callout-body">
+        <strong>Пазарен тест:</strong> Пуснете Вариант А и Вариант В в две отделни Facebook публикации (200 лв бюджет) и мерете кой генерира повече DM запитвания за 5 дни. <em>Победителят = основен хук за лендинг страницата.</em>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <div class="callout callout-gold">
+      <span class="callout-icon">🚀</span>
+      <div class="callout-body">
+        <strong>Следващи стъпки:</strong><br>
+        1. Изберете маршрут (препоръчвам Маршрут 1 — "Пътят на Орфей") &nbsp;·&nbsp;
+        2. Изберете хедлайн (A, Б, или В) &nbsp;·&nbsp;
+        3. Потвърдете цената &nbsp;·&nbsp;
+        4. Строим лендинг страницата.
+      </div>
+    </div>
+
+    <div style="height:80px"></div>
+
+  </div><!-- /content -->
+</div><!-- /main -->
+
+<div class="toc-pill" onclick="document.querySelector('.sidebar').scrollIntoView()">
+  ↑ Към менюто
+</div>
+
+<script>
+  // ── CALCULATOR ──
+  function setTab(tab) {
+    ['costs','revenue','result'].forEach(t => {
+      document.getElementById('panel-'+t).style.display = t===tab ? 'block' : 'none';
+      const btn = document.getElementById('tab-'+t);
+      btn.classList.toggle('calc-tab-active', t===tab);
+    });
+    if(tab==='result') recalc();
+  }
+
+  function syncSlider(sliderId, displayId) {
+    document.getElementById(displayId).textContent = document.getElementById(sliderId).value;
+  }
+
+  function v(id) { return parseFloat(document.getElementById(id).value) || 0; }
+
+  function fmt(n) { return Math.round(n).toLocaleString('bg-BG') + ' лв'; }
+
+  function recalc() {
+    const people    = v('r_people');
+    const nights    = v('c_nights');
+    const rooms     = v('c_rooms');
+
+    // COSTS
+    const transport = v('c_transport') + v('c_fuel');
+    const accomm    = nights * rooms * v('c_room');
+    const bfast     = v('c_bfast_n') * v('c_bfast_p') * people;
+    const dinner    = v('c_dinner_n') * v('c_dinner_p') * people;
+    const lunch     = v('c_lunch_n') * v('c_lunch_p') * people;
+    const guide     = v('c_guide');
+    const entry     = v('c_entry') * people;
+    const kit       = v('c_kit') * people;
+    const misc      = v('c_misc');
+    const totalCost = transport + accomm + bfast + dinner + lunch + guide + entry + kit + misc;
+
+    // REVENUE
+    const earlyN    = Math.min(v('r_early_n'), people);
+    const regularN  = people - earlyN;
+    const earlyRev  = earlyN * v('r_early');
+    const regRev    = regularN * v('r_price');
+    const totalRev  = earlyRev + regRev;
+
+    // PROFIT
+    const profit    = totalRev - totalCost;
+    const margin    = totalRev > 0 ? (profit / totalRev) * 100 : 0;
+
+    // Update revenue preview (tab 2)
+    document.getElementById('rv_early').textContent   = fmt(earlyRev);
+    document.getElementById('rv_regular').textContent = fmt(regRev);
+    document.getElementById('rv_total').textContent   = fmt(totalRev);
+
+    // Update result tab
+    document.getElementById('res_costs').textContent  = fmt(totalCost);
+    document.getElementById('res_rev').textContent    = fmt(totalRev);
+    const profitEl = document.getElementById('res_profit');
+    profitEl.textContent = fmt(profit);
+    profitEl.style.color = profit >= 0 ? 'var(--gold)' : '#e74c3c';
+
+    // Margin bar
+    const clampedMargin = Math.max(0, Math.min(100, margin));
+    document.getElementById('res_margin_pct').textContent = Math.round(margin) + '%';
+    document.getElementById('res_margin_bar').style.width = clampedMargin + '%';
+
+    // Breakdown
+    document.getElementById('br_transport').textContent = fmt(transport);
+    document.getElementById('br_accomm').textContent    = fmt(accomm);
+    document.getElementById('br_bfast').textContent     = fmt(bfast);
+    document.getElementById('br_dinner').textContent    = fmt(dinner);
+    document.getElementById('br_lunch').textContent     = fmt(lunch);
+    document.getElementById('br_guide').textContent     = fmt(guide);
+    document.getElementById('br_entry').textContent     = fmt(entry);
+    document.getElementById('br_kit').textContent       = fmt(kit);
+    document.getElementById('br_misc').textContent      = fmt(misc);
+    document.getElementById('br_total').textContent     = fmt(totalCost);
+
+    // Per person
+    const ppCost = people > 0 ? totalCost / people : 0;
+    const avgPrice = people > 0 ? totalRev / people : 0;
+    document.getElementById('pp_cost').textContent   = fmt(ppCost);
+    document.getElementById('pp_price').textContent  = fmt(avgPrice);
+    document.getElementById('pp_profit').textContent = fmt(avgPrice - ppCost);
+
+    // Verdict
+    const vicon = document.getElementById('verdict-icon');
+    const vtext = document.getElementById('verdict-text');
+    const vbox  = document.getElementById('verdict-box');
+    if (margin >= 40) {
+      vbox.style.borderColor = 'var(--green)'; vbox.style.background = 'rgba(39,174,96,0.08)';
+      vicon.textContent = '🚀';
+      vtext.innerHTML = `<strong>Отличен марж!</strong> При ${Math.round(margin)}% вие генерирате <strong style="color:var(--gold)">${fmt(profit)}</strong> чиста печалба от пътуване. Това е устойчив и атрактивен бизнес модел. Помислете дали можете да увеличите групата или да добавите допълнителни услуги.`;
+    } else if (margin >= 20) {
+      vbox.style.borderColor = 'var(--gold)'; vbox.style.background = 'rgba(220,174,29,0.06)';
+      vicon.textContent = '✅';
+      vtext.innerHTML = `<strong>Добър старт.</strong> ${Math.round(margin)}% марж е приемлив, но има пространство за растеж. Препоръка: намалете разходите за настаняване или увеличете цената с 10-15%. Целта е 35%+ марж за устойчивост.`;
+    } else if (margin >= 0) {
+      vbox.style.borderColor = '#e67e22'; vbox.style.background = 'rgba(230,126,34,0.06)';
+      vicon.textContent = '⚠️';
+      vtext.innerHTML = `<strong>Внимание — нисък марж.</strong> ${Math.round(margin)}% е под минималния праг. Три опции: 1) Увеличете цената. 2) Намалете броя на включените хранения. 3) Намерете по-изгодно настаняване. Себестойност на човек: <strong>${fmt(ppCost)}</strong>.`;
+    } else {
+      vbox.style.borderColor = '#e74c3c'; vbox.style.background = 'rgba(231,76,60,0.06)';
+      vicon.textContent = '🔴';
+      vtext.innerHTML = `<strong>Загуба!</strong> При текущите параметри губите <strong style="color:#e74c3c">${fmt(Math.abs(profit))}</strong>. Нужна е ревизия — увеличете цената, намалете разходите или добавете участници.`;
+    }
+  }
+
+  // Init
+  recalc();
+
+  // Sidebar active state on scroll
+  const sections = document.querySelectorAll('.anchor');
+  const links = document.querySelectorAll('.sidebar-item');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.id || entry.target.closest('[id]')?.id;
+        links.forEach(l => {
+          l.classList.remove('active');
+          if (l.getAttribute('href') === `#${id}`) l.classList.add('active');
+        });
+      }
+    });
+  }, { rootMargin: '-20% 0px -70% 0px' });
+
+  sections.forEach(s => observer.observe(s));
+</script>
+
+<!-- MOBILE BOTTOM NAV -->
+<nav class="mobile-nav">
+  <a href="#overview" class="active"><span class="mn-icon">📋</span>Оферта</a>
+  <a href="#timeline"><span class="mn-icon">⏱️</span>История</a>
+  <a href="#locations"><span class="mn-icon">📍</span>Локации</a>
+  <a href="#routes"><span class="mn-icon">🗺️</span>Маршрути</a>
+  <a href="#offer"><span class="mn-icon">💶</span>P&L</a>
+</nav>
+
+</body>
+</html>

@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html lang="bg" class="scroll-smooth">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>StelaTour — P&L Калкулатор</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;1,600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          brandBlue: '#003580',
+          brandGold:  '#dcae1d',
+          dark:  '#111112',
+          dark2: '#1a1a1c',
+          dark3: '#222225',
+          dark4: '#2a2a2e',
+          dline: '#2e2e33',
+        },
+        fontFamily: {
+          sans:  ['Inter','sans-serif'],
+          serif: ['Playfair Display','serif'],
+          mono:  ['JetBrains Mono','monospace'],
+        }
+      }
+    }
+  }
+</script>
+
+<style>
+  /* Range sliders */
+  input[type=range]{-webkit-appearance:none;appearance:none;height:6px;border-radius:9999px;background:#2e2e33;outline:none;cursor:pointer;width:100%}
+  input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;border-radius:50%;background:#dcae1d;cursor:pointer;box-shadow:0 0 0 4px rgba(220,174,29,.2)}
+  input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;background:#dcae1d;border:none;cursor:pointer}
+  /* Remove number spinners */
+  input[type=number]::-webkit-inner-spin-button,
+  input[type=number]::-webkit-outer-spin-button{-webkit-appearance:none}
+  input[type=number]{-moz-appearance:textfield}
+  /* Bar chart animation */
+  .bar-fill{transition:width .4s ease}
+  /* Panel tabs */
+  .tab-panel{display:none}
+  .tab-panel.active{display:block}
+  /* Smooth colour transitions */
+  .kv{transition:color .25s}
+</style>
+</head>
+
+<body class="bg-dark text-gray-100 font-sans antialiased">
+
+<!-- ══════════════════════════════
+     TOP NAV
+══════════════════════════════ -->
+<nav class="sticky top-0 z-50 bg-dark2 border-b border-dline">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 flex items-center justify-between h-14 gap-3">
+
+    <a href="index.html" class="flex items-center gap-2 flex-shrink-0">
+      <div class="w-7 h-7 bg-brandGold text-brandBlue font-serif font-bold text-sm rounded flex items-center justify-center">S</div>
+      <span class="font-bold text-sm text-white tracking-tight">Stela<span class="text-brandGold">Tour</span></span>
+    </a>
+
+    <div class="hidden sm:flex items-center gap-2 text-xs text-gray-500">
+      <a href="index.html" class="hover:text-gray-300 transition">Начало</a>
+      <span>›</span>
+      <span class="text-gray-300 font-semibold">P&L Калкулатор</span>
+    </div>
+
+    <div class="flex items-center gap-2 ml-auto">
+      <span class="hidden sm:flex items-center gap-1 bg-brandGold/10 border border-brandGold/30 text-brandGold text-xs font-bold px-2.5 py-1 rounded-full">💶 Евро</span>
+      <span id="tb-tier" class="hidden sm:flex items-center text-purple-300 text-xs font-bold bg-purple-500/10 border border-purple-500/20 px-2.5 py-1 rounded-full">👑 Висок клас</span>
+      <span id="tb-pax" class="flex items-center text-blue-300 text-xs font-bold bg-blue-500/10 border border-blue-500/20 px-2.5 py-1 rounded-full">6 души</span>
+    </div>
+
+  </div>
+</nav>
+
+<!-- ══════════════════════════════
+     MOBILE LIVE STRIP
+══════════════════════════════ -->
+<div class="sm:hidden sticky top-14 z-40 bg-dark3 border-b border-dline grid grid-cols-4 divide-x divide-dline">
+  <div class="py-2 px-1 text-center">
+    <div class="text-[10px] text-gray-500 uppercase tracking-wider">Разходи</div>
+    <div class="font-mono font-bold text-sm text-red-400 kv" id="s-cost">€0</div>
+  </div>
+  <div class="py-2 px-1 text-center">
+    <div class="text-[10px] text-gray-500 uppercase tracking-wider">Приходи</div>
+    <div class="font-mono font-bold text-sm text-blue-400 kv" id="s-rev">€0</div>
+  </div>
+  <div class="py-2 px-1 text-center">
+    <div class="text-[10px] text-gray-500 uppercase tracking-wider">Печалба</div>
+    <div class="font-mono font-bold text-sm text-brandGold kv" id="s-profit">€0</div>
+  </div>
+  <div class="py-2 px-1 text-center">
+    <div class="text-[10px] text-gray-500 uppercase tracking-wider">Марж</div>
+    <div class="font-mono font-bold text-sm text-brandGold kv" id="s-margin">0%</div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════
+     PAGE CONTENT
+══════════════════════════════ -->
+<div class="max-w-5xl mx-auto px-4 sm:px-6 py-8 pb-28 sm:pb-12">
+
+  <!-- Page header -->
+  <div class="mb-8">
+    <div class="text-4xl mb-3">📊</div>
+    <h1 class="font-serif text-2xl sm:text-4xl font-bold text-white mb-2 leading-tight">
+      P&L Калкулатор<br class="sm:hidden"> <span class="text-brandGold">на рентабилност</span>
+    </h1>
+    <p class="text-gray-400 text-sm sm:text-base max-w-lg">Разходи, цени, печалба и марж — изчислени в реално време за всеки размер група.</p>
+  </div>
+
+  <!-- ═══════════════════════════════════════
+       SECTION 01 · MARKET TIERS
+  ═══════════════════════════════════════ -->
+  <section id="tiers" class="mb-10 scroll-mt-28">
+
+    <div class="flex items-center gap-3 mb-5">
+      <span class="font-mono text-xs text-gray-500 bg-dark3 border border-dline px-2 py-0.5 rounded">01</span>
+      <h2 class="font-serif text-xl sm:text-2xl font-semibold">Пазарни нива</h2>
+    </div>
+
+    <!-- Hormozi tip -->
+    <div class="flex gap-3 bg-blue-500/10 border border-blue-500/20 rounded-xl p-4 mb-6">
+      <span class="text-lg flex-shrink-0 mt-0.5">🧠</span>
+      <p class="text-sm text-blue-100 leading-relaxed">
+        <strong class="text-white">Хормози правило #1:</strong> Когато стартираш, вземи <strong>5–8 клиента</strong> и ги направи изключително щастливи. Цена 3–5× по-висока = по-малко хора, <strong class="text-brandGold">по-голяма печалба</strong>, по-малко главоболия.
+      </p>
+    </div>
+
+    <!-- Tier cards -->
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
+
+      <div id="tc-low" class="tier-card bg-dark3 border-2 border-dline rounded-xl p-5 cursor-pointer hover:-translate-y-0.5 transition-all duration-200" onclick="loadTier('low')">
+        <div class="flex justify-between items-start mb-4">
+          <span class="text-3xl">🎒</span>
+          <span class="text-xs font-bold text-blue-400 bg-blue-400/10 border border-blue-400/20 px-2 py-0.5 rounded-full">17–30 души</span>
+        </div>
+        <div class="text-blue-400 font-serif font-bold text-lg mb-1">Начинаещ пазар</div>
+        <div class="font-mono font-bold text-2xl text-blue-300 mb-1">€150–250</div>
+        <div class="text-xs text-gray-500 mb-4">на човек · уикенд</div>
+        <ul class="text-xs text-gray-400 space-y-1 mb-5">
+          <li>· Група 20–30 души</li>
+          <li>· 3★ хотел, стандартна програма</li>
+          <li>· Марж: 15–25%</li>
+        </ul>
+        <button class="w-full text-xs font-bold text-blue-400 border border-blue-400/30 py-2 rounded-lg hover:bg-blue-400/10 transition">Зареди →</button>
+      </div>
+
+      <div id="tc-mid" class="tier-card bg-dark3 border-2 border-dline rounded-xl p-5 cursor-pointer hover:-translate-y-0.5 transition-all duration-200" onclick="loadTier('mid')">
+        <div class="flex justify-between items-start mb-4">
+          <span class="text-3xl">🌟</span>
+          <span class="text-xs font-bold text-brandGold bg-brandGold/10 border border-brandGold/20 px-2 py-0.5 rounded-full">9–16 души</span>
+        </div>
+        <div class="text-brandGold font-serif font-bold text-lg mb-1">Средна класа</div>
+        <div class="font-mono font-bold text-2xl text-yellow-300 mb-1">€350–600</div>
+        <div class="text-xs text-gray-500 mb-4">на човек · уикенд</div>
+        <ul class="text-xs text-gray-400 space-y-1 mb-5">
+          <li>· Малка група 10–16 души</li>
+          <li>· 4★ бутик хотел</li>
+          <li>· Марж: 30–40%</li>
+        </ul>
+        <button class="w-full text-xs font-bold text-brandGold border border-brandGold/30 py-2 rounded-lg hover:bg-brandGold/10 transition">Зареди →</button>
+      </div>
+
+      <div id="tc-high" class="tier-card bg-dark3 border-2 border-purple-500 rounded-xl p-5 cursor-pointer hover:-translate-y-0.5 transition-all duration-200" onclick="loadTier('high')">
+        <div class="flex justify-between items-start mb-4">
+          <span class="text-3xl">👑</span>
+          <span class="text-xs font-bold text-white bg-purple-500 px-2 py-0.5 rounded-full">⭐ Старт тук</span>
+        </div>
+        <div class="text-purple-300 font-serif font-bold text-lg mb-1">Висок клас</div>
+        <div class="font-mono font-bold text-2xl text-purple-200 mb-1">€700–1200</div>
+        <div class="text-xs text-gray-500 mb-4">на човек · уикенд</div>
+        <ul class="text-xs text-gray-400 space-y-1 mb-5">
+          <li>· Ексклузивна група 4–8 души</li>
+          <li>· 5★ / уникален хотел</li>
+          <li>· Марж: 45–60%</li>
+        </ul>
+        <button class="w-full text-xs font-bold text-purple-300 border border-purple-500/40 py-2 rounded-lg hover:bg-purple-500/10 transition">Зареди →</button>
+      </div>
+
+    </div>
+
+    <!-- Comparison table -->
+    <div class="bg-dark3 border border-dline rounded-xl overflow-hidden">
+      <div class="px-4 py-3 border-b border-dline text-sm font-semibold">Защо по-малко хора = повече печалба?</div>
+      <div class="overflow-x-auto">
+        <table class="w-full text-xs sm:text-sm" style="min-width:380px">
+          <thead class="border-b border-dline">
+            <tr>
+              <th class="text-left p-3 text-gray-500 font-semibold uppercase tracking-wider text-xs"></th>
+              <th class="p-3 text-blue-400 font-bold text-center">🎒 Нач. (25)</th>
+              <th class="p-3 text-brandGold font-bold text-center">🌟 Среден (12)</th>
+              <th class="p-3 text-purple-300 font-bold text-center">👑 Висок (6)</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-dline">
+            <tr class="hover:bg-dark4 transition">
+              <td class="p-3 text-gray-500">Цена/чов.</td>
+              <td class="p-3 text-center font-mono font-bold text-blue-400">€200</td>
+              <td class="p-3 text-center font-mono font-bold text-brandGold">€450</td>
+              <td class="p-3 text-center font-mono font-bold text-purple-300">€850</td>
+            </tr>
+            <tr class="hover:bg-dark4 transition">
+              <td class="p-3 text-gray-500">Приход</td>
+              <td class="p-3 text-center font-mono text-gray-300">€5 000</td>
+              <td class="p-3 text-center font-mono text-gray-300">€5 400</td>
+              <td class="p-3 text-center font-mono text-gray-300">€5 100</td>
+            </tr>
+            <tr class="hover:bg-dark4 transition">
+              <td class="p-3 text-gray-500">Разходи</td>
+              <td class="p-3 text-center font-mono text-red-400">€3 800</td>
+              <td class="p-3 text-center font-mono text-red-400">€3 200</td>
+              <td class="p-3 text-center font-mono text-red-400">€2 400</td>
+            </tr>
+            <tr class="hover:bg-dark4 transition bg-dark4">
+              <td class="p-3 font-semibold text-white">Печалба</td>
+              <td class="p-3 text-center font-mono font-bold text-blue-400">€1 200 <span class="text-gray-500 text-xs font-normal">(24%)</span></td>
+              <td class="p-3 text-center font-mono font-bold text-brandGold">€2 200 <span class="text-gray-500 text-xs font-normal">(41%)</span></td>
+              <td class="p-3 text-center font-mono font-bold text-purple-300">€2 700 <span class="text-gray-500 text-xs font-normal">(53%) ⭐</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="flex gap-3 bg-brandGold/10 border-t border-brandGold/20 p-4">
+        <span class="flex-shrink-0">💡</span>
+        <p class="text-sm text-yellow-100">Високият клас носи <strong class="text-brandGold">€1 500 повече печалба</strong> от началния пазар — при <strong>19 по-малко клиента</strong> и много по-малко организационни усилия.</p>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       SECTION 02 · CALCULATOR
+  ═══════════════════════════════════════ -->
+  <section id="calculator" class="mb-10 scroll-mt-28">
+
+    <div class="flex items-center gap-3 mb-5">
+      <span class="font-mono text-xs text-gray-500 bg-dark3 border border-dline px-2 py-0.5 rounded">02</span>
+      <h2 class="font-serif text-xl sm:text-2xl font-semibold">Калкулатор — Играй с числата</h2>
+    </div>
+
+    <div class="bg-dark2 border border-dline rounded-2xl overflow-hidden">
+
+      <!-- Group size hero -->
+      <div class="bg-dark3 border-b border-dline p-5 sm:p-6">
+        <div class="flex flex-col sm:flex-row sm:items-center gap-5">
+          <div class="text-center sm:text-left flex-shrink-0">
+            <div class="text-xs text-gray-500 uppercase tracking-widest mb-1">Брой участници</div>
+            <div class="font-mono font-bold text-6xl text-brandGold leading-none kv" id="gh-display">6</div>
+            <div class="text-xs text-gray-400 mt-2" id="gh-tier-label">👑 Висок клас (4–8 души)</div>
+          </div>
+          <div class="flex-1 min-w-0">
+            <div class="flex justify-between text-xs text-gray-600 mb-2 px-0.5">
+              <span>1</span><span class="text-blue-400 font-bold">8</span><span class="text-brandGold font-bold">16</span><span class="text-purple-400 font-bold">30</span>
+            </div>
+            <input type="range" id="r_people" min="1" max="30" value="6"
+              oninput="syncSl('r_people','gh-display'); updatePaxBadge(); recalc()">
+            <div class="flex justify-between text-xs text-gray-600 mt-1.5 px-0.5">
+              <span>Solo</span><span>Мал. група</span><span>Средна</span><span>Голяма</span>
+            </div>
+            <div id="gh-badges" class="flex flex-wrap gap-2 mt-3">
+              <span class="text-xs font-bold px-2 py-0.5 rounded-full opacity-30 bg-blue-400/10 text-blue-400 border border-blue-400/20">Нач.</span>
+              <span class="text-xs font-bold px-2 py-0.5 rounded-full opacity-30 bg-brandGold/10 text-brandGold border border-brandGold/20">Среден</span>
+              <span class="text-xs font-bold px-2 py-0.5 rounded-full bg-purple-500/20 text-purple-300 border border-purple-500/40">👑 Висок</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tabs -->
+      <div class="flex border-b border-dline bg-dark3">
+        <button id="tab-costs"  onclick="showTab('costs')"  class="flex-1 py-3 text-sm font-semibold border-b-2 border-brandGold text-brandGold transition px-2">💸 Разходи</button>
+        <button id="tab-rev"    onclick="showTab('rev')"    class="flex-1 py-3 text-sm font-semibold border-b-2 border-transparent text-gray-500 hover:text-gray-300 transition px-2">💰 Приходи</button>
+        <button id="tab-result" onclick="showTab('result')" class="flex-1 py-3 text-sm font-semibold border-b-2 border-transparent text-gray-500 hover:text-gray-300 transition px-2">📈 Резултат</button>
+      </div>
+
+      <!-- ────────────────────────
+           PANEL: COSTS
+      ──────────────────────── -->
+      <div id="panel-costs" class="tab-panel active p-4 sm:p-6 space-y-7">
+
+        <!-- Transport -->
+        <div>
+          <div class="text-xs font-bold uppercase tracking-widest text-gray-500 border-b border-dline pb-2 mb-4">🚌 Транспорт</div>
+          <p class="text-xs text-blue-300 bg-blue-500/10 border border-blue-500/20 rounded-lg px-3 py-2.5 mb-4 leading-relaxed" id="transport-note">
+            💡 За 6 души — комфортен минибус. Препоръчителен бюджет: €300–500.
+          </p>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label class="text-xs text-gray-400 mb-2 block">Наем превозно средство</label>
+              <div class="flex bg-dark4 border border-dline rounded-lg overflow-hidden focus-within:border-brandGold transition">
+                <span class="px-3 font-mono font-bold text-brandGold text-sm bg-dark border-r border-dline flex items-center">€</span>
+                <input type="number" id="c_transport" value="380" min="0" class="flex-1 bg-transparent text-white font-mono font-semibold text-sm px-3 py-2.5 outline-none" oninput="recalc()">
+              </div>
+            </div>
+            <div>
+              <label class="text-xs text-gray-400 mb-2 block">Гориво & пътни такси</label>
+              <div class="flex bg-dark4 border border-dline rounded-lg overflow-hidden focus-within:border-brandGold transition">
+                <span class="px-3 font-mono font-bold text-brandGold text-sm bg-dark border-r border-dline flex items-center">€</span>
+                <input type="number" id="c_fuel" value="80" min="0" class="flex-1 bg-transparent text-white font-mono font-semibold text-sm px-3 py-2.5 outline-none" oninput="recalc()">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Accommodation -->
+        <div>
+          <div class="text-xs font-bold uppercase tracking-widest text-gray-500 border-b border-dline pb-2 mb-4">🏨 Настаняване</div>
+          <p class="text-xs text-yellow-200 bg-brandGold/10 border border-brandGold/20 rounded-lg px-3 py-2.5 mb-4">
+            💡 Бутик хотел 4★: ~€60–90/стая/нощ. <span id="rooms-auto-note">За 6 души = 3 стаи (2/стая)</span>.
+          </p>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-5">
+            <div>
+              <label class="text-xs text-gray-400 mb-2 flex justify-between">
+                <span>Нощувки</span><span class="text-brandGold font-mono font-bold" id="sv_nights">2</span>
+              </label>
+              <input type="range" id="c_nights" min="1" max="7" value="2" oninput="syncSl('c_nights','sv_nights'); recalc()">
+            </div>
+            <div>
+              <label class="text-xs text-gray-400 mb-2 block">€ / стая / нощ</label>
+              <div class="flex bg-dark4 border border-dline rounded-lg overflow-hidden focus-within:border-brandGold transition">
+                <span class="px-3 font-mono font-bold text-brandGold text-sm bg-dark border-r border-dline flex items-center">€</span>
+                <input type="number" id="c_room" value="70" min="0" class="flex-1 bg-transparent text-white font-mono font-semibold text-sm px-3 py-2.5 outline-none" oninput="recalc()">
+              </div>
+            </div>
+            <div>
+              <label class="text-xs text-gray-400 mb-2 flex justify-between">
+                <span>Брой стаи</span><span class="text-brandGold font-mono font-bold" id="sv_rooms">3</span>
+              </label>
+              <input type="range" id="c_rooms" min="1" max="15" value="3" oninput="syncSl('c_rooms','sv_rooms'); recalc()">
+            </div>
+          </div>
+        </div>
+
+        <!-- Meals -->
+        <div>
+          <div class="text-xs font-bold uppercase tracking-widest text-gray-500 border-b border-dline pb-2 mb-4">🍽️ Хранения (цена на човек)</div>
+          <div class="space-y-5">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 items-end">
+              <div>
+                <label class="text-xs text-gray-400 mb-2 flex justify-between">
+                  <span>🍳 Закуски (брой)</span><span class="text-brandGold font-mono font-bold" id="sv_bfast_n">2</span>
+                </label>
+                <input type="range" id="c_bfast_n" min="0" max="7" value="2" oninput="syncSl('c_bfast_n','sv_bfast_n'); recalc()">
+              </div>
+              <div>
+                <label class="text-xs text-gray-400 mb-2 block">€ / човек / закуска</label>
+                <div class="flex bg-dark4 border border-dline rounded-lg overflow-hidden focus-within:border-brandGold transition">
+                  <span class="px-3 font-mono font-bold text-brandGold text-sm bg-dark border-r border-dline flex items-center">€</span>
+                  <input type="number" id="c_bfast_p" value="12" min="0" class="flex-1 bg-transparent text-white font-mono font-semibold text-sm px-3 py-2.5 outline-none" oninput="recalc()">
+                </div>
+              </div>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 items-end">
+              <div>
+                <label class="text-xs text-gray-400 mb-2 flex justify-between">
+                  <span>🍷 Вечери (брой)</span><span class="text-brandGold font-mono font-bold" id="sv_dinner_n">2</span>
+                </label>
+                <input type="range" id="c_dinner_n" min="0" max="7" value="2" oninput="syncSl('c_dinner_n','sv_dinner_n'); recalc()">
+              </div>
+              <div>
+                <label class="text-xs text-gray-400 mb-2 block">€ / човек / вечеря</label>
+                <div class="flex bg-dark4 border border-dline rounded-lg overflow-hidden focus-within:border-brandGold transition">
+                  <span class="px-3 font-mono font-bold text-brandGold text-sm bg-dark border-r border-dline flex items-center">€</span>
+                  <input type="number" id="c_dinner_p" value="32" min="0" class="flex-1 bg-transparent text-white font-mono font-semibold text-sm px-3 py-2.5 outline-none" oninput="recalc()">
+                </div>
+              </div>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 items-end">
+              <div>
+                <label class="text-xs text-gray-400 mb-2 flex justify-between">
+                  <span>🥗 Обеди (брой)</span><span class="text-brandGold font-mono font-bold" id="sv_lunch_n">1</span>
+                </label>
+                <input type="range" id="c_lunch_n" min="0" max="7" value="1" oninput="syncSl('c_lunch_n','sv_lunch_n'); recalc()">
+              </div>
+              <div>
+                <label class="text-xs text-gray-400 mb-2 block">€ / човек / обяд</label>
+                <div class="flex bg-dark4 border border-dline rounded-lg overflow-hidden focus-within:border-brandGold transition">
+                  <span class="px-3 font-mono font-bold text-brandGold text-sm bg-dark border-r border-dline flex items-center">€</span>
+                  <input type="number" id="c_lunch_p" value="20" min="0" class="flex-1 bg-transparent text-white font-mono font-semibold text-sm px-3 py-2.5 outline-none" oninput="recalc()">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Guide & Entry -->
+        <div>
+          <div class="text-xs font-bold uppercase tracking-widest text-gray-500 border-b border-dline pb-2 mb-4">🎙️ Водач & Входни такси</div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label class="text-xs text-gray-400 mb-2 block">Водач-историк (общо)</label>
+              <div class="flex bg-dark4 border border-dline rounded-lg overflow-hidden focus-within:border-brandGold transition">
+                <span class="px-3 font-mono font-bold text-brandGold text-sm bg-dark border-r border-dline flex items-center">€</span>
+                <input type="number" id="c_guide" value="220" min="0" class="flex-1 bg-transparent text-white font-mono font-semibold text-sm px-3 py-2.5 outline-none" oninput="recalc()">
+              </div>
+            </div>
+            <div>
+              <label class="text-xs text-gray-400 mb-2 block">Входни такси / човек</label>
+              <div class="flex bg-dark4 border border-dline rounded-lg overflow-hidden focus-within:border-brandGold transition">
+                <span class="px-3 font-mono font-bold text-brandGold text-sm bg-dark border-r border-dline flex items-center">€</span>
+                <input type="number" id="c_entry" value="18" min="0" class="flex-1 bg-transparent text-white font-mono font-semibold text-sm px-3 py-2.5 outline-none" oninput="recalc()">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Extras -->
+        <div>
+          <div class="text-xs font-bold uppercase tracking-widest text-gray-500 border-b border-dline pb-2 mb-4">🎁 Бонуси & Буфер</div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label class="text-xs text-gray-400 mb-2 block">Welcome kit / човек</label>
+              <div class="flex bg-dark4 border border-dline rounded-lg overflow-hidden focus-within:border-brandGold transition">
+                <span class="px-3 font-mono font-bold text-brandGold text-sm bg-dark border-r border-dline flex items-center">€</span>
+                <input type="number" id="c_kit" value="12" min="0" class="flex-1 bg-transparent text-white font-mono font-semibold text-sm px-3 py-2.5 outline-none" oninput="recalc()">
+              </div>
+            </div>
+            <div>
+              <label class="text-xs text-gray-400 mb-2 block">Буфер / непредвидени</label>
+              <div class="flex bg-dark4 border border-dline rounded-lg overflow-hidden focus-within:border-brandGold transition">
+                <span class="px-3 font-mono font-bold text-brandGold text-sm bg-dark border-r border-dline flex items-center">€</span>
+                <input type="number" id="c_misc" value="120" min="0" class="flex-1 bg-transparent text-white font-mono font-semibold text-sm px-3 py-2.5 outline-none" oninput="recalc()">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex items-center justify-between pt-2 border-t border-dline">
+          <span class="text-sm text-gray-400">Общо разходи: <span id="cost-preview" class="font-mono font-bold text-red-400">€0</span></span>
+          <button onclick="showTab('rev')" class="bg-brandGold text-brandBlue font-bold px-6 py-2.5 rounded-lg text-sm hover:bg-yellow-400 transition shadow-lg">
+            Приходи →
+          </button>
+        </div>
+
+      </div><!-- /panel-costs -->
+
+      <!-- ────────────────────────
+           PANEL: REVENUE
+      ──────────────────────── -->
+      <div id="panel-rev" class="tab-panel p-4 sm:p-6 space-y-6">
+
+        <div>
+          <div class="text-xs font-bold uppercase tracking-widest text-gray-500 border-b border-dline pb-2 mb-4">💳 Ценообразуване</div>
+          <p class="text-xs text-yellow-200 bg-brandGold/10 border border-brandGold/20 rounded-lg px-3 py-2.5 mb-5 leading-relaxed" id="price-suggestion">
+            💡 За висок клас (6 души) — препоръчителна цена: €700–900/човек за 45%+ марж.
+          </p>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-5">
+            <div>
+              <label class="text-xs text-gray-400 mb-2 block">Редовна цена / човек</label>
+              <div class="flex bg-dark4 border border-dline rounded-lg overflow-hidden focus-within:border-brandGold transition">
+                <span class="px-3 font-mono font-bold text-brandGold text-sm bg-dark border-r border-dline flex items-center">€</span>
+                <input type="number" id="r_price" value="850" min="0" class="flex-1 bg-transparent text-white font-mono font-semibold text-sm px-3 py-2.5 outline-none" oninput="recalc()">
+              </div>
+            </div>
+            <div>
+              <label class="text-xs text-gray-400 mb-2 block">Ранна цена / човек</label>
+              <div class="flex bg-dark4 border border-dline rounded-lg overflow-hidden focus-within:border-brandGold transition">
+                <span class="px-3 font-mono font-bold text-brandGold text-sm bg-dark border-r border-dline flex items-center">€</span>
+                <input type="number" id="r_early" value="699" min="0" class="flex-1 bg-transparent text-white font-mono font-semibold text-sm px-3 py-2.5 outline-none" oninput="recalc()">
+              </div>
+            </div>
+          </div>
+          <div>
+            <label class="text-xs text-gray-400 mb-2 flex justify-between">
+              <span>Ранни резервации (брой)</span>
+              <span class="text-brandGold font-mono font-bold" id="sv_early_n">2</span>
+            </label>
+            <input type="range" id="r_early_n" min="0" max="30" value="2" oninput="syncSl('r_early_n','sv_early_n'); recalc()">
+          </div>
+        </div>
+
+        <!-- Live preview -->
+        <div class="bg-dark4 border border-dline rounded-xl p-4 sm:p-5">
+          <div class="text-xs font-bold uppercase tracking-widest text-gray-500 mb-4">Преглед на приходите</div>
+          <div class="space-y-2.5 mb-4 text-sm">
+            <div class="flex justify-between">
+              <span class="text-gray-400">Ранни (<span id="rv_early_n">2</span> × <span id="rv_early_p">€699</span>)</span>
+              <span class="font-mono font-semibold" id="rv_early">€0</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-gray-400">Редовни (<span id="rv_reg_n">4</span> × <span id="rv_reg_p">€850</span>)</span>
+              <span class="font-mono font-semibold" id="rv_reg">€0</span>
+            </div>
+          </div>
+          <div class="border-t border-dline pt-3 flex justify-between items-center">
+            <span class="font-semibold text-sm">Общо приходи</span>
+            <span class="font-mono font-bold text-2xl sm:text-3xl text-brandGold" id="rv_total">€0</span>
+          </div>
+        </div>
+
+        <div class="flex items-center justify-between pt-2 border-t border-dline">
+          <button onclick="showTab('costs')" class="text-sm text-gray-500 hover:text-gray-300 transition py-2">← Разходи</button>
+          <button onclick="showTab('result')" class="bg-brandGold text-brandBlue font-bold px-6 py-2.5 rounded-lg text-sm hover:bg-yellow-400 transition shadow-lg">
+            Виж P&L →
+          </button>
+        </div>
+
+      </div><!-- /panel-rev -->
+
+      <!-- ────────────────────────
+           PANEL: RESULT
+      ──────────────────────── -->
+      <div id="panel-result" class="tab-panel">
+
+        <!-- 3 KPIs -->
+        <div class="grid grid-cols-3 divide-x divide-dline border-b border-dline">
+          <div class="p-4 sm:p-6 text-center">
+            <div class="text-xs font-bold uppercase tracking-widest text-gray-500 mb-2">Разходи</div>
+            <div class="font-mono font-bold text-lg sm:text-2xl text-red-400 kv" id="res-cost">€0</div>
+          </div>
+          <div class="p-4 sm:p-6 text-center">
+            <div class="text-xs font-bold uppercase tracking-widest text-gray-500 mb-2">Приходи</div>
+            <div class="font-mono font-bold text-lg sm:text-2xl text-blue-400 kv" id="res-rev">€0</div>
+          </div>
+          <div class="p-4 sm:p-6 text-center">
+            <div class="text-xs font-bold uppercase tracking-widest text-gray-500 mb-2">Печалба</div>
+            <div class="font-mono font-bold text-lg sm:text-2xl text-brandGold kv" id="res-profit">€0</div>
+          </div>
+        </div>
+
+        <!-- Margin -->
+        <div class="p-4 sm:p-6 border-b border-dline">
+          <div class="flex justify-between items-center mb-3">
+            <span class="font-semibold text-sm">Марж на печалбата</span>
+            <span class="font-mono font-bold text-xl kv" id="res-margin-pct">0%</span>
+          </div>
+          <div class="bg-dark4 rounded-full h-3 overflow-hidden border border-dline">
+            <div id="margin-bar" class="h-full rounded-full bg-brandGold" style="width:0%;transition:width .5s ease,background-color .5s"></div>
+          </div>
+          <div class="flex justify-between text-xs text-gray-600 mt-1.5">
+            <span>0% Загуба</span><span>20% Мин.</span><span>35% Добре</span><span>50%+ Отлично</span>
+          </div>
+        </div>
+
+        <!-- Breakdown -->
+        <div class="p-4 sm:p-6 border-b border-dline">
+          <div class="text-xs font-bold uppercase tracking-widest text-gray-500 mb-4">Разбивка на разходите</div>
+          <div class="space-y-1.5 text-sm mb-5">
+            <div class="flex justify-between py-1.5 border-b border-dline/40"><span class="text-gray-400">🚌 Транспорт</span><span class="font-mono" id="br-transport">€0</span></div>
+            <div class="flex justify-between py-1.5 border-b border-dline/40"><span class="text-gray-400">🏨 Настаняване</span><span class="font-mono" id="br-accomm">€0</span></div>
+            <div class="flex justify-between py-1.5 border-b border-dline/40"><span class="text-gray-400">🍳 Закуски</span><span class="font-mono" id="br-bfast">€0</span></div>
+            <div class="flex justify-between py-1.5 border-b border-dline/40"><span class="text-gray-400">🍷 Вечери</span><span class="font-mono" id="br-dinner">€0</span></div>
+            <div class="flex justify-between py-1.5 border-b border-dline/40"><span class="text-gray-400">🥗 Обеди</span><span class="font-mono" id="br-lunch">€0</span></div>
+            <div class="flex justify-between py-1.5 border-b border-dline/40"><span class="text-gray-400">🎙️ Водач</span><span class="font-mono" id="br-guide">€0</span></div>
+            <div class="flex justify-between py-1.5 border-b border-dline/40"><span class="text-gray-400">🎟️ Входни</span><span class="font-mono" id="br-entry">€0</span></div>
+            <div class="flex justify-between py-1.5 border-b border-dline/40"><span class="text-gray-400">🎁 Kit + Буфер</span><span class="font-mono" id="br-kit">€0</span></div>
+            <div class="flex justify-between py-2 font-bold text-white border-t border-gray-600 mt-1">
+              <span>ОБЩО</span><span class="font-mono text-red-400" id="br-total">€0</span>
+            </div>
+          </div>
+          <!-- Bar chart -->
+          <div id="cost-chart" class="space-y-2"></div>
+        </div>
+
+        <!-- Per person -->
+        <div class="p-4 sm:p-6 border-b border-dline">
+          <div class="text-xs font-bold uppercase tracking-widest text-gray-500 mb-4">На човек</div>
+          <div class="grid grid-cols-3 gap-3">
+            <div class="bg-dark4 border border-dline rounded-xl p-3 sm:p-4 text-center">
+              <div class="text-xs text-gray-500 uppercase tracking-wider mb-1">Себестойност</div>
+              <div class="font-mono font-bold text-red-400 text-base sm:text-lg kv" id="pp-cost">€0</div>
+            </div>
+            <div class="bg-dark4 border border-dline rounded-xl p-3 sm:p-4 text-center">
+              <div class="text-xs text-gray-500 uppercase tracking-wider mb-1">Ср. цена</div>
+              <div class="font-mono font-bold text-blue-400 text-base sm:text-lg kv" id="pp-price">€0</div>
+            </div>
+            <div class="bg-brandGold/10 border border-brandGold/40 rounded-xl p-3 sm:p-4 text-center">
+              <div class="text-xs text-brandGold uppercase tracking-wider mb-1">Печалба</div>
+              <div class="font-mono font-bold text-brandGold text-base sm:text-lg kv" id="pp-profit">€0</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Verdict -->
+        <div class="p-4 sm:p-6">
+          <div id="verdict-box" class="rounded-xl p-4 border border-dline bg-dark4 text-sm leading-relaxed">
+            <span id="v-icon">⏳</span> <span id="v-text" class="text-gray-300">Въведете стойности за да видите анализа.</span>
+          </div>
+          <button onclick="showTab('costs')" class="mt-4 w-full text-center text-xs text-gray-500 hover:text-gray-300 transition py-2">
+            ← Редактирай разходите
+          </button>
+        </div>
+
+      </div><!-- /panel-result -->
+
+    </div><!-- /calc card -->
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       SECTION 03 · SCENARIOS
+  ═══════════════════════════════════════ -->
+  <section id="scenarios" class="scroll-mt-28">
+
+    <div class="flex items-center gap-3 mb-5">
+      <span class="font-mono text-xs text-gray-500 bg-dark3 border border-dline px-2 py-0.5 rounded">03</span>
+      <h2 class="font-serif text-xl sm:text-2xl font-semibold">Сценарии — Sweet Spot</h2>
+    </div>
+
+    <div class="flex gap-3 bg-brandGold/10 border border-brandGold/20 rounded-xl p-4 mb-6">
+      <span class="flex-shrink-0">🎯</span>
+      <p class="text-sm text-yellow-100">Кликни върху сценарий за да го заредиш в калкулатора. Резултатът се пресмята автоматично.</p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+
+      <div onclick="loadScenario('s1')" class="bg-dark3 border border-dline rounded-xl p-4 cursor-pointer hover:border-purple-500 hover:-translate-y-0.5 transition-all duration-200 group">
+        <div class="flex justify-between items-center mb-3">
+          <span class="text-xs font-bold text-purple-300 bg-purple-500/10 border border-purple-500/20 px-2 py-0.5 rounded-full">👑 Висок клас</span>
+          <span class="text-xs text-gray-500">5 души</span>
+        </div>
+        <div class="text-purple-300 font-semibold text-sm mb-1">Старт — малка група</div>
+        <div class="text-xs text-gray-500 mb-3">€880/чов · 2 нощ · 4★ бутик</div>
+        <div class="font-mono font-bold text-brandGold text-sm" id="sc-profit-s1">Изчисляване...</div>
+        <div class="text-xs text-purple-400 mt-2 opacity-0 group-hover:opacity-100 transition">Зареди в калкулатора →</div>
+      </div>
+
+      <div onclick="loadScenario('s2')" class="bg-dark3 border border-dline rounded-xl p-4 cursor-pointer hover:border-purple-500 hover:-translate-y-0.5 transition-all duration-200 group">
+        <div class="flex justify-between items-center mb-3">
+          <span class="text-xs font-bold text-purple-300 bg-purple-500/10 border border-purple-500/20 px-2 py-0.5 rounded-full">👑 Висок клас</span>
+          <span class="text-xs text-gray-500">8 души</span>
+        </div>
+        <div class="text-purple-300 font-semibold text-sm mb-1">Пълна група</div>
+        <div class="text-xs text-gray-500 mb-3">€750/чов · 2 нощ · 4★ бутик</div>
+        <div class="font-mono font-bold text-brandGold text-sm" id="sc-profit-s2">Изчисляване...</div>
+        <div class="text-xs text-purple-400 mt-2 opacity-0 group-hover:opacity-100 transition">Зареди в калкулатора →</div>
+      </div>
+
+      <div onclick="loadScenario('s3')" class="bg-dark3 border border-dline rounded-xl p-4 cursor-pointer hover:border-brandGold hover:-translate-y-0.5 transition-all duration-200 group">
+        <div class="flex justify-between items-center mb-3">
+          <span class="text-xs font-bold text-brandGold bg-brandGold/10 border border-brandGold/20 px-2 py-0.5 rounded-full">🌟 Среден</span>
+          <span class="text-xs text-gray-500">10 души</span>
+        </div>
+        <div class="text-brandGold font-semibold text-sm mb-1">Малка средна група</div>
+        <div class="text-xs text-gray-500 mb-3">€450/чов · 2 нощ · 4★</div>
+        <div class="font-mono font-bold text-brandGold text-sm" id="sc-profit-s3">Изчисляване...</div>
+        <div class="text-xs text-brandGold mt-2 opacity-0 group-hover:opacity-100 transition">Зареди в калкулатора →</div>
+      </div>
+
+      <div onclick="loadScenario('s4')" class="bg-dark3 border border-dline rounded-xl p-4 cursor-pointer hover:border-brandGold hover:-translate-y-0.5 transition-all duration-200 group">
+        <div class="flex justify-between items-center mb-3">
+          <span class="text-xs font-bold text-brandGold bg-brandGold/10 border border-brandGold/20 px-2 py-0.5 rounded-full">🌟 Среден</span>
+          <span class="text-xs text-gray-500">16 души</span>
+        </div>
+        <div class="text-brandGold font-semibold text-sm mb-1">Стандартна средна</div>
+        <div class="text-xs text-gray-500 mb-3">€390/чов · 2 нощ · 3★</div>
+        <div class="font-mono font-bold text-brandGold text-sm" id="sc-profit-s4">Изчисляване...</div>
+        <div class="text-xs text-brandGold mt-2 opacity-0 group-hover:opacity-100 transition">Зареди в калкулатора →</div>
+      </div>
+
+      <div onclick="loadScenario('s5')" class="bg-dark3 border border-dline rounded-xl p-4 cursor-pointer hover:border-blue-500 hover:-translate-y-0.5 transition-all duration-200 group">
+        <div class="flex justify-between items-center mb-3">
+          <span class="text-xs font-bold text-blue-400 bg-blue-500/10 border border-blue-500/20 px-2 py-0.5 rounded-full">🎒 Начинаещ</span>
+          <span class="text-xs text-gray-500">20 души</span>
+        </div>
+        <div class="text-blue-400 font-semibold text-sm mb-1">Средна начинаеща</div>
+        <div class="text-xs text-gray-500 mb-3">€235/чов · 2 нощ · 3★</div>
+        <div class="font-mono font-bold text-brandGold text-sm" id="sc-profit-s5">Изчисляване...</div>
+        <div class="text-xs text-blue-400 mt-2 opacity-0 group-hover:opacity-100 transition">Зареди в калкулатора →</div>
+      </div>
+
+      <div onclick="loadScenario('s6')" class="bg-dark3 border border-dline rounded-xl p-4 cursor-pointer hover:border-blue-500 hover:-translate-y-0.5 transition-all duration-200 group">
+        <div class="flex justify-between items-center mb-3">
+          <span class="text-xs font-bold text-blue-400 bg-blue-500/10 border border-blue-500/20 px-2 py-0.5 rounded-full">🎒 Начинаещ</span>
+          <span class="text-xs text-gray-500">30 души</span>
+        </div>
+        <div class="text-blue-400 font-semibold text-sm mb-1">Голяма група</div>
+        <div class="text-xs text-gray-500 mb-3">€195/чов · 2 нощ · 3★</div>
+        <div class="font-mono font-bold text-brandGold text-sm" id="sc-profit-s6">Изчисляване...</div>
+        <div class="text-xs text-blue-400 mt-2 opacity-0 group-hover:opacity-100 transition">Зареди в калкулатора →</div>
+      </div>
+
+    </div>
+
+    <div class="mt-8 text-center">
+      <a href="energy-tourism-offer.html" class="inline-flex items-center gap-2 text-sm text-gray-500 hover:text-brandGold transition border border-dline hover:border-brandGold/40 px-5 py-2.5 rounded-lg">
+        🏛️ Обратно към Grand Slam Офертата
+      </a>
+    </div>
+
+  </section>
+
+</div><!-- /page -->
+
+
+<!-- ══════════════════════════════
+     MOBILE BOTTOM NAV
+══════════════════════════════ -->
+<nav class="sm:hidden fixed bottom-0 left-0 right-0 z-50 bg-dark2 border-t border-dline grid grid-cols-5">
+  <a href="#tiers"      class="flex flex-col items-center gap-0.5 py-3 text-gray-500 hover:text-brandGold transition">
+    <span class="text-xl">🏆</span><span class="text-[10px] font-semibold">Нива</span>
+  </a>
+  <a href="#calculator" class="flex flex-col items-center gap-0.5 py-3 text-brandGold">
+    <span class="text-xl">📊</span><span class="text-[10px] font-bold">Калк.</span>
+  </a>
+  <a href="#scenarios"  class="flex flex-col items-center gap-0.5 py-3 text-gray-500 hover:text-brandGold transition">
+    <span class="text-xl">🎯</span><span class="text-[10px] font-semibold">Сценарии</span>
+  </a>
+  <a href="energy-tourism-offer.html" class="flex flex-col items-center gap-0.5 py-3 text-gray-500 hover:text-brandGold transition">
+    <span class="text-xl">🏛️</span><span class="text-[10px] font-semibold">Оферта</span>
+  </a>
+  <a href="index.html"  class="flex flex-col items-center gap-0.5 py-3 text-gray-500 hover:text-brandGold transition">
+    <span class="text-xl">🏠</span><span class="text-[10px] font-semibold">Начало</span>
+  </a>
+</nav>
+
+
+<!-- ══════════════════════════════
+     JAVASCRIPT
+══════════════════════════════ -->
+<script>
+// ── Utils ─────────────────────────────────
+function g(id)    { return document.getElementById(id) }
+function v(id)    { return parseFloat(g(id)?.value) || 0 }
+function txt(id,val){ const e=g(id); if(e) e.textContent=val }
+function setV(id,val){ const e=g(id); if(e) e.value=val }
+function fmt(n)   { return '€'+Math.round(n).toLocaleString('de-DE') }
+function syncSl(sid,did){ txt(did, g(sid).value) }
+
+// ── Tabs ──────────────────────────────────
+function showTab(name){
+  ['costs','rev','result'].forEach(p=>{
+    const panel=g('panel-'+p), tab=g('tab-'+p)
+    if(!panel||!tab) return
+    const on = p===name
+    panel.classList.toggle('active',on)
+    tab.classList.toggle('text-brandGold',on)
+    tab.classList.toggle('border-brandGold',on)
+    tab.classList.toggle('text-gray-500',!on)
+    tab.classList.toggle('border-transparent',!on)
+  })
+}
+
+// ── Tier card highlight ────────────────────
+function highlightTier(tier){
+  ['low','mid','high'].forEach(t=>{
+    const c=g('tc-'+t); if(!c) return
+    c.classList.remove('border-blue-400','border-brandGold','border-purple-500')
+    c.classList.add('border-dline')
+  })
+  const colors={low:'border-blue-400',mid:'border-brandGold',high:'border-purple-500'}
+  const sel=g('tc-'+tier)
+  if(sel){ sel.classList.remove('border-dline'); sel.classList.add(colors[tier]) }
+  const labels={low:'🎒 Начинаещ',mid:'🌟 Среден клас',high:'👑 Висок клас'}
+  txt('tb-tier', labels[tier])
+}
+
+// ── Load tier presets ─────────────────────
+const TIERS={
+  low: {pax:22,tr:550,fu:100,ni:2,rm:45,bfn:2,bfp:8, dn:2,dp:18,ln:1,lp:12,gu:180,en:10,ki:8, mi:150,pr:220,ea:190,ean:8 },
+  mid: {pax:12,tr:400,fu:90, ni:2,rm:65,bfn:2,bfp:11,dn:2,dp:28,ln:1,lp:18,gu:200,en:15,ki:10,mi:130,pr:450,ea:380,ean:4 },
+  high:{pax:6, tr:380,fu:80, ni:2,rm:70,bfn:2,bfp:12,dn:2,dp:32,ln:1,lp:20,gu:220,en:18,ki:12,mi:120,pr:850,ea:699,ean:2 },
+}
+
+function loadTier(tier){
+  highlightTier(tier)
+  const C=TIERS[tier]
+  const rooms=Math.ceil(C.pax/2)
+  setV('r_people',C.pax); setV('c_transport',C.tr); setV('c_fuel',C.fu)
+  setV('c_nights',C.ni);  setV('c_room',C.rm);      setV('c_rooms',rooms)
+  setV('c_bfast_n',C.bfn);setV('c_bfast_p',C.bfp)
+  setV('c_dinner_n',C.dn);setV('c_dinner_p',C.dp)
+  setV('c_lunch_n',C.ln); setV('c_lunch_p',C.lp)
+  setV('c_guide',C.gu);   setV('c_entry',C.en)
+  setV('c_kit',C.ki);     setV('c_misc',C.mi)
+  setV('r_price',C.pr);   setV('r_early',C.ea); setV('r_early_n',C.ean)
+  txt('gh-display',C.pax); txt('sv_nights',C.ni); txt('sv_rooms',rooms)
+  txt('sv_bfast_n',C.bfn); txt('sv_dinner_n',C.dn); txt('sv_lunch_n',C.ln)
+  txt('sv_early_n',C.ean)
+  updatePaxBadge(); recalc()
+}
+
+// ── Pax badge + smart hints ───────────────
+function updatePaxBadge(){
+  const p=parseInt(g('r_people').value)
+  txt('gh-display',p)
+  g('tb-pax').textContent=p+' души'
+  const rooms=Math.ceil(p/2)
+  setV('c_rooms',rooms); txt('sv_rooms',rooms)
+  txt('rooms-auto-note','за '+p+' души = '+rooms+' стаи (2/стая)')
+
+  if(p<=8){
+    txt('gh-tier-label','👑 Висок клас (4–8 души)')
+    g('gh-badges').innerHTML=`
+      <span class="text-xs font-bold px-2 py-0.5 rounded-full opacity-30 bg-blue-400/10 text-blue-400 border border-blue-400/20">Нач.</span>
+      <span class="text-xs font-bold px-2 py-0.5 rounded-full opacity-30 bg-brandGold/10 text-yellow-400 border border-yellow-400/20">Среден</span>
+      <span class="text-xs font-bold px-2 py-0.5 rounded-full bg-purple-500/20 text-purple-300 border border-purple-500/40">👑 Висок</span>`
+    txt('transport-note','💡 За '+p+' души — комфортен минибус. Бюджет: €300–500.')
+    txt('price-suggestion','💡 За висок клас ('+p+' души) — препоръчителна цена: €700–900/човек за 45%+ марж.')
+    g('tb-tier').textContent='👑 Висок клас'
+  } else if(p<=16){
+    txt('gh-tier-label','🌟 Среден клас (9–16 души)')
+    g('gh-badges').innerHTML=`
+      <span class="text-xs font-bold px-2 py-0.5 rounded-full opacity-30 bg-blue-400/10 text-blue-400 border border-blue-400/20">Нач.</span>
+      <span class="text-xs font-bold px-2 py-0.5 rounded-full bg-brandGold/20 text-yellow-300 border border-yellow-400/40">🌟 Среден</span>
+      <span class="text-xs font-bold px-2 py-0.5 rounded-full opacity-30 bg-purple-500/10 text-purple-300 border border-purple-500/20">Висок</span>`
+    txt('transport-note','💡 За '+p+' души — голям минибус или малък автобус. Бюджет: €400–650.')
+    txt('price-suggestion','💡 За среден клас ('+p+' души) — препоръчителна цена: €380–550/човек за 35%+ марж.')
+    g('tb-tier').textContent='🌟 Среден клас'
+  } else {
+    txt('gh-tier-label','🎒 Начинаещ пазар (17–30 души)')
+    g('gh-badges').innerHTML=`
+      <span class="text-xs font-bold px-2 py-0.5 rounded-full bg-blue-500/20 text-blue-400 border border-blue-500/40">🎒 Нач.</span>
+      <span class="text-xs font-bold px-2 py-0.5 rounded-full opacity-30 bg-brandGold/10 text-yellow-400 border border-yellow-400/20">Среден</span>
+      <span class="text-xs font-bold px-2 py-0.5 rounded-full opacity-30 bg-purple-500/10 text-purple-300 border border-purple-500/20">Висок</span>`
+    txt('transport-note','💡 За '+p+' души — необходим е туристически автобус. Бюджет: €600–900.')
+    txt('price-suggestion','💡 За начинаещ пазар ('+p+' души) — препоръчителна цена: €180–280/човек. Фокус върху обема.')
+    g('tb-tier').textContent='🎒 Начинаещ'
+  }
+}
+
+// ── Main recalc ───────────────────────────
+function recalc(){
+  const people = v('r_people')||1
+  const transport = v('c_transport')+v('c_fuel')
+  const accomm    = v('c_nights')*v('c_rooms')*v('c_room')
+  const bfast     = v('c_bfast_n') *v('c_bfast_p') *people
+  const dinner    = v('c_dinner_n')*v('c_dinner_p')*people
+  const lunch     = v('c_lunch_n') *v('c_lunch_p') *people
+  const guide     = v('c_guide')
+  const entry     = v('c_entry')*people
+  const kit       = v('c_kit')*people
+  const misc      = v('c_misc')
+  const totalCost = transport+accomm+bfast+dinner+lunch+guide+entry+kit+misc
+
+  const earlyN   = Math.min(v('r_early_n'),people)
+  const regN     = people-earlyN
+  const earlyRev = earlyN*v('r_early')
+  const regRev   = regN  *v('r_price')
+  const totalRev = earlyRev+regRev
+  const profit   = totalRev-totalCost
+  const margin   = totalRev>0?(profit/totalRev)*100:0
+  const ppCost   = totalCost/people
+  const ppPrice  = totalRev/people
+
+  // Revenue panel
+  txt('rv_early_n',earlyN); txt('rv_early_p','€'+v('r_early'))
+  txt('rv_reg_n',regN);     txt('rv_reg_p','€'+v('r_price'))
+  txt('rv_early',fmt(earlyRev)); txt('rv_reg',fmt(regRev)); txt('rv_total',fmt(totalRev))
+  txt('cost-preview',fmt(totalCost))
+
+  // KPIs
+  txt('res-cost',fmt(totalCost)); txt('res-rev',fmt(totalRev))
+  const pe=g('res-profit')
+  if(pe){ pe.textContent=fmt(profit); pe.style.color=profit>=0?'#dcae1d':'#f87171' }
+
+  // Margin bar
+  const bar=g('margin-bar')
+  const col = margin<0?'#f87171':margin<20?'#f97316':margin<35?'#dcae1d':'#22c55e'
+  if(bar){ bar.style.width=Math.max(0,Math.min(100,margin))+'%'; bar.style.backgroundColor=col }
+  const mp=g('res-margin-pct')
+  if(mp){ mp.textContent=Math.round(margin)+'%'; mp.style.color=col }
+
+  // Breakdown
+  txt('br-transport',fmt(transport)); txt('br-accomm',fmt(accomm))
+  txt('br-bfast',fmt(bfast));         txt('br-dinner',fmt(dinner))
+  txt('br-lunch',fmt(lunch));         txt('br-guide',fmt(guide))
+  txt('br-entry',fmt(entry));         txt('br-kit',fmt(kit+misc))
+  txt('br-total',fmt(totalCost))
+
+  // Bar chart
+  const bars=[
+    {l:'Транспорт',v:transport,c:'#4a7fd4'},
+    {l:'Нощувки',  v:accomm,   c:'#8b6ff5'},
+    {l:'Вечери',   v:dinner,   c:'#dcae1d'},
+    {l:'Закуски',  v:bfast,    c:'#e07c2a'},
+    {l:'Обеди',    v:lunch,    c:'#28a75b'},
+    {l:'Водач',    v:guide,    c:'#60a5fa'},
+    {l:'Входни',   v:entry,    c:'#a78bfa'},
+    {l:'Kit+Misc', v:kit+misc, c:'#6b7280'},
+  ]
+  const mx=Math.max(...bars.map(b=>b.v),1)
+  const ch=g('cost-chart')
+  if(ch) ch.innerHTML=bars.map(b=>`
+    <div class="flex items-center gap-2">
+      <div class="text-xs text-gray-500 w-20 flex-shrink-0 truncate">${b.l}</div>
+      <div class="flex-1 bg-dark4 rounded-full h-1.5 overflow-hidden">
+        <div class="bar-fill h-full rounded-full" style="width:${(b.v/mx)*100}%;background:${b.c}"></div>
+      </div>
+      <div class="font-mono text-xs text-gray-400 w-16 text-right flex-shrink-0">${fmt(b.v)}</div>
+    </div>`).join('')
+
+  // Per person
+  txt('pp-cost',fmt(ppCost)); txt('pp-price',fmt(ppPrice))
+  const ppEl=g('pp-profit')
+  if(ppEl){ ppEl.textContent=fmt(ppPrice-ppCost); ppEl.style.color=(ppPrice-ppCost)>=0?'#dcae1d':'#f87171' }
+
+  // Mobile strip
+  txt('s-cost',fmt(totalCost)); txt('s-rev',fmt(totalRev))
+  const sp=g('s-profit'); if(sp){ sp.textContent=fmt(profit); sp.style.color=profit>=0?'#dcae1d':'#f87171' }
+  const sm=g('s-margin'); if(sm){ sm.textContent=Math.round(margin)+'%'; sm.style.color=col }
+
+  // Verdict
+  const vb=g('verdict-box')
+  if(vb){
+    if(margin>=50){
+      vb.className='rounded-xl p-4 border border-green-500/40 bg-green-500/10 text-sm leading-relaxed'
+      txt('v-icon','🚀'); txt('v-text',`Изключителен марж от ${Math.round(margin)}%! Генерирате ${fmt(profit)} чиста печалба — ${fmt(profit/people)} на човек. Систематизирайте процеса и скалирайте с повторни клиенти.`)
+    } else if(margin>=35){
+      vb.className='rounded-xl p-4 border border-yellow-500/40 bg-yellow-500/10 text-sm leading-relaxed'
+      txt('v-icon','✅'); txt('v-text',`Добър марж ${Math.round(margin)}%. Печалба: ${fmt(profit)} (${fmt(profit/people)}/чов.). Оптимизация: вдигнете цената с 10% или намалете хотелски разходи с €10/стая → 45%+ марж.`)
+    } else if(margin>=20){
+      vb.className='rounded-xl p-4 border border-orange-500/40 bg-orange-500/10 text-sm leading-relaxed'
+      txt('v-icon','⚠️'); txt('v-text',`Приемлив марж ${Math.round(margin)}%, но под оптималния. Себестойност: ${fmt(ppCost)}/чов. Опции: 1) Вдигнете цената с €50–80. 2) Добавете 2–3 участника. 3) Намалете 1 вечеря.`)
+    } else if(margin>=0){
+      vb.className='rounded-xl p-4 border border-red-500/30 bg-red-500/10 text-sm leading-relaxed'
+      txt('v-icon','🔴'); txt('v-text',`Нисък марж ${Math.round(margin)}%. За 35% марж цената трябва да е поне ${fmt(totalCost/people/0.65)}/чов. Или намалете разходите с ${fmt(totalCost*0.2)}.`)
+    } else {
+      vb.className='rounded-xl p-4 border border-red-500/40 bg-red-500/10 text-sm leading-relaxed'
+      txt('v-icon','💀'); txt('v-text',`Загуба ${fmt(Math.abs(profit))}! Минимална цена за нула: ${fmt(totalCost/people)}/чов. За 35% марж: ${fmt(totalCost/people/0.65)}/чов.`)
+    }
+  }
+
+  updateScenarios()
+}
+
+// ── Scenarios ─────────────────────────────
+const SC={
+  s1:{pax:5, tr:340,fu:70, ni:2,rm:75,bfn:2,bfp:13,dn:2,dp:35,ln:1,lp:22,gu:220,en:18,ki:14,mi:100,pr:880,ea:730,ean:1},
+  s2:{pax:8, tr:380,fu:80, ni:2,rm:70,bfn:2,bfp:12,dn:2,dp:32,ln:1,lp:20,gu:220,en:18,ki:12,mi:120,pr:750,ea:649,ean:3},
+  s3:{pax:10,tr:420,fu:85, ni:2,rm:60,bfn:2,bfp:11,dn:2,dp:26,ln:1,lp:18,gu:200,en:15,ki:10,mi:130,pr:450,ea:390,ean:3},
+  s4:{pax:16,tr:500,fu:95, ni:2,rm:50,bfn:2,bfp:9, dn:2,dp:22,ln:1,lp:16,gu:190,en:12,ki:9, mi:140,pr:390,ea:340,ean:5},
+  s5:{pax:20,tr:650,fu:110,ni:2,rm:45,bfn:2,bfp:8, dn:2,dp:18,ln:1,lp:12,gu:180,en:10,ki:8, mi:150,pr:235,ea:200,ean:7},
+  s6:{pax:30,tr:750,fu:130,ni:2,rm:42,bfn:2,bfp:7, dn:2,dp:16,ln:1,lp:11,gu:180,en:9, ki:7, mi:200,pr:195,ea:170,ean:10},
+}
+
+function calcS(s){
+  const rooms=Math.ceil(s.pax/2)
+  const cost=(s.tr+s.fu)+s.ni*rooms*s.rm
+    +s.bfn*s.bfp*s.pax+s.dn*s.dp*s.pax+s.ln*s.lp*s.pax
+    +s.gu+s.en*s.pax+s.ki*s.pax+s.mi
+  const en=Math.min(s.ean,s.pax),rn=s.pax-en
+  const rev=en*s.ea+rn*s.pr
+  return{cost,rev,profit:rev-cost,margin:rev>0?(rev-cost)/rev*100:0}
+}
+
+function updateScenarios(){
+  Object.entries(SC).forEach(([k,s])=>{
+    const r=calcS(s), e=g('sc-profit-'+k)
+    if(e){ e.textContent=`${fmt(r.profit)} · ${Math.round(r.margin)}% марж`; e.style.color=r.profit>=0?'#dcae1d':'#f87171' }
+  })
+}
+
+function loadScenario(key){
+  const s=SC[key], rooms=Math.ceil(s.pax/2)
+  setV('r_people',s.pax); setV('c_transport',s.tr); setV('c_fuel',s.fu)
+  setV('c_nights',s.ni);  setV('c_room',s.rm); setV('c_rooms',rooms)
+  setV('c_bfast_n',s.bfn);setV('c_bfast_p',s.bfp)
+  setV('c_dinner_n',s.dn);setV('c_dinner_p',s.dp)
+  setV('c_lunch_n',s.ln); setV('c_lunch_p',s.lp)
+  setV('c_guide',s.gu);   setV('c_entry',s.en); setV('c_kit',s.ki); setV('c_misc',s.mi)
+  setV('r_price',s.pr);   setV('r_early',s.ea); setV('r_early_n',s.ean)
+  txt('sv_nights',s.ni); txt('sv_rooms',rooms); txt('sv_bfast_n',s.bfn)
+  txt('sv_dinner_n',s.dn); txt('sv_lunch_n',s.ln); txt('sv_early_n',s.ean)
+  txt('gh-display',s.pax)
+  updatePaxBadge(); recalc()
+  g('calculator').scrollIntoView({behavior:'smooth'})
+  showTab('result')
+}
+
+// ── Init ──────────────────────────────────
+updatePaxBadge()
+recalc()
+</script>
+
+</body>
+</html>
