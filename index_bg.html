@@ -3,17 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stella Tours | Премиум Почивки и Екскурзии</title>
+    <title>Stella Tour | Премиум почивки и дълбоки пътешествия</title>
 
     <link rel="icon" type="image/png" href="img/favicon.png">
 
-    <meta property="og:title" content="Stella Tours | Твоето бягство от забързания живот">
-    <meta property="og:description" content="Премиум СПА почивки в България и уикенд пакети в Турция. Хотели в Трявна, Ивайловград, Лозенград и Инеада.">
-    <meta property="og:image" content="img/squidonwindmillnesebar.png">
-    <meta property="og:type" content="website">
-
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="css/style.css">
     
@@ -25,6 +20,7 @@
                         brandBlue: '#003580', 
                         brandGold: '#dcae1d',
                         surface: '#f8fafc',
+                        warmBg: '#fdfbf7', /* Топъл, кремав фон за мекота */
                     },
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
@@ -34,552 +30,366 @@
             }
         }
     </script>
-
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        
-        gtag('consent', 'default', {
-            'ad_storage': 'denied',
-            'ad_user_data': 'denied',
-            'ad_personalization': 'denied',
-            'analytics_storage': 'denied',
-            'wait_for_update': 500
-        });
-    </script>
-
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9YCTHHJSJE"></script>
-    <script>
-        gtag('js', new Date());
-        gtag('config', 'G-9YCTHHJSJE');
-    </script>
 </head>
-<body class="bg-surface text-gray-900 antialiased relative">
+<body class="bg-warmBg text-gray-800 antialiased relative">
 
-    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-sm">
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 bg-white/95 backdrop-blur-md border-b-4 border-brandGold shadow-sm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
-                <div class="flex-shrink-0 flex items-center gap-2 cursor-pointer" onclick="window.scrollTo(0,0)">
-                    <div class="w-8 h-8 bg-brandBlue text-white flex items-center justify-center font-serif font-bold rounded shadow-sm">S</div>
-                    <span class="text-brandBlue text-xl font-bold tracking-tight uppercase">Stela<span class="text-brandGold">Tour</span></span>
+                <div class="flex-shrink-0 flex items-center gap-3 cursor-pointer" onclick="window.scrollTo(0,0)">
+                    <div class="w-10 h-10 bg-brandBlue text-brandGold flex items-center justify-center font-serif font-bold rounded-xl shadow-md text-xl">S</div>
+                    <span class="text-brandBlue text-2xl font-bold tracking-tight uppercase">Stella<span class="text-brandGold">Tour</span></span>
                 </div>
                 
                 <div class="hidden md:flex items-center space-x-8">
-                    <a href="#destination-split" class="text-gray-600 hover:text-brandBlue font-medium text-sm uppercase tracking-wide hover:scale-105 transition">Почивки</a>
-                    <a href="#about" class="text-gray-600 hover:text-brandBlue font-medium text-sm uppercase tracking-wide hover:scale-105 transition">Отзиви</a>
-                    <a href="#contact" class="text-gray-600 hover:text-brandBlue font-medium text-sm uppercase tracking-wide hover:scale-105 transition">Контакт</a>
+                    <a href="#quick-escapes" class="text-gray-700 hover:text-brandGold font-bold text-sm uppercase tracking-wider transition">Уикенди</a>
+                    <a href="#journeys" class="text-gray-700 hover:text-brandGold font-bold text-sm uppercase tracking-wider transition">Пътешествия</a>
+                    <a href="#green-schools" class="text-gray-700 hover:text-brandGold font-bold text-sm uppercase tracking-wider transition">За училища</a>
                     
-                    <a href="index.html" class="text-gray-900 font-bold hover:text-brandBlue flex items-center gap-1 text-sm border-l pl-6 border-gray-300 transition">
+                    <a href="index.html" class="text-brandBlue font-bold hover:text-brandGold flex items-center gap-1 text-sm border-l-2 pl-6 border-gray-200 transition">
                         <span class="text-lg">🇬🇧</span> <span>EN</span>
                     </a>
 
-                    <a href="tel:+359894060406" class="bg-brandBlue text-white px-6 py-2 rounded shadow-md font-bold text-sm hover:bg-blue-900 hover:shadow-lg transition transform hover:-translate-y-0.5">
-                        Обади се
+                    <a href="tel:+359894060406" class="bg-brandGold text-brandBlue px-6 py-2.5 rounded-xl font-bold text-sm hover:bg-yellow-400 hover:shadow-lg transition transform hover:-translate-y-1">
+                        📞 Обади се
                     </a>
-                </div>
-
-                <div class="md:hidden flex items-center gap-4">
-                     <a href="index.html" class="text-gray-900 font-bold hover:text-brandBlue flex items-center gap-1 text-sm border border-gray-200 px-2 py-1 rounded">
-                        <span>EN</span>
-                    </a>
-
-                    <button onclick="toggleMobileMenu()" class="text-gray-600 hover:text-brandBlue focus:outline-none p-2">
-                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                        </svg>
-                    </button>
                 </div>
             </div>
-        </div>
-
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-gray-100 shadow-xl absolute w-full left-0 top-20 px-4 py-6 flex flex-col space-y-4">
-            <a href="#destination-split" onclick="toggleMobileMenu()" class="text-lg font-medium text-gray-800 hover:text-brandBlue">Почивки</a>
-            <a href="#about" onclick="toggleMobileMenu()" class="text-lg font-medium text-gray-800 hover:text-brandBlue">Отзиви</a>
-            <a href="#contact" onclick="toggleMobileMenu()" class="text-lg font-medium text-gray-800 hover:text-brandBlue">Контакт</a>
-            <a href="tel:+359894060406" class="bg-brandBlue text-white text-center py-3 rounded-lg font-bold shadow-md">Обади се</a>
         </div>
     </nav>
 
-  
-    <section class="relative flex flex-col justify-center items-center min-h-[85vh] pt-32 pb-16"
-             style="background-image: url('img/hero.jpg'); background-size: cover; background-position: center; background-attachment: fixed;">
+    <section class="relative flex flex-col justify-center items-center min-h-[85vh] pt-32 pb-16 overflow-hidden bg-brandBlue">
         
-        <div class="absolute inset-0 bg-black/50 pointer-events-none"></div>
+        <div id="hero-slider" class="absolute inset-0 w-full h-full"></div>
+
+        <div class="absolute inset-0 bg-gradient-to-b from-brandBlue/80 via-brandBlue/40 to-brandBlue/90 pointer-events-none mix-blend-multiply"></div>
 
         <div class="relative z-10 text-center px-4 max-w-4xl mx-auto animate-fade-in-up">
             
-            <span class="inline-block bg-black/40 border border-white/10 text-brandGold font-bold px-6 py-2 rounded-full text-sm uppercase tracking-widest mb-6 backdrop-blur-sm shadow-lg">
-                Премиум Почивки
+            <span class="inline-block bg-brandGold text-brandBlue px-6 py-2 rounded-full text-xs uppercase tracking-widest mb-6 font-bold shadow-lg">
+                ✨ Пътувай със сърцето си
             </span>
             
-            <h1 class="text-5xl md:text-7xl font-serif font-bold text-white mb-6 leading-tight drop-shadow-[0_4px_4px_rgba(0,0,0,0.8)]">
-                Твоето бягство от <br/><span class="text-brandGold drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">забързания живот.</span>
+            <h1 class="text-5xl md:text-7xl font-serif font-bold text-white mb-6 leading-tight drop-shadow-md">
+                Магията е вече <br/><span class="text-brandGold">в твоя заден двор.</span>
             </h1>
-            <p class="text-lg md:text-2xl text-gray-100 mb-12 font-medium drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
-                Открийте луксозни СПА почивки в България и незабравими уикенд пакети в Турция.
+            
+            <p class="text-lg md:text-xl text-blue-100 mb-12 font-medium max-w-2xl mx-auto leading-relaxed drop-shadow">
+                От бързи уикенди по крайбрежието до дълбоки пътешествия в древната история. Ние създаваме спомени, не просто екскурзии.
             </p>
             
-            <div class="flex flex-col sm:flex-row items-center justify-center gap-6">
-                <button onclick="document.getElementById('destination-split').scrollIntoView({ behavior: 'smooth' })" class="w-full sm:w-auto bg-brandBlue hover:bg-blue-900 text-white font-bold py-4 px-10 rounded-sm shadow-xl transition duration-300 text-lg uppercase tracking-wide">
-                    Избери Дестинация
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <button onclick="document.getElementById('quick-escapes').scrollIntoView({ behavior: 'smooth' })" class="w-full sm:w-auto bg-brandGold text-brandBlue font-bold py-4 px-8 rounded-xl hover:bg-yellow-400 hover:shadow-xl transition transform hover:-translate-y-1 duration-300">
+                    🏖️ Кратки Почивки
                 </button>
-                <a href="#contact" class="w-full sm:w-auto bg-white hover:bg-gray-100 text-brandBlue font-bold py-4 px-10 rounded-sm shadow-xl transition duration-300 text-lg uppercase tracking-wide">
-                    Контакти
-                </a>
+                <button onclick="document.getElementById('journeys').scrollIntoView({ behavior: 'smooth' })" class="w-full sm:w-auto bg-white/10 border-2 border-white text-white font-bold py-4 px-8 rounded-xl hover:bg-white hover:text-brandBlue hover:shadow-xl transition transform hover:-translate-y-1 duration-300 backdrop-blur-sm">
+                    🗺️ Разгледай Пътешествията
+                </button>
             </div>
         </div>
     </section>
 
-      <!-- ══════════════════════════════════════════ -->
-    <!-- NEW EXPERIENCES SECTION                   -->
-    <!-- ══════════════════════════════════════════ -->
-    <section id="new-experiences" class="py-20 bg-brandBlue relative overflow-hidden">
-        <!-- Background texture -->
-         <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(#ffffff 1px, transparent 1px); background-size: 30px 30px;"></div>
+    <section id="quick-escapes" class="py-24 bg-white relative">
+        <div class="absolute top-0 right-0 w-64 h-64 bg-brandGold/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3"></div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="flex flex-col lg:flex-row items-center gap-16">
+                
+                <div class="w-full lg:w-1/2">
+                    <div class="inline-flex items-center gap-2 bg-brandGold/20 text-brandGold font-bold px-4 py-1.5 rounded-full text-xs uppercase tracking-widest mb-6">
+                        ⭐ Топ избор на нашите клиенти
+                    </div>
+                    <h2 class="text-4xl md:text-5xl font-serif font-bold text-brandBlue mb-6 leading-tight">Крайбрежен рестарт:<br>1-2 Дневни почивки.</h2>
+                    <p class="text-gray-600 text-lg leading-relaxed mb-8 font-medium">
+                        Понякога всичко, от което се нуждаете, са 48 часа. Нашите запазени кратки почивки в региона на Бургас са създадени за максимален релакс, усмивки и нулево време в път.
+                    </p>
+                    <ul class="space-y-5 text-gray-700 mb-10 font-medium bg-warmBg p-6 rounded-2xl border border-brandGold/20">
+                        <li class="flex items-center gap-4">
+                            <span class="text-2xl bg-white p-2 rounded-lg shadow-sm">🌊</span> 
+                            <span>Морски релакс без стреса от планирането. Ние се грижим за всичко.</span>
+                        </li>
+                        <li class="flex items-center gap-4">
+                            <span class="text-2xl bg-white p-2 rounded-lg shadow-sm">🍷</span> 
+                            <span>Специално подбрани вечери и автентични местни преживявания.</span>
+                        </li>
+                        <li class="flex items-center gap-4">
+                            <span class="text-2xl bg-white p-2 rounded-lg shadow-sm">⏳</span> 
+                            <span>Перфектни за заети хора, които се нуждаят от бързо презареждане.</span>
+                        </li>
+                    </ul>
+                    <a href="#contact" class="inline-block bg-brandBlue text-white font-bold px-8 py-4 rounded-xl hover:bg-blue-900 transition shadow-lg hover:shadow-xl transform hover:-translate-y-1 text-sm uppercase tracking-wide">
+                        Провери свободни дати &rarr;
+                    </a>
+                </div>
 
-            <!-- Header -->
-            <div class="text-center mb-14">
-                <span class="inline-block bg-white/10 border border-white/20 text-brandGold font-bold px-5 py-1.5 rounded-full text-xs uppercase tracking-widest mb-5 backdrop-blur-sm">
-                    ✨ Нови изживявания 2025
-                </span>
-                <h2 class="text-4xl md:text-5xl font-serif font-bold text-white mb-4 leading-tight">
-                    Пътувания с <span class="text-brandGold">история</span> и <span class="text-brandGold">смисъл</span>
-                </h2>
-                <p class="text-blue-200 text-lg max-w-2xl mx-auto">
-                    Три нови направления — внимателно създадени за хора, които търсят повече от обикновена почивка.
+                <div class="w-full lg:w-1/2 relative">
+                    <div class="absolute -inset-4 bg-brandGold rounded-3xl transform rotate-3 -z-10"></div>
+                    <img src="img/hero.jpg" alt="Бургас Почивка" class="rounded-2xl shadow-xl w-full h-[500px] object-cover border-4 border-white">
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="journeys" class="py-24 bg-warmBg border-t-2 border-brandGold/30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-20">
+                <span class="text-brandBlue font-bold tracking-widest uppercase text-sm mb-2 block">Когато имате повече време</span>
+                <h2 class="text-4xl md:text-5xl font-serif font-bold text-brandBlue mb-4">Пътешествия със смисъл</h2>
+                <p class="text-gray-600 text-lg max-w-2xl mx-auto font-medium">
+                    Заменяме масовите туристически капани с дълбоки преживявания, които ще помните дълго. Изберете вашето приключение.
                 </p>
-                <div class="h-1 w-16 bg-brandGold mx-auto rounded mt-6"></div>
+                <div class="h-1 w-24 bg-brandGold mx-auto rounded-full mt-8"></div>
             </div>
 
-            <!-- Cards grid -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-
-                <!-- Card 1: Energy Tourism -->
-                <a href="consulting/energy-tourism-offer.html"
-                   class="group relative bg-white/5 border border-white/10 rounded-2xl overflow-hidden hover:border-brandGold hover:bg-white/10 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl cursor-pointer">
-                    <div class="p-8">
-                        <div class="text-5xl mb-5">🏛️</div>
-                        <div class="inline-flex items-center gap-2 bg-brandGold/20 border border-brandGold/30 text-brandGold text-xs font-bold px-3 py-1 rounded-full mb-4 uppercase tracking-wider">
-                            ⭐ Препоръчано
-                        </div>
-                        <h3 class="text-2xl font-serif font-bold text-white mb-3 group-hover:text-brandGold transition">
-                            Пътят на Предците
-                        </h3>
-                        <p class="text-blue-200 text-sm mb-6 leading-relaxed">
-                            Водено пътешествие до свещените места на Тракия — Перперикон, Белинташ, Ванга. 3 дни, бутик хотели, историк-водач.
-                        </p>
-                        <div class="space-y-2 mb-6">
-                            <div class="flex items-center gap-2 text-sm text-blue-100">
-                                <span class="text-brandGold">✓</span> Максимум 8 участника
-                            </div>
-                            <div class="flex items-center gap-2 text-sm text-blue-100">
-                                <span class="text-brandGold">✓</span> Транспорт, хотел и храна включени
-                            </div>
-                            <div class="flex items-center gap-2 text-sm text-blue-100">
-                                <span class="text-brandGold">✓</span> Лицензиран историк-водач
-                            </div>
-                        </div>
-                        <div class="flex items-center justify-between border-t border-white/10 pt-5">
-                            <div>
-                                <div class="text-xs text-blue-300 uppercase tracking-wider">от</div>
-                                <div class="text-2xl font-bold text-brandGold font-mono">€349</div>
-                                <div class="text-xs text-blue-300">на човек</div>
-                            </div>
-                            <span class="text-white font-bold text-sm flex items-center gap-2 group-hover:gap-4 transition-all group-hover:text-brandGold">
-                                Виж офертата →
-                            </span>
-                        </div>
-                    </div>
-                </a>
-
-                <!-- Card 2: Green Schools (Coming Soon) -->
-                <div class="group relative bg-white/5 border border-white/10 rounded-2xl overflow-hidden opacity-70 cursor-default">
-                    <div class="absolute top-4 right-4 bg-white/10 text-white text-xs font-bold px-3 py-1 rounded-full">Скоро</div>
-                    <div class="p-8">
-                        <div class="text-5xl mb-5">🌿</div>
-                        <div class="inline-flex items-center gap-2 bg-green-500/20 border border-green-500/30 text-green-300 text-xs font-bold px-3 py-1 rounded-full mb-4 uppercase tracking-wider">
-                            Зелено образование
-                        </div>
-                        <h3 class="text-2xl font-serif font-bold text-white mb-3">
-                            Зелени Училища
-                        </h3>
-                        <p class="text-blue-200 text-sm mb-6 leading-relaxed">
-                            Образователни лагери на природата за деца и ученици. Наука, история и природа — далеч от класната стая.
-                        </p>
-                        <div class="space-y-2 mb-6">
-                            <div class="flex items-center gap-2 text-sm text-blue-100"><span class="text-green-400">✓</span> За училища и детски групи</div>
-                            <div class="flex items-center gap-2 text-sm text-blue-100"><span class="text-green-400">✓</span> Образователна програма</div>
-                            <div class="flex items-center gap-2 text-sm text-blue-100"><span class="text-green-400">✓</span> Напълно организирано</div>
-                        </div>
-                        <div class="border-t border-white/10 pt-5">
-                            <div class="text-blue-300 text-sm">В разработка — очаквайте скоро</div>
-                        </div>
-                    </div>
+            <div class="bg-white rounded-3xl shadow-xl border border-gray-100 overflow-hidden mb-16 flex flex-col md:flex-row group hover:shadow-2xl transition duration-500">
+                <div class="w-full md:w-1/2 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1511497584788-876760111969?q=80&w=1000" alt="Духовна Странджа" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
                 </div>
-
-                <!-- Card 3: Wine (Coming Soon) -->
-                <div class="group relative bg-white/5 border border-white/10 rounded-2xl overflow-hidden opacity-70 cursor-default">
-                    <div class="absolute top-4 right-4 bg-white/10 text-white text-xs font-bold px-3 py-1 rounded-full">Скоро</div>
-                    <div class="p-8">
-                        <div class="text-5xl mb-5">🍷</div>
-                        <div class="inline-flex items-center gap-2 bg-purple-500/20 border border-purple-500/30 text-purple-300 text-xs font-bold px-3 py-1 rounded-full mb-4 uppercase tracking-wider">
-                            Уикенд гетауей
-                        </div>
-                        <h3 class="text-2xl font-serif font-bold text-white mb-3">
-                            Вино & СПА
-                        </h3>
-                        <p class="text-blue-200 text-sm mb-6 leading-relaxed">
-                            Уикенд в тракийските лозя. Дегустации, спа процедури и луксозно настаняване сред природата.
-                        </p>
-                        <div class="space-y-2 mb-6">
-                            <div class="flex items-center gap-2 text-sm text-blue-100"><span class="text-purple-400">✓</span> Тракийски вина & сомелиер</div>
-                            <div class="flex items-center gap-2 text-sm text-blue-100"><span class="text-purple-400">✓</span> СПА и релакс</div>
-                            <div class="flex items-center gap-2 text-sm text-blue-100"><span class="text-purple-400">✓</span> Двойки и приятели</div>
-                        </div>
-                        <div class="border-t border-white/10 pt-5">
-                            <div class="text-blue-300 text-sm">В разработка — очаквайте скоро</div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-
-            <!-- P&L Tool Banner -->
-            <div class="bg-white/5 border border-brandGold/30 rounded-2xl p-6 md:p-8 flex flex-col md:flex-row items-center gap-6">
-                <div class="text-4xl flex-shrink-0">📊</div>
-                <div class="flex-1 text-center md:text-left">
-                    <div class="text-brandGold font-bold text-xs uppercase tracking-widest mb-1">Инструмент за планиране</div>
-                    <h3 class="text-xl font-serif font-bold text-white mb-2">P&L Калкулатор на рентабилност</h3>
-                    <p class="text-blue-200 text-sm">Изчислете разходите, приходите и чистата печалба за всеки маршрут — в реално време. Сравнете ниски, средни и висококласни групи.</p>
-                </div>
-                <a href="consulting/pnl-calculator.html"
-                   class="flex-shrink-0 bg-brandGold text-brandBlue font-bold px-8 py-3 rounded-lg hover:bg-yellow-400 transition shadow-lg text-sm uppercase tracking-wide whitespace-nowrap">
-                    Отвори калкулатора →
-                </a>
-            </div>
-
-        </div>
-    </section>
-
-    <section id="destination-split" class="py-16 bg-white border-b border-gray-100 mt-16 relative z-20">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-10">
-                <h2 class="text-3xl font-bold text-gray-900 mb-2 font-serif">Изберете вашата дестинация</h2>
-                <div class="h-1 w-20 bg-brandGold mx-auto rounded"></div>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <a href="destinations/bulgaria_bg.html" class="group relative overflow-hidden rounded-2xl shadow-xl h-80 block cursor-pointer">
-                    <img src="img/bulgaria-hero.jpg" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-700" alt="Bulgaria SPA">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-8 flex flex-col justify-end">
-                        <div class="flex items-center gap-3 mb-2">
-                            <span class="text-3xl">🇧🇬</span>
-                            <h3 class="text-3xl font-bold text-white">България</h3>
-                        </div>
-                        <p class="text-gray-200 text-sm mb-4">Луксозни СПА хотели, винен туризъм и планински хижи.</p>
-                        <span class="text-brandGold font-bold text-sm flex items-center gap-2 group-hover:gap-4 transition-all">Виж Офертите &rarr;</span>
-                    </div>
-                </a>
-
-                <a href="destinations/turkey_bg.html" class="group relative overflow-hidden rounded-2xl shadow-xl h-80 block cursor-pointer">
-                    <img src="https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?q=80&w=2000" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-700" alt="Turkey Shopping">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-8 flex flex-col justify-end">
-                        <div class="flex items-center gap-3 mb-2">
-                            <span class="text-3xl">🇹🇷</span>
-                            <h3 class="text-3xl font-bold text-white">Турция</h3>
-                        </div>
-                        <p class="text-gray-200 text-sm mb-4">Шопинг уикенди, морски ризорти и източна кухня.</p>
-                        <span class="text-brandGold font-bold text-sm flex items-center gap-2 group-hover:gap-4 transition-all">Виж Офертите &rarr;</span>
-                    </div>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <section id="bulgaria-offers" class="py-16 bg-surface">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="mb-12 border-l-4 border-brandBlue pl-4">
-                <h2 class="text-2xl font-bold text-gray-900">Почивки в България</h2>
-                <p class="text-gray-500">Релакс, природа и история.</p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                
-                <div class="bg-white rounded-lg shadow-sm hover:shadow-2xl transition-all duration-500 overflow-hidden group border border-gray-100">
-                    <div class="relative h-64 overflow-hidden">
-                        <img src="img/hotel-kalina-palace-tryavna-1.jpg" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700" alt="Kalina Palace Tryavna">
-                        <div class="absolute top-4 right-4 bg-brandGold text-brandBlue text-xs font-bold px-3 py-1 rounded shadow-lg uppercase tracking-wider">Балкан & СПА</div>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-gray-900 mb-2">Хотел Калина Палас 4⭐</h3>
-                        <p class="text-gray-500 text-sm mb-4">гр. Трявна</p>
-                        <p class="text-gray-600 text-sm mb-6 line-clamp-2">Панорамни гледки, модерен релакс център и възрожденски дух в сърцето на Стара планина.</p>
-                        <div class="flex justify-between items-center border-t border-gray-100 pt-4">
-                            <a href="hotels/kalina-palace.html" class="text-brandBlue font-bold hover:text-brandGold transition text-sm flex items-center gap-1">Виж Детайли &rarr;</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="bg-white rounded-lg shadow-sm hover:shadow-2xl transition-all duration-500 overflow-hidden group border border-gray-100">
-                    <div class="relative h-64 overflow-hidden">
-                        <img src="img/hotel-armira.png" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700" alt="Hotel Armira Ivaylovgrad">
-                        <div class="absolute top-4 right-4 bg-[#7360f2] text-white text-xs font-bold px-3 py-1 rounded shadow-lg uppercase tracking-wider">Лукс & Вино</div>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-gray-900 mb-2">Хотел Армира 4⭐</h3>
-                        <p class="text-gray-500 text-sm mb-4">гр. Ивайловград</p>
-                        <p class="text-gray-600 text-sm mb-6 line-clamp-2">Първокласен комплекс с басейн. Отлична локация за винен туризъм.</p>
-                        <div class="flex justify-between items-center border-t border-gray-100 pt-4">
-                            <a href="hotels/hotel-armira.html" class="text-brandBlue font-bold hover:text-brandGold transition text-sm flex items-center gap-1">Виж Детайли &rarr;</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="bg-white rounded-lg shadow-sm hover:shadow-2xl transition-all duration-500 overflow-hidden group border border-gray-100">
-                    <div class="relative h-64 overflow-hidden">
-                        <img src="img/hija-zdravec-topolica.jpg" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700" alt="Hut Zdravets">
-                        <div class="absolute top-4 right-4 bg-green-700 text-white text-xs font-bold px-3 py-1 rounded shadow-lg uppercase tracking-wider">Еко Туризъм</div>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-gray-900 mb-2">Хижа Здравец</h3>
-                        <p class="text-gray-500 text-sm mb-4">Тополица </p>
-                        <p class="text-gray-600 text-sm mb-6 line-clamp-2">Чиста Природа. Бягство в гората. Насладете се на чист въздух, еко пътеки и домашно приготвена храна.</p>
-                        <div class="flex justify-between items-center border-t border-gray-100 pt-4">
-                            <a href="hotels/hut-zdravets.html" class="text-brandBlue font-bold hover:text-brandGold transition text-sm flex items-center gap-1">Виж Детайли &rarr;</a>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <section id="turkey-offers" class="py-16 bg-white border-t border-gray-100">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="mb-12 border-l-4 border-red-600 pl-4">
-                <h2 class="text-2xl font-bold text-gray-900">Уикенди в Турция</h2>
-                <p class="text-gray-500">Шопинг, море и ориенталско гостоприемство.</p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                
-                <div class="bg-surface rounded-lg shadow-sm hover:shadow-2xl transition-all duration-500 overflow-hidden group border border-gray-100">
-                    <div class="relative h-64 overflow-hidden">
-                        <img src="img/igneada-hotel-turkey-img/igneada-resort-hotel-1.jpg" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700" alt="Igneada Resort Turkey">
-                        <div class="absolute top-4 right-4 bg-brandBlue text-white text-xs font-bold px-3 py-1 rounded shadow-lg uppercase tracking-wider">Турска Ривиера 5⭐</div>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-gray-900 mb-2">İğneada Resort Hotel & SPA</h3>
-                        <p class="text-gray-500 text-sm mb-4">Инеада</p>
-                        <p class="text-gray-600 text-sm mb-6 line-clamp-2">5-звезден лукс на брега на морето. Огромен закрит басейн, хамам и невероятна кухня.</p>
-                        <div class="flex justify-between items-center border-t border-gray-200 pt-4">
-                            <a href="hotels/igneada-resort.html" class="text-brandBlue font-bold hover:text-brandGold transition text-sm flex items-center gap-1">Виж Детайли &rarr;</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="bg-surface rounded-lg shadow-sm hover:shadow-2xl transition-all duration-500 overflow-hidden group border border-gray-100">
-                    <div class="relative h-64 overflow-hidden">
-                        <img src="img/hotel-marbes-turkey.png" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700" alt="Marbes Hotel Lozengrad">
-                        <div class="absolute top-4 right-4 bg-[#25D366] text-white text-xs font-bold px-3 py-1 rounded shadow-lg uppercase tracking-wider">Шопинг База</div>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-gray-900 mb-2">Marbes Hotel</h3>
-                        <p class="text-gray-500 text-sm mb-4">Лозенград (Kirklareli)</p>
-                        <p class="text-gray-600 text-sm mb-6 line-clamp-2">Идеалната отправна точка за вашия шопинг уикенд. Модерен хотел в центъра на града.</p>
-                        <div class="flex justify-between items-center border-t border-gray-200 pt-4">
-                            <a href="hotels/marbes-hotel.html" class="text-brandBlue font-bold hover:text-brandGold transition text-sm flex items-center gap-1">Виж Детайли &rarr;</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="bg-surface rounded-lg shadow-sm hover:shadow-2xl transition-all duration-500 overflow-hidden group border border-gray-100">
-                    <div class="relative h-64 overflow-hidden">
-                        <img src="img/hotel-meltem-igneada.png" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700" alt="Meltem Hotel Igneada">
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-gray-900 mb-2">Meltem Hotel</h3>
-                        <p class="text-gray-500 text-sm mb-4">Инеада</p>
-                        <p class="text-gray-600 text-sm mb-6 line-clamp-2">Уютен крайбрежен хотел. Отличен избор за спокойна почивка, плаж и вкусна храна.</p>
-                        <div class="flex justify-between items-center border-t border-gray-200 pt-4">
-                            <a href="hotels/meltem-hotel.html" class="text-brandBlue font-bold hover:text-brandGold transition text-sm flex items-center gap-1">Виж Детайли &rarr;</a>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <section id="about" class="py-20 bg-surface border-t border-gray-100 overflow-hidden">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl font-bold text-gray-900 mb-2 font-serif">Спомени от Почивките</h2>
-                <div class="h-1 w-20 bg-brandGold mx-auto rounded mb-4"></div>
-                <p class="text-gray-500 max-w-2xl mx-auto">Не вярвайте само на думите ни. Вижте какво казват нашите клиенти.</p>
-            </div>
-
-            <div class="flex flex-col lg:flex-row items-center gap-12">
-                <div class="w-full lg:w-1/2 relative h-[500px] flex items-center justify-center">
-                    <div class="absolute w-96 h-96 bg-brandGold/20 rounded-full blur-3xl -z-10 animate-pulse"></div>
-                    <img src="img/igneada-hotel-turkey-img/igneada-resort-hotel-7.jpg" class="w-full h-full object-contain drop-shadow-2xl hover:scale-105 transition duration-500 transform" alt="Curious Squid Review">
+                <div class="w-full md:w-1/2 p-8 md:p-12 flex flex-col justify-center">
+                    <div class="text-4xl mb-4">🔮</div>
+                    <h3 class="text-3xl font-serif font-bold text-brandBlue mb-4">Духовна Странджа & СПА</h3>
+                    <p class="text-gray-600 mb-8 leading-relaxed">
+                        Опознайте най-мистичната планина. Ще посетим древни тракийски светилища (Перперикон, Белинташ) и места със силна енергия. Комбинираме дълбокото духовно преживяване с нощувки в първокласен СПА хотел.
+                    </p>
                     
-                    <div class="absolute bottom-10 left-4 right-4 bg-white/90 backdrop-blur-sm p-6 rounded-xl shadow-lg border-l-4 border-brandBlue">
-                        <p class="text-gray-800 italic mb-2 font-serif text-lg">
-                            "Уикендът ни в Инеада Резорт беше перфектен! Организацията беше безупречна, а СПА центърът е от друга планета."
-                        </p>
-                        <div class="flex items-center gap-2">
-                            <span class="font-bold text-brandBlue">Мария и семейство</span>
-                            <span class="text-xs text-gray-500 uppercase tracking-wide">| от Бургас</span>
+                    <div class="grid grid-cols-2 gap-4 mb-8 bg-warmBg p-6 rounded-2xl border border-gray-100">
+                        <div>
+                            <p class="text-xs text-gray-500 uppercase font-bold">Продължителност</p>
+                            <p class="font-bold text-brandBlue">6 - 7 Дни</p>
                         </div>
+                        <div>
+                            <p class="text-xs text-gray-500 uppercase font-bold">Дестинация</p>
+                            <p class="font-bold text-brandBlue">Странджа, България</p>
+                        </div>
+                        <div>
+                            <p class="text-xs text-gray-500 uppercase font-bold">Какво е включено</p>
+                            <p class="font-bold text-brandBlue">Транспорт, Полупансион, СПА</p>
+                        </div>
+                        <div>
+                            <p class="text-xs text-gray-500 uppercase font-bold">Цена от</p>
+                            <p class="font-bold text-brandGold text-xl">1130 лв</p>
+                        </div>
+                    </div>
+
+                    <a href="tours/strandzha-retreat.html" class="inline-block bg-brandGold text-brandBlue text-center font-bold px-8 py-4 rounded-xl hover:bg-yellow-400 transition shadow-md">
+                        Виж пълната програма &rarr;
+                    </a>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-3xl shadow-xl border border-gray-100 overflow-hidden mb-16 flex flex-col md:flex-row-reverse group hover:shadow-2xl transition duration-500">
+                <div class="w-full md:w-1/2 overflow-hidden">
+                    <img src="img/tsarevets-bulgaria-stella-tur-2.jpg" alt="Царевец" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
+                </div>
+                <div class="w-full md:w-1/2 p-8 md:p-12 flex flex-col justify-center">
+                    <div class="text-4xl mb-4">🏛️</div>
+                    <h3 class="text-3xl font-serif font-bold text-brandBlue mb-4">Ненаписаната история</h3>
+                    <p class="text-gray-600 mb-8 leading-relaxed">
+                        Преживяването "3-те Столици". Забравете скучните лекции и сухите факти от Уикипедия. Нашите историци-водачи връщат към живот историите за велики царе, епични битки и тайни съюзи точно там, където са се случили.
+                    </p>
+                    
+                    <div class="grid grid-cols-2 gap-4 mb-8 bg-warmBg p-6 rounded-2xl border border-gray-100">
+                        <div>
+                            <p class="text-xs text-gray-500 uppercase font-bold">Продължителност</p>
+                            <p class="font-bold text-brandBlue">2 - 4 Дни</p>
+                        </div>
+                        <div>
+                            <p class="text-xs text-gray-500 uppercase font-bold">Дестинация</p>
+                            <p class="font-bold text-brandBlue">В. Търново, Плиска, Преслав</p>
+                        </div>
+                        <div>
+                            <p class="text-xs text-gray-500 uppercase font-bold">Акцент</p>
+                            <p class="font-bold text-brandBlue">Историк-водач на живо</p>
+                        </div>
+                        <div>
+                            <p class="text-xs text-gray-500 uppercase font-bold">Цена от</p>
+                            <p class="font-bold text-brandGold text-xl">349 лв</p>
+                        </div>
+                    </div>
+
+                    <a href="tours/three-capitals.html" class="inline-block bg-brandBlue text-white text-center font-bold px-8 py-4 rounded-xl hover:bg-blue-900 transition shadow-md">
+                        Провери дати &rarr;
+                    </a>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-3xl shadow-xl border border-gray-100 overflow-hidden flex flex-col md:flex-row group hover:shadow-2xl transition duration-500">
+                <div class="w-full md:w-1/2 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?q=80&w=1000" alt="Вино и СПА" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
+                </div>
+                <div class="w-full md:w-1/2 p-8 md:p-12 flex flex-col justify-center">
+                    <div class="text-4xl mb-4">🍷</div>
+                    <h3 class="text-3xl font-serif font-bold text-brandBlue mb-4">Спокойният живот (Вино & СПА)</h3>
+                    <p class="text-gray-600 mb-8 leading-relaxed">
+                        Абсолютно откъсване от стреса. Подарете си премиум винени дегустации в скрити бутикови шата, съчетани с топли термални басейни и отпускащи СПА процедури сред природата.
+                    </p>
+                    
+                    <div class="grid grid-cols-2 gap-4 mb-8 bg-warmBg p-6 rounded-2xl border border-gray-100">
+                        <div>
+                            <p class="text-xs text-gray-500 uppercase font-bold">Продължителност</p>
+                            <p class="font-bold text-brandBlue">5 - 7 Дни</p>
+                        </div>
+                        <div>
+                            <p class="text-xs text-gray-500 uppercase font-bold">Дестинация</p>
+                            <p class="font-bold text-brandBlue">Тракийската низина</p>
+                        </div>
+                        <div>
+                            <p class="text-xs text-gray-500 uppercase font-bold">Вайб</p>
+                            <p class="font-bold text-brandBlue">Релакс за двойки и приятели</p>
+                        </div>
+                        <div>
+                            <p class="text-xs text-gray-500 uppercase font-bold">Цена от</p>
+                            <p class="font-bold text-brandGold text-xl">850 лв</p>
+                        </div>
+                    </div>
+
+                    <a href="tours/wine-and-spa.html" class="inline-block bg-brandBlue text-white text-center font-bold px-8 py-4 rounded-xl hover:bg-blue-900 transition shadow-md">
+                        Поискай оферта &rarr;
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="green-schools" class="py-24 bg-white border-t-2 border-green-100 relative">
+        <div class="absolute right-0 bottom-0 w-64 h-64 bg-green-50 rounded-tl-full -z-10"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center gap-16">
+                <div class="w-full md:w-1/2">
+                    <div class="relative">
+                        <div class="absolute -inset-4 bg-green-500 rounded-3xl transform -rotate-3 -z-10"></div>
+                        <img src="https://images.unsplash.com/photo-1516627145497-ae6968895b74?q=80&w=1000" alt="Деца сред природата" class="rounded-2xl shadow-xl w-full h-[450px] object-cover border-4 border-white">
                     </div>
                 </div>
-
-                <div class="w-full lg:w-1/2 flex flex-col justify-between gap-8">
-                    <div>
-                         <div class="inline-block bg-brandBlue/10 text-brandBlue font-bold px-3 py-1 rounded-full text-xs uppercase tracking-wider mb-4">Лично Отношение</div>
-                        <h3 class="text-3xl font-bold text-gray-900 mb-4 font-serif">Повече от просто резервация.</h3>
-                        <p class="text-gray-600 mb-6 leading-relaxed text-lg">
-                            Ние сме до вас във всяка стъпка. Лично сме посетили и проверили хотелите, които ви предлагаме, за да гарантираме вашето спокойствие и комфорт.
-                        </p>
+                <div class="w-full md:w-1/2">
+                    <div class="inline-flex items-center gap-2 text-white font-bold text-xs uppercase tracking-widest mb-6 bg-green-500 px-4 py-1.5 rounded-full shadow-sm">
+                        🌿 За училища и детски градини
                     </div>
-
-                    <div class="bg-brandBlue rounded-2xl p-8 text-white shadow-2xl relative overflow-hidden group hover:shadow-brandGold/50 transition duration-300">
-                        <div class="absolute -right-10 -top-10 w-32 h-32 bg-brandGold/20 rounded-full blur-2xl"></div>
-                        <div class="relative z-10">
-                            <h3 class="text-2xl font-bold mb-2">Имаш яка снимка от почивката?</h3>
-                            <p class="text-blue-200 mb-6">
-                                <strong>Тагни ни @StellaToursBurgas</strong> във Facebook. Най-добрите кадри показваме тук!
-                            </p>
-                            <a href="https://www.facebook.com/StellaToursBurgas" target="_blank" class="inline-flex items-center gap-2 bg-brandGold text-brandBlue px-8 py-3 rounded-lg font-bold hover:bg-white transition shadow-lg transform group-hover:-translate-y-1">
-                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-                                <span>Влез в групата</span>
-                            </a>
-                        </div>
-                    </div>
+                    <h2 class="text-4xl md:text-5xl font-serif font-bold text-gray-900 mb-6">Зелени училища и лагери</h2>
+                    <p class="text-gray-600 mb-8 leading-relaxed text-lg font-medium">
+                        Учител сте или директор? Организираме <strong>безопасни, забавни и образователни</strong> лагери сред природата за групи от 30 до 90 деца. 
+                    </p>
+                    <ul class="space-y-4 mb-8 text-gray-700 font-medium">
+                        <li class="flex gap-3"><span class="text-green-500 font-bold">✓</span> Пълна логистика и осигурен транспорт</li>
+                        <li class="flex gap-3"><span class="text-green-500 font-bold">✓</span> Проверени и сигурни хотели</li>
+                        <li class="flex gap-3"><span class="text-green-500 font-bold">✓</span> Готова занимателна програма за децата</li>
+                    </ul>
+                    <a href="tours/green-schools.html" class="inline-block bg-green-600 text-white font-bold px-8 py-4 rounded-xl hover:bg-green-700 hover:shadow-lg transition transform hover:-translate-y-1 text-sm uppercase tracking-wide">
+                        Организирай лагер &rarr;
+                    </a>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="contact" class="py-20 bg-brandBlue text-white relative overflow-hidden">
-        <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(#ffffff 1px, transparent 1px); background-size: 30px 30px;"></div>
+    <section id="contact" class="py-24 bg-brandBlue relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 0); background-size: 24px 24px;"></div>
 
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-5xl font-serif font-bold mb-6">Планирайте почивката си</h2>
-                <p class="text-xl text-blue-100 max-w-2xl mx-auto">Имате въпроси за хотелите? Готови сме да отговорим. Обадете се или ни пишете.</p>
+                <div class="inline-block bg-brandGold text-brandBlue font-bold px-6 py-2 rounded-full text-sm mb-4 shadow-lg">
+                    👋 Здравейте!
+                </div>
+                <h2 class="text-4xl md:text-5xl font-serif font-bold text-white mb-4">Нека създадем твоето преживяване.</h2>
+                <p class="text-xl text-blue-100 max-w-2xl mx-auto font-medium">Готови сме да отговорим на всичките ви въпроси. Пишете ни или се обадете още сега.</p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <a href="tel:+359894060406" class="bg-white/10 backdrop-blur border border-white/20 p-8 rounded-xl text-center hover:bg-white/20 transition group">
-                    <div class="h-16 w-16 bg-brandGold text-brandBlue rounded-full flex items-center justify-center text-3xl mx-auto mb-6 group-hover:scale-110 transition">📞</div>
-                    <h3 class="text-xl font-bold mb-2">Обадете ни се</h3>
-                    <p class="text-blue-100">+359 89 406 0406</p>
-                    <span class="block mt-4 text-sm font-bold text-brandGold uppercase tracking-wider">08:00 - 20:00</span>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+                <a href="tel:+359894060406" class="bg-white p-8 rounded-3xl text-center hover:shadow-2xl transition transform hover:-translate-y-2 group border-b-4 border-brandGold">
+                    <div class="text-4xl mb-4 bg-warmBg w-20 h-20 mx-auto rounded-full flex items-center justify-center group-hover:scale-110 transition">📞</div>
+                    <h3 class="text-xl font-bold text-brandBlue mb-1">Обади ни се</h3>
+                    <p class="text-gray-600 font-medium">+359 89 406 0406</p>
                 </a>
 
-                <a href="https://wa.me/359894060406" class="bg-white/10 backdrop-blur border border-white/20 p-8 rounded-xl text-center hover:bg-white/20 transition group">
-                    <div class="h-16 w-16 bg-green-500 text-white rounded-full flex items-center justify-center text-3xl mx-auto mb-6 group-hover:scale-110 transition">💬</div>
-                    <h3 class="text-xl font-bold mb-2">WhatsApp</h3>
-                    <p class="text-blue-100">Чат веднага</p>
-                    <span class="block mt-4 text-sm font-bold text-green-300 uppercase tracking-wider">Най-бърз отговор</span>
+                <a href="https://wa.me/359894060406" class="bg-white p-8 rounded-3xl text-center hover:shadow-2xl transition transform hover:-translate-y-2 group border-b-4 border-green-500">
+                    <div class="text-4xl mb-4 bg-green-50 w-20 h-20 mx-auto rounded-full flex items-center justify-center group-hover:scale-110 transition">💬</div>
+                    <h3 class="text-xl font-bold text-brandBlue mb-1">WhatsApp</h3>
+                    <p class="text-gray-600 font-medium">Чат веднага</p>
                 </a>
 
-                <a href="mailto:stellatour99@gmail.com" class="bg-white/10 backdrop-blur border border-white/20 p-8 rounded-xl text-center hover:bg-white/20 transition group">
-                    <div class="h-16 w-16 bg-brandGold text-brandBlue rounded-full flex items-center justify-center text-3xl mx-auto mb-6 group-hover:scale-110 transition">✉️</div>
-                    <h3 class="text-xl font-bold mb-2">Имейл</h3>
-                    <p class="text-blue-100">stellatour99@gmail.com</p>
-                    <span class="block mt-4 text-sm font-bold text-brandGold uppercase tracking-wider">Поискай оферта</span>
+                <a href="mailto:stellatour99@gmail.com" class="bg-white p-8 rounded-3xl text-center hover:shadow-2xl transition transform hover:-translate-y-2 group border-b-4 border-brandBlue">
+                    <div class="text-4xl mb-4 bg-blue-50 w-20 h-20 mx-auto rounded-full flex items-center justify-center group-hover:scale-110 transition">✉️</div>
+                    <h3 class="text-xl font-bold text-brandBlue mb-1">Имейл</h3>
+                    <p class="text-gray-600 font-medium">stellatour99@gmail.com</p>
                 </a>
             </div>
         </div>
     </section>
 
-    <footer class="bg-gray-900 text-white border-t border-gray-800 pt-16 pb-8">
+    <footer class="bg-white text-gray-800 border-t border-gray-200 pt-16 pb-8">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-16">
                 <div class="space-y-6">
                     <div class="flex items-center gap-2">
-                        <div class="w-10 h-10 bg-brandGold text-brandBlue flex items-center justify-center font-serif font-bold rounded shadow-lg text-xl">S</div>
-                        <span class="text-2xl font-bold tracking-tight uppercase">Stela<span class="text-brandGold">Tour</span></span>
+                        <div class="w-10 h-10 bg-brandBlue text-brandGold flex items-center justify-center font-serif font-bold rounded-xl text-xl">S</div>
+                        <span class="text-brandBlue text-2xl font-bold tracking-tight uppercase">Stella<span class="text-brandGold">Tour</span></span>
                     </div>
-                    <p class="text-gray-400 leading-relaxed max-w-sm">
-                        Премиум агенция за вашите СПА почивки и екскурзии. Без "туристически капани". Само истински спомени.
+                    <p class="text-gray-600 font-medium max-w-sm">
+                        С приятелско отношение и персонално внимание. Създаваме истински спомени, далеч от туристическите клишета.
                     </p>
-                    <div class="flex gap-4">
-                        <a href="https://facebook.com/StellaToursBurgas" target="_blank" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-brandBlue hover:text-white transition group">
-                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-                        </a>
-                    </div>
                 </div>
 
                 <div>
-                    <h3 class="text-white font-bold uppercase tracking-wider mb-6 text-sm">Разгледай</h3>
-                    <ul class="space-y-4">
-                        <li><a href="#destination-split" class="text-gray-400 hover:text-brandGold transition flex items-center gap-2">→ Почивки</a></li>
-                        <li><a href="#about" class="text-gray-400 hover:text-brandGold transition flex items-center gap-2">→ Отзиви</a></li>
-                        <li><a href="#contact" class="text-gray-400 hover:text-brandGold transition flex items-center gap-2">→ Контакт</a></li>
+                    <h3 class="text-brandBlue font-bold uppercase tracking-wider mb-6 text-sm">Разгледай</h3>
+                    <ul class="space-y-4 font-medium text-gray-600">
+                        <li><a href="#quick-escapes" class="hover:text-brandGold transition">Кратки почивки</a></li>
+                        <li><a href="#journeys" class="hover:text-brandGold transition">Пътешествия</a></li>
+                        <li><a href="#green-schools" class="hover:text-brandGold transition">Зелени училища</a></li>
                     </ul>
                 </div>
 
                 <div>
-                    <h3 class="text-white font-bold uppercase tracking-wider mb-6 text-sm">Директен контакт</h3>
-                    <ul class="space-y-4">
-                        <li>
-                            <a href="tel:+359894060406" class="flex items-start gap-4 group">
-                                <div class="bg-gray-800 p-2 rounded group-hover:bg-brandGold group-hover:text-brandBlue transition">📞</div>
-                                <div>
-                                    <p class="text-xs text-gray-500 uppercase font-bold">Обади ни се</p>
-                                    <p class="text-white font-bold group-hover:text-brandGold transition">+359 89 406 0406</p>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="mailto:stellatour99@gmail.com" class="flex items-start gap-4 group">
-                                <div class="bg-gray-800 p-2 rounded group-hover:bg-brandGold group-hover:text-brandBlue transition">✉️</div>
-                                <div>
-                                    <p class="text-xs text-gray-500 uppercase font-bold">Имейл</p>
-                                    <p class="text-white font-bold group-hover:text-brandGold transition">stellatour99@gmail.com</p>
-                                </div>
-                            </a>
-                        </li>
+                    <h3 class="text-brandBlue font-bold uppercase tracking-wider mb-6 text-sm">Директен контакт</h3>
+                    <ul class="space-y-4 font-medium text-gray-600">
+                        <li>📞 +359 89 406 0406</li>
+                        <li>✉️ stellatour99@gmail.com</li>
                     </ul>
                 </div>
             </div>
 
-            <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-500">
+            <div class="border-t border-gray-200 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-500 font-medium">
                 <p>&copy; 2026 Stella Tours Burgas. Всички права запазени.</p>
                 <div class="flex items-center gap-1">
                     <span>Дизайн за конверсии от</span>
-                    <a href="https://ginkogrudev.com" target="_blank" class="text-brandGold font-bold hover:text-white transition relative group">
+                    <a href="https://ginkogrudev.com" target="_blank" class="text-brandBlue hover:text-brandGold font-bold transition">
                         GG Solutions
-                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-brandGold transition-all group-hover:w-full"></span>
                     </a>
                 </div>
             </div>
         </div>
     </footer>
 
-    <div id="cookie-banner" class="hidden fixed bottom-0 left-0 w-full bg-white border-t border-gray-200 shadow-[0_-10px_40px_-15px_rgba(0,0,0,0.1)] z-[100] p-6 animate-fade-in-up">
-        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
-            <div class="text-sm text-gray-600 md:max-w-2xl">
-                <p class="lang-cookie-text">
-                    Използваме бисквитки, за да подобрим преживяването ви и да анализираме трафика. С натискането на "Приемам", вие се съгласявате с използването на бисквитки.
-                </p>
-            </div>
-            <div class="flex gap-3">
-                <button onclick="declineCookies()" class="px-4 py-2 text-sm font-bold text-gray-500 hover:text-gray-800 transition lang-cookie-decline">
-                    Отказ
-                </button>
-                <button onclick="acceptCookies()" class="px-6 py-2 text-sm font-bold text-white bg-brandBlue rounded hover:bg-blue-900 shadow-md transition lang-cookie-accept">
-                    Приемам
-                </button>
-            </div>
-        </div>
-    </div>
+    <script>
+        const heroImages = [
+            'https://images.unsplash.com/photo-1566321635338-79528659dc6b?q=80&w=2070&auto=format&fit=crop', 
+            'https://images.unsplash.com/photo-1511497584788-876760111969?q=80&w=2000', 
+            'https://images.unsplash.com/photo-1544161515-4ab6ce6db874?q=80&w=2000', 
+            'https://images.unsplash.com/photo-1590001014589-98e3b0e12d6a?q=80&w=2000'  
+        ];
 
+        const sliderContainer = document.getElementById('hero-slider');
+        
+        heroImages.forEach((src, index) => {
+            const div = document.createElement('div');
+            div.className = `absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat transition-opacity duration-1000 ease-in-out ${index === 0 ? 'opacity-100' : 'opacity-0'}`;
+            div.style.backgroundImage = `url('${src}')`;
+            sliderContainer.appendChild(div);
+        });
+
+        const slides = sliderContainer.children;
+        let currentSlide = 0;
+
+        setInterval(() => {
+            slides[currentSlide].classList.remove('opacity-100');
+            slides[currentSlide].classList.add('opacity-0');
+            
+            currentSlide = (currentSlide + 1) % slides.length;
+            
+            slides[currentSlide].classList.remove('opacity-0');
+            slides[currentSlide].classList.add('opacity-100');
+        }, 5000);
+    </script>
     <script src="js/main.js"></script>
 </body>
 </html>
