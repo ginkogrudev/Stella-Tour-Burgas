@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="bg" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Айтос — Зоопарк и Генгер | Еднодневна Екскурзия | Stella Tours</title>
+    <meta name="description" content="Еднодневна екскурзия до Айтос: зоологическа градина и етнографски комплекс Генгер. Идеално за деца, ученици и семейства.">
+
+    <link rel="icon" type="image/png" href="../img/favicon.png">
+    <meta property="og:title" content="Айтос — Зоопарк + Генгер | Stella Tours">
+    <meta property="og:description" content="Животни и стар бит — всичко за един ден. Идеалната екскурзия за деца.">
+    <meta property="og:type" content="website">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" />
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brandBlue: '#003580',
+                        brandGold: '#dcae1d',
+                        surface: '#f8fafc',
+                        warmBg: '#fdfbf7'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-warmBg text-gray-900 antialiased">
+
+    <!-- NAV -->
+    <nav class="fixed w-full z-50 bg-white/95 backdrop-blur-md border-b-4 border-brandGold shadow-sm transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <a href="../index_bg.html" class="flex-shrink-0 flex items-center gap-3 cursor-pointer">
+                    <div class="w-10 h-10 bg-brandBlue text-brandGold flex items-center justify-center font-serif font-bold rounded-xl shadow-md text-xl">S</div>
+                    <span class="text-brandBlue text-2xl font-bold tracking-tight uppercase">Stela<span class="text-brandGold">Tour</span></span>
+                </a>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="../index_bg.html#excursions" class="text-gray-700 hover:text-brandGold font-bold text-sm uppercase tracking-wider transition">← Всички екскурзии</a>
+                    <a href="tel:+359894060406" class="bg-brandGold text-brandBlue px-6 py-2.5 rounded-xl font-bold text-sm hover:bg-yellow-400 hover:shadow-lg transition transform hover:-translate-y-1">
+                        📞 Обади се
+                    </a>
+                </div>
+                <div class="md:hidden flex items-center gap-3">
+                    <a href="tel:+359894060406" class="bg-brandGold text-brandBlue px-4 py-2 rounded-lg font-bold text-sm">📞 Обади се</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <div class="relative h-[85vh] flex items-end overflow-hidden">
+        <div class="absolute inset-0">
+            <!-- Warm forest greens -->
+            <div class="w-full h-full bg-gradient-to-br from-green-900 via-emerald-800 to-lime-900 flex items-center justify-center">
+                <div class="text-center opacity-20">
+                    <p class="text-8xl mb-4">🦁</p>
+                    <p class="text-white text-sm tracking-widest uppercase">Снимка скоро</p>
+                </div>
+            </div>
+            <!-- When photo ready:
+            <img src="../img/aytos-hero.jpg" class="w-full h-full object-cover transform scale-105 animate-[pulse_20s_ease-in-out_infinite_alternate]" alt="Зоопарк Айтос">
+            -->
+            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/55 to-transparent"></div>
+        </div>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-4 w-full mb-16">
+            <div class="flex flex-col md:flex-row items-end justify-between gap-8">
+
+                <div class="max-w-3xl">
+                    <span class="bg-brandGold text-brandBlue font-bold px-4 py-1.5 rounded-full text-xs uppercase tracking-widest mb-4 inline-block shadow-lg">
+                        🦁 Еднодневна екскурзия · Айтос
+                    </span>
+                    <h1 class="text-5xl md:text-7xl font-serif font-bold text-white mb-4 drop-shadow-2xl leading-tight">
+                        Животните<br>
+                        <em class="text-brandGold">и старият бит.</em>
+                    </h1>
+                    <p class="text-gray-200 text-xl drop-shadow-lg font-light leading-relaxed">
+                        Зоопарк с реални животни и стар български двор от преди 100 години — всичко за един ден. Децата се прибират щастливи. Родителите също.
+                    </p>
+                </div>
+
+                <!-- Booking card -->
+                <div class="bg-white p-8 rounded-2xl shadow-2xl min-w-[320px] border-t-4 border-brandBlue transform md:translate-y-10">
+                    <p class="text-gray-500 text-sm font-bold uppercase tracking-wider mb-2">Цена на човек</p>
+                    <div class="mb-2">
+                        <span class="text-3xl font-serif font-bold text-brandBlue">При запитване</span>
+                    </div>
+                    <p class="text-gray-400 text-xs mb-6">Обадете се за актуална цена и дата</p>
+                    <div class="text-sm text-gray-700 mb-8 space-y-3 border-t border-gray-100 pt-6 font-medium">
+                        <p class="flex items-center gap-3"><span class="text-brandGold text-lg">✓</span> Зоологическа градина — Айтос</p>
+                        <p class="flex items-center gap-3"><span class="text-brandGold text-lg">✓</span> Етнографски комплекс Генгер</p>
+                        <p class="flex items-center gap-3"><span class="text-brandGold text-lg">✓</span> Транспорт и водач включени</p>
+                        <p class="flex items-center gap-3"><span class="text-brandGold text-lg">✓</span> Идеално за деца и ученици</p>
+                    </div>
+                    <a href="tel:+359894060406" class="block w-full bg-brandGold hover:bg-yellow-400 text-brandBlue text-center font-bold py-4 rounded-xl transition flex items-center justify-center gap-2 shadow-lg transform hover:-translate-y-1">
+                        📞 Поискай оферта
+                    </a>
+                    <a href="viber://chat?number=%2B359894060406" class="block w-full mt-3 bg-purple-700 hover:bg-purple-600 text-white text-center font-bold py-3 rounded-xl transition flex items-center justify-center gap-2">
+                        💬 Пишете на Viber
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- HOOK -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 mt-4">
+        <div class="mb-16 max-w-4xl">
+            <h2 class="text-4xl font-serif font-bold text-brandBlue mb-6">Децата питат за животните. После питат за старите неща. После питат за всичко.</h2>
+            <p class="text-gray-600 leading-relaxed text-xl font-light">
+                Айтос е малък град, но с две неща, които не се намират лесно на едно място. Зоопаркът е с реални животни — не снимки на лист. А Генгер е стар Bulgarian двор, запазен такъв, какъвто е бил преди 100 години — с инструменти, дрехи, кухня и всичко, което бабите ни са ползвали всеки ден. За децата е открития. За възрастните е спомен.
+            </p>
+        </div>
+
+        <!-- Two destination cards — simple and clear -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-24">
+
+            <div class="rounded-2xl overflow-hidden shadow-lg">
+                <div class="h-48 bg-gradient-to-br from-green-700 to-emerald-900 flex items-center justify-center">
+                    <p class="text-8xl">🦁</p>
+                </div>
+                <div class="bg-white p-8 border border-gray-100">
+                    <p class="text-green-700 font-bold text-xs uppercase tracking-widest mb-3">Спирка №1</p>
+                    <h3 class="font-serif font-bold text-brandBlue text-2xl mb-3">Зоопаркът</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">Реални животни на живо. Лъвове, вълци, мечки, елени и много повече. Децата ги гледат, снимат и задават въпроси, на които обичат да получат отговор. Водачът помага с историята на всяко животно.</p>
+                </div>
+            </div>
+
+            <div class="rounded-2xl overflow-hidden shadow-lg">
+                <div class="h-48 bg-gradient-to-br from-amber-700 to-orange-900 flex items-center justify-center">
+                    <p class="text-8xl">🏡</p>
+                </div>
+                <div class="bg-white p-8 border border-gray-100">
+                    <p class="text-amber-700 font-bold text-xs uppercase tracking-widest mb-3">Спирка №2</p>
+                    <h3 class="font-serif font-bold text-brandBlue text-2xl mb-3">Генгер</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">Стар български двор от преди 100 години. Оригинални инструменти, дрехи, мебели и кухня — всичко запазено и на показ. Децата виждат как са живели хората преди тях. За много от тях е първи път.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- PHOTO GALLERY -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-24">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-3 md:gap-4 rounded-3xl overflow-hidden shadow-2xl">
+
+            <div class="md:col-span-2 md:row-span-2 relative h-64 md:h-[550px] bg-gradient-to-br from-green-800 to-emerald-950 flex items-center justify-center rounded-xl md:rounded-none">
+                <div class="text-center p-8">
+                    <p class="text-6xl mb-3">🦁</p>
+                    <p class="text-green-200 text-sm font-medium">Зоопаркът в Айтос</p>
+                    <p class="text-green-300/60 text-xs mt-1 italic">Снимка ще бъде добавена</p>
+                </div>
+            </div>
+
+            <div class="hidden md:flex h-[270px] bg-gradient-to-br from-amber-50 to-orange-100 items-center justify-center">
+                <div class="text-center"><p class="text-4xl mb-2">🏡</p><p class="text-amber-700 text-xs font-medium">Генгер — стар двор</p></div>
+            </div>
+            <div class="hidden md:flex h-[270px] bg-gradient-to-br from-green-50 to-lime-100 items-center justify-center">
+                <div class="text-center"><p class="text-4xl mb-2">🐺</p><p class="text-green-700 text-xs font-medium">Животните на живо</p></div>
+            </div>
+            <div class="hidden md:flex h-[270px] bg-gradient-to-br from-stone-50 to-stone-100 items-center justify-center">
+                <div class="text-center"><p class="text-4xl mb-2">🪚</p><p class="text-stone-600 text-xs font-medium">Стари инструменти — Генгер</p></div>
+            </div>
+
+            <div class="hidden md:flex h-[270px] bg-brandBlue items-center justify-center cursor-pointer">
+                <span class="text-white font-bold text-sm flex items-center gap-2 border-2 border-brandGold px-6 py-3 rounded-xl backdrop-blur-md">
+                    📸 Снимките идват скоро
+                </span>
+            </div>
+
+        </div>
+        <button class="md:hidden mt-6 w-full border-2 border-brandBlue text-brandBlue font-bold py-4 rounded-xl flex items-center justify-center gap-2">
+            Снимките ще бъдат добавени скоро
+        </button>
+    </section>
+
+    <!-- INCLUDED + ITINERARY + SIDEBAR -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-24">
+        <div class="flex flex-col lg:flex-row gap-16 border-t-2 border-gray-200 pt-20">
+
+            <div class="w-full lg:w-2/3">
+
+                <h3 class="text-3xl font-serif font-bold mb-8 text-brandBlue">Какво е включено?</h3>
+                <div class="bg-white p-8 rounded-2xl border border-gray-100 shadow-lg mb-6">
+                    <ul class="text-gray-700 space-y-4 font-medium">
+                        <li class="flex items-start gap-3"><span class="text-brandGold text-xl mt-0.5">✓</span> Транспорт с климатизиран автобус от Бургас и обратно</li>
+                        <li class="flex items-start gap-3"><span class="text-brandGold text-xl mt-0.5">✓</span> Екскурзовод за двете места</li>
+                        <li class="flex items-start gap-3"><span class="text-brandGold text-xl mt-0.5">✓</span> Посещение на зоологическата градина в Айтос</li>
+                        <li class="flex items-start gap-3"><span class="text-brandGold text-xl mt-0.5">✓</span> Посещение на етнографски комплекс Генгер</li>
+                        <li class="flex items-start gap-3"><span class="text-brandGold text-xl mt-0.5">✓</span> Всички входни такси</li>
+                        <li class="flex items-start gap-3"><span class="text-brandGold text-xl mt-0.5">✓</span> Обяд в местен ресторант</li>
+                    </ul>
+                </div>
+
+                <div class="bg-warmBg p-8 rounded-2xl border border-gray-200 mb-8">
+                    <h4 class="font-bold text-gray-900 mb-4 uppercase tracking-wider text-sm">Не е включено:</h4>
+                    <ul class="text-sm text-gray-600 space-y-3 font-medium">
+                        <li>• Лични разходи и сувенири</li>
+                        <li>• Напитки извън включения обяд</li>
+                    </ul>
+                </div>
+
+                <!-- Guarantee -->
+                <div class="bg-green-50 border border-green-200 rounded-2xl p-6 flex gap-4 items-start mb-12">
+                    <span class="text-3xl flex-shrink-0">🛡️</span>
+                    <div>
+                        <p class="font-serif font-bold text-gray-900 text-lg mb-1">Гаранция за добър ден</p>
+                        <p class="text-gray-600 text-sm leading-relaxed">Ако не сте доволни — обаждате се и получавате парите обратно. Без въпроси. Едно обаждане.</p>
+                    </div>
+                </div>
+
+                <!-- Itinerary -->
+                <h3 class="text-3xl font-serif font-bold mb-4 text-brandBlue">Как изглежда денят</h3>
+                <p class="text-gray-500 mb-8 font-light">Животни сутринта, стар бит следобед. Прости и ясни.</p>
+
+                <div class="space-y-8 text-gray-700 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-1 before:bg-brandGold/30">
+
+                    <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
+                        <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-white bg-brandGold text-brandBlue shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
+                            <span class="font-bold text-xs">1</span>
+                        </div>
+                        <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-white p-6 rounded-2xl shadow-md border border-gray-100">
+                            <p class="text-xs text-brandGold font-bold uppercase tracking-wider mb-1">09:00</p>
+                            <h4 class="font-bold text-xl text-brandBlue mb-2">Тръгване от Бургас</h4>
+                            <p class="text-sm text-gray-600 leading-relaxed">Айтос е само на 30 минути. Автобусът тръгва от централна точка в Бургас. Децата вече знаят, че отиват на зоопарк.</p>
+                        </div>
+                    </div>
+
+                    <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
+                        <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-white bg-green-700 text-white shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
+                            <span class="text-base">🦁</span>
+                        </div>
+                        <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-white p-6 rounded-2xl shadow-md border border-gray-100">
+                            <p class="text-xs text-green-700 font-bold uppercase tracking-wider mb-1">09:30</p>
+                            <h4 class="font-bold text-xl text-brandBlue mb-2">Зоологическата градина</h4>
+                            <p class="text-sm text-gray-600 leading-relaxed">~2 часа. Разходка между клетките и оградите. Лъвове, вълци, мечки, елени, птици. Децата снимат, питат, сочат. Водачът отговаря на всичко.</p>
+                        </div>
+                    </div>
+
+                    <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
+                        <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-white bg-brandGold text-white shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10 text-lg">
+                            🍽
+                        </div>
+                        <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-white p-6 rounded-2xl shadow-md border border-gray-100">
+                            <p class="text-xs text-brandGold font-bold uppercase tracking-wider mb-1">11:30</p>
+                            <h4 class="font-bold text-xl text-brandBlue mb-2">Обяд — включен в цената</h4>
+                            <p class="text-sm text-gray-600 leading-relaxed">Обяд в местен ресторант. Топла, домашна храна. Почивка преди следобеда.</p>
+                        </div>
+                    </div>
+
+                    <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
+                        <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-white bg-amber-700 text-white shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
+                            <span class="text-base">🏡</span>
+                        </div>
+                        <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-white p-6 rounded-2xl shadow-md border border-gray-100">
+                            <p class="text-xs text-amber-700 font-bold uppercase tracking-wider mb-1">13:00</p>
+                            <h4 class="font-bold text-xl text-brandBlue mb-2">Етнографски комплекс Генгер</h4>
+                            <p class="text-sm text-gray-600 leading-relaxed">~90 мин. Стар Bulgarian двор с оригинални вещи от преди 100 години. Децата виждат как са спали, готвили и работили хората преди тях. Много питания. Много снимки.</p>
+                        </div>
+                    </div>
+
+                    <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
+                        <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-white bg-brandBlue text-white shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
+                            <span class="font-bold text-xs">🏠</span>
+                        </div>
+                        <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-white p-6 rounded-2xl shadow-md border border-gray-100">
+                            <p class="text-xs text-brandGold font-bold uppercase tracking-wider mb-1">~15:30</p>
+                            <h4 class="font-bold text-xl text-brandBlue mb-2">Завръщане в Бургас</h4>
+                            <p class="text-sm text-gray-600 leading-relaxed">Пристигане ~16:00. Децата са уморени по добрия начин. Много снимки. Много истории за вкъщи.</p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="mt-6 bg-warmBg border border-gray-200 rounded-xl p-4">
+                    <p class="text-gray-500 text-xs italic">* Часовете са приблизителни. Програмата се уточнява при резервацията. За ученически групи — програмата се нагласява по клас и възраст.</p>
+                </div>
+
+            </div>
+
+            <!-- Sticky sidebar -->
+            <div class="w-full lg:w-1/3">
+                <div class="sticky top-28">
+                    <h3 class="font-serif font-bold mb-6 text-2xl text-brandBlue">Детайли</h3>
+
+                    <div class="space-y-4 text-sm mb-8 bg-white p-8 rounded-3xl shadow-xl border border-gray-100">
+                        <div class="flex justify-between border-b border-gray-100 pb-4">
+                            <span class="text-gray-500 font-medium">Продължителност:</span>
+                            <span class="font-bold text-brandBlue text-base">1 Ден</span>
+                        </div>
+                        <div class="flex justify-between border-b border-gray-100 pb-4 pt-2">
+                            <span class="text-gray-500 font-medium">Подходящо за:</span>
+                            <span class="font-bold text-brandBlue text-base">Деца и ученици</span>
+                        </div>
+                        <div class="flex justify-between border-b border-gray-100 pb-4 pt-2">
+                            <span class="text-gray-500 font-medium">Тръгване:</span>
+                            <span class="font-bold text-brandBlue text-base">09:00 от Бургас</span>
+                        </div>
+                        <div class="flex justify-between border-b border-gray-100 pb-4 pt-2">
+                            <span class="text-gray-500 font-medium">Завръщане:</span>
+                            <span class="font-bold text-brandBlue text-base">~16:00 в Бургас</span>
+                        </div>
+                        <div class="flex justify-between border-b border-gray-100 pb-4 pt-2">
+                            <span class="text-gray-500 font-medium">Разстояние:</span>
+                            <span class="font-bold text-brandBlue text-base">30 км от Бургас</span>
+                        </div>
+                        <div class="flex justify-between pt-2">
+                            <span class="text-gray-500 font-medium">Обяд:</span>
+                            <span class="font-bold text-brandBlue text-base">✓ Включен</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-warmBg border border-gray-200 rounded-3xl p-6 mb-6">
+                        <h4 class="font-bold text-gray-900 mb-4 text-sm uppercase tracking-wider">Добра идея за:</h4>
+                        <ul class="space-y-3 text-sm text-gray-600 font-medium">
+                            <li class="flex items-center gap-2"><span class="text-brandGold">🎒</span> Ученически групи</li>
+                            <li class="flex items-center gap-2"><span class="text-brandGold">👨‍👩‍👧‍👦</span> Семейства с деца</li>
+                            <li class="flex items-center gap-2"><span class="text-brandGold">🏫</span> Детски градини</li>
+                            <li class="flex items-center gap-2"><span class="text-brandGold">🏢</span> Фирмени излети</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-brandBlue p-8 rounded-3xl text-white shadow-xl">
+                        <h4 class="font-serif font-bold text-xl mb-4 text-brandGold">Резервирайте</h4>
+                        <p class="text-sm text-blue-100 mb-6 font-light leading-relaxed">Обадете се или пишете на Viber. Казвате ни кога и колко сте — ние правим останалото.</p>
+                        <a href="tel:+359894060406" class="block text-center bg-brandGold text-brandBlue font-bold py-3 rounded-xl hover:bg-yellow-400 transition mb-3">
+                            📞 +359 894 060 406
+                        </a>
+                        <a href="viber://chat?number=%2B359894060406" class="block text-center bg-purple-600 hover:bg-purple-500 text-white font-bold py-3 rounded-xl transition mb-3">
+                            💬 Viber
+                        </a>
+                        <a href="mailto:stellatoursbg@gmail.com" class="block text-center border border-white/30 hover:border-brandGold text-white/80 hover:text-white text-sm py-3 rounded-xl transition">
+                            ✉️ stellatoursbg@gmail.com
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- BLUE FEATURE SECTION -->
+    <section class="py-24 bg-brandBlue border-t-4 border-brandGold">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col lg:flex-row items-center gap-16">
+
+                <div class="w-full lg:w-1/2">
+                    <span class="text-brandGold font-bold uppercase tracking-widest text-xs mb-4 block">За деца и семейства</span>
+                    <h3 class="text-4xl font-serif font-bold mb-6 text-white leading-tight">Животни сутринта. История следобед. Щастие вкъщи.</h3>
+                    <p class="text-blue-100 text-lg leading-relaxed mb-8 font-light">
+                        Зоопаркът в Айтос не е огромен — но е реален. Животните са близо, видят се добре и децата реагират. После Генгер им показва как са живели хората преди тях. Два урока в един ден — и нито един не прилича на клас.
+                    </p>
+                    <ul class="space-y-5 text-white font-medium">
+                        <li class="flex items-center gap-4 bg-white/10 p-4 rounded-xl backdrop-blur-sm border border-white/10">
+                            <span class="text-brandGold text-2xl">🦁</span>
+                            <span>Децата виждат реални животни на живо — не снимки, не видеа.</span>
+                        </li>
+                        <li class="flex items-center gap-4 bg-white/10 p-4 rounded-xl backdrop-blur-sm border border-white/10">
+                            <span class="text-brandGold text-2xl">🏡</span>
+                            <span>Генгер показва как са живели хората преди 100 години. Без скучно обяснение.</span>
+                        </li>
+                        <li class="flex items-center gap-4 bg-white/10 p-4 rounded-xl backdrop-blur-sm border border-white/10">
+                            <span class="text-brandGold text-2xl">🚌</span>
+                            <span>30 минути от Бургас. Лесно, близо, без дълго пътуване.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="w-full lg:w-1/2">
+                    <div class="relative p-2">
+                        <div class="absolute inset-0 bg-brandGold rounded-3xl transform rotate-3"></div>
+                        <div class="relative rounded-2xl shadow-2xl w-full h-[450px] bg-gradient-to-br from-green-800 to-emerald-950 flex items-center justify-center">
+                            <div class="text-center opacity-40">
+                                <p class="text-6xl mb-3">🦁</p>
+                                <p class="text-white text-sm">Снимка — зоопарк Айтос</p>
+                            </div>
+                        </div>
+                        <!-- When ready:
+                        <img src="../img/aytos-zoo.jpg" alt="Зоопарк Айтос" class="relative rounded-2xl shadow-2xl w-full h-[450px] object-cover grayscale hover:grayscale-0 transition duration-700">
+                        -->
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIAL -->
+    <section class="py-24 bg-warmBg overflow-hidden">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="text-brandGold mb-6 flex justify-center gap-2 text-2xl">★★★★★</div>
+            <h2 class="text-3xl md:text-4xl font-serif font-bold text-brandBlue mb-8 leading-relaxed">
+                „Синът ми е на 6 и говори за лъва от зоопарка цяла седмица. После пита защо бабата му е имала такъв тиган в Генгер. Перфектен ден."
+            </h2>
+            <div class="flex flex-col items-center justify-center">
+                <div class="w-14 h-14 bg-brandBlue text-brandGold font-serif font-bold flex items-center justify-center rounded-full text-2xl mb-3 shadow-md">С</div>
+                <span class="font-bold text-gray-900 text-lg">Стела Вълчева</span>
+                <span class="text-sm text-gray-500">Пътувала с двете си деца</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT CTA -->
+    <section class="py-24 bg-white text-gray-900 border-t border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-serif font-bold mb-4 text-brandBlue">Обадете се. Ние правим останалото.</h2>
+                <p class="text-gray-600 text-lg max-w-2xl mx-auto font-light">Казвате ни кога и колко сте. Ние наредваме всичко. Вие се явявате.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+                <a href="tel:+359894060406" class="bg-surface border border-gray-200 p-8 rounded-3xl text-center hover:shadow-xl hover:border-brandGold transition group">
+                    <div class="text-4xl mb-4">📞</div>
+                    <h3 class="text-xl font-bold text-brandBlue mb-1">Обадете ни се</h3>
+                    <p class="text-gray-500 font-medium">+359 894 060 406</p>
+                </a>
+                <a href="viber://chat?number=%2B359894060406" class="bg-surface border border-gray-200 p-8 rounded-3xl text-center hover:shadow-xl hover:border-purple-400 transition group">
+                    <div class="text-4xl mb-4">💬</div>
+                    <h3 class="text-xl font-bold text-brandBlue mb-1">Viber</h3>
+                    <p class="text-gray-500 font-medium">Пишете ни сега</p>
+                </a>
+                <a href="mailto:stellatoursbg@gmail.com" class="bg-surface border border-gray-200 p-8 rounded-3xl text-center hover:shadow-xl hover:border-brandGold transition group">
+                    <div class="text-4xl mb-4">✉️</div>
+                    <h3 class="text-xl font-bold text-brandBlue mb-1">Имейл</h3>
+                    <p class="text-gray-500 font-medium">stellatoursbg@gmail.com</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- MORE EXCURSIONS -->
+    <section class="py-20 bg-surface border-t border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-serif font-bold text-brandBlue mb-2">Другите ни еднодневни екскурзии</h2>
+                <p class="text-gray-500 font-light">Още хубави дни в Бургаска област</p>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                <a href="deultum-debelt.html" class="bg-white border border-gray-200 p-6 rounded-2xl hover:shadow-lg hover:border-brandGold transition group flex gap-4 items-start">
+                    <span class="text-3xl flex-shrink-0">🏛️</span>
+                    <div>
+                        <p class="font-bold text-brandBlue group-hover:text-brandGold transition text-sm">Деултум — с. Дебелт</p>
+                        <p class="text-gray-500 text-xs mt-1">Единствената римска колония в България</p>
+                    </div>
+                </a>
+                <a href="malko-tarnovo.html" class="bg-white border border-gray-200 p-6 rounded-2xl hover:shadow-lg hover:border-brandGold transition group flex gap-4 items-start">
+                    <span class="text-3xl flex-shrink-0">🏔️</span>
+                    <div>
+                        <p class="font-bold text-brandBlue group-hover:text-brandGold transition text-sm">Малко Търново + Бръшлян + Докузак</p>
+                        <p class="text-gray-500 text-xs mt-1">4 музея, архитектурен резерват и водопад</p>
+                    </div>
+                </a>
+                <a href="begliktas.html" class="bg-white border border-gray-200 p-6 rounded-2xl hover:shadow-lg hover:border-brandGold transition group flex gap-4 items-start">
+                    <span class="text-3xl flex-shrink-0">🪨</span>
+                    <div>
+                        <p class="font-bold text-brandBlue group-hover:text-brandGold transition text-sm">Бегликташ + Ропотамо + Созопол</p>
+                        <p class="text-gray-500 text-xs mt-1">Три места, три усещания — един ден</p>
+                    </div>
+                </a>
+                <a href="pomorie.html" class="bg-white border border-gray-200 p-6 rounded-2xl hover:shadow-lg hover:border-brandGold transition group flex gap-4 items-start">
+                    <span class="text-3xl flex-shrink-0">⚱️</span>
+                    <div>
+                        <p class="font-bold text-brandBlue group-hover:text-brandGold transition text-sm">Поморие — Гробница + Музей на солта</p>
+                        <p class="text-gray-500 text-xs mt-1">Под земята и над морето</p>
+                    </div>
+                </a>
+                <a href="lozengrad.html" class="bg-white border border-gray-200 p-6 rounded-2xl hover:shadow-lg hover:border-brandGold transition group flex gap-4 items-start">
+                    <span class="text-3xl flex-shrink-0">🛒</span>
+                    <div>
+                        <p class="font-bold text-brandBlue group-hover:text-brandGold transition text-sm">Лозенград — Пазарен ден</p>
+                        <p class="text-gray-500 text-xs mt-1">Един ден в Турция</p>
+                    </div>
+                </a>
+                <a href="../index_bg.html" class="bg-brandBlue p-6 rounded-2xl hover:bg-brandBlue/90 transition group flex gap-4 items-start">
+                    <span class="text-3xl flex-shrink-0">🏠</span>
+                    <div>
+                        <p class="font-bold text-brandGold text-sm">Всички оферти на Stella Tours</p>
+                        <p class="text-white/60 text-xs mt-1">Към началната страница →</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-gray-900 text-white border-t border-gray-800 pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6 mb-12">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 bg-brandGold text-brandBlue flex items-center justify-center font-serif font-bold rounded-xl text-xl">S</div>
+                    <span class="text-white text-2xl font-bold tracking-tight uppercase">Stela<span class="text-brandGold">Tour</span></span>
+                </div>
+                <div class="flex gap-6 text-sm font-medium text-gray-400">
+                    <a href="../index_bg.html#quick-escapes" class="hover:text-brandGold transition">Кратки почивки</a>
+                    <a href="../index_bg.html#journeys" class="hover:text-brandGold transition">Пътешествия</a>
+                    <a href="../index_bg.html#excursions" class="hover:text-brandGold transition">Екскурзии</a>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-500 font-light">
+                <p>&copy; 2026 Stella Tours Burgas. Всички права запазени.</p>
+                <div class="flex items-center gap-1">
+                    <span>Дизайн за конверсии от</span>
+                    <a href="https://ginkogrudev.com" target="_blank" class="text-brandGold font-bold hover:text-white transition">GG Solutions</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/gh/mcstudios/glightbox/dist/js/glightbox.min.js"></script>
+    <script>
+        const lightbox = GLightbox({ selector: '.glightbox', touchNavigation: true, loop: true, zoomable: true });
+    </script>
+</body>
+</html>

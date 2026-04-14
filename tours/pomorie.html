@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="bg" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Поморие — Тракийска Куполна Гробница и Музей на Солта | Stella Tours</title>
+    <meta name="description" content="Еднодневна екскурзия до Поморие: антична тракийска куполна гробница и единственият музей на солта в България. История под земята и история над нея.">
+
+    <link rel="icon" type="image/png" href="../img/favicon.png">
+    <meta property="og:title" content="Поморие — Под Земята и Над Морето | Stella Tours">
+    <meta property="og:description" content="Влезте в 2000-годишна гробница. Излезте с история, каквато никой учебник не разказва.">
+    <meta property="og:type" content="website">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" />
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brandBlue: '#003580',
+                        brandGold: '#dcae1d',
+                        surface: '#f8fafc',
+                        warmBg: '#fdfbf7'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-warmBg text-gray-900 antialiased">
+
+    <!-- NAV -->
+    <nav class="fixed w-full z-50 bg-white/95 backdrop-blur-md border-b-4 border-brandGold shadow-sm transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <a href="../index_bg.html" class="flex-shrink-0 flex items-center gap-3 cursor-pointer">
+                    <div class="w-10 h-10 bg-brandBlue text-brandGold flex items-center justify-center font-serif font-bold rounded-xl shadow-md text-xl">S</div>
+                    <span class="text-brandBlue text-2xl font-bold tracking-tight uppercase">Stela<span class="text-brandGold">Tour</span></span>
+                </a>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="../index_bg.html#excursions" class="text-gray-700 hover:text-brandGold font-bold text-sm uppercase tracking-wider transition">← Всички екскурзии</a>
+                    <a href="tel:+359894060406" class="bg-brandGold text-brandBlue px-6 py-2.5 rounded-xl font-bold text-sm hover:bg-yellow-400 hover:shadow-lg transition transform hover:-translate-y-1">
+                        📞 Обади се
+                    </a>
+                </div>
+                <div class="md:hidden flex items-center gap-3">
+                    <a href="tel:+359894060406" class="bg-brandGold text-brandBlue px-4 py-2 rounded-lg font-bold text-sm">📞 Обади се</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <div class="relative h-[85vh] flex items-end overflow-hidden">
+        <div class="absolute inset-0">
+            <!-- Deep earth tones — underground, ancient stone, salt white -->
+            <div class="w-full h-full bg-gradient-to-br from-stone-950 via-amber-950 to-slate-900 flex items-center justify-center">
+                <div class="text-center opacity-20">
+                    <p class="text-8xl mb-4">⚱️</p>
+                    <p class="text-white text-sm tracking-widest uppercase">Снимка скоро</p>
+                </div>
+            </div>
+            <!-- When photo ready:
+            <img src="../img/pomorie-hero.jpg" class="w-full h-full object-cover transform scale-105 animate-[pulse_20s_ease-in-out_infinite_alternate]" alt="Поморие — гробница и солници">
+            -->
+            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/55 to-transparent"></div>
+        </div>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-4 w-full mb-16">
+            <div class="flex flex-col md:flex-row items-end justify-between gap-8">
+
+                <div class="max-w-3xl">
+                    <span class="bg-brandGold text-brandBlue font-bold px-4 py-1.5 rounded-full text-xs uppercase tracking-widest mb-4 inline-block shadow-lg">
+                        ⚱️ Еднодневна екскурзия · Поморие
+                    </span>
+                    <h1 class="text-5xl md:text-7xl font-serif font-bold text-white mb-4 drop-shadow-2xl leading-tight">
+                        Под земята.<br>
+                        <em class="text-brandGold">Над морето.</em>
+                    </h1>
+                    <p class="text-gray-200 text-xl drop-shadow-lg font-light leading-relaxed">
+                        Влезте в 2000-годишна тракийска гробница. Излезте на бялото като сняг солено езеро. Поморие е единственото място в България, където един ден минава през два напълно различни свята.
+                    </p>
+                </div>
+
+                <!-- Booking card -->
+                <div class="bg-white p-8 rounded-2xl shadow-2xl min-w-[320px] border-t-4 border-brandBlue transform md:translate-y-10">
+                    <p class="text-gray-500 text-sm font-bold uppercase tracking-wider mb-2">Цена на човек</p>
+                    <div class="mb-2">
+                        <span class="text-3xl font-serif font-bold text-brandBlue">При запитване</span>
+                    </div>
+                    <p class="text-gray-400 text-xs mb-6">Обадете се за актуална цена и дата</p>
+                    <div class="text-sm text-gray-700 mb-8 space-y-3 border-t border-gray-100 pt-6 font-medium">
+                        <p class="flex items-center gap-3"><span class="text-brandGold text-lg">✓</span> Антична тракийска куполна гробница</p>
+                        <p class="flex items-center gap-3"><span class="text-brandGold text-lg">✓</span> Музей на солта — уникален в България</p>
+                        <p class="flex items-center gap-3"><span class="text-brandGold text-lg">✓</span> Разходка из стар Поморие</p>
+                        <p class="flex items-center gap-3"><span class="text-brandGold text-lg">✓</span> Транспорт и водач включени</p>
+                    </div>
+                    <a href="tel:+359894060406" class="block w-full bg-brandGold hover:bg-yellow-400 text-brandBlue text-center font-bold py-4 rounded-xl transition flex items-center justify-center gap-2 shadow-lg transform hover:-translate-y-1">
+                        📞 Поискай оферта
+                    </a>
+                    <a href="viber://chat?number=%2B359894060406" class="block w-full mt-3 bg-purple-700 hover:bg-purple-600 text-white text-center font-bold py-3 rounded-xl transition flex items-center justify-center gap-2">
+                        💬 Пишете на Viber
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- HOOK -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 mt-4">
+        <div class="mb-16 max-w-4xl">
+            <h2 class="text-4xl font-serif font-bold text-brandBlue mb-6">Повечето хора минават покрай Поморие по пътя за Слънчев бряг. Грешка.</h2>
+            <p class="text-gray-600 leading-relaxed text-xl font-light">
+                На 40 минути от Бургас се крие един от най-добре запазените тракийски гробници в цяла България — куполна конструкция, издигната преди повече от 2000 години, чиято архитектура и до днес изумява инженерите. На 500 метра от нея — единственият музей на солта в страната, построен сред живи, работещи солници, в употреба от Античността. Две места. Два разказа. Един ден.
+            </p>
+        </div>
+
+        <!-- The contrast — two worlds side by side -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-24">
+            <div class="rounded-2xl overflow-hidden shadow-lg">
+                <div class="h-48 bg-gradient-to-br from-stone-700 to-stone-900 flex items-center justify-center">
+                    <p class="text-7xl">⚱️</p>
+                </div>
+                <div class="bg-white p-8 border border-gray-100">
+                    <p class="text-stone-500 font-bold text-xs uppercase tracking-widest mb-3">Свят №1 · Под земята</p>
+                    <h3 class="font-serif font-bold text-brandBlue text-2xl mb-3">Тракийската гробница</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">Сводест тунел, изсечен и зазидан с такава прецизност, че куполът стои 2000 години без нито един ремонт. Вътре — тишина, хлад и усещането, че сте единственото живо същество в помещение, направено за мъртвите велики.</p>
+                    <div class="mt-4 pt-4 border-t border-gray-100">
+                        <p class="text-xs text-gray-400 font-medium">Антична тракийска куполна гробница · I–III в. сл. Хр.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="rounded-2xl overflow-hidden shadow-lg">
+                <div class="h-48 bg-gradient-to-br from-sky-100 to-white flex items-center justify-center">
+                    <p class="text-7xl">🧂</p>
+                </div>
+                <div class="bg-white p-8 border border-gray-100">
+                    <p class="text-sky-600 font-bold text-xs uppercase tracking-widest mb-3">Свят №2 · Над морето</p>
+                    <h3 class="font-serif font-bold text-brandBlue text-2xl mb-3">Музеят на солта</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">Единственият по рода си музей в България — изграден сред живи солни езера, в непрекъсната употреба от гръцката колонизация насам. Розовата вода, кристалните пирамиди и историята на онова, което някога е струвало повече от злато.</p>
+                    <div class="mt-4 pt-4 border-t border-gray-100">
+                        <p class="text-xs text-gray-400 font-medium">Музей на солта · Единствен в България</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PHOTO GALLERY -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-24">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-3 md:gap-4 rounded-3xl overflow-hidden shadow-2xl">
+
+            <div class="md:col-span-2 md:row-span-2 relative h-64 md:h-[550px] bg-gradient-to-br from-stone-700 to-stone-950 flex items-center justify-center rounded-xl md:rounded-none">
+                <div class="text-center p-8">
+                    <p class="text-6xl mb-3">⚱️</p>
+                    <p class="text-stone-300 text-sm font-medium">Тракийската куполна гробница</p>
+                    <p class="text-stone-500 text-xs mt-1 italic">Снимка ще бъде добавена</p>
+                </div>
+            </div>
+
+            <div class="hidden md:flex h-[270px] bg-gradient-to-br from-sky-50 to-blue-100 items-center justify-center">
+                <div class="text-center"><p class="text-4xl mb-2">🧂</p><p class="text-sky-700 text-xs font-medium">Солните езера — Поморие</p></div>
+            </div>
+            <div class="hidden md:flex h-[270px] bg-gradient-to-br from-amber-50 to-orange-100 items-center justify-center">
+                <div class="text-center"><p class="text-4xl mb-2">🌊</p><p class="text-amber-700 text-xs font-medium">Стар Поморие — полуостровът</p></div>
+            </div>
+            <div class="hidden md:flex h-[270px] bg-gradient-to-br from-rose-50 to-pink-100 items-center justify-center">
+                <div class="text-center"><p class="text-4xl mb-2">🦩</p><p class="text-rose-600 text-xs font-medium">Розовите фламинги на езерото</p></div>
+            </div>
+
+            <div class="hidden md:flex h-[270px] bg-brandBlue items-center justify-center cursor-pointer">
+                <span class="text-white font-bold text-sm flex items-center gap-2 border-2 border-brandGold px-6 py-3 rounded-xl backdrop-blur-md">
+                    📸 Снимките идват скоро
+                </span>
+            </div>
+
+        </div>
+        <button class="md:hidden mt-6 w-full border-2 border-brandBlue text-brandBlue font-bold py-4 rounded-xl flex items-center justify-center gap-2">
+            Снимките ще бъдат добавени скоро
+        </button>
+    </section>
+
+    <!-- INCLUDED + ITINERARY + SIDEBAR -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-24">
+        <div class="flex flex-col lg:flex-row gap-16 border-t-2 border-gray-200 pt-20">
+
+            <div class="w-full lg:w-2/3">
+
+                <h3 class="text-3xl font-serif font-bold mb-8 text-brandBlue">Какво е включено?</h3>
+                <div class="bg-white p-8 rounded-2xl border border-gray-100 shadow-lg mb-6">
+                    <ul class="text-gray-700 space-y-4 font-medium">
+                        <li class="flex items-start gap-3"><span class="text-brandGold text-xl mt-0.5">✓</span> Транспорт с комфортен климатизиран автобус от Бургас и обратно</li>
+                        <li class="flex items-start gap-3"><span class="text-brandGold text-xl mt-0.5">✓</span> Лицензиран екскурзовод — специалист по тракийска история и Черноморието</li>
+                        <li class="flex items-start gap-3"><span class="text-brandGold text-xl mt-0.5">✓</span> Посещение на античната тракийска куполна гробница с водач</li>
+                        <li class="flex items-start gap-3"><span class="text-brandGold text-xl mt-0.5">✓</span> Посещение на Музея на солта с екскурзовод</li>
+                        <li class="flex items-start gap-3"><span class="text-brandGold text-xl mt-0.5">✓</span> Разходка из историческия полуостров на Поморие</li>
+                        <li class="flex items-start gap-3"><span class="text-brandGold text-xl mt-0.5">✓</span> Всички входни такси</li>
+                        <li class="flex items-start gap-3"><span class="text-brandGold text-xl mt-0.5">✓</span> Обяд с морска гледка в местен ресторант</li>
+                    </ul>
+                </div>
+
+                <div class="bg-warmBg p-8 rounded-2xl border border-gray-200 mb-8">
+                    <h4 class="font-bold text-gray-900 mb-4 uppercase tracking-wider text-sm">Не е включено:</h4>
+                    <ul class="text-sm text-gray-600 space-y-3 font-medium">
+                        <li>• Лични разходи и сувенири</li>
+                        <li>• Напитки извън включения обяд</li>
+                    </ul>
+                </div>
+
+                <!-- Guarantee -->
+                <div class="bg-green-50 border border-green-200 rounded-2xl p-6 flex gap-4 items-start mb-12">
+                    <span class="text-3xl flex-shrink-0">🛡️</span>
+                    <div>
+                        <p class="font-serif font-bold text-gray-900 text-lg mb-1">Гаранция за незабравим ден</p>
+                        <p class="text-gray-600 text-sm leading-relaxed">Ако не сте доволни от преживяването — обаждате се и получавате пълно възстановяване. Без форми. Без въпроси. Едно обаждане.</p>
+                    </div>
+                </div>
+
+                <!-- Deep dives -->
+                <h3 class="text-3xl font-serif font-bold mb-8 text-brandBlue">Два обекта. Две истории.</h3>
+                <div class="space-y-6 mb-12">
+
+                    <div class="bg-white border border-gray-100 rounded-2xl shadow-md overflow-hidden">
+                        <div class="bg-stone-800 px-6 py-4 flex items-center gap-3">
+                            <span class="text-2xl">⚱️</span>
+                            <div>
+                                <h4 class="font-serif font-bold text-white text-xl">Антична тракийска куполна гробница</h4>
+                                <p class="text-stone-300 text-xs">I–III в. сл. Хр. · Единствена от този тип в района</p>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <p class="text-gray-600 text-sm leading-relaxed mb-4">Тракийските владетели са строили своите гробници с архитектурна логика, която Европа е „преоткрила" едва векове по-късно. Куполната конструкция в Поморие е изградена от клиновидни блокове, наредени в концентрични редове — без хоросан, без метални скоби, само с гравитацията и точността като строителен материал. Резултатът стои 2000 години. Вашето жилище колко ще стои?</p>
+                            <div class="bg-stone-50 rounded-xl p-4 border border-stone-100">
+                                <p class="text-stone-600 text-xs font-medium">💡 <strong>Интересен факт:</strong> Гробницата е открита случайно при строителни работи в средата на XX в. Съдържа коридор (дромос), преддверие и централна куполна камера — триделна структура, типична за тракийската погребална архитектура.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white border border-gray-100 rounded-2xl shadow-md overflow-hidden">
+                        <div class="bg-sky-700 px-6 py-4 flex items-center gap-3">
+                            <span class="text-2xl">🧂</span>
+                            <div>
+                                <h4 class="font-serif font-bold text-white text-xl">Музей на солта</h4>
+                                <p class="text-sky-100 text-xs">Единствен в България · Действащи солници от Античността</p>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <p class="text-gray-600 text-sm leading-relaxed mb-4">Солта е първата световна валута. Рим е плащал войниците си с нея — оттам идва думата „заплата" (от латинското salarium). Поморийските солници са сред най-старите в Европа, в непрекъсната употреба от гръцките колонисти насам. Музеят е изграден сред живото производство — разхождате се между кристализиращите басейни, виждате процеса на живо и разбирате защо това бяло вещество е движело цивилизации.</p>
+                            <div class="bg-sky-50 rounded-xl p-4 border border-sky-100">
+                                <p class="text-sky-700 text-xs font-medium">💡 <strong>Изненада за децата:</strong> В определени сезони езерата стават розови заради микроорганизмите в солената вода — и фламинги гнездят на брега. Природата понякога е по-изненадваща от историята.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Itinerary -->
+                <h3 class="text-3xl font-serif font-bold mb-4 text-brandBlue">Програма на деня</h3>
+                <p class="text-gray-500 mb-8 font-light">От тракийската гробница до розовото езеро — Поморие в пълна дълбочина.</p>
+
+                <div class="space-y-8 text-gray-700 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-1 before:bg-brandGold/30">
+
+                    <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
+                        <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-white bg-brandGold text-brandBlue shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
+                            <span class="font-bold text-xs">1</span>
+                        </div>
+                        <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-white p-6 rounded-2xl shadow-md border border-gray-100">
+                            <p class="text-xs text-brandGold font-bold uppercase tracking-wider mb-1">09:00</p>
+                            <h4 class="font-bold text-xl text-brandBlue mb-2">Тръгване от Бургас</h4>
+                            <p class="text-sm text-gray-600 leading-relaxed">Поморие е само на 20 км от Бургас — кратко пътуване, водачът ви запознава с историята на тракийското Черноморие по пътя.</p>
+                        </div>
+                    </div>
+
+                    <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
+                        <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-white bg-stone-700 text-white shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
+                            <span class="text-base">⚱️</span>
+                        </div>
+                        <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-white p-6 rounded-2xl shadow-md border border-gray-100">
+                            <p class="text-xs text-stone-500 font-bold uppercase tracking-wider mb-1">09:30</p>
+                            <h4 class="font-bold text-xl text-brandBlue mb-2">Тракийската куполна гробница</h4>
+                            <p class="text-sm text-gray-600 leading-relaxed">~75 мин. Влизате в коридора, преминавате преддверието и стигате до куполната камера. Водачът обяснява архитектурата, тракийските погребални ритуали и кой вероятно е лежал тук. Усещането за хлад и тишина вътре е незабравимо.</p>
+                        </div>
+                    </div>
+
+                    <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
+                        <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-white bg-brandGold text-white shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10 text-lg">
+                            🍽
+                        </div>
+                        <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-white p-6 rounded-2xl shadow-md border border-gray-100">
+                            <p class="text-xs text-brandGold font-bold uppercase tracking-wider mb-1">11:00</p>
+                            <h4 class="font-bold text-xl text-brandBlue mb-2">Обяд с морска гледка</h4>
+                            <p class="text-sm text-gray-600 leading-relaxed">Включен обяд в ресторант на брега. Морски специалитети, местно вино, гледка към полуострова. Добър момент да осмислите гробницата — преди солта да смени темата.</p>
+                        </div>
+                    </div>
+
+                    <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
+                        <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-white bg-sky-600 text-white shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
+                            <span class="text-base">🧂</span>
+                        </div>
+                        <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-white p-6 rounded-2xl shadow-md border border-gray-100">
+                            <p class="text-xs text-sky-600 font-bold uppercase tracking-wider mb-1">12:30</p>
+                            <h4 class="font-bold text-xl text-brandBlue mb-2">Музей на солта</h4>
+                            <p class="text-sm text-gray-600 leading-relaxed">~75 мин. Разходка сред живото производство на сол — кристализиращи басейни, историята на „бялото злато", розовата вода в сезона. За децата: ако имате късмет — фламинги на живо на десетина метра.</p>
+                        </div>
+                    </div>
+
+                    <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
+                        <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-white bg-brandGold text-brandBlue shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
+                            <span class="font-bold text-xs">5</span>
+                        </div>
+                        <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-white p-6 rounded-2xl shadow-md border border-gray-100">
+                            <p class="text-xs text-brandGold font-bold uppercase tracking-wider mb-1">14:00</p>
+                            <h4 class="font-bold text-xl text-brandBlue mb-2">Разходка из стар Поморие</h4>
+                            <p class="text-sm text-gray-600 leading-relaxed">~60 мин. Полуостровът на Поморие е едно от малкото места по Черноморието, запазило старинен облик. Водачът разказва за гръцката колония Анхиало, средновековния град и спокойните улици, заобиколени от морето от три страни.</p>
+                        </div>
+                    </div>
+
+                    <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
+                        <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-white bg-brandBlue text-white shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
+                            <span class="font-bold text-xs">🏠</span>
+                        </div>
+                        <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-white p-6 rounded-2xl shadow-md border border-gray-100">
+                            <p class="text-xs text-brandGold font-bold uppercase tracking-wider mb-1">~16:00</p>
+                            <h4 class="font-bold text-xl text-brandBlue mb-2">Завръщане в Бургас</h4>
+                            <p class="text-sm text-gray-600 leading-relaxed">Пристигане ~16:30. Гробницата, солта, морето и историята на полуострова — всичко за един следобед.</p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="mt-6 bg-warmBg border border-gray-200 rounded-xl p-4">
+                    <p class="text-gray-500 text-xs italic">* Часовете са приблизителни. Конкретната програма се уточнява при резервацията. За ученически групи — адаптирана образователна програма по история и природознание.</p>
+                </div>
+
+            </div>
+
+            <!-- Sticky sidebar -->
+            <div class="w-full lg:w-1/3">
+                <div class="sticky top-28">
+                    <h3 class="font-serif font-bold mb-6 text-2xl text-brandBlue">Детайли за екскурзията</h3>
+
+                    <div class="space-y-4 text-sm mb-8 bg-white p-8 rounded-3xl shadow-xl border border-gray-100">
+                        <div class="flex justify-between border-b border-gray-100 pb-4">
+                            <span class="text-gray-500 font-medium">Продължителност:</span>
+                            <span class="font-bold text-brandBlue text-base">1 Ден</span>
+                        </div>
+                        <div class="flex justify-between border-b border-gray-100 pb-4 pt-2">
+                            <span class="text-gray-500 font-medium">Подходящо за:</span>
+                            <span class="font-bold text-brandBlue text-base">Ученици и възрастни</span>
+                        </div>
+                        <div class="flex justify-between border-b border-gray-100 pb-4 pt-2">
+                            <span class="text-gray-500 font-medium">Тръгване:</span>
+                            <span class="font-bold text-brandBlue text-base">09:00 от Бургас</span>
+                        </div>
+                        <div class="flex justify-between border-b border-gray-100 pb-4 pt-2">
+                            <span class="text-gray-500 font-medium">Завръщане:</span>
+                            <span class="font-bold text-brandBlue text-base">~16:30 в Бургас</span>
+                        </div>
+                        <div class="flex justify-between border-b border-gray-100 pb-4 pt-2">
+                            <span class="text-gray-500 font-medium">Разстояние:</span>
+                            <span class="font-bold text-brandBlue text-base">20 км от Бургас</span>
+                        </div>
+                        <div class="flex justify-between pt-2">
+                            <span class="text-gray-500 font-medium">Обяд:</span>
+                            <span class="font-bold text-brandBlue text-base">✓ Включен</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-warmBg border border-gray-200 rounded-3xl p-6 mb-6">
+                        <h4 class="font-bold text-gray-900 mb-4 text-sm uppercase tracking-wider">Перфектно за:</h4>
+                        <ul class="space-y-3 text-sm text-gray-600 font-medium">
+                            <li class="flex items-center gap-2"><span class="text-brandGold">🎒</span> Ученически групи по история</li>
+                            <li class="flex items-center gap-2"><span class="text-brandGold">👨‍👩‍👧‍👦</span> Семейства с деца (фламинги!)</li>
+                            <li class="flex items-center gap-2"><span class="text-brandGold">🏛️</span> Любители на тракийската история</li>
+                            <li class="flex items-center gap-2"><span class="text-brandGold">📸</span> Фотографи — розовото езеро</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-brandBlue p-8 rounded-3xl text-white shadow-xl">
+                        <h4 class="font-serif font-bold text-xl mb-4 text-brandGold">Резервирайте сега</h4>
+                        <p class="text-sm text-blue-100 mb-6 font-light leading-relaxed">Обадете се или пишете на Viber — ще уточним датата, групата и цената за минути.</p>
+                        <a href="tel:+359894060406" class="block text-center bg-brandGold text-brandBlue font-bold py-3 rounded-xl hover:bg-yellow-400 transition mb-3">
+                            📞 +359 894 060 406
+                        </a>
+                        <a href="viber://chat?number=%2B359894060406" class="block text-center bg-purple-600 hover:bg-purple-500 text-white font-bold py-3 rounded-xl transition mb-3">
+                            💬 Viber
+                        </a>
+                        <a href="mailto:stellatoursbg@gmail.com" class="block text-center border border-white/30 hover:border-brandGold text-white/80 hover:text-white text-sm py-3 rounded-xl transition">
+                            ✉️ stellatoursbg@gmail.com
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- BLUE FEATURE SECTION -->
+    <section class="py-24 bg-brandBlue border-t-4 border-brandGold">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col lg:flex-row items-center gap-16">
+
+                <div class="w-full lg:w-1/2">
+                    <span class="text-brandGold font-bold uppercase tracking-widest text-xs mb-4 block">На 20 минути от Бургас</span>
+                    <h3 class="text-4xl font-serif font-bold mb-6 text-white leading-tight">Повечето хора минават покрай. Вие ще спрете.</h3>
+                    <p class="text-blue-100 text-lg leading-relaxed mb-8 font-light">
+                        Поморие е едно от онези места, за което хората казват „толкова пъти съм минавал покрай и никога не съм влизал." Тракийската гробница и Музеят на солта са два от най-добре пазените секрети на Бургаска област. До тях добавяме разходка из стар Поморие — и денят е пълен.
+                    </p>
+                    <ul class="space-y-5 text-white font-medium">
+                        <li class="flex items-center gap-4 bg-white/10 p-4 rounded-xl backdrop-blur-sm border border-white/10">
+                            <span class="text-brandGold text-2xl">⚱️</span>
+                            <span>Куполната гробница е сред най-добре запазените тракийски гробници в страната.</span>
+                        </li>
+                        <li class="flex items-center gap-4 bg-white/10 p-4 rounded-xl backdrop-blur-sm border border-white/10">
+                            <span class="text-brandGold text-2xl">🧂</span>
+                            <span>Музеят на солта е единственият по рода си в България — и е жив, не архивен.</span>
+                        </li>
+                        <li class="flex items-center gap-4 bg-white/10 p-4 rounded-xl backdrop-blur-sm border border-white/10">
+                            <span class="text-brandGold text-2xl">🦩</span>
+                            <span>В сезона — розово езеро и фламинги. Нещо, което децата помнят години.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="w-full lg:w-1/2">
+                    <div class="relative p-2">
+                        <div class="absolute inset-0 bg-brandGold rounded-3xl transform rotate-3"></div>
+                        <div class="relative rounded-2xl shadow-2xl w-full h-[450px] bg-gradient-to-br from-stone-800 to-stone-950 flex items-center justify-center">
+                            <div class="text-center opacity-40">
+                                <p class="text-6xl mb-3">⚱️</p>
+                                <p class="text-white text-sm">Снимка — тракийската гробница</p>
+                            </div>
+                        </div>
+                        <!-- When ready:
+                        <img src="../img/pomorie-tomb.jpg" alt="Тракийска куполна гробница — Поморие" class="relative rounded-2xl shadow-2xl w-full h-[450px] object-cover grayscale hover:grayscale-0 transition duration-700">
+                        -->
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIAL -->
+    <section class="py-24 bg-warmBg overflow-hidden">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="text-brandGold mb-6 flex justify-center gap-2 text-2xl">★★★★★</div>
+            <h2 class="text-3xl md:text-4xl font-serif font-bold text-brandBlue mb-8 leading-relaxed">
+                „Колко пъти съм минавал покрай Поморие и никога не съм спирал. Гробницата те замразява — не от студ, а от мисълта кой е лежал там. А розовото езеро... никой не ми беше казал за него."
+            </h2>
+            <div class="flex flex-col items-center justify-center">
+                <div class="w-14 h-14 bg-brandBlue text-brandGold font-serif font-bold flex items-center justify-center rounded-full text-2xl mb-3 shadow-md">Г</div>
+                <span class="font-bold text-gray-900 text-lg">Георги Атанасов</span>
+                <span class="text-sm text-gray-500">Пътувал с колеги от работата</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT CTA -->
+    <section class="py-24 bg-white text-gray-900 border-t border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-serif font-bold mb-4 text-brandBlue">Спрете най-накрая в Поморие.</h2>
+                <p class="text-gray-600 text-lg max-w-2xl mx-auto font-light">Обадете се, за да уточним датата и групата. Едно обаждане — ние поемаме всичко останало.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+                <a href="tel:+359894060406" class="bg-surface border border-gray-200 p-8 rounded-3xl text-center hover:shadow-xl hover:border-brandGold transition group">
+                    <div class="text-4xl mb-4">📞</div>
+                    <h3 class="text-xl font-bold text-brandBlue mb-1">Обадете ни се</h3>
+                    <p class="text-gray-500 font-medium">+359 894 060 406</p>
+                </a>
+                <a href="viber://chat?number=%2B359894060406" class="bg-surface border border-gray-200 p-8 rounded-3xl text-center hover:shadow-xl hover:border-purple-400 transition group">
+                    <div class="text-4xl mb-4">💬</div>
+                    <h3 class="text-xl font-bold text-brandBlue mb-1">Viber</h3>
+                    <p class="text-gray-500 font-medium">Пишете ни сега</p>
+                </a>
+                <a href="mailto:stellatoursbg@gmail.com" class="bg-surface border border-gray-200 p-8 rounded-3xl text-center hover:shadow-xl hover:border-brandGold transition group">
+                    <div class="text-4xl mb-4">✉️</div>
+                    <h3 class="text-xl font-bold text-brandBlue mb-1">Имейл</h3>
+                    <p class="text-gray-500 font-medium">stellatoursbg@gmail.com</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- MORE EXCURSIONS -->
+    <section class="py-20 bg-surface border-t border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-serif font-bold text-brandBlue mb-2">Другите ни еднодневни екскурзии</h2>
+                <p class="text-gray-500 font-light">Още незабравими дни в Бургаска област и региона</p>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                <a href="deultum-debelt.html" class="bg-white border border-gray-200 p-6 rounded-2xl hover:shadow-lg hover:border-brandGold transition group flex gap-4 items-start">
+                    <span class="text-3xl flex-shrink-0">🏛️</span>
+                    <div>
+                        <p class="font-bold text-brandBlue group-hover:text-brandGold transition text-sm">Деултум — с. Дебелт</p>
+                        <p class="text-gray-500 text-xs mt-1">Единствената римска колония в България</p>
+                    </div>
+                </a>
+                <a href="malko-tarnovo.html" class="bg-white border border-gray-200 p-6 rounded-2xl hover:shadow-lg hover:border-brandGold transition group flex gap-4 items-start">
+                    <span class="text-3xl flex-shrink-0">🏔️</span>
+                    <div>
+                        <p class="font-bold text-brandBlue group-hover:text-brandGold transition text-sm">Малко Търново + Бръшлян + Докузак</p>
+                        <p class="text-gray-500 text-xs mt-1">4 музея, архитектурен резерват и водопад</p>
+                    </div>
+                </a>
+                <a href="begliktas.html" class="bg-white border border-gray-200 p-6 rounded-2xl hover:shadow-lg hover:border-brandGold transition group flex gap-4 items-start">
+                    <span class="text-3xl flex-shrink-0">🪨</span>
+                    <div>
+                        <p class="font-bold text-brandBlue group-hover:text-brandGold transition text-sm">Бегликташ + Ропотамо + Созопол</p>
+                        <p class="text-gray-500 text-xs mt-1">Три свята, три усещания — един ден</p>
+                    </div>
+                </a>
+                <a href="aytos.html" class="bg-white border border-gray-200 p-6 rounded-2xl hover:shadow-lg hover:border-brandGold transition group flex gap-4 items-start">
+                    <span class="text-3xl flex-shrink-0">🦁</span>
+                    <div>
+                        <p class="font-bold text-brandBlue group-hover:text-brandGold transition text-sm">Айтос — Зоопарк + Генгер</p>
+                        <p class="text-gray-500 text-xs mt-1">Зоологическа градина и етнографски комплекс</p>
+                    </div>
+                </a>
+                <a href="lozengrad.html" class="bg-white border border-gray-200 p-6 rounded-2xl hover:shadow-lg hover:border-brandGold transition group flex gap-4 items-start">
+                    <span class="text-3xl flex-shrink-0">🛒</span>
+                    <div>
+                        <p class="font-bold text-brandBlue group-hover:text-brandGold transition text-sm">Лозенград — Пазарен ден</p>
+                        <p class="text-gray-500 text-xs mt-1">Еднодневна екскурзия до Турция</p>
+                    </div>
+                </a>
+                <a href="../index_bg.html" class="bg-brandBlue p-6 rounded-2xl hover:bg-brandBlue/90 transition group flex gap-4 items-start">
+                    <span class="text-3xl flex-shrink-0">🏠</span>
+                    <div>
+                        <p class="font-bold text-brandGold text-sm">Всички оферти на Stella Tours</p>
+                        <p class="text-white/60 text-xs mt-1">Към началната страница →</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-gray-900 text-white border-t border-gray-800 pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6 mb-12">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 bg-brandGold text-brandBlue flex items-center justify-center font-serif font-bold rounded-xl text-xl">S</div>
+                    <span class="text-white text-2xl font-bold tracking-tight uppercase">Stela<span class="text-brandGold">Tour</span></span>
+                </div>
+                <div class="flex gap-6 text-sm font-medium text-gray-400">
+                    <a href="../index_bg.html#quick-escapes" class="hover:text-brandGold transition">Кратки почивки</a>
+                    <a href="../index_bg.html#journeys" class="hover:text-brandGold transition">Пътешествия</a>
+                    <a href="../index_bg.html#excursions" class="hover:text-brandGold transition">Екскурзии</a>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-500 font-light">
+                <p>&copy; 2026 Stella Tours Burgas. Всички права запазени.</p>
+                <div class="flex items-center gap-1">
+                    <span>Дизайн за конверсии от</span>
+                    <a href="https://ginkogrudev.com" target="_blank" class="text-brandGold font-bold hover:text-white transition">GG Solutions</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/gh/mcstudios/glightbox/dist/js/glightbox.min.js"></script>
+    <script>
+        const lightbox = GLightbox({ selector: '.glightbox', touchNavigation: true, loop: true, zoomable: true });
+    </script>
+</body>
+</html>
