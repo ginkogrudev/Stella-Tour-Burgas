@@ -1,19 +1,14 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="bg" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stela Tours | Premium Escapes & Deep Journeys</title>
+    <title>Stela Tour | Премиум почивки и дълбоки пътешествия</title>
 
     <link rel="icon" type="image/png" href="img/favicon.png">
 
-    <meta property="og:title" content="Stela Tours | Your escape from the busy life">
-    <meta property="og:description" content="Quick coastal recharges, deep historical journeys, and spiritual retreats in Bulgaria.">
-    <meta property="og:image" content="img/squidonwindmillnesebar.png">
-    <meta property="og:type" content="website">
-
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="css/style.css">
     
@@ -25,6 +20,7 @@
                         brandBlue: '#003580', 
                         brandGold: '#dcae1d',
                         surface: '#f8fafc',
+                        warmBg: '#fdfbf7', /* Топъл, кремав фон за мекота */
                     },
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
@@ -35,256 +31,384 @@
         }
     </script>
 </head>
-<body class="bg-surface text-gray-900 antialiased relative">
+<body class="bg-warmBg text-gray-800 antialiased relative">
 
-    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-sm">
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 bg-white/95 backdrop-blur-md border-b-4 border-brandGold shadow-sm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
-                <div class="flex-shrink-0 flex items-center gap-2 cursor-pointer" onclick="window.scrollTo(0,0)">
-                    <div class="w-8 h-8 bg-brandBlue text-white flex items-center justify-center font-serif font-bold rounded shadow-sm">S</div>
-                    <span class="text-brandBlue text-xl font-bold tracking-tight uppercase">Stela<span class="text-brandGold">Tour</span></span>
+                <div class="flex-shrink-0 flex items-center gap-3 cursor-pointer" onclick="window.scrollTo(0,0)">
+                    <div class="w-10 h-10 bg-brandBlue text-brandGold flex items-center justify-center font-serif font-bold rounded-xl shadow-md text-xl">S</div>
+                    <span class="text-brandBlue text-2xl font-bold tracking-tight uppercase">Stela<span class="text-brandGold">Tour</span></span>
                 </div>
                 
                 <div class="hidden md:flex items-center space-x-8">
-                    <a href="#quick-escapes" class="text-gray-600 hover:text-brandBlue font-medium text-sm uppercase tracking-wide hover:scale-105 transition">Short Trips</a>
-                    <a href="#journeys" class="text-gray-600 hover:text-brandBlue font-medium text-sm uppercase tracking-wide hover:scale-105 transition">Deep Journeys</a>
-                    <a href="#green-schools" class="text-gray-600 hover:text-brandBlue font-medium text-sm uppercase tracking-wide hover:scale-105 transition">For Schools</a>
+                    <a href="#quick-escapes" class="text-gray-700 hover:text-brandGold font-bold text-sm uppercase tracking-wider transition">Уикенди</a>
+                    <a href="#journeys" class="text-gray-700 hover:text-brandGold font-bold text-sm uppercase tracking-wider transition">Пътешествия</a>
+                    <a href="#excursions" class="text-gray-700 hover:text-brandGold font-bold text-sm uppercase tracking-wider transition">Екскурзии</a>
+                    <a href="#green-schools" class="text-gray-700 hover:text-brandGold font-bold text-sm uppercase tracking-wider transition">За училища</a>
                     
-                    <a href="index_bg.html" class="text-gray-900 font-bold hover:text-brandBlue flex items-center gap-1 text-sm border-l pl-6 border-gray-300 transition">
-                        <span class="text-lg">🇧🇬</span> <span>BG</span>
+                    <a href="index.html" class="text-brandBlue font-bold hover:text-brandGold flex items-center gap-1 text-sm border-l-2 pl-6 border-gray-200 transition">
+                        <span class="text-lg">🇬🇧</span> <span>EN</span>
                     </a>
 
-                    <a href="tel:+359894060406" class="bg-brandBlue text-white px-6 py-2 rounded shadow-md font-bold text-sm hover:bg-blue-900 hover:shadow-lg transition transform hover:-translate-y-0.5">
-                        Call Now
+                    <a href="tel:+359894060406" class="bg-brandGold text-brandBlue px-6 py-2.5 rounded-xl font-bold text-sm hover:bg-yellow-400 hover:shadow-lg transition transform hover:-translate-y-1">
+                        📞 Обади се
                     </a>
-                </div>
-
-                <div class="md:hidden flex items-center gap-4">
-                     <a href="index_bg.html" class="text-gray-900 font-bold hover:text-brandBlue flex items-center gap-1 text-sm border border-gray-200 px-2 py-1 rounded">
-                        <span>BG</span>
-                    </a>
-                    <button onclick="toggleMobileMenu()" class="text-gray-600 hover:text-brandBlue focus:outline-none p-2">
-                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
-                    </button>
                 </div>
             </div>
-        </div>
-
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-gray-100 shadow-xl absolute w-full left-0 top-20 px-4 py-6 flex flex-col space-y-4">
-            <a href="#quick-escapes" onclick="toggleMobileMenu()" class="text-lg font-medium text-gray-800 hover:text-brandBlue">Short Trips</a>
-            <a href="#journeys" onclick="toggleMobileMenu()" class="text-lg font-medium text-gray-800 hover:text-brandBlue">Deep Journeys</a>
-            <a href="#green-schools" onclick="toggleMobileMenu()" class="text-lg font-medium text-gray-800 hover:text-brandBlue">For Schools</a>
-            <a href="tel:+359894060406" class="bg-brandBlue text-white text-center py-3 rounded-lg font-bold shadow-md">Call Now</a>
         </div>
     </nav>
 
-    <section class="relative flex flex-col justify-center items-center min-h-[85vh] pt-32 pb-16"
-             style="background-image: url('./img/tsarevets-bulgaria-hero.jpg'); background-size: cover; background-position: center; background-attachment: fixed;">
-        <div class="relative z-10 text-center px-4 max-w-4xl mx-auto animate-fade-in">
-            <span class="inline-block bg-black/40 border border-white/10 text-brandGold font-bold px-6 py-2 rounded-full text-sm uppercase tracking-widest mb-6 backdrop-blur-sm shadow-lg">
-                Travel with purpose
+    <section class="relative flex flex-col justify-center items-center min-h-[85vh] pt-32 pb-16 overflow-hidden bg-brandBlue">
+        
+        <div id="hero-slider" class="absolute inset-0 w-full h-full"></div>
+
+        <div class="absolute inset-0 bg-gradient-to-b from-brandBlue/80 via-brandBlue/40 to-brandBlue/90 pointer-events-none mix-blend-multiply"></div>
+
+        <div class="relative z-10 text-center px-4 max-w-4xl mx-auto animate-fade-in-up">
+            
+            <span class="inline-block bg-brandGold text-brandBlue px-6 py-2 rounded-full text-xs uppercase tracking-widest mb-6 font-bold shadow-lg">
+                ✨ Пътувай със сърцето си
             </span>
             
-            <h1 class="text-5xl md:text-7xl font-serif font-bold text-white mb-6 leading-tight drop-shadow-[0_4px_4px_rgba(0,0,0,0.8)]">
-                The magic is already <br/><span class="text-brandGold drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">in your backyard.</span>
+            <h1 class="text-5xl md:text-7xl font-serif font-bold text-white mb-6 leading-tight drop-shadow-md">
+                Магията е вече <br/><span class="text-brandGold">в твоя заден двор.</span>
             </h1>
-            <p class="text-lg md:text-2xl text-gray-100 mb-12 font-medium drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] max-w-3xl mx-auto">
-                From quick 48-hour coastal recharges to week-long journeys into ancient history and spiritual wellness. We don't do standard tours.
+            
+            <p class="text-lg md:text-xl text-blue-100 mb-12 font-medium max-w-2xl mx-auto leading-relaxed drop-shadow">
+                От бързи уикенди по крайбрежието до дълбоки пътешествия в древната история. Ние създаваме спомени, не просто екскурзии.
             </p>
             
-            <div class="flex flex-col sm:flex-row items-center justify-center gap-6">
-                <button onclick="document.getElementById('quick-escapes').scrollIntoView({ behavior: 'smooth' })" class="w-full sm:w-auto bg-brandBlue hover:bg-blue-900 text-white font-bold py-4 px-10 rounded-sm shadow-xl transition duration-300 text-lg uppercase tracking-wide">
-                    Quick Escapes
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <button onclick="document.getElementById('quick-escapes').scrollIntoView({ behavior: 'smooth' })" class="w-full sm:w-auto bg-brandGold text-brandBlue font-bold py-4 px-8 rounded-xl hover:bg-yellow-400 hover:shadow-xl transition transform hover:-translate-y-1 duration-300">
+                    🏖️ Кратки Почивки
                 </button>
-                <button onclick="document.getElementById('journeys').scrollIntoView({ behavior: 'smooth' })" class="w-full sm:w-auto bg-white hover:bg-gray-100 text-brandBlue font-bold py-4 px-10 rounded-sm shadow-xl transition duration-300 text-lg uppercase tracking-wide">
-                    Deep Journeys
+                <button onclick="document.getElementById('journeys').scrollIntoView({ behavior: 'smooth' })" class="w-full sm:w-auto bg-white/10 border-2 border-white text-white font-bold py-4 px-8 rounded-xl hover:bg-white hover:text-brandBlue hover:shadow-xl transition transform hover:-translate-y-1 duration-300 backdrop-blur-sm">
+                    🗺️ Разгледай Пътешествията
                 </button>
             </div>
         </div>
     </section>
 
-    <section id="quick-escapes" class="py-20 bg-surface border-b border-gray-200">
+    <section id="excursions" class="py-24 bg-white border-t-2 border-brandGold/30">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col lg:flex-row items-center gap-12">
-                
-                <div class="w-full lg:w-1/2">
-                    <div class="inline-flex items-center gap-2 bg-brandGold/20 text-brandGold font-bold px-4 py-1.5 rounded-full text-xs uppercase tracking-widest mb-6 border border-brandGold/30">
-                        ⭐ Top Choice
-                    </div>
-                    <h2 class="text-4xl font-bold text-gray-900 mb-6 font-serif">The Coastal Recharge:<br>1-2 Day Burgas Escapes</h2>
-                    <p class="text-gray-600 text-lg leading-relaxed mb-6">
-                        Sometimes all you need is 48 hours. Our signature short vacations in the Burgas region are designed for maximum relaxation with minimum travel time. 
-                    </p>
-                    <ul class="space-y-4 text-gray-700 mb-8 font-medium">
-                        <li class="flex items-center gap-3">
-                            <span class="text-brandBlue text-xl">🌊</span> Seaside relaxation without the planning stress.
-                        </li>
-                        <li class="flex items-center gap-3">
-                            <span class="text-brandBlue text-xl">🍷</span> Curated dinners and local coastal experiences.
-                        </li>
-                        <li class="flex items-center gap-3">
-                            <span class="text-brandBlue text-xl">⏳</span> Perfect for busy professionals who need a fast reset.
-                        </li>
-                    </ul>
-                    <a href="#contact" class="inline-block bg-brandBlue text-white font-bold px-8 py-4 rounded-sm hover:bg-blue-900 transition shadow-lg text-sm uppercase tracking-wide">
-                        Check Availability
-                    </a>
-                </div>
 
-                <div class="w-full lg:w-1/2 relative">
-                    <div class="absolute -inset-4 bg-brandGold/10 rounded-2xl transform rotate-3 -z-10"></div>
-                    <img src="img/hero.jpg" alt="Burgas Coast" class="rounded-xl shadow-2xl w-full h-[400px] object-cover">
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <section id="journeys" class="py-24 bg-brandBlue relative overflow-hidden">
-        <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(#ffffff 1px, transparent 1px); background-size: 30px 30px;"></div>
-
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-serif font-bold text-white mb-4">Journeys with meaning.</h2>
-                <p class="text-blue-200 text-lg max-w-2xl mx-auto">
-                    When you have more time, go deeper. We replace generic tourist traps with profound, curated experiences.
+            <div class="text-center mb-14">
+                <span class="text-brandBlue font-bold tracking-widest uppercase text-sm mb-2 block">За ученици и възрастни</span>
+                <h2 class="text-4xl md:text-5xl font-serif font-bold text-brandBlue mb-4">Еднодневни екскурзии</h2>
+                <p class="text-gray-600 text-lg max-w-2xl mx-auto font-medium">
+                    Тръгвате сутринта от Бургас. Прибирате се вечерта с история, снимки и спомени. Ние се грижим за всичко — транспорт, водач и обяд.
                 </p>
-                <div class="h-1 w-16 bg-brandGold mx-auto rounded mt-6"></div>
+                <div class="h-1 w-24 bg-brandGold mx-auto rounded-full mt-8"></div>
             </div>
 
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
 
-                <div class="bg-white/5 border border-white/10 rounded-xl p-8 hover:bg-white/10 hover:border-brandGold transition-all duration-300 transform hover:-translate-y-2 flex flex-col h-full">
-                    <div class="text-5xl mb-6">🔮</div>
-                    <h3 class="text-2xl font-serif font-bold text-white mb-3">Spiritual Strandzha</h3>
-                    <div class="text-brandGold font-mono text-sm mb-4 border-b border-white/10 pb-4">6 - 7 Days</div>
-                    <p class="text-blue-100 text-sm leading-relaxed mb-6 flex-grow">
-                        Get to know the motherland better. Visit ancient sanctuaries, places of high energy, and mystic rituals hidden deep in the forest. Reconnect with yourself.
-                    </p>
-                    <a href="#contact" class="text-white font-bold text-sm uppercase tracking-wide hover:text-brandGold flex items-center gap-2 mt-auto">
-                        Inquire Now &rarr;
-                    </a>
-                </div>
+                <a href="tours/deultum-debelt.html" class="group bg-warmBg border border-gray-200 rounded-2xl overflow-hidden hover:shadow-xl hover:border-brandGold transition duration-300">
+                    <div class="h-44 relative">
+                        <img src="img/debelt/debelt-bir-eye-view.avif" alt="Деултум" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <p class="text-brandGold font-bold text-xs uppercase tracking-widest mb-2">С. Дебелт</p>
+                        <h3 class="font-serif font-bold text-brandBlue text-xl mb-2 group-hover:text-brandGold transition">Деултум</h3>
+                        <p class="text-gray-500 text-sm leading-relaxed mb-4">Единствената колония на римски граждани в България. Разкопки и музей на живо.</p>
+                        <span class="text-brandBlue font-bold text-sm group-hover:text-brandGold transition">Виж повече →</span>
+                    </div>
+                </a>
 
-                <div class="bg-white/5 border border-white/10 rounded-xl p-8 hover:bg-white/10 hover:border-brandGold transition-all duration-300 transform hover:-translate-y-2 flex flex-col h-full">
-                    <div class="text-5xl mb-6">🏛️</div>
-                    <h3 class="text-2xl font-serif font-bold text-white mb-3">Unwritten History</h3>
-                    <div class="text-brandGold font-mono text-sm mb-4 border-b border-white/10 pb-4">2 - 4 Days</div>
-                    <p class="text-blue-100 text-sm leading-relaxed mb-6 flex-grow">
-                        The "3 Capitals" experience. We skip the Wikipedia lectures. Our historians tell the real, raw stories of empires, kings, and battles where they actually happened.
-                    </p>
-                    <a href="#contact" class="text-white font-bold text-sm uppercase tracking-wide hover:text-brandGold flex items-center gap-2 mt-auto">
-                        Inquire Now &rarr;
-                    </a>
-                </div>
+                <a href="tours/malko-tarnovo.html" class="group bg-warmBg border border-gray-200 rounded-2xl overflow-hidden hover:shadow-xl hover:border-brandGold transition duration-300">
+                    <div class="h-44 relative">
+                        <img src="img/malko-turnovo/malko-turnovo.avif" alt="Малко Търново" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <p class="text-brandGold font-bold text-xs uppercase tracking-widest mb-2">Странджа</p>
+                        <h3 class="font-serif font-bold text-brandBlue text-xl mb-2 group-hover:text-brandGold transition">Малко Търново + Бръшлян + Докузак</h3>
+                        <p class="text-gray-500 text-sm leading-relaxed mb-4">4 музея, архитектурен резерват и водопад — всичко за един ден.</p>
+                        <span class="text-brandBlue font-bold text-sm group-hover:text-brandGold transition">Виж повече →</span>
+                    </div>
+                </a>
 
-                <div class="bg-white/5 border border-white/10 rounded-xl p-8 hover:bg-white/10 hover:border-brandGold transition-all duration-300 transform hover:-translate-y-2 flex flex-col h-full">
-                    <div class="text-5xl mb-6">🍷</div>
-                    <h3 class="text-2xl font-serif font-bold text-white mb-3">The Quiet Life</h3>
-                    <div class="text-brandGold font-mono text-sm mb-4 border-b border-white/10 pb-4">5 - 7 Days</div>
-                    <p class="text-blue-100 text-sm leading-relaxed mb-6 flex-grow">
-                        A total break from the busy life. Premium wine tastings in boutique chateaus combined with high-end wellness and SPA treatments. Absolute disconnect.
-                    </p>
-                    <a href="#contact" class="text-white font-bold text-sm uppercase tracking-wide hover:text-brandGold flex items-center gap-2 mt-auto">
-                        Inquire Now &rarr;
-                    </a>
-                </div>
+                <a href="tours/begliktas.html" class="group bg-warmBg border border-gray-200 rounded-2xl overflow-hidden hover:shadow-xl hover:border-brandGold transition duration-300">
+                    <div class="h-44 relative">
+                        <img src="img/begliktash/begliktash-1.avif" alt="Бегликташ" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <p class="text-brandGold font-bold text-xs uppercase tracking-widest mb-2">Черноморие</p>
+                        <h3 class="font-serif font-bold text-brandBlue text-xl mb-2 group-hover:text-brandGold transition">Бегликташ + Ропотамо + Созопол</h3>
+                        <p class="text-gray-500 text-sm leading-relaxed mb-4">Тракийско светилище, лодка по реката и 2700-годишен античен град.</p>
+                        <span class="text-brandBlue font-bold text-sm group-hover:text-brandGold transition">Виж повече →</span>
+                    </div>
+                </a>
+
+                <a href="tours/pomorie.html" class="group bg-warmBg border border-gray-200 rounded-2xl overflow-hidden hover:shadow-xl hover:border-brandGold transition duration-300">
+                    <div class="h-44 relative">
+                        <img src="img/pomorie/pomorie-flamingo.avif" alt="Поморие" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <p class="text-brandGold font-bold text-xs uppercase tracking-widest mb-2">Поморие</p>
+                        <h3 class="font-serif font-bold text-brandBlue text-xl mb-2 group-hover:text-brandGold transition">Куполна гробница + Музей на солта</h3>
+                        <p class="text-gray-500 text-sm leading-relaxed mb-4">2000-годишна тракийска гробница и единственият музей на солта в България.</p>
+                        <span class="text-brandBlue font-bold text-sm group-hover:text-brandGold transition">Виж повече →</span>
+                    </div>
+                </a>
+
+                <a href="tours/aytos.html" class="group bg-warmBg border border-gray-200 rounded-2xl overflow-hidden hover:shadow-xl hover:border-brandGold transition duration-300">
+                    <div class="h-44 relative">
+                        <img src="img/aytos/aytos-hero.avif" alt="Айтос" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <p class="text-brandGold font-bold text-xs uppercase tracking-widest mb-2">Айтос · За деца</p>
+                        <h3 class="font-serif font-bold text-brandBlue text-xl mb-2 group-hover:text-brandGold transition">Зоопарк + Генгер</h3>
+                        <p class="text-gray-500 text-sm leading-relaxed mb-4">Реални животни и стар български двор от преди 100 години. Децата се прибират щастливи.</p>
+                        <span class="text-brandBlue font-bold text-sm group-hover:text-brandGold transition">Виж повече →</span>
+                    </div>
+                </a>
+
+                <a href="tours/lozengrad.html" class="group bg-warmBg border border-gray-200 rounded-2xl overflow-hidden hover:shadow-xl hover:border-brandGold transition duration-300">
+                    <div class="h-44 relative">
+                        <img src="img/lozengrad/lozengrad.avif" alt="Лозенград" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <p class="text-brandGold font-bold text-xs uppercase tracking-widest mb-2">Турция</p>
+                        <h3 class="font-serif font-bold text-brandBlue text-xl mb-2 group-hover:text-brandGold transition">Лозенград — Пазарен ден</h3>
+                        <p class="text-gray-500 text-sm leading-relaxed mb-4">Тръгвате от Бургас, обядвате в Турция, прибирате се с пълни торби вечерта.</p>
+                        <span class="text-brandBlue font-bold text-sm group-hover:text-brandGold transition">Виж повече →</span>
+                    </div>
+                </a>
 
             </div>
+
+            <div class="mt-12 text-center">
+                <p class="text-gray-500 text-sm mb-4">Въпроси за дати и цени? Обадете се — отговаряме веднага.</p>
+                <a href="#contact" class="inline-block bg-brandBlue text-white font-bold px-8 py-4 rounded-xl hover:bg-blue-900 transition shadow-lg text-sm uppercase tracking-wide">
+                    Поискай оферта →
+                </a>
+            </div>
+
         </div>
     </section>
 
-    <section id="green-schools" class="py-20 bg-surface border-b border-gray-200">
+    <section id="journeys" class="py-24 bg-warmBg border-t-2 border-brandGold/30">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100 flex flex-col md:flex-row">
-                <div class="w-full md:w-2/5 h-64 md:h-auto bg-gray-200">
-                    <img src="https://images.unsplash.com/photo-1473649085228-583485e6e4d7?q=80&w=1000" alt="Kids in nature" class="w-full h-full object-cover">
+            <div class="text-center mb-20">
+                <span class="text-brandBlue font-bold tracking-widest uppercase text-sm mb-2 block">Когато имате повече време</span>
+                <h2 class="text-4xl md:text-5xl font-serif font-bold text-brandBlue mb-4">Пътешествия със смисъл</h2>
+                <p class="text-gray-600 text-lg max-w-2xl mx-auto font-medium">
+                    Заменяме масовите туристически капани с дълбоки преживявания, които ще помните дълго. Изберете вашето приключение.
+                </p>
+                <div class="h-1 w-24 bg-brandGold mx-auto rounded-full mt-8"></div>
+            </div>
+
+            <div class="bg-white rounded-3xl shadow-xl border border-gray-100 overflow-hidden mb-16 flex flex-col md:flex-row group hover:shadow-2xl transition duration-500">
+                <div class="w-full md:w-1/2 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1511497584788-876760111969?q=80&w=1000" alt="Духовна Странджа" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
                 </div>
-                <div class="w-full md:w-3/5 p-8 md:p-12 lg:p-16 flex flex-col justify-center">
-                    <div class="inline-flex items-center gap-2 text-green-600 font-bold text-xs uppercase tracking-widest mb-4">
-                        🌿 Institutional & B2B
-                    </div>
-                    <h2 class="text-3xl md:text-4xl font-serif font-bold text-gray-900 mb-4">Green Schools & Camps</h2>
+                <div class="w-full md:w-1/2 p-8 md:p-12 flex flex-col justify-center">
+                    <div class="text-4xl mb-4">🔮</div>
+                    <h3 class="text-3xl font-serif font-bold text-brandBlue mb-4">Духовна Странджа & СПА</h3>
                     <p class="text-gray-600 mb-8 leading-relaxed">
-                        Are you a teacher or principal? We organize safe, educational, and fun weekend or week-long nature retreats for groups of 30 to 90 children. We handle the logistics, hotels, and itineraries so you can focus on the kids.
+                        Опознайте най-мистичната планина. Ще посетим древни тракийски светилища (Перперикон, Белинташ) и места със силна енергия. Комбинираме дълбокото духовно преживяване с нощувки в първокласен СПА хотел.
                     </p>
-                    <div>
-                        <a href="#contact" class="inline-block bg-green-600 text-white font-bold px-8 py-4 rounded-sm hover:bg-green-700 transition shadow-md text-sm uppercase tracking-wide">
-                            Organize a School Trip
-                        </a>
+                    <div class="grid grid-cols-2 gap-4 mb-8 bg-warmBg p-6 rounded-2xl border border-gray-100">
+                        <div>
+                            <p class="text-xs text-gray-500 uppercase font-bold">Продължителност</p>
+                            <p class="font-bold text-brandBlue">6 - 7 Дни</p>
+                        </div>
+                        <div>
+                            <p class="text-xs text-gray-500 uppercase font-bold">Дестинация</p>
+                            <p class="font-bold text-brandBlue">Странджа, България</p>
+                        </div>
+                        <div>
+                            <p class="text-xs text-gray-500 uppercase font-bold">Какво е включено</p>
+                            <p class="font-bold text-brandBlue">Транспорт, Полупансион, СПА</p>
+                        </div>
+                        <div>
+                            <p class="text-xs text-gray-500 uppercase font-bold">Цена от</p>
+                            <p class="font-bold text-brandGold text-xl">1130 лв</p>
+                        </div>
                     </div>
+
+                    <a href="tours/strandzha-retreat.html" class="inline-block bg-brandGold text-brandBlue text-center font-bold px-8 py-4 rounded-xl hover:bg-yellow-400 transition shadow-md">
+                        Виж пълната програма &rarr;
+                    </a>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-3xl shadow-xl border border-gray-100 overflow-hidden mb-16 flex flex-col md:flex-row-reverse group hover:shadow-2xl transition duration-500">
+                <div class="w-full md:w-1/2 overflow-hidden">
+                    <img src="./img/tsarevets-bulgaria-stella-tur-2.jpg" alt="Царевец" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
+                </div>
+                <div class="w-full md:w-1/2 p-8 md:p-12 flex flex-col justify-center">
+                    <div class="text-4xl mb-4">🏛️</div>
+                    <h3 class="text-3xl font-serif font-bold text-brandBlue mb-4">Ненаписаната история</h3>
+                    <p class="text-gray-600 mb-8 leading-relaxed">
+                        Преживяването "3-те Столици". Забравете скучните лекции и сухите факти от Уикипедия. Нашите историци-водачи връщат към живот историите за велики царе, епични битки и тайни съюзи точно там, където са се случили.
+                    </p>
+                    <div class="grid grid-cols-2 gap-4 mb-8 bg-warmBg p-6 rounded-2xl border border-gray-100">
+                        <div>
+                            <p class="text-xs text-gray-500 uppercase font-bold">Продължителност</p>
+                            <p class="font-bold text-brandBlue">2 - 4 Дни</p>
+                        </div>
+                        <div>
+                            <p class="text-xs text-gray-500 uppercase font-bold">Дестинация</p>
+                            <p class="font-bold text-brandBlue">В. Търново, Плиска, Преслав</p>
+                        </div>
+                        <div>
+                            <p class="text-xs text-gray-500 uppercase font-bold">Акцент</p>
+                            <p class="font-bold text-brandBlue">Историк-водач на живо</p>
+                        </div>
+                        <div>
+                            <p class="text-xs text-gray-500 uppercase font-bold">Цена от</p>
+                            <p class="font-bold text-brandGold text-xl">349 лв</p>
+                        </div>
+                    </div>
+
+                    <a href="tours/three-capitals.html" class="inline-block bg-brandBlue text-white text-center font-bold px-8 py-4 rounded-xl hover:bg-blue-900 transition shadow-md">
+                        Провери дати &rarr;
+                    </a>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-3xl shadow-xl border border-gray-100 overflow-hidden flex flex-col md:flex-row group hover:shadow-2xl transition duration-500">
+                <div class="w-full md:w-1/2 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?q=80&w=1000" alt="Вино и СПА" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
+                </div>
+                <div class="w-full md:w-1/2 p-8 md:p-12 flex flex-col justify-center">
+                    <div class="text-4xl mb-4">🍷</div>
+                    <h3 class="text-3xl font-serif font-bold text-brandBlue mb-4">Спокойният живот (Вино & СПА)</h3>
+                    <p class="text-gray-600 mb-8 leading-relaxed">
+                        Абсолютно откъсване от стреса. Подарете си премиум винени дегустации в скрити бутикови шата, съчетани с топли термални басейни и отпускащи СПА процедури сред природата.
+                    </p>
+                    <div class="grid grid-cols-2 gap-4 mb-8 bg-warmBg p-6 rounded-2xl border border-gray-100">
+                        <div>
+                            <p class="text-xs text-gray-500 uppercase font-bold">Продължителност</p>
+                            <p class="font-bold text-brandBlue">5 - 7 Дни</p>
+                        </div>
+                        <div>
+                            <p class="text-xs text-gray-500 uppercase font-bold">Дестинация</p>
+                            <p class="font-bold text-brandBlue">Тракийската низина</p>
+                        </div>
+                        <div>
+                            <p class="text-xs text-gray-500 uppercase font-bold">Вайб</p>
+                            <p class="font-bold text-brandBlue">Релакс за двойки и приятели</p>
+                        </div>
+                        <div>
+                            <p class="text-xs text-gray-500 uppercase font-bold">Цена от</p>
+                            <p class="font-bold text-brandGold text-xl">850 лв</p>
+                        </div>
+                    </div>
+
+                    <a href="tours/wine-and-spa.html" class="inline-block bg-brandBlue text-white text-center font-bold px-8 py-4 rounded-xl hover:bg-blue-900 transition shadow-md">
+                        Поискай оферта &rarr;
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="green-schools" class="py-24 bg-white border-t-2 border-green-100 relative">
+        <div class="absolute right-0 bottom-0 w-64 h-64 bg-green-50 rounded-tl-full -z-10"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center gap-16">
+                <div class="w-full md:w-1/2">
+                    <div class="relative">
+                        <div class="absolute -inset-4 bg-green-500 rounded-3xl transform -rotate-3 -z-10"></div>
+                        <img src="https://images.unsplash.com/photo-1516627145497-ae6968895b74?q=80&w=1000" alt="Деца сред природата" class="rounded-2xl shadow-xl w-full h-[450px] object-cover border-4 border-white">
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2">
+                    <div class="inline-flex items-center gap-2 text-white font-bold text-xs uppercase tracking-widest mb-6 bg-green-500 px-4 py-1.5 rounded-full shadow-sm">
+                        🌿 За училища и детски градини
+                    </div>
+                    <h2 class="text-4xl md:text-5xl font-serif font-bold text-gray-900 mb-6">Зелени училища и лагери</h2>
+                    <p class="text-gray-600 mb-8 leading-relaxed text-lg font-medium">
+                        Учител сте или директор? Организираме <strong>безопасни, забавни и образователни</strong> лагери сред природата за групи от 30 до 90 деца. 
+                    </p>
+                    <ul class="space-y-4 mb-8 text-gray-700 font-medium">
+                        <li class="flex gap-3"><span class="text-green-500 font-bold">✓</span> Пълна логистика и осигурен транспорт</li>
+                        <li class="flex gap-3"><span class="text-green-500 font-bold">✓</span> Проверени и сигурни хотели</li>
+                        <li class="flex gap-3"><span class="text-green-500 font-bold">✓</span> Готова занимателна програма за децата</li>
+                    </ul>
+                    <a href="tours/green-schools.html" class="inline-block bg-green-600 text-white font-bold px-8 py-4 rounded-xl hover:bg-green-700 hover:shadow-lg transition transform hover:-translate-y-1 text-sm uppercase tracking-wide">
+                        Организирай лагер &rarr;
+                    </a>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="contact" class="py-24 bg-brandBlue text-white relative overflow-hidden">
-        <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(#ffffff 1px, transparent 1px); background-size: 30px 30px;"></div>
+    <section id="contact" class="py-24 bg-brandBlue relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 0); background-size: 24px 24px;"></div>
 
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-5xl font-serif font-bold mb-6">Let's craft your experience.</h2>
-                <p class="text-xl text-blue-100 max-w-2xl mx-auto">Whether it's a quick coastal recharge or a 7-day spiritual journey, get in touch with our team today.</p>
+                <div class="inline-block bg-brandGold text-brandBlue font-bold px-6 py-2 rounded-full text-sm mb-4 shadow-lg">
+                    👋 Здравейте!
+                </div>
+                <h2 class="text-4xl md:text-5xl font-serif font-bold text-white mb-4">Нека създадем твоето преживяване.</h2>
+                <p class="text-xl text-blue-100 max-w-2xl mx-auto font-medium">Готови сме да отговорим на всичките ви въпроси. Пишете ни или се обадете още сега.</p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-                <a href="tel:+359894060406" class="bg-white/10 backdrop-blur border border-white/20 p-8 rounded-xl text-center hover:bg-white/20 transition group">
-                    <div class="h-16 w-16 bg-brandGold text-brandBlue rounded-full flex items-center justify-center text-3xl mx-auto mb-6 group-hover:scale-110 transition">📞</div>
-                    <h3 class="text-xl font-bold mb-2">Call Us</h3>
-                    <p class="text-blue-100">+359 89 406 0406</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+                <a href="tel:+359894060406" class="bg-white p-8 rounded-3xl text-center hover:shadow-2xl transition transform hover:-translate-y-2 group border-b-4 border-brandGold">
+                    <div class="text-4xl mb-4 bg-warmBg w-20 h-20 mx-auto rounded-full flex items-center justify-center group-hover:scale-110 transition">📞</div>
+                    <h3 class="text-xl font-bold text-brandBlue mb-1">Обади ни се</h3>
+                    <p class="text-gray-600 font-medium">+359 89 406 0406</p>
                 </a>
 
-                <a href="https://wa.me/359894060406" class="bg-white/10 backdrop-blur border border-white/20 p-8 rounded-xl text-center hover:bg-white/20 transition group">
-                    <div class="h-16 w-16 bg-green-500 text-white rounded-full flex items-center justify-center text-3xl mx-auto mb-6 group-hover:scale-110 transition">💬</div>
-                    <h3 class="text-xl font-bold mb-2">WhatsApp</h3>
-                    <p class="text-blue-100">Chat instantly</p>
+                <a href="https://wa.me/359894060406" class="bg-white p-8 rounded-3xl text-center hover:shadow-2xl transition transform hover:-translate-y-2 group border-b-4 border-green-500">
+                    <div class="text-4xl mb-4 bg-green-50 w-20 h-20 mx-auto rounded-full flex items-center justify-center group-hover:scale-110 transition">💬</div>
+                    <h3 class="text-xl font-bold text-brandBlue mb-1">WhatsApp</h3>
+                    <p class="text-gray-600 font-medium">Чат веднага</p>
                 </a>
 
-                <a href="mailto:Stelatour99@gmail.com" class="bg-white/10 backdrop-blur border border-white/20 p-8 rounded-xl text-center hover:bg-white/20 transition group">
-                    <div class="h-16 w-16 bg-brandGold text-brandBlue rounded-full flex items-center justify-center text-3xl mx-auto mb-6 group-hover:scale-110 transition">✉️</div>
-                    <h3 class="text-xl font-bold mb-2">Email</h3>
-                    <p class="text-blue-100">Stelatour99@gmail.com</p>
+                <a href="mailto:Stelatour99@gmail.com" class="bg-white p-8 rounded-3xl text-center hover:shadow-2xl transition transform hover:-translate-y-2 group border-b-4 border-brandBlue">
+                    <div class="text-4xl mb-4 bg-blue-50 w-20 h-20 mx-auto rounded-full flex items-center justify-center group-hover:scale-110 transition">✉️</div>
+                    <h3 class="text-xl font-bold text-brandBlue mb-1">Имейл</h3>
+                    <p class="text-gray-600 font-medium">Stelatour99@gmail.com</p>
                 </a>
             </div>
         </div>
     </section>
 
-    <footer class="bg-gray-900 text-white border-t border-gray-800 pt-16 pb-8">
+    <footer class="bg-white text-gray-800 border-t border-gray-200 pt-16 pb-8">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-16">
                 <div class="space-y-6">
                     <div class="flex items-center gap-2">
-                        <div class="w-10 h-10 bg-brandGold text-brandBlue flex items-center justify-center font-serif font-bold rounded shadow-lg text-xl">S</div>
-                        <span class="text-2xl font-bold tracking-tight uppercase">Stela<span class="text-brandGold">Tour</span></span>
+                        <div class="w-10 h-10 bg-brandBlue text-brandGold flex items-center justify-center font-serif font-bold rounded-xl text-xl">S</div>
+                        <span class="text-brandBlue text-2xl font-bold tracking-tight uppercase">Stela<span class="text-brandGold">Tour</span></span>
                     </div>
-                    <p class="text-gray-400 leading-relaxed max-w-sm">
-                        Premium agency for your curated holidays and excursions. No tourist traps. Just real memories.
+                    <p class="text-gray-600 font-medium max-w-sm">
+                        С приятелско отношение и персонално внимание. Създаваме истински спомени, далеч от туристическите клишета.
                     </p>
                 </div>
 
                 <div>
-                    <h3 class="text-white font-bold uppercase tracking-wider mb-6 text-sm">Explore</h3>
-                    <ul class="space-y-4">
-                        <li><a href="#quick-escapes" class="text-gray-400 hover:text-brandGold transition">→ Short Trips</a></li>
-                        <li><a href="#journeys" class="text-gray-400 hover:text-brandGold transition">→ Deep Journeys</a></li>
-                        <li><a href="#green-schools" class="text-gray-400 hover:text-brandGold transition">→ Green Schools</a></li>
+                    <h3 class="text-brandBlue font-bold uppercase tracking-wider mb-6 text-sm">Разгледай</h3>
+                    <ul class="space-y-4 font-medium text-gray-600">
+                        <li><a href="#quick-escapes" class="hover:text-brandGold transition">Кратки почивки</a></li>
+                        <li><a href="#journeys" class="hover:text-brandGold transition">Пътешествия</a></li>
+                        <li><a href="#excursions" class="hover:text-brandGold transition">Екскурзии</a></li>
+                        <li><a href="#green-schools" class="hover:text-brandGold transition">Зелени училища</a></li>
                     </ul>
                 </div>
 
                 <div>
-                    <h3 class="text-white font-bold uppercase tracking-wider mb-6 text-sm">Direct Contact</h3>
-                    <ul class="space-y-4">
-                        <li><span class="text-gray-400">📞 +359 89 406 0406</span></li>
-                        <li><span class="text-gray-400">✉️ Stelatour99@gmail.com</span></li>
+                    <h3 class="text-brandBlue font-bold uppercase tracking-wider mb-6 text-sm">Директен контакт</h3>
+                    <ul class="space-y-4 font-medium text-gray-600">
+                        <li>📞 +359 89 406 0406</li>
+                        <li>✉️ Stelatour99@gmail.com</li>
                     </ul>
                 </div>
             </div>
 
-            <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-500">
-                <p>&copy; 2026 Stela Tours Burgas. All rights reserved.</p>
+            <div class="border-t border-gray-200 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-500 font-medium">
+                <p>&copy; 2026 Stela Tours Burgas. Всички права запазени.</p>
                 <div class="flex items-center gap-1">
-                    <span>Designed for conversion by</span>
-                    <a href="https://ginkogrudev.com" target="_blank" class="text-brandGold font-bold hover:text-white transition">
+                    <span>Дизайн за конверсии от</span>
+                    <a href="https://ginkogrudev.com" target="_blank" class="text-brandBlue hover:text-brandGold font-bold transition">
                         GG Solutions
                     </a>
                 </div>
@@ -292,5 +416,35 @@
         </div>
     </footer>
 
+    <script>
+        const heroImages = [
+            'https://images.unsplash.com/photo-1511497584788-876760111969?q=80&w=2000', 
+            'https://images.unsplash.com/photo-1544161515-4ab6ce6db874?q=80&w=2000', 
+            'https://images.unsplash.com/photo-1590001014589-98e3b0e12d6a?q=80&w=2000'  
+        ];
+
+        const sliderContainer = document.getElementById('hero-slider');
+        
+        heroImages.forEach((src, index) => {
+            const div = document.createElement('div');
+            div.className = `absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat transition-opacity duration-1000 ease-in-out ${index === 0 ? 'opacity-100' : 'opacity-0'}`;
+            div.style.backgroundImage = `url('${src}')`;
+            sliderContainer.appendChild(div);
+        });
+
+        const slides = sliderContainer.children;
+        let currentSlide = 0;
+
+        setInterval(() => {
+            slides[currentSlide].classList.remove('opacity-100');
+            slides[currentSlide].classList.add('opacity-0');
+            
+            currentSlide = (currentSlide + 1) % slides.length;
+            
+            slides[currentSlide].classList.remove('opacity-0');
+            slides[currentSlide].classList.add('opacity-100');
+        }, 5000);
+    </script>
+    <script src="js/main.js"></script>
 </body>
 </html>

@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stela Tours | Premium Escapes & Deep Journeys</title>
+
+    <link rel="icon" type="image/png" href="img/favicon.png">
+
+    <meta property="og:title" content="Stela Tours | Your escape from the busy life">
+    <meta property="og:description" content="Quick coastal recharges, deep historical journeys, and spiritual retreats in Bulgaria.">
+    <meta property="og:image" content="img/squidonwindmillnesebar.png">
+    <meta property="og:type" content="website">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="css/style.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brandBlue: '#003580', 
+                        brandGold: '#dcae1d',
+                        surface: '#f8fafc',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-surface text-gray-900 antialiased relative">
+
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex-shrink-0 flex items-center gap-2 cursor-pointer" onclick="window.scrollTo(0,0)">
+                    <div class="w-8 h-8 bg-brandBlue text-white flex items-center justify-center font-serif font-bold rounded shadow-sm">S</div>
+                    <span class="text-brandBlue text-xl font-bold tracking-tight uppercase">Stela<span class="text-brandGold">Tour</span></span>
+                </div>
+                
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#quick-escapes" class="text-gray-600 hover:text-brandBlue font-medium text-sm uppercase tracking-wide hover:scale-105 transition">Short Trips</a>
+                    <a href="#journeys" class="text-gray-600 hover:text-brandBlue font-medium text-sm uppercase tracking-wide hover:scale-105 transition">Deep Journeys</a>
+                    <a href="#green-schools" class="text-gray-600 hover:text-brandBlue font-medium text-sm uppercase tracking-wide hover:scale-105 transition">For Schools</a>
+                    
+                    <a href="index_bg.html" class="text-gray-900 font-bold hover:text-brandBlue flex items-center gap-1 text-sm border-l pl-6 border-gray-300 transition">
+                        <span class="text-lg">🇧🇬</span> <span>BG</span>
+                    </a>
+
+                    <a href="tel:+359894060406" class="bg-brandBlue text-white px-6 py-2 rounded shadow-md font-bold text-sm hover:bg-blue-900 hover:shadow-lg transition transform hover:-translate-y-0.5">
+                        Call Now
+                    </a>
+                </div>
+
+                <div class="md:hidden flex items-center gap-4">
+                     <a href="index_bg.html" class="text-gray-900 font-bold hover:text-brandBlue flex items-center gap-1 text-sm border border-gray-200 px-2 py-1 rounded">
+                        <span>BG</span>
+                    </a>
+                    <button onclick="toggleMobileMenu()" class="text-gray-600 hover:text-brandBlue focus:outline-none p-2">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-gray-100 shadow-xl absolute w-full left-0 top-20 px-4 py-6 flex flex-col space-y-4">
+            <a href="#quick-escapes" onclick="toggleMobileMenu()" class="text-lg font-medium text-gray-800 hover:text-brandBlue">Short Trips</a>
+            <a href="#journeys" onclick="toggleMobileMenu()" class="text-lg font-medium text-gray-800 hover:text-brandBlue">Deep Journeys</a>
+            <a href="#green-schools" onclick="toggleMobileMenu()" class="text-lg font-medium text-gray-800 hover:text-brandBlue">For Schools</a>
+            <a href="tel:+359894060406" class="bg-brandBlue text-white text-center py-3 rounded-lg font-bold shadow-md">Call Now</a>
+        </div>
+    </nav>
+
+    <section class="relative flex flex-col justify-center items-center min-h-[85vh] pt-32 pb-16"
+             style="background-image: url('./img/tsarevets-bulgaria-hero.jpg'); background-size: cover; background-position: center; background-attachment: fixed;">
+        <div class="relative z-10 text-center px-4 max-w-4xl mx-auto animate-fade-in">
+            <span class="inline-block bg-black/40 border border-white/10 text-brandGold font-bold px-6 py-2 rounded-full text-sm uppercase tracking-widest mb-6 backdrop-blur-sm shadow-lg">
+                Travel with purpose
+            </span>
+            
+            <h1 class="text-5xl md:text-7xl font-serif font-bold text-white mb-6 leading-tight drop-shadow-[0_4px_4px_rgba(0,0,0,0.8)]">
+                The magic is already <br/><span class="text-brandGold drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">in your backyard.</span>
+            </h1>
+            <p class="text-lg md:text-2xl text-gray-100 mb-12 font-medium drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] max-w-3xl mx-auto">
+                From quick 48-hour coastal recharges to week-long journeys into ancient history and spiritual wellness. We don't do standard tours.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-6">
+                <button onclick="document.getElementById('quick-escapes').scrollIntoView({ behavior: 'smooth' })" class="w-full sm:w-auto bg-brandBlue hover:bg-blue-900 text-white font-bold py-4 px-10 rounded-sm shadow-xl transition duration-300 text-lg uppercase tracking-wide">
+                    Quick Escapes
+                </button>
+                <button onclick="document.getElementById('journeys').scrollIntoView({ behavior: 'smooth' })" class="w-full sm:w-auto bg-white hover:bg-gray-100 text-brandBlue font-bold py-4 px-10 rounded-sm shadow-xl transition duration-300 text-lg uppercase tracking-wide">
+                    Deep Journeys
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <section id="quick-escapes" class="py-20 bg-surface border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col lg:flex-row items-center gap-12">
+                
+                <div class="w-full lg:w-1/2">
+                    <div class="inline-flex items-center gap-2 bg-brandGold/20 text-brandGold font-bold px-4 py-1.5 rounded-full text-xs uppercase tracking-widest mb-6 border border-brandGold/30">
+                        ⭐ Top Choice
+                    </div>
+                    <h2 class="text-4xl font-bold text-gray-900 mb-6 font-serif">The Coastal Recharge:<br>1-2 Day Burgas Escapes</h2>
+                    <p class="text-gray-600 text-lg leading-relaxed mb-6">
+                        Sometimes all you need is 48 hours. Our signature short vacations in the Burgas region are designed for maximum relaxation with minimum travel time. 
+                    </p>
+                    <ul class="space-y-4 text-gray-700 mb-8 font-medium">
+                        <li class="flex items-center gap-3">
+                            <span class="text-brandBlue text-xl">🌊</span> Seaside relaxation without the planning stress.
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <span class="text-brandBlue text-xl">🍷</span> Curated dinners and local coastal experiences.
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <span class="text-brandBlue text-xl">⏳</span> Perfect for busy professionals who need a fast reset.
+                        </li>
+                    </ul>
+                    <a href="#contact" class="inline-block bg-brandBlue text-white font-bold px-8 py-4 rounded-sm hover:bg-blue-900 transition shadow-lg text-sm uppercase tracking-wide">
+                        Check Availability
+                    </a>
+                </div>
+
+                <div class="w-full lg:w-1/2 relative">
+                    <div class="absolute -inset-4 bg-brandGold/10 rounded-2xl transform rotate-3 -z-10"></div>
+                    <img src="img/hero.jpg" alt="Burgas Coast" class="rounded-xl shadow-2xl w-full h-[400px] object-cover">
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="journeys" class="py-24 bg-brandBlue relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(#ffffff 1px, transparent 1px); background-size: 30px 30px;"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-serif font-bold text-white mb-4">Journeys with meaning.</h2>
+                <p class="text-blue-200 text-lg max-w-2xl mx-auto">
+                    When you have more time, go deeper. We replace generic tourist traps with profound, curated experiences.
+                </p>
+                <div class="h-1 w-16 bg-brandGold mx-auto rounded mt-6"></div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+
+                <div class="bg-white/5 border border-white/10 rounded-xl p-8 hover:bg-white/10 hover:border-brandGold transition-all duration-300 transform hover:-translate-y-2 flex flex-col h-full">
+                    <div class="text-5xl mb-6">🔮</div>
+                    <h3 class="text-2xl font-serif font-bold text-white mb-3">Spiritual Strandzha</h3>
+                    <div class="text-brandGold font-mono text-sm mb-4 border-b border-white/10 pb-4">6 - 7 Days</div>
+                    <p class="text-blue-100 text-sm leading-relaxed mb-6 flex-grow">
+                        Get to know the motherland better. Visit ancient sanctuaries, places of high energy, and mystic rituals hidden deep in the forest. Reconnect with yourself.
+                    </p>
+                    <a href="#contact" class="text-white font-bold text-sm uppercase tracking-wide hover:text-brandGold flex items-center gap-2 mt-auto">
+                        Inquire Now &rarr;
+                    </a>
+                </div>
+
+                <div class="bg-white/5 border border-white/10 rounded-xl p-8 hover:bg-white/10 hover:border-brandGold transition-all duration-300 transform hover:-translate-y-2 flex flex-col h-full">
+                    <div class="text-5xl mb-6">🏛️</div>
+                    <h3 class="text-2xl font-serif font-bold text-white mb-3">Unwritten History</h3>
+                    <div class="text-brandGold font-mono text-sm mb-4 border-b border-white/10 pb-4">2 - 4 Days</div>
+                    <p class="text-blue-100 text-sm leading-relaxed mb-6 flex-grow">
+                        The "3 Capitals" experience. We skip the Wikipedia lectures. Our historians tell the real, raw stories of empires, kings, and battles where they actually happened.
+                    </p>
+                    <a href="#contact" class="text-white font-bold text-sm uppercase tracking-wide hover:text-brandGold flex items-center gap-2 mt-auto">
+                        Inquire Now &rarr;
+                    </a>
+                </div>
+
+                <div class="bg-white/5 border border-white/10 rounded-xl p-8 hover:bg-white/10 hover:border-brandGold transition-all duration-300 transform hover:-translate-y-2 flex flex-col h-full">
+                    <div class="text-5xl mb-6">🍷</div>
+                    <h3 class="text-2xl font-serif font-bold text-white mb-3">The Quiet Life</h3>
+                    <div class="text-brandGold font-mono text-sm mb-4 border-b border-white/10 pb-4">5 - 7 Days</div>
+                    <p class="text-blue-100 text-sm leading-relaxed mb-6 flex-grow">
+                        A total break from the busy life. Premium wine tastings in boutique chateaus combined with high-end wellness and SPA treatments. Absolute disconnect.
+                    </p>
+                    <a href="#contact" class="text-white font-bold text-sm uppercase tracking-wide hover:text-brandGold flex items-center gap-2 mt-auto">
+                        Inquire Now &rarr;
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="green-schools" class="py-20 bg-surface border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100 flex flex-col md:flex-row">
+                <div class="w-full md:w-2/5 h-64 md:h-auto bg-gray-200">
+                    <img src="https://images.unsplash.com/photo-1473649085228-583485e6e4d7?q=80&w=1000" alt="Kids in nature" class="w-full h-full object-cover">
+                </div>
+                <div class="w-full md:w-3/5 p-8 md:p-12 lg:p-16 flex flex-col justify-center">
+                    <div class="inline-flex items-center gap-2 text-green-600 font-bold text-xs uppercase tracking-widest mb-4">
+                        🌿 Institutional & B2B
+                    </div>
+                    <h2 class="text-3xl md:text-4xl font-serif font-bold text-gray-900 mb-4">Green Schools & Camps</h2>
+                    <p class="text-gray-600 mb-8 leading-relaxed">
+                        Are you a teacher or principal? We organize safe, educational, and fun weekend or week-long nature retreats for groups of 30 to 90 children. We handle the logistics, hotels, and itineraries so you can focus on the kids.
+                    </p>
+                    <div>
+                        <a href="#contact" class="inline-block bg-green-600 text-white font-bold px-8 py-4 rounded-sm hover:bg-green-700 transition shadow-md text-sm uppercase tracking-wide">
+                            Organize a School Trip
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-24 bg-brandBlue text-white relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(#ffffff 1px, transparent 1px); background-size: 30px 30px;"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-5xl font-serif font-bold mb-6">Let's craft your experience.</h2>
+                <p class="text-xl text-blue-100 max-w-2xl mx-auto">Whether it's a quick coastal recharge or a 7-day spiritual journey, get in touch with our team today.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                <a href="tel:+359894060406" class="bg-white/10 backdrop-blur border border-white/20 p-8 rounded-xl text-center hover:bg-white/20 transition group">
+                    <div class="h-16 w-16 bg-brandGold text-brandBlue rounded-full flex items-center justify-center text-3xl mx-auto mb-6 group-hover:scale-110 transition">📞</div>
+                    <h3 class="text-xl font-bold mb-2">Call Us</h3>
+                    <p class="text-blue-100">+359 89 406 0406</p>
+                </a>
+
+                <a href="https://wa.me/359894060406" class="bg-white/10 backdrop-blur border border-white/20 p-8 rounded-xl text-center hover:bg-white/20 transition group">
+                    <div class="h-16 w-16 bg-green-500 text-white rounded-full flex items-center justify-center text-3xl mx-auto mb-6 group-hover:scale-110 transition">💬</div>
+                    <h3 class="text-xl font-bold mb-2">WhatsApp</h3>
+                    <p class="text-blue-100">Chat instantly</p>
+                </a>
+
+                <a href="mailto:Stelatour99@gmail.com" class="bg-white/10 backdrop-blur border border-white/20 p-8 rounded-xl text-center hover:bg-white/20 transition group">
+                    <div class="h-16 w-16 bg-brandGold text-brandBlue rounded-full flex items-center justify-center text-3xl mx-auto mb-6 group-hover:scale-110 transition">✉️</div>
+                    <h3 class="text-xl font-bold mb-2">Email</h3>
+                    <p class="text-blue-100">Stelatour99@gmail.com</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-gray-900 text-white border-t border-gray-800 pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-16">
+                <div class="space-y-6">
+                    <div class="flex items-center gap-2">
+                        <div class="w-10 h-10 bg-brandGold text-brandBlue flex items-center justify-center font-serif font-bold rounded shadow-lg text-xl">S</div>
+                        <span class="text-2xl font-bold tracking-tight uppercase">Stela<span class="text-brandGold">Tour</span></span>
+                    </div>
+                    <p class="text-gray-400 leading-relaxed max-w-sm">
+                        Premium agency for your curated holidays and excursions. No tourist traps. Just real memories.
+                    </p>
+                </div>
+
+                <div>
+                    <h3 class="text-white font-bold uppercase tracking-wider mb-6 text-sm">Explore</h3>
+                    <ul class="space-y-4">
+                        <li><a href="#quick-escapes" class="text-gray-400 hover:text-brandGold transition">→ Short Trips</a></li>
+                        <li><a href="#journeys" class="text-gray-400 hover:text-brandGold transition">→ Deep Journeys</a></li>
+                        <li><a href="#green-schools" class="text-gray-400 hover:text-brandGold transition">→ Green Schools</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-white font-bold uppercase tracking-wider mb-6 text-sm">Direct Contact</h3>
+                    <ul class="space-y-4">
+                        <li><span class="text-gray-400">📞 +359 89 406 0406</span></li>
+                        <li><span class="text-gray-400">✉️ Stelatour99@gmail.com</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-500">
+                <p>&copy; 2026 Stela Tours Burgas. All rights reserved.</p>
+                <div class="flex items-center gap-1">
+                    <span>Designed for conversion by</span>
+                    <a href="https://ginkogrudev.com" target="_blank" class="text-brandGold font-bold hover:text-white transition">
+                        GG Solutions
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
