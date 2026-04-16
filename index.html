@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Stela Tour | Премиум почивки и дълбоки пътешествия</title>
 
-    <link rel="icon" type="image/png" href="img/favicon.png">
+    <link rel="icon" type="image/avif" href="img/favicon.avif">
 
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700&display=swap" rel="stylesheet">
@@ -33,31 +33,63 @@
 </head>
 <body class="bg-warmBg text-gray-800 antialiased relative">
 
-    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 bg-white/95 backdrop-blur-md border-b-4 border-brandGold shadow-sm">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-20">
-                <div class="flex-shrink-0 flex items-center gap-3 cursor-pointer" onclick="window.scrollTo(0,0)">
-                    <div class="w-10 h-10 bg-brandBlue text-brandGold flex items-center justify-center font-serif font-bold rounded-xl shadow-md text-xl">S</div>
-                    <span class="text-brandBlue text-2xl font-bold tracking-tight uppercase">Stela<span class="text-brandGold">Tour</span></span>
-                </div>
-                
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="#quick-escapes" class="text-gray-700 hover:text-brandGold font-bold text-sm uppercase tracking-wider transition">Уикенди</a>
-                    <a href="#journeys" class="text-gray-700 hover:text-brandGold font-bold text-sm uppercase tracking-wider transition">Пътешествия</a>
-                    <a href="#excursions" class="text-gray-700 hover:text-brandGold font-bold text-sm uppercase tracking-wider transition">Екскурзии</a>
-                    <a href="#green-schools" class="text-gray-700 hover:text-brandGold font-bold text-sm uppercase tracking-wider transition">За училища</a>
-                    
-                    <a href="index.html" class="text-brandBlue font-bold hover:text-brandGold flex items-center gap-1 text-sm border-l-2 pl-6 border-gray-200 transition">
-                        <span class="text-lg">🇬🇧</span> <span>EN</span>
-                    </a>
-
-                    <a href="tel:+359894060406" class="bg-brandGold text-brandBlue px-6 py-2.5 rounded-xl font-bold text-sm hover:bg-yellow-400 hover:shadow-lg transition transform hover:-translate-y-1">
-                        📞 Обади се
-                    </a>
-                </div>
+  <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 bg-white/95 backdrop-blur-md border-b-4 border-brandGold shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-20">
+ 
+            <!-- LOGO — scrolls to top on homepage -->
+            <a href="index.html" onclick="window.scrollTo({top:0,behavior:'smooth'}); return false;"
+               class="flex-shrink-0 flex items-center gap-3">
+                <div class="w-10 h-10 bg-brandBlue text-brandGold flex items-center justify-center font-serif font-bold rounded-xl shadow-md text-xl">S</div>
+                <span class="text-brandBlue text-2xl font-bold tracking-tight uppercase">Stela<span class="text-brandGold">Tour</span></span>
+            </a>
+ 
+            <!-- DESKTOP LINKS -->
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="#quick-escapes" class="text-gray-700 hover:text-brandGold font-bold text-sm uppercase tracking-wider transition">Уикенди</a>
+                <a href="#journeys"      class="text-gray-700 hover:text-brandGold font-bold text-sm uppercase tracking-wider transition">Пътешествия</a>
+                <a href="#green-schools" class="text-gray-700 hover:text-brandGold font-bold text-sm uppercase tracking-wider transition">За училища</a>
+                <a href="index-en.html"  class="text-brandBlue font-bold hover:text-brandGold flex items-center gap-1 text-sm border-l-2 pl-6 border-gray-200 transition">
+                    <span class="text-lg">🇬🇧</span><span>EN</span>
+                </a>
+                <a href="tel:+359894060406" class="bg-brandGold text-brandBlue px-6 py-2.5 rounded-xl font-bold text-sm hover:bg-yellow-400 hover:shadow-lg transition transform hover:-translate-y-1">
+                    📞 Обади се
+                </a>
+            </div>
+ 
+            <!-- MOBILE RIGHT — phone pill + hamburger always visible -->
+            <div class="md:hidden flex items-center gap-3">
+                <a href="tel:+359894060406" class="bg-brandGold text-brandBlue px-4 py-2 rounded-lg font-bold text-sm">
+                    📞
+                </a>
+                <button id="hamburger" onclick="toggleMenu()" aria-label="Меню"
+                        class="text-gray-800 hover:text-brandGold p-2 transition focus:outline-none">
+                    <svg id="icon-open"   class="w-7 h-7"             fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+                    <svg id="icon-close"  class="w-7 h-7 hidden"      fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                </button>
             </div>
         </div>
-    </nav>
+    </div>
+ 
+    <!-- MOBILE MENU DRAWER -->
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 shadow-xl">
+        <div class="px-6 py-6 flex flex-col gap-5">
+            <a href="#quick-escapes" onclick="toggleMenu()" class="text-lg font-bold text-brandBlue hover:text-brandGold transition">Уикенди</a>
+            <a href="#journeys"      onclick="toggleMenu()" class="text-lg font-bold text-brandBlue hover:text-brandGold transition">Пътешествия</a>
+            <a href="#green-schools" onclick="toggleMenu()" class="text-lg font-bold text-brandBlue hover:text-brandGold transition">За училища</a>
+            <hr class="border-gray-200">
+            <a href="index-en.html" class="text-base font-bold text-gray-500 hover:text-brandGold flex items-center gap-2 transition">
+                <span>🇬🇧</span> English
+            </a>
+            <a href="viber://chat?number=%2B359894060406" class="bg-purple-700 hover:bg-purple-600 text-white text-center py-4 rounded-xl font-bold transition">
+                💬 Пишете на Viber
+            </a>
+            <a href="tel:+359894060406" class="bg-brandGold text-brandBlue text-center py-4 rounded-xl font-bold hover:bg-yellow-400 transition">
+                📞 Обадете ни се
+            </a>
+        </div>
+    </div>
+</nav>
 
     <section class="relative flex flex-col justify-center items-center min-h-[85vh] pt-32 pb-16 overflow-hidden bg-brandBlue">
         
@@ -90,7 +122,7 @@
         </div>
     </section>
 
-    <section id="excursions" class="py-24 bg-white border-t-2 border-brandGold/30">
+    <section id="quick-escapes" class="py-24 bg-white border-t-2 border-brandGold/30">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
             <div class="text-center mb-14">
@@ -118,7 +150,7 @@
 
                 <a href="tours/malko-tarnovo.html" class="group bg-warmBg border border-gray-200 rounded-2xl overflow-hidden hover:shadow-xl hover:border-brandGold transition duration-300">
                     <div class="h-44 relative">
-                        <img src="img/malko-turnovo/malko-turnovo.avif" alt="Малко Търново" class="w-full h-full object-cover">
+                        <img src="img/malko-turnovo/malko-turnovo-hero.avif" alt="Малко Търново" class="w-full h-full object-cover">
                     </div>
                     <div class="p-6">
                         <p class="text-brandGold font-bold text-xs uppercase tracking-widest mb-2">Странджа</p>
@@ -236,7 +268,7 @@
 
             <div class="bg-white rounded-3xl shadow-xl border border-gray-100 overflow-hidden mb-16 flex flex-col md:flex-row-reverse group hover:shadow-2xl transition duration-500">
                 <div class="w-full md:w-1/2 overflow-hidden">
-                    <img src="./img/tsarevets-bulgaria-stella-tur-2.jpg" alt="Царевец" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
+                    <img src="./img/tsarevets-bulgaria-hero.avif" alt="Царевец" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
                 </div>
                 <div class="w-full md:w-1/2 p-8 md:p-12 flex flex-col justify-center">
                     <div class="text-4xl mb-4">🏛️</div>
@@ -357,11 +389,11 @@
                     <p class="text-gray-600 font-medium">+359 89 406 0406</p>
                 </a>
 
-                <a href="https://wa.me/359894060406" class="bg-white p-8 rounded-3xl text-center hover:shadow-2xl transition transform hover:-translate-y-2 group border-b-4 border-green-500">
-                    <div class="text-4xl mb-4 bg-green-50 w-20 h-20 mx-auto rounded-full flex items-center justify-center group-hover:scale-110 transition">💬</div>
-                    <h3 class="text-xl font-bold text-brandBlue mb-1">WhatsApp</h3>
-                    <p class="text-gray-600 font-medium">Чат веднага</p>
-                </a>
+                <a href="viber://chat?number=%2B359894060406" class="bg-white p-8 rounded-3xl text-center hover:shadow-2xl transition transform hover:-translate-y-2 group border-b-4 border-purple-500">
+    <div class="text-4xl mb-4 bg-purple-50 w-20 h-20 mx-auto rounded-full flex items-center justify-center group-hover:scale-110 transition">💬</div>
+    <h3 class="text-xl font-bold text-brandBlue mb-1">Viber</h3>
+    <p class="text-gray-600 font-medium">Чат веднага</p>
+</a>
 
                 <a href="mailto:Stelatour99@gmail.com" class="bg-white p-8 rounded-3xl text-center hover:shadow-2xl transition transform hover:-translate-y-2 group border-b-4 border-brandBlue">
                     <div class="text-4xl mb-4 bg-blue-50 w-20 h-20 mx-auto rounded-full flex items-center justify-center group-hover:scale-110 transition">✉️</div>
@@ -390,7 +422,6 @@
                     <ul class="space-y-4 font-medium text-gray-600">
                         <li><a href="#quick-escapes" class="hover:text-brandGold transition">Кратки почивки</a></li>
                         <li><a href="#journeys" class="hover:text-brandGold transition">Пътешествия</a></li>
-                        <li><a href="#excursions" class="hover:text-brandGold transition">Екскурзии</a></li>
                         <li><a href="#green-schools" class="hover:text-brandGold transition">Зелени училища</a></li>
                     </ul>
                 </div>
@@ -416,34 +447,47 @@
         </div>
     </footer>
 
-    <script>
+   <script>
         const heroImages = [
-            'https://images.unsplash.com/photo-1511497584788-876760111969?q=80&w=2000', 
-            'https://images.unsplash.com/photo-1544161515-4ab6ce6db874?q=80&w=2000', 
-            'https://images.unsplash.com/photo-1590001014589-98e3b0e12d6a?q=80&w=2000'  
+            'img/pomorie/pomorie-flamingo.avif',
+            'img/debelt/debelt-bir-eye-view.avif',
+            'img/aytos/aytos-hero.avif',
+            'img/malko-turnovo/malko-turnovo-hero.avif',
         ];
 
         const sliderContainer = document.getElementById('hero-slider');
         
-        heroImages.forEach((src, index) => {
-            const div = document.createElement('div');
-            div.className = `absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat transition-opacity duration-1000 ease-in-out ${index === 0 ? 'opacity-100' : 'opacity-0'}`;
-            div.style.backgroundImage = `url('${src}')`;
-            sliderContainer.appendChild(div);
+        // 2. ONLY load the first image immediately for instant mobile speed
+        const firstDiv = document.createElement('div');
+        firstDiv.className = 'absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat transition-opacity duration-1000 ease-in-out opacity-100';
+        firstDiv.style.backgroundImage = `url('${heroImages[0]}')`;
+        sliderContainer.appendChild(firstDiv);
+
+        // 3. WAIT until the page is fully loaded to download the heavy secondary images
+        window.addEventListener('load', () => {
+            
+            // Generate the rest of the images silently in the background
+            for (let i = 1; i < heroImages.length; i++) {
+                const div = document.createElement('div');
+                div.className = 'absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat transition-opacity duration-1000 ease-in-out opacity-0';
+                div.style.backgroundImage = `url('${heroImages[i]}')`;
+                sliderContainer.appendChild(div);
+            }
+
+            const slides = sliderContainer.children;
+            let currentSlide = 0;
+
+            // Start the fading animation
+            setInterval(() => {
+                slides[currentSlide].classList.remove('opacity-100');
+                slides[currentSlide].classList.add('opacity-0');
+                
+                currentSlide = (currentSlide + 1) % slides.length;
+                
+                slides[currentSlide].classList.remove('opacity-0');
+                slides[currentSlide].classList.add('opacity-100');
+            }, 5000);
         });
-
-        const slides = sliderContainer.children;
-        let currentSlide = 0;
-
-        setInterval(() => {
-            slides[currentSlide].classList.remove('opacity-100');
-            slides[currentSlide].classList.add('opacity-0');
-            
-            currentSlide = (currentSlide + 1) % slides.length;
-            
-            slides[currentSlide].classList.remove('opacity-0');
-            slides[currentSlide].classList.add('opacity-100');
-        }, 5000);
     </script>
     <script src="js/main.js"></script>
 </body>

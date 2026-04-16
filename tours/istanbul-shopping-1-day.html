@@ -7,7 +7,7 @@
     <title>1-Day Shopping Trip to Istanbul from Burgas | Stela Tours</title>
     <meta name="description" content="Express shopping tour to Istanbul. Visit the Blue Mosque, Grand Bazaar, and Forum Istanbul Mall. Best value day trip from Burgas. Book your seat now.">
     
-    <link rel="icon" type="image/png" href="../img/favicon.png">
+    <link rel="icon" type="image/avif" href="../img/favicon.avif">
 
     <meta property="og:title" content="Shopping in Istanbul: 1 Day Express Trip">
     <meta property="og:image" content="https://images.unsplash.com/photo-1541432901042-2d8bd64b4a9b?q=80&w=2000"> 
@@ -29,21 +29,63 @@
 </head>
 <body class="bg-surface text-gray-900 antialiased">
 
-    <nav class="fixed w-full z-50 bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-sm">
+  <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 bg-white/95 backdrop-blur-md border-b-4 border-brandGold shadow-sm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
-                <a href="../index.html" class="flex-shrink-0 flex items-center gap-2">
-                    <div class="w-8 h-8 bg-brandBlue text-white flex items-center justify-center font-serif font-bold rounded shadow-sm">S</div>
-                    <span class="text-brandBlue text-xl font-bold tracking-tight uppercase">Stela<span class="text-brandGold">Tour</span></span>
-                </a>
+                
+                <div class="flex-shrink-0 flex items-center gap-3 cursor-pointer" onclick="window.scrollTo(0,0)">
+                    <div class="w-10 h-10 bg-brandBlue text-brandGold flex items-center justify-center font-serif font-bold rounded-xl shadow-md text-xl">S</div>
+                    <span class="text-brandBlue text-2xl font-bold tracking-tight uppercase">Stela<span class="text-brandGold">Tour</span></span>
+                </div>
                 
                 <div class="hidden md:flex items-center space-x-8">
-                    <a href="../destinations/excursions-turkey.html" class="text-gray-600 hover:text-brandBlue font-medium text-sm uppercase">← Back to Turkey</a>
-                    <a href="tel:+359894060406" class="bg-brandBlue text-white px-6 py-2 rounded shadow-md font-bold text-sm hover:bg-blue-900">Call Now</a>
+                    <a href="#quick-escapes" class="text-gray-700 hover:text-brandGold font-bold text-sm uppercase tracking-wider transition">Уикенди</a>
+                    <a href="#journeys" class="text-gray-700 hover:text-brandGold font-bold text-sm uppercase tracking-wider transition">Пътешествия</a>
+                    <a href="#green-schools" class="text-gray-700 hover:text-brandGold font-bold text-sm uppercase tracking-wider transition">За училища</a>
+                    
+                    <a href="index-en.html" class="text-brandBlue font-bold hover:text-brandGold flex items-center gap-1 text-sm border-l-2 pl-6 border-gray-200 transition">
+                        <span class="text-lg">🇬🇧</span> <span>EN</span>
+                    </a>
+
+                    <a href="tel:+359894060406" class="bg-brandGold text-brandBlue px-6 py-2.5 rounded-xl font-bold text-sm hover:bg-yellow-400 hover:shadow-lg transition transform hover:-translate-y-1">
+                        📞 Обади се
+                    </a>
                 </div>
+
+                <div class="md:hidden flex items-center gap-4">
+                    <a href="index-en.html" class="text-brandBlue font-bold hover:text-brandGold flex items-center gap-1 text-sm transition">
+                        <span>EN</span>
+                    </a>
+                    <button onclick="toggleMobileMenu()" class="text-gray-900 hover:text-brandGold focus:outline-none p-2 transition">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+
             </div>
         </div>
+
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-gray-200 shadow-xl absolute w-full left-0 top-20 px-6 py-8 flex flex-col space-y-6">
+            <a href="#quick-escapes" onclick="toggleMobileMenu()" class="text-lg font-bold text-brandBlue hover:text-brandGold transition">Уикенди</a>
+            <a href="#journeys" onclick="toggleMobileMenu()" class="text-lg font-bold text-brandBlue hover:text-brandGold transition">Пътешествия</a>
+            <a href="#green-schools" onclick="toggleMobileMenu()" class="text-lg font-bold text-brandBlue hover:text-brandGold transition">За училища</a>
+            <a href="tel:+359894060406" class="bg-brandGold text-brandBlue text-center py-4 rounded-xl font-bold shadow-md hover:bg-yellow-400 transition mt-4">
+                📞 Обади ни се
+            </a>
+        </div>
     </nav>
+
+    <script>
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            if (menu.classList.contains('hidden')) {
+                menu.classList.remove('hidden');
+            } else {
+                menu.classList.add('hidden');
+            }
+        }
+    </script>
 
     <div class="relative h-[60vh] flex items-end">
         <div class="absolute inset-0">

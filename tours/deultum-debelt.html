@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Еднодневна екскурзия: Деултум — Единствената Римска Колония в България | Stela Tours</title>
-    <meta name="description" content="Посетете Деултум в с. Дебелт — единствената колония на римски граждани в България. Античен и средновековен град, археологически музей и разкопки. Еднодневна екскурзия за ученици и възрастни.">
+    <title>Малко Търново — 4 Музея, Архитектурен Резерват и Водопад за Един Ден | Stela Tour</title>
+    <meta name="description" content="Еднодневна екскурзия до Малко Търново: посещение на 4 исторически музея, архитектурния резерват с. Бръшлян и водопада Докузак в сърцето на Странджа.">
 
-    <link rel="icon" type="image/png" href="../img/favicon.png">
-    <meta property="og:title" content="Деултум — Единствената Римска Колония в България | Stela Tours">
-    <meta property="og:description" content="2000 години история за един ден. Еднодневна екскурзия до античния град Деултум, с. Дебелт.">
+    <link rel="icon" type="image/avif" href="../img/favicon.avif">
+    <meta property="og:title" content="Малко Търново — 4 Музея + Бръшлян + Докузак | Stela Tour">
+    <meta property="og:description" content="Странджа за един ден. История, природа и жива архитектура — всичко между закуска и вечеря.">
     <meta property="og:type" content="website">
 
     <script src="https://cdn.tailwindcss.com"></script>
@@ -37,41 +37,63 @@
 </head>
 <body class="bg-warmBg text-gray-900 antialiased">
 
-    <!-- NAV -->
-    <nav class="fixed w-full z-50 bg-white/95 backdrop-blur-md border-b-4 border-brandGold shadow-sm transition-all duration-300">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-20">
-                <a href="../index_bg.html" class="flex-shrink-0 flex items-center gap-3 cursor-pointer">
-                    <div class="w-10 h-10 bg-brandBlue text-brandGold flex items-center justify-center font-serif font-bold rounded-xl shadow-md text-xl">S</div>
-                    <span class="text-brandBlue text-2xl font-bold tracking-tight uppercase">Stela<span class="text-brandGold">Tour</span></span>
+   <nav id="navbar" class="fixed w-full z-50 bg-white/95 backdrop-blur-md border-b-4 border-brandGold shadow-sm transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-20">
+ 
+            <!-- LOGO — always goes home -->
+            <a href="index.html"
+               class="flex-shrink-0 flex items-center gap-3">
+                <div class="w-10 h-10 bg-brandBlue text-brandGold flex items-center justify-center font-serif font-bold rounded-xl shadow-md text-xl">S</div>
+                <span class="text-brandBlue text-2xl font-bold tracking-tight uppercase">Stela<span class="text-brandGold">Tour</span></span>
+            </a>
+ 
+            <!-- DESKTOP -->
+            <div class="hidden md:flex items-center gap-6">
+                <a href="../index.html" class="text-gray-700 hover:text-brandGold font-bold text-sm uppercase tracking-wider transition">
+                    ← Всички оферти
                 </a>
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="../index_bg.html#excursions" class="text-gray-700 hover:text-brandGold font-bold text-sm uppercase tracking-wider transition">← Всички екскурзии</a>
-                    <a href="tel:+359894060406" class="bg-brandGold text-brandBlue px-6 py-2.5 rounded-xl font-bold text-sm hover:bg-yellow-400 hover:shadow-lg transition transform hover:-translate-y-1">
-                        📞 Обади се
-                    </a>
-                </div>
-                <div class="md:hidden flex items-center gap-3">
-                    <a href="tel:+359894060406" class="bg-brandGold text-brandBlue px-4 py-2 rounded-lg font-bold text-sm">📞 Обади се</a>
-                </div>
+                <a href="viber://chat?number=%2B359894060406" class="bg-purple-700 hover:bg-purple-600 text-white px-5 py-2.5 rounded-xl font-bold text-sm transition">
+                    💬 Viber
+                </a>
+                <a href="tel:+359894060406" class="bg-brandGold text-brandBlue px-6 py-2.5 rounded-xl font-bold text-sm hover:bg-yellow-400 hover:shadow-lg transition transform hover:-translate-y-1">
+                    📞 Обади се
+                </a>
+            </div>
+ 
+            <!-- MOBILE — phone pill + hamburger -->
+            <div class="md:hidden flex items-center gap-3">
+                <a href="tel:+359894060406" class="bg-brandGold text-brandBlue px-4 py-2 rounded-lg font-bold text-sm">📞</a>
+                <button id="hamburger" onclick="toggleMenu()" aria-label="Меню"
+                        class="text-gray-800 hover:text-brandGold p-2 transition focus:outline-none">
+                    <svg id="icon-open"  class="w-7 h-7"        fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+                    <svg id="icon-close" class="w-7 h-7 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                </button>
             </div>
         </div>
-    </nav>
+    </div>
+ 
+    <!-- MOBILE DRAWER -->
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 shadow-xl">
+        <div class="px-6 py-6 flex flex-col gap-5">
+            <a href="../index.html" class="text-lg font-bold text-brandBlue hover:text-brandGold transition">
+                ← Всички оферти
+            </a>
+            <hr class="border-gray-200">
+            <a href="viber://chat?number=%2B359894060406" class="bg-purple-700 hover:bg-purple-600 text-white text-center py-4 rounded-xl font-bold transition">
+                💬 Пишете на Viber
+            </a>
+            <a href="tel:+359894060406" class="bg-brandGold text-brandBlue text-center py-4 rounded-xl font-bold hover:bg-yellow-400 transition">
+                📞 Обадете ни се
+            </a>
+        </div>
+    </div>
+</nav>
 
-    <!-- HERO -->
     <div class="relative h-[85vh] flex items-end overflow-hidden">
         <div class="absolute inset-0">
-            <!-- Placeholder gradient — swap for real img when ready -->
-            <div class="w-full h-full bg-gradient-to-br from-stone-800 via-amber-950 to-stone-900 flex items-center justify-center">
-                <div class="text-center opacity-20">
-                    <p class="text-8xl mb-4">🏛️</p>
-                    <p class="text-white text-sm tracking-widest uppercase">Снимка скоро</p>
-                </div>
-            </div>
-            <!-- When photo ready, replace div above with:
-            <img src="../img/deultum-hero.jpg" class="w-full h-full object-cover transform scale-105 animate-[pulse_20s_ease-in-out_infinite_alternate]" alt="Античен град Деултум">
-            -->
-            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/60 to-transparent"></div>
+            <img src="../img/malko-turnovo/malko-turnovo-hero.avif" class="w-full h-full object-cover transform scale-105 animate-[pulse_20s_ease-in-out_infinite_alternate]" alt="Малко Търново и Странджа">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/55 to-transparent"></div>
         </div>
 
         <div class="relative z-10 max-w-7xl mx-auto px-4 w-full mb-16">
@@ -79,17 +101,16 @@
 
                 <div class="max-w-3xl">
                     <span class="bg-brandGold text-brandBlue font-bold px-4 py-1.5 rounded-full text-xs uppercase tracking-widest mb-4 inline-block shadow-lg">
-                        🏛️ Еднодневна екскурзия
+                        🌲 Еднодневна екскурзия · Странджа
                     </span>
                     <h1 class="text-5xl md:text-7xl font-serif font-bold text-white mb-4 drop-shadow-2xl leading-tight">
-                        Деултум
+                        Малко Търново
                     </h1>
                     <p class="text-gray-200 text-xl drop-shadow-lg font-light leading-relaxed">
-                        Единствената колония на римски граждани в България. Античен и средновековен град на 30 минути от Бургас.
+                        Четири музея, едно приказно село и водопад в сърцето на Странджа — всичко в един ден, от Бургас и обратно.
                     </p>
                 </div>
 
-                <!-- Booking card -->
                 <div class="bg-white p-8 rounded-2xl shadow-2xl min-w-[320px] border-t-4 border-brandBlue transform md:translate-y-10">
                     <p class="text-gray-500 text-sm font-bold uppercase tracking-wider mb-2">Цена на човек</p>
                     <div class="mb-2">
@@ -97,10 +118,10 @@
                     </div>
                     <p class="text-gray-400 text-xs mb-6">Обадете се за актуална цена и дата</p>
                     <div class="text-sm text-gray-700 mb-8 space-y-3 border-t border-gray-100 pt-6 font-medium">
-                        <p class="flex items-center gap-3"><span class="text-brandGold text-lg">✓</span> Еднодневна екскурзия</p>
-                        <p class="flex items-center gap-3"><span class="text-brandGold text-lg">✓</span> Лицензиран екскурзовод</p>
-                        <p class="flex items-center gap-3"><span class="text-brandGold text-lg">✓</span> Транспорт включен</p>
-                        <p class="flex items-center gap-3"><span class="text-brandGold text-lg">✓</span> За ученици и възрастни</p>
+                        <p class="flex items-center gap-3"><span class="text-brandGold text-lg">✓</span> 4 исторически музея</p>
+                        <p class="flex items-center gap-3"><span class="text-brandGold text-lg">✓</span> с. Бръшлян — архитектурен резерват</p>
+                        <p class="flex items-center gap-3"><span class="text-brandGold text-lg">✓</span> Водопад Докузак</p>
+                        <p class="flex items-center gap-3"><span class="text-brandGold text-lg">✓</span> Транспорт и водач включени</p>
                     </div>
                     <a href="tel:+359894060406" class="block w-full bg-brandGold hover:bg-yellow-400 text-brandBlue text-center font-bold py-4 rounded-xl transition flex items-center justify-center gap-2 shadow-lg transform hover:-translate-y-1">
                         📞 Поискай оферта
@@ -114,81 +135,86 @@
         </div>
     </div>
 
-    <!-- HOOK -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 mt-4">
         <div class="mb-16 max-w-4xl">
-            <h2 class="text-4xl font-serif font-bold text-brandBlue mb-6">Рим е бил тук. Точно тук.</h2>
+            <h2 class="text-4xl font-serif font-bold text-brandBlue mb-6">Четири музея. Едно село извън времето. Един водопад. Един ден.</h2>
             <p class="text-gray-600 leading-relaxed text-xl font-light">
-                Деултум е основан в I век след Христа като единствена официална колония на римски граждани на българска земя. Не провинциален военен лагер — а пълноправен римски град с форум, терми и храмове, населен с ветерани на VIII Августов легион. За един ден ще видите разкопките, ще влезете в музея и ще се върнете с история, каквато никой учебник не може да разкаже.
+                Малко Търново е едно от най-недооценените места в България — малък град с невероятно богато историческо наследство, заобиколен от вековната гора на Странджа. До него добавяме архитектурния резерват Бръшлян — каменни къщи и кал, запазени такива, каквито са били преди 150 години — и водопада Докузак, скрит дълбоко в гората. Само 2.5 часа от Бургас, а светове по-далеч от ежедневието.
             </p>
         </div>
 
-        <!-- 3 stat boxes -->
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-24">
-            <div class="bg-white rounded-2xl shadow-md border border-gray-100 p-8 text-center">
-                <p class="text-5xl font-serif font-bold text-brandBlue mb-2">1</p>
-                <p class="text-gray-600 font-medium">Единствена римска гражданска колония в България</p>
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-24">
+            <div class="bg-white rounded-2xl shadow-md border border-gray-100 p-6 text-center">
+                <p class="text-4xl font-serif font-bold text-brandBlue mb-2">4</p>
+                <p class="text-gray-600 font-medium text-sm">Исторически музея на едно място</p>
             </div>
-            <div class="bg-white rounded-2xl shadow-md border border-gray-100 p-8 text-center">
-                <p class="text-5xl font-serif font-bold text-brandBlue mb-2">2000+</p>
-                <p class="text-gray-600 font-medium">Години история, разкрити на едно място</p>
+            <div class="bg-white rounded-2xl shadow-md border border-gray-100 p-6 text-center">
+                <p class="text-4xl font-serif font-bold text-brandBlue mb-2">1</p>
+                <p class="text-gray-600 font-medium text-sm">Архитектурен резерват — с. Бръшлян</p>
             </div>
-            <div class="bg-brandBlue rounded-2xl shadow-md p-8 text-center">
-                <p class="text-5xl font-serif font-bold text-brandGold mb-2">1 ден</p>
-                <p class="text-white/80 font-medium">Всичко това — без нощуване, без сложна логистика</p>
+            <div class="bg-white rounded-2xl shadow-md border border-gray-100 p-6 text-center">
+                <p class="text-4xl font-serif font-bold text-brandBlue mb-2">1</p>
+                <p class="text-gray-600 font-medium text-sm">Водопад Докузак сред вековна гора</p>
+            </div>
+            <div class="bg-brandBlue rounded-2xl shadow-md p-6 text-center">
+                <p class="text-4xl font-serif font-bold text-brandGold mb-2">1 ден</p>
+                <p class="text-white/80 font-medium text-sm">Всичко — без нощуване, без сложна логистика</p>
             </div>
         </div>
     </div>
 
-    <!-- PHOTO GALLERY -->
     <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-24">
         <div class="grid grid-cols-1 md:grid-cols-4 gap-3 md:gap-4 rounded-3xl overflow-hidden shadow-2xl">
 
-            <div class="md:col-span-2 md:row-span-2 relative h-64 md:h-[550px] bg-gradient-to-br from-stone-200 to-amber-100 flex items-center justify-center rounded-xl md:rounded-none">
-                <div class="text-center p-8">
-                    <p class="text-6xl mb-3">🏛️</p>
-                    <p class="text-stone-500 text-sm font-medium">Разкопките на Деултум</p>
-                    <p class="text-stone-400 text-xs mt-1 italic">Снимка ще бъде добавена</p>
-                </div>
-            </div>
+            <a href="../img/malko-turnovo/selo-brashlqn.avif" class="glightbox md:col-span-2 md:row-span-2 relative group h-64 md:h-[550px] cursor-pointer overflow-hidden rounded-xl md:rounded-none block">
+                <img src="../img/malko-turnovo/selo-brashlqn.avif" alt="с. Бръшлян — архитектурен резерват" class="w-full h-full object-cover transition duration-1000 group-hover:scale-105">
+                <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition duration-500"></div>
+            </a>
 
-            <div class="hidden md:flex h-[270px] bg-gradient-to-br from-amber-50 to-amber-100 items-center justify-center">
-                <div class="text-center"><p class="text-4xl mb-2">🏺</p><p class="text-amber-700 text-xs font-medium">Музей — артефакти</p></div>
-            </div>
-            <div class="hidden md:flex h-[270px] bg-gradient-to-br from-stone-100 to-stone-200 items-center justify-center">
-                <div class="text-center"><p class="text-4xl mb-2">📜</p><p class="text-stone-600 text-xs font-medium">Средновековен Деултум</p></div>
-            </div>
-            <div class="hidden md:flex h-[270px] bg-gradient-to-br from-green-50 to-emerald-100 items-center justify-center">
-                <div class="text-center"><p class="text-4xl mb-2">🌿</p><p class="text-green-700 text-xs font-medium">Пейзаж — с. Дебелт</p></div>
-            </div>
+            <a href="../img/malko-turnovo/malko-turnovo-muzei-1.avif" class="glightbox hidden md:block relative group h-[270px] cursor-pointer overflow-hidden rounded-xl block">
+                <img src="../img/malko-turnovo/malko-turnovo-muzei-1.avif" alt="Музей — Малко Търново" class="w-full h-full object-cover transition duration-1000 group-hover:scale-105">
+                <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition duration-500"></div>
+            </a>
 
-            <div class="hidden md:flex h-[270px] bg-brandBlue items-center justify-center cursor-pointer">
+            <a href="../img/malko-turnovo/vodopad-dokuzak1.avif" class="glightbox hidden md:block relative group h-[270px] cursor-pointer overflow-hidden rounded-xl block">
+                <img src="../img/malko-turnovo/vodopad-dokuzak1.avif" alt="Водопад Докузак" class="w-full h-full object-cover transition duration-1000 group-hover:scale-105">
+                <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition duration-500"></div>
+            </a>
+
+            <a href="../img/malko-turnovo/strandja-alexandar-ivanov.avif" class="glightbox hidden md:block relative group h-[270px] cursor-pointer overflow-hidden rounded-xl block">
+                <img src="../img/malko-turnovo/strandja-alexandar-ivanov.avif" alt="Природата на Странджа" class="w-full h-full object-cover transition duration-1000 group-hover:scale-105">
+                <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition duration-500"></div>
+            </a>
+
+            <a href="../img/malko-turnovo/malko-turnovo-hero.avif" class="glightbox hidden"></a>
+
+            <div onclick="document.querySelector('.glightbox').click()" class="hidden md:flex h-[270px] bg-brandBlue items-center justify-center cursor-pointer rounded-xl hover:bg-brandBlue/90 transition">
                 <span class="text-white font-bold text-sm flex items-center gap-2 border-2 border-brandGold px-6 py-3 rounded-xl backdrop-blur-md">
-                    📸 Снимките идват скоро
+                    📸 Разгледай галерията
                 </span>
             </div>
 
         </div>
-        <button class="md:hidden mt-6 w-full border-2 border-brandBlue text-brandBlue font-bold py-4 rounded-xl flex items-center justify-center gap-2">
-            Снимките ще бъдат добавени скоро
+        <button onclick="document.querySelector('.glightbox').click()" class="md:hidden mt-6 w-full border-2 border-brandBlue text-brandBlue font-bold py-4 rounded-xl flex items-center justify-center gap-2">
+            Вижте всички снимки
         </button>
     </section>
 
-    <!-- INCLUDED + ITINERARY + SIDEBAR -->
     <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-24">
         <div class="flex flex-col lg:flex-row gap-16 border-t-2 border-gray-200 pt-20">
 
-            <!-- Main content -->
             <div class="w-full lg:w-2/3">
 
                 <h3 class="text-3xl font-serif font-bold mb-8 text-brandBlue">Какво е включено?</h3>
                 <div class="bg-white p-8 rounded-2xl border border-gray-100 shadow-lg mb-6">
                     <ul class="text-gray-700 space-y-4 font-medium">
                         <li class="flex items-start gap-3"><span class="text-brandGold text-xl mt-0.5">✓</span> Транспорт с комфортен климатизиран автобус от Бургас и обратно</li>
-                        <li class="flex items-start gap-3"><span class="text-brandGold text-xl mt-0.5">✓</span> Лицензиран историк-екскурзовод, специалист по античността и Тракия</li>
-                        <li class="flex items-start gap-3"><span class="text-brandGold text-xl mt-0.5">✓</span> Посещение на активните археологически разкопки на Деултум</li>
-                        <li class="flex items-start gap-3"><span class="text-brandGold text-xl mt-0.5">✓</span> Входни такси за Археологическия музей в с. Дебелт</li>
-                        <li class="flex items-start gap-3"><span class="text-brandGold text-xl mt-0.5">✓</span> Обяд в местен ресторант с традиционна българска кухня</li>
+                        <li class="flex items-start gap-3"><span class="text-brandGold text-xl mt-0.5">✓</span> Лицензиран екскурзовод — специалист по историята на Странджанския край</li>
+                        <li class="flex items-start gap-3"><span class="text-brandGold text-xl mt-0.5">✓</span> Посещение на 4-те исторически музея в Малко Търново</li>
+                        <li class="flex items-start gap-3"><span class="text-brandGold text-xl mt-0.5">✓</span> Разходка из архитектурния резерват с. Бръшлян с водач</li>
+                        <li class="flex items-start gap-3"><span class="text-brandGold text-xl mt-0.5">✓</span> Посещение на водопада Докузак</li>
+                        <li class="flex items-start gap-3"><span class="text-brandGold text-xl mt-0.5">✓</span> Всички входни такси за музеите и защитените зони</li>
+                        <li class="flex items-start gap-3"><span class="text-brandGold text-xl mt-0.5">✓</span> Обяд в местен ресторант с традиционна странджанска кухня</li>
                     </ul>
                 </div>
 
@@ -200,7 +226,6 @@
                     </ul>
                 </div>
 
-                <!-- Guarantee -->
                 <div class="bg-green-50 border border-green-200 rounded-2xl p-6 flex gap-4 items-start mb-12">
                     <span class="text-3xl flex-shrink-0">🛡️</span>
                     <div>
@@ -209,9 +234,58 @@
                     </div>
                 </div>
 
-                <!-- Itinerary -->
+                <h3 class="text-3xl font-serif font-bold mb-8 text-brandBlue">Три дестинации. Три свята.</h3>
+
+                <div class="space-y-6 mb-12">
+
+                    <div class="bg-white border border-gray-100 rounded-2xl shadow-md overflow-hidden">
+                        <div class="bg-brandBlue px-6 py-4 flex items-center gap-3">
+                            <span class="text-2xl">🏛️</span>
+                            <h4 class="font-serif font-bold text-white text-xl">Малко Търново — 4 Музея</h4>
+                        </div>
+                        <div class="p-6">
+                            <p class="text-gray-600 text-sm leading-relaxed mb-4">Малко Търново е рядкото място, където на толкова малко площ са събрани толкова много истории. Четирите му исторически музея обхващат тракийската древност, природата на Странджа, местния бит и Странджанското въстание от 1903 г. — един от най-забравените, но най-героични моменти в нашата история.</p>
+                            <div class="grid grid-cols-2 gap-3">
+                                <div class="bg-warmBg rounded-xl p-3 text-xs text-gray-600 font-medium flex items-center gap-2">
+                                    <span class="text-brandGold">◆</span> Исторически музей
+                                </div>
+                                <div class="bg-warmBg rounded-xl p-3 text-xs text-gray-600 font-medium flex items-center gap-2">
+                                    <span class="text-brandGold">◆</span> Природонаучен музей
+                                </div>
+                                <div class="bg-warmBg rounded-xl p-3 text-xs text-gray-600 font-medium flex items-center gap-2">
+                                    <span class="text-brandGold">◆</span> Етнографска сбирка
+                                </div>
+                                <div class="bg-warmBg rounded-xl p-3 text-xs text-gray-600 font-medium flex items-center gap-2">
+                                    <span class="text-brandGold">◆</span> Музей на Въстанието
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white border border-gray-100 rounded-2xl shadow-md overflow-hidden">
+                        <div class="bg-emerald-800 px-6 py-4 flex items-center gap-3">
+                            <span class="text-2xl">🏘️</span>
+                            <h4 class="font-serif font-bold text-white text-xl">с. Бръшлян — Архитектурен резерват</h4>
+                        </div>
+                        <div class="p-6">
+                            <p class="text-gray-600 text-sm leading-relaxed">Бръшлян е едно от малкото места в България, където времето наистина е спряло. Каменни старовремски къщи, тесни улички, вековни дъбове и тишина, каквато градът не познава. Обявено за архитектурно-исторически резерват — и много добра причина за това. Водачът ви разказва за бита и традициите на странджанските жители с думи, каквито никой пътеводител не съдържа.</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-white border border-gray-100 rounded-2xl shadow-md overflow-hidden">
+                        <div class="bg-cyan-700 px-6 py-4 flex items-center gap-3">
+                            <span class="text-2xl">💧</span>
+                            <h4 class="font-serif font-bold text-white text-xl">Водопад Докузак</h4>
+                        </div>
+                        <div class="p-6">
+                            <p class="text-gray-600 text-sm leading-relaxed">Скрит в гъстата вековна гора на Странджа, водопадът Докузак е наградата в края на лека горска разходка. Шумът на водата, хладният въздух под короните на дъбовете и усещането, че сте единствените хора в гората — това е пречистването след музеите и историята. Незабравим финал на деня.</p>
+                        </div>
+                    </div>
+
+                </div>
+
                 <h3 class="text-3xl font-serif font-bold mb-4 text-brandBlue">Програма на деня</h3>
-                <p class="text-gray-500 mb-8 font-light">Водачът се грижи за детайлите, вие се наслаждавате на историята.</p>
+                <p class="text-gray-500 mb-8 font-light">Пълен ден в Странджа — история, природа и архитектура, едно след друго.</p>
 
                 <div class="space-y-8 text-gray-700 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-1 before:bg-brandGold/30">
 
@@ -220,9 +294,9 @@
                             <span class="font-bold text-xs">1</span>
                         </div>
                         <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-white p-6 rounded-2xl shadow-md border border-gray-100">
-                            <p class="text-xs text-brandGold font-bold uppercase tracking-wider mb-1">07:30</p>
+                            <p class="text-xs text-brandGold font-bold uppercase tracking-wider mb-1">07:00</p>
                             <h4 class="font-bold text-xl text-brandBlue mb-2">Тръгване от Бургас</h4>
-                            <p class="text-sm text-gray-600 leading-relaxed">Срещаме се на централна точка в Бургас. Климатизиран автобус, водачът ви запознава с маршрута. ~30 мин. пътуване до Дебелт.</p>
+                            <p class="text-sm text-gray-600 leading-relaxed">Ранно тръгване — Странджа изисква ранна раздвижка. Климатизиран автобус, водачът ви въвежда в историята на края по пътя. ~2.5 часа пътуване.</p>
                         </div>
                     </div>
 
@@ -231,20 +305,9 @@
                             <span class="font-bold text-xs">2</span>
                         </div>
                         <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-white p-6 rounded-2xl shadow-md border border-gray-100">
-                            <p class="text-xs text-brandGold font-bold uppercase tracking-wider mb-1">08:30</p>
-                            <h4 class="font-bold text-xl text-brandBlue mb-2">Разкопките на Деултум</h4>
-                            <p class="text-sm text-gray-600 leading-relaxed">~90 мин. Разходка по реалните разкопки на античния и средновековен град. Видими основи на форума, терми, жилищни квартали. Водачът разказва кой е живял тук и как е изглеждал животът им преди 2000 години.</p>
-                        </div>
-                    </div>
-
-                    <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
-                        <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-white bg-brandGold text-brandBlue shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
-                            <span class="font-bold text-xs">3</span>
-                        </div>
-                        <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-white p-6 rounded-2xl shadow-md border border-gray-100">
-                            <p class="text-xs text-brandGold font-bold uppercase tracking-wider mb-1">10:00</p>
-                            <h4 class="font-bold text-xl text-brandBlue mb-2">Археологически музей — Дебелт</h4>
-                            <p class="text-sm text-gray-600 leading-relaxed">~60 мин. Монети, керамика, надгробни плочи и лични предмети на римски граждани. Историята, разказана чрез оцелели предмети, докоснати на живо.</p>
+                            <p class="text-xs text-brandGold font-bold uppercase tracking-wider mb-1">09:30</p>
+                            <h4 class="font-bold text-xl text-brandBlue mb-2">Малко Търново — 4-те музея</h4>
+                            <p class="text-sm text-gray-600 leading-relaxed">~2 часа. Посещение на четирите исторически музея с водач: тракийска история, природата на Странджа, местен бит и Въстанието от 1903 г. Истории, каквито не се намират в учебниците.</p>
                         </div>
                     </div>
 
@@ -253,9 +316,20 @@
                             🍽
                         </div>
                         <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-white p-6 rounded-2xl shadow-md border border-gray-100">
-                            <p class="text-xs text-brandGold font-bold uppercase tracking-wider mb-1">~12:00</p>
+                            <p class="text-xs text-brandGold font-bold uppercase tracking-wider mb-1">12:00</p>
                             <h4 class="font-bold text-xl text-brandBlue mb-2">Обяд — включен в цената</h4>
-                            <p class="text-sm text-gray-600 leading-relaxed">Традиционна българска кухня в местен ресторант, избран от водача. Почивка, разговори, спомени.</p>
+                            <p class="text-sm text-gray-600 leading-relaxed">Традиционна странджанска кухня в местен ресторант. Кахъри, смокинови консерви и горски мед — вкусовете на региона на масата.</p>
+                        </div>
+                    </div>
+
+                    <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
+                        <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-white bg-brandGold text-brandBlue shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
+                            <span class="font-bold text-xs">4</span>
+                        </div>
+                        <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-white p-6 rounded-2xl shadow-md border border-gray-100">
+                            <p class="text-xs text-brandGold font-bold uppercase tracking-wider mb-1">13:30</p>
+                            <h4 class="font-bold text-xl text-brandBlue mb-2">с. Бръшлян — Архитектурен резерват</h4>
+                            <p class="text-sm text-gray-600 leading-relaxed">~75 мин. Разходка из каменните улички на запазеното странджанско село. Водачът разказва за архитектурата, традициите и живота, когато денят е имал друг ритъм.</p>
                         </div>
                     </div>
 
@@ -264,9 +338,9 @@
                             <span class="font-bold text-xs">5</span>
                         </div>
                         <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-white p-6 rounded-2xl shadow-md border border-gray-100">
-                            <p class="text-xs text-brandGold font-bold uppercase tracking-wider mb-1">13:30</p>
-                            <h4 class="font-bold text-xl text-brandBlue mb-2">Свободно разглеждане и снимки</h4>
-                            <p class="text-sm text-gray-600 leading-relaxed">~60 мин. Лично време. Разходка из селото, сувенири, допълнителни снимки при разкопките.</p>
+                            <p class="text-xs text-brandGold font-bold uppercase tracking-wider mb-1">15:00</p>
+                            <h4 class="font-bold text-xl text-brandBlue mb-2">Водопад Докузак</h4>
+                            <p class="text-sm text-gray-600 leading-relaxed">~60 мин. Лека разходка по горска пътека до водопада. Свеж въздух, шум на вода, вековни дъбове. Идеалният финал на деня — природата като десерт след историята.</p>
                         </div>
                     </div>
 
@@ -275,21 +349,20 @@
                             <span class="font-bold text-xs">🏠</span>
                         </div>
                         <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-white p-6 rounded-2xl shadow-md border border-gray-100">
-                            <p class="text-xs text-brandGold font-bold uppercase tracking-wider mb-1">~15:30</p>
+                            <p class="text-xs text-brandGold font-bold uppercase tracking-wider mb-1">~19:30</p>
                             <h4 class="font-bold text-xl text-brandBlue mb-2">Завръщане в Бургас</h4>
-                            <p class="text-sm text-gray-600 leading-relaxed">Пристигане ~15:30 ч. С историите на Рим в ума и снимките на телефона. За ученически групи — образователни материали за проект или реферат.</p>
+                            <p class="text-sm text-gray-600 leading-relaxed">Пристигане ~19:30 ч. Уморени по най-хубавия начин — с четири музея, едно приказно село и водопад в телефона.</p>
                         </div>
                     </div>
 
                 </div>
 
                 <div class="mt-6 bg-warmBg border border-gray-200 rounded-xl p-4">
-                    <p class="text-gray-500 text-xs italic">* Часовете са приблизителни. Конкретната програма се уточнява при резервацията. За ученически групи — адаптирана образователна програма.</p>
+                    <p class="text-gray-500 text-xs italic">* Часовете са приблизителни. Конкретната програма се уточнява при резервацията. За ученически групи — адаптирана образователна програма по история и природознание.</p>
                 </div>
 
             </div>
 
-            <!-- Sticky sidebar -->
             <div class="w-full lg:w-1/3">
                 <div class="sticky top-28">
                     <h3 class="font-serif font-bold mb-6 text-2xl text-brandBlue">Детайли за екскурзията</h3>
@@ -305,16 +378,30 @@
                         </div>
                         <div class="flex justify-between border-b border-gray-100 pb-4 pt-2">
                             <span class="text-gray-500 font-medium">Тръгване:</span>
-                            <span class="font-bold text-brandBlue text-base">07:30 от Бургас</span>
+                            <span class="font-bold text-brandBlue text-base">07:00 от Бургас</span>
                         </div>
                         <div class="flex justify-between border-b border-gray-100 pb-4 pt-2">
                             <span class="text-gray-500 font-medium">Завръщане:</span>
-                            <span class="font-bold text-brandBlue text-base">~15:30 в Бургас</span>
+                            <span class="font-bold text-brandBlue text-base">~19:30 в Бургас</span>
                         </div>
-                        <div class="flex justify-between pt-2">
+                        <div class="flex justify-between border-b border-gray-100 pb-4 pt-2">
                             <span class="text-gray-500 font-medium">Обяд:</span>
                             <span class="font-bold text-brandBlue text-base">✓ Включен</span>
                         </div>
+                        <div class="flex justify-between pt-2">
+                            <span class="text-gray-500 font-medium">Спирки:</span>
+                            <span class="font-bold text-brandBlue text-base">3 дестинации</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-warmBg border border-gray-200 rounded-3xl p-6 mb-6">
+                        <h4 class="font-bold text-gray-900 mb-4 text-sm uppercase tracking-wider">Перфектно за:</h4>
+                        <ul class="space-y-3 text-sm text-gray-600 font-medium">
+                            <li class="flex items-center gap-2"><span class="text-brandGold">🎒</span> Ученически групи</li>
+                            <li class="flex items-center gap-2"><span class="text-brandGold">👨‍👩‍👧‍👦</span> Семейства с деца</li>
+                            <li class="flex items-center gap-2"><span class="text-brandGold">🌿</span> Любители на природата</li>
+                            <li class="flex items-center gap-2"><span class="text-brandGold">📖</span> Любители на историята</li>
+                        </ul>
                     </div>
 
                     <div class="bg-brandBlue p-8 rounded-3xl text-white shadow-xl">
@@ -326,8 +413,8 @@
                         <a href="viber://chat?number=%2B359894060406" class="block text-center bg-purple-600 hover:bg-purple-500 text-white font-bold py-3 rounded-xl transition mb-3">
                             💬 Viber
                         </a>
-                        <a href="mailto:Stelatoursbg@gmail.com" class="block text-center border border-white/30 hover:border-brandGold text-white/80 hover:text-white text-sm py-3 rounded-xl transition">
-                            ✉️ Stelatoursbg@gmail.com
+                        <a href="mailto:stellatour99@gmail.com" class="block text-center border border-white/30 hover:border-brandGold text-white/80 hover:text-white text-sm py-3 rounded-xl transition">
+                            ✉️ stellatour99@gmail.com
                         </a>
                     </div>
                 </div>
@@ -336,29 +423,29 @@
         </div>
     </section>
 
-    <!-- BLUE FEATURE SECTION -->
     <section class="py-24 bg-brandBlue border-t-4 border-brandGold">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col lg:flex-row items-center gap-16">
 
                 <div class="w-full lg:w-1/2">
-                    <span class="text-brandGold font-bold uppercase tracking-widest text-xs mb-4 block">Единствено по рода си</span>
-                    <h3 class="text-4xl font-serif font-bold mb-6 text-white leading-tight">История, която не е в учебниците.</h3>
+                    <span class="text-brandGold font-bold uppercase tracking-widest text-xs mb-4 block">Сърцето на Странджа</span>
+                    <h3 class="text-4xl font-serif font-bold mb-6 text-white leading-tight">История, природа и архитектура — в един дъх.</h3>
                     <p class="text-blue-100 text-lg leading-relaxed mb-8 font-light">
-                        Деултум не е поредният исторически обект с надпис на плоча. Това е место, където римски граждани са живели, строили и умирали. Нашият водач не чете информационни табели — той разказва с емоция, детайли и контекст, каквито никой Google търсене не може да даде.
+                        Малко Търново е едно от онези места, за което хората казват „не знаех, че съществува" — и след посещението го разказват на всички. Четири музея, едно запазено в миналото село и водопад в гората са повече от достатъчно за един незабравим ден.
                     </p>
+
                     <ul class="space-y-5 text-white font-medium">
                         <li class="flex items-center gap-4 bg-white/10 p-4 rounded-xl backdrop-blur-sm border border-white/10">
-                            <span class="text-brandGold text-2xl">🎓</span>
-                            <span>За ученически групи — образователна програма, свързана с учебния материал по история.</span>
+                            <span class="text-brandGold text-2xl">🏛️</span>
+                            <span>4 музея за цената на едно — историята на Странджа от тракийците до наши дни.</span>
                         </li>
                         <li class="flex items-center gap-4 bg-white/10 p-4 rounded-xl backdrop-blur-sm border border-white/10">
-                            <span class="text-brandGold text-2xl">👨‍👩‍👧‍👦</span>
-                            <span>За семейства — Рим е по-близо до нас, отколкото мислите. Децата се изненадват.</span>
+                            <span class="text-brandGold text-2xl">🏘️</span>
+                            <span>Бръшлян е жив архитектурен паметник — не музей зад стъкло, а реално запазено село.</span>
                         </li>
                         <li class="flex items-center gap-4 bg-white/10 p-4 rounded-xl backdrop-blur-sm border border-white/10">
-                            <span class="text-brandGold text-2xl">🏢</span>
-                            <span>За фирмени групи — тийм билдинг с история. Забравете конферентната зала.</span>
+                            <span class="text-brandGold text-2xl">💧</span>
+                            <span>Докузак е наградата — свежестта на гората след пълен ден история.</span>
                         </li>
                     </ul>
                 </div>
@@ -366,16 +453,9 @@
                 <div class="w-full lg:w-1/2">
                     <div class="relative p-2">
                         <div class="absolute inset-0 bg-brandGold rounded-3xl transform rotate-3"></div>
-                        <!-- Photo placeholder — replace when ready -->
-                        <div class="relative rounded-2xl shadow-2xl w-full h-[450px] bg-gradient-to-br from-stone-700 to-amber-900 flex items-center justify-center">
-                            <div class="text-center opacity-40">
-                                <p class="text-6xl mb-3">🏺</p>
-                                <p class="text-white text-sm">Снимка — музей Дебелт</p>
-                            </div>
-                        </div>
-                        <!-- When ready:
-                        <img src="../img/deultum-museum.jpg" alt="Музей Дебелт" class="relative rounded-2xl shadow-2xl w-full h-[450px] object-cover grayscale hover:grayscale-0 transition duration-700">
-                        -->
+                        <a href="../img/malko-turnovo/malko-turnovo-muzei2.avif" class="glightbox block relative rounded-2xl shadow-2xl w-full h-[450px] overflow-hidden group">
+                            <img src="../img/malko-turnovo/malko-turnovo-muzei2.avif" alt="Музей Малко Търново" class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
+                        </a>
                     </div>
                 </div>
 
@@ -383,27 +463,25 @@
         </div>
     </section>
 
-    <!-- TESTIMONIAL -->
     <section class="py-24 bg-warmBg overflow-hidden">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <div class="text-brandGold mb-6 flex justify-center gap-2 text-2xl">★★★★★</div>
             <h2 class="text-3xl md:text-4xl font-serif font-bold text-brandBlue mb-8 leading-relaxed">
-                „Детето ми се върна и цяла вечер говореше за римляните в Дебелт. За пръв път историята не беше само в учебника — беше пред очите ни."
+                „Не очаквах, че Малко Търново ще ни грабне така. Четири музея звучи сухо — но с водача не беше. Бръшлян ме върна 150 години назад, а водопадът беше истинска изненада. Ще се върнем."
             </h2>
             <div class="flex flex-col items-center justify-center">
-                <div class="w-14 h-14 bg-brandBlue text-brandGold font-serif font-bold flex items-center justify-center rounded-full text-2xl mb-3 shadow-md">М</div>
-                <span class="font-bold text-gray-900 text-lg">Мария Стоянова</span>
-                <span class="text-sm text-gray-500">Пътувала с ученическа група</span>
+                <div class="w-14 h-14 bg-brandBlue text-brandGold font-serif font-bold flex items-center justify-center rounded-full text-2xl mb-3 shadow-md">П</div>
+                <span class="font-bold text-gray-900 text-lg">Петя Димитрова</span>
+                <span class="text-sm text-gray-500">Пътувала с приятелки</span>
             </div>
         </div>
     </section>
 
-    <!-- CONTACT CTA -->
     <section class="py-24 bg-white text-gray-900 border-t border-gray-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <h2 class="text-4xl font-serif font-bold mb-4 text-brandBlue">Тръгнете по стъпките на римляните.</h2>
-                <p class="text-gray-600 text-lg max-w-2xl mx-auto font-light">Обадете се, за да уточним датата, групата и цената. Едно обаждане е достатъчно.</p>
+                <h2 class="text-4xl font-serif font-bold mb-4 text-brandBlue">Странджа ви чака.</h2>
+                <p class="text-gray-600 text-lg max-w-2xl mx-auto font-light">Обадете се, за да уточним датата и групата. Едно обаждане е достатъчно — ние поемаме всичко останало.</p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
@@ -419,16 +497,15 @@
                     <p class="text-gray-500 font-medium">Пишете ни сега</p>
                 </a>
 
-                <a href="mailto:Stelatoursbg@gmail.com" class="bg-surface border border-gray-200 p-8 rounded-3xl text-center hover:shadow-xl hover:border-brandGold transition group">
+                <a href="mailto:stellatour99@gmail.com" class="bg-surface border border-gray-200 p-8 rounded-3xl text-center hover:shadow-xl hover:border-brandGold transition group">
                     <div class="text-4xl mb-4">✉️</div>
                     <h3 class="text-xl font-bold text-brandBlue mb-1">Имейл</h3>
-                    <p class="text-gray-500 font-medium">Stelatoursbg@gmail.com</p>
+                    <p class="text-gray-500 font-medium">stellatour99@gmail.com</p>
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- MORE EXCURSIONS -->
     <section class="py-20 bg-surface border-t border-gray-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
@@ -436,11 +513,11 @@
                 <p class="text-gray-500 font-light">Още незабравими дни в Бургаска област и региона</p>
             </div>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-                <a href="malko-tarnovo.html" class="bg-white border border-gray-200 p-6 rounded-2xl hover:shadow-lg hover:border-brandGold transition group flex gap-4 items-start">
-                    <span class="text-3xl flex-shrink-0">🏔️</span>
+                <a href="deultum-debelt.html" class="bg-white border border-gray-200 p-6 rounded-2xl hover:shadow-lg hover:border-brandGold transition group flex gap-4 items-start">
+                    <span class="text-3xl flex-shrink-0">🏛️</span>
                     <div>
-                        <p class="font-bold text-brandBlue group-hover:text-brandGold transition text-sm">Малко Търново + Бръшлян + Докузак</p>
-                        <p class="text-gray-500 text-xs mt-1">4 музея, архитектурен резерват и водопад</p>
+                        <p class="font-bold text-brandBlue group-hover:text-brandGold transition text-sm">Деултум — с. Дебелт</p>
+                        <p class="text-gray-500 text-xs mt-1">Единствената римска колония в България</p>
                     </div>
                 </a>
                 <a href="begliktas.html" class="bg-white border border-gray-200 p-6 rounded-2xl hover:shadow-lg hover:border-brandGold transition group flex gap-4 items-start">
@@ -471,10 +548,10 @@
                         <p class="text-gray-500 text-xs mt-1">Еднодневна екскурзия до Турция</p>
                     </div>
                 </a>
-                <a href="../index_bg.html" class="bg-brandBlue p-6 rounded-2xl hover:bg-brandBlue/90 transition group flex gap-4 items-start">
+                <a href="../index.html" class="bg-brandBlue p-6 rounded-2xl hover:bg-brandBlue/90 transition group flex gap-4 items-start">
                     <span class="text-3xl flex-shrink-0">🏠</span>
                     <div>
-                        <p class="font-bold text-brandGold text-sm">Всички оферти на Stela Tours</p>
+                        <p class="font-bold text-brandGold text-sm">Всички оферти на Stela Tour</p>
                         <p class="text-white/60 text-xs mt-1">Към началната страница →</p>
                     </div>
                 </a>
@@ -482,7 +559,6 @@
         </div>
     </section>
 
-    <!-- FOOTER -->
     <footer class="bg-gray-900 text-white border-t border-gray-800 pt-16 pb-8">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col md:flex-row justify-between items-center gap-6 mb-12">
@@ -491,13 +567,13 @@
                     <span class="text-white text-2xl font-bold tracking-tight uppercase">Stela<span class="text-brandGold">Tour</span></span>
                 </div>
                 <div class="flex gap-6 text-sm font-medium text-gray-400">
-                    <a href="../index_bg.html#quick-escapes" class="hover:text-brandGold transition">Кратки почивки</a>
-                    <a href="../index_bg.html#journeys" class="hover:text-brandGold transition">Пътешествия</a>
-                    <a href="../index_bg.html#excursions" class="hover:text-brandGold transition">Екскурзии</a>
+                    <a href="../index.html#quick-escapes" class="hover:text-brandGold transition">Кратки почивки</a>
+                    <a href="../index.html#journeys" class="hover:text-brandGold transition">Пътешествия</a>
+                    <a href="../index.html#excursions" class="hover:text-brandGold transition">Екскурзии</a>
                 </div>
             </div>
             <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-500 font-light">
-                <p>&copy; 2026 Stela Tours Burgas. Всички права запазени.</p>
+                <p>&copy; 2026 Stela Tour. Всички права запазени.</p>
                 <div class="flex items-center gap-1">
                     <span>Дизайн за конверсии от</span>
                     <a href="https://ginkogrudev.com" target="_blank" class="text-brandGold font-bold hover:text-white transition">GG Solutions</a>

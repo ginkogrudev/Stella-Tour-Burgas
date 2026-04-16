@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Бегликташ, Ропотамо и Созопол — Еднодневна Екскурзия | Stela Tours</title>
-    <meta name="description" content="Тракийско светилище Бегликташ, река Ропотамо и античният Созопол — три свята в един ден. Еднодневна екскурзия от Бургас за ученици и възрастни.">
+    <title>Бегликташ, Ропотамо и Созопол — Еднодневна Екскурзия | Stela Tour</title>
+    <meta name="description" content="Тракийско светилище Бегликташ, река Ропотамо и античният Созопол — история, природа и релакс в един ден. Еднодневна екскурзия от Бургас за ученици и възрастни.">
 
-    <link rel="icon" type="image/png" href="../img/favicon.png">
-    <meta property="og:title" content="Бегликташ, Ропотамо и Созопол | Stela Tours">
-    <meta property="og:description" content="Боговете са избрали това място преди 3000 години. Вие ще разберете защо — за един ден.">
+    <link rel="icon" type="image/avif" href="../img/favicon.avif">
+    <meta property="og:title" content="Бегликташ, Ропотамо и Созопол | Stela Tour">
+    <meta property="og:description" content="История, природа и морски релакс — три свята в едно незабравимо пътуване.">
     <meta property="og:type" content="website">
 
     <script src="https://cdn.tailwindcss.com"></script>
@@ -37,41 +37,63 @@
 </head>
 <body class="bg-warmBg text-gray-900 antialiased">
 
-    <!-- NAV -->
-    <nav class="fixed w-full z-50 bg-white/95 backdrop-blur-md border-b-4 border-brandGold shadow-sm transition-all duration-300">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-20">
-                <a href="../index_bg.html" class="flex-shrink-0 flex items-center gap-3 cursor-pointer">
-                    <div class="w-10 h-10 bg-brandBlue text-brandGold flex items-center justify-center font-serif font-bold rounded-xl shadow-md text-xl">S</div>
-                    <span class="text-brandBlue text-2xl font-bold tracking-tight uppercase">Stela<span class="text-brandGold">Tour</span></span>
+ <nav id="navbar" class="fixed w-full z-50 bg-white/95 backdrop-blur-md border-b-4 border-brandGold shadow-sm transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-20">
+ 
+            <!-- LOGO — always goes home -->
+            <a href="index.html"
+               class="flex-shrink-0 flex items-center gap-3">
+                <div class="w-10 h-10 bg-brandBlue text-brandGold flex items-center justify-center font-serif font-bold rounded-xl shadow-md text-xl">S</div>
+                <span class="text-brandBlue text-2xl font-bold tracking-tight uppercase">Stela<span class="text-brandGold">Tour</span></span>
+            </a>
+ 
+            <!-- DESKTOP -->
+            <div class="hidden md:flex items-center gap-6">
+                <a href="index.html" class="text-gray-700 hover:text-brandGold font-bold text-sm uppercase tracking-wider transition">
+                    ← Всички оферти
                 </a>
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="../index_bg.html#excursions" class="text-gray-700 hover:text-brandGold font-bold text-sm uppercase tracking-wider transition">← Всички екскурзии</a>
-                    <a href="tel:+359894060406" class="bg-brandGold text-brandBlue px-6 py-2.5 rounded-xl font-bold text-sm hover:bg-yellow-400 hover:shadow-lg transition transform hover:-translate-y-1">
-                        📞 Обади се
-                    </a>
-                </div>
-                <div class="md:hidden flex items-center gap-3">
-                    <a href="tel:+359894060406" class="bg-brandGold text-brandBlue px-4 py-2 rounded-lg font-bold text-sm">📞 Обади се</a>
-                </div>
+                <a href="viber://chat?number=%2B359894060406" class="bg-purple-700 hover:bg-purple-600 text-white px-5 py-2.5 rounded-xl font-bold text-sm transition">
+                    💬 Viber
+                </a>
+                <a href="tel:+359894060406" class="bg-brandGold text-brandBlue px-6 py-2.5 rounded-xl font-bold text-sm hover:bg-yellow-400 hover:shadow-lg transition transform hover:-translate-y-1">
+                    📞 Обади се
+                </a>
+            </div>
+ 
+            <!-- MOBILE — phone pill + hamburger -->
+            <div class="md:hidden flex items-center gap-3">
+                <a href="tel:+359894060406" class="bg-brandGold text-brandBlue px-4 py-2 rounded-lg font-bold text-sm">📞</a>
+                <button id="hamburger" onclick="toggleMenu()" aria-label="Меню"
+                        class="text-gray-800 hover:text-brandGold p-2 transition focus:outline-none">
+                    <svg id="icon-open"  class="w-7 h-7"        fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+                    <svg id="icon-close" class="w-7 h-7 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                </button>
             </div>
         </div>
-    </nav>
+    </div>
+ 
+    <!-- MOBILE DRAWER -->
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 shadow-xl">
+        <div class="px-6 py-6 flex flex-col gap-5">
+            <a href="index.html" class="text-lg font-bold text-brandBlue hover:text-brandGold transition">
+                ← Всички оферти
+            </a>
+            <hr class="border-gray-200">
+            <a href="viber://chat?number=%2B359894060406" class="bg-purple-700 hover:bg-purple-600 text-white text-center py-4 rounded-xl font-bold transition">
+                💬 Пишете на Viber
+            </a>
+            <a href="tel:+359894060406" class="bg-brandGold text-brandBlue text-center py-4 rounded-xl font-bold hover:bg-yellow-400 transition">
+                📞 Обадете ни се
+            </a>
+        </div>
+    </div>
+</nav>
 
-    <!-- HERO -->
     <div class="relative h-[85vh] flex items-end overflow-hidden">
         <div class="absolute inset-0">
-            <!-- Deep dusk purples — ritual, mystical, ancient -->
-            <div class="w-full h-full bg-gradient-to-br from-slate-900 via-purple-950 to-stone-900 flex items-center justify-center">
-                <div class="text-center opacity-20">
-                    <p class="text-8xl mb-4">🪨</p>
-                    <p class="text-white text-sm tracking-widest uppercase">Снимка скоро</p>
-                </div>
-            </div>
-            <!-- When photo ready:
-            <img src="../img/begliktas-hero.jpg" class="w-full h-full object-cover transform scale-105 animate-[pulse_20s_ease-in-out_infinite_alternate]" alt="Тракийското светилище Бегликташ">
-            -->
-            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/55 to-transparent"></div>
+            <img src="../img/begliktash/ustie-reka-ropotoma.avif" class="w-full h-full object-cover transform scale-105 animate-[pulse_20s_ease-in-out_infinite_alternate]" alt="Устие река Ропотамо">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/50 to-transparent"></div>
         </div>
 
         <div class="relative z-10 max-w-7xl mx-auto px-4 w-full mb-16">
@@ -81,17 +103,14 @@
                     <span class="bg-brandGold text-brandBlue font-bold px-4 py-1.5 rounded-full text-xs uppercase tracking-widest mb-4 inline-block shadow-lg">
                         🪨 Еднодневна екскурзия · Черноморие
                     </span>
-                    <!-- THE HOOK: not Stonehenge comparison, but a full sensory journey promise -->
                     <h1 class="text-5xl md:text-7xl font-serif font-bold text-white mb-4 drop-shadow-2xl leading-tight">
-                        Три места,<br>
-                        <em class="text-brandGold">три усещания.</em>
+                        Природа, История и <br><em class="text-brandGold not-italic">Морски Релакс.</em>
                     </h1>
                     <p class="text-gray-200 text-xl drop-shadow-lg font-light leading-relaxed">
-                        Свещените скали на тракийците. Тишината на реката. Белотата на античния град. Един ден, три свята — и нито едно прилича на другото.
+                        Тракийските мистерии на Бегликташ, дивата природа на река Ропотамо и античният дух на Созопол. Три свята в едно пътуване.
                     </p>
                 </div>
 
-                <!-- Booking card -->
                 <div class="bg-white p-8 rounded-2xl shadow-2xl min-w-[320px] border-t-4 border-brandBlue transform md:translate-y-10">
                     <p class="text-gray-500 text-sm font-bold uppercase tracking-wider mb-2">Цена на човек</p>
                     <div class="mb-2">
@@ -99,15 +118,15 @@
                     </div>
                     <p class="text-gray-400 text-xs mb-6">Обадете се за актуална цена и дата</p>
                     <div class="text-sm text-gray-700 mb-8 space-y-3 border-t border-gray-100 pt-6 font-medium">
-                        <p class="flex items-center gap-3"><span class="text-brandGold text-lg">✓</span> Бегликташ — тракийско светилище</p>
-                        <p class="flex items-center gap-3"><span class="text-brandGold text-lg">✓</span> Река Ропотамо — лодка по водата</p>
+                        <p class="flex items-center gap-3"><span class="text-brandGold text-lg">✓</span> Бегликташ — светилище</p>
+                        <p class="flex items-center gap-3"><span class="text-brandGold text-lg">✓</span> Ропотамо — лодка по реката</p>
                         <p class="flex items-center gap-3"><span class="text-brandGold text-lg">✓</span> Античен Созопол</p>
                         <p class="flex items-center gap-3"><span class="text-brandGold text-lg">✓</span> Транспорт и водач включени</p>
                     </div>
                     <a href="tel:+359894060406" class="block w-full bg-brandGold hover:bg-yellow-400 text-brandBlue text-center font-bold py-4 rounded-xl transition flex items-center justify-center gap-2 shadow-lg transform hover:-translate-y-1">
                         📞 Поискай оферта
                     </a>
-                    <a href="viber://chat?number=%2B359894060406" class="block w-full mt-3 bg-purple-700 hover:bg-purple-600 text-white text-center font-bold py-3 rounded-xl transition flex items-center justify-center gap-2">
+                    <a href="viber://chat?number=%2B359894060406" class="block w-full mt-3 bg-purple-600 hover:bg-purple-500 text-white text-center font-bold py-3 rounded-xl transition flex items-center justify-center gap-2">
                         💬 Пишете на Viber
                     </a>
                 </div>
@@ -116,87 +135,82 @@
         </div>
     </div>
 
-    <!-- HOOK — the real sell -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 mt-4">
         <div class="mb-16 max-w-4xl">
-            <h2 class="text-4xl font-serif font-bold text-brandBlue mb-6">Боговете са избрали това място преди 3000 години.</h2>
+            <h2 class="text-4xl font-serif font-bold text-brandBlue mb-6">Три напълно различни изживявания в един ден.</h2>
             <p class="text-gray-600 leading-relaxed text-xl font-light">
-                Тракийските жреци не са наредили тези огромни скали случайно — те са изградили светилище, съобразено с движението на Слънцето и Луната с точност, каквато строителите на деня не са имали. Бегликташ е едно от малкото места в света, където усещате, че земята е направена за нещо повече от живот. После слизаме до Ропотамо — реката, която пази вековни лотоси и тишина. Финалът е Созопол — 2700-годишен град, жив и днес.
+                Това пътуване е създадено, за да съчетае най-доброто от нашето южно Черноморие. Не просто разходка, а перфектен баланс между древни загадки, защитена природа и спокоен крайбрежен релакс.
             </p>
         </div>
 
-        <!-- 3 mood cards — each destination as a feeling, not a fact -->
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-24">
             <div class="rounded-2xl overflow-hidden shadow-lg group">
-                <div class="h-3 bg-purple-700"></div>
-                <div class="bg-white p-8 border border-gray-100">
-                    <p class="text-3xl mb-3">🪨</p>
-                    <h3 class="font-serif font-bold text-brandBlue text-xl mb-2">Усещане: Трепет</h3>
-                    <p class="text-gray-500 text-sm leading-relaxed">Стоите между скали, наредени от хора преди 3000 години, и изведнъж светлината пада точно по средата. Случайност? Не.</p>
-                    <p class="text-purple-700 font-bold text-xs mt-4 uppercase tracking-wider">Бегликташ · Тракийско светилище</p>
-                </div>
-            </div>
-            <div class="rounded-2xl overflow-hidden shadow-lg group">
-                <div class="h-3 bg-cyan-600"></div>
-                <div class="bg-white p-8 border border-gray-100">
-                    <p class="text-3xl mb-3">🛶</p>
-                    <h3 class="font-serif font-bold text-brandBlue text-xl mb-2">Усещане: Покой</h3>
-                    <p class="text-gray-500 text-sm leading-relaxed">Лодката се плъзга безшумно. Водните лилии се отварят бавно. Чернокосите чапли ви гледат без страх. Градът изчезва.</p>
-                    <p class="text-cyan-700 font-bold text-xs mt-4 uppercase tracking-wider">Река Ропотамо · Лодъчна обиколка</p>
-                </div>
-            </div>
-            <div class="rounded-2xl overflow-hidden shadow-lg group">
                 <div class="h-3 bg-brandGold"></div>
-                <div class="bg-white p-8 border border-gray-100">
-                    <p class="text-3xl mb-3">🏺</p>
-                    <h3 class="font-serif font-bold text-brandBlue text-xl mb-2">Усещане: Изумление</h3>
-                    <p class="text-gray-500 text-sm leading-relaxed">Тесните улички на Созопол са белосани и хладни. Под краката ви — камъни, стъпвани от гърци, траки, ромеи, османлии. Градът е все още жив.</p>
-                    <p class="text-brandGold font-bold text-xs mt-4 uppercase tracking-wider">Созопол · 2700 години история</p>
+                <div class="bg-white p-8 border border-gray-100 h-full flex flex-col">
+                    <p class="text-4xl mb-4">🪨</p>
+                    <h3 class="font-serif font-bold text-brandBlue text-2xl mb-3">История</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed mb-4 flex-grow">Докоснете се до хилядолетни загадки. Огромните мегалити на Бегликташ пазят тайните на тракийските жреци и древните им ритуали.</p>
+                    <p class="text-brandGold font-bold text-xs uppercase tracking-wider">Тракийско Светилище</p>
+                </div>
+            </div>
+            <div class="rounded-2xl overflow-hidden shadow-lg group">
+                <div class="h-3 bg-green-600"></div>
+                <div class="bg-white p-8 border border-gray-100 h-full flex flex-col">
+                    <p class="text-4xl mb-4">🌿</p>
+                    <h3 class="font-serif font-bold text-brandBlue text-2xl mb-3">Природа</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed mb-4 flex-grow">Спуснете се с лодка по тихите води на река Ропотамо. Ще видите водни лилии, редки птици и недокосната лонгозна гора, чак до устието на морето.</p>
+                    <p class="text-green-600 font-bold text-xs uppercase tracking-wider">Резерват Ропотамо</p>
+                </div>
+            </div>
+            <div class="rounded-2xl overflow-hidden shadow-lg group">
+                <div class="h-3 bg-brandBlue"></div>
+                <div class="bg-white p-8 border border-gray-100 h-full flex flex-col">
+                    <p class="text-4xl mb-4">🌊</p>
+                    <h3 class="font-serif font-bold text-brandBlue text-2xl mb-3">Релакс</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed mb-4 flex-grow">След историята и природата, се насладете на чаша кафе и вкусна храна по тесните калдъръмени улички на Стария Созопол, усещайки морския бриз.</p>
+                    <p class="text-brandBlue font-bold text-xs uppercase tracking-wider">Античният Созопол</p>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- PHOTO GALLERY -->
     <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-24">
         <div class="grid grid-cols-1 md:grid-cols-4 gap-3 md:gap-4 rounded-3xl overflow-hidden shadow-2xl">
 
-            <div class="md:col-span-2 md:row-span-2 relative h-64 md:h-[550px] bg-gradient-to-br from-slate-700 to-purple-900 flex items-center justify-center rounded-xl md:rounded-none">
-                <div class="text-center p-8">
-                    <p class="text-6xl mb-3">🪨</p>
-                    <p class="text-purple-200 text-sm font-medium">Бегликташ — тракийското светилище</p>
-                    <p class="text-purple-300/60 text-xs mt-1 italic">Снимка ще бъде добавена</p>
-                </div>
-                <!-- When ready:
-                <a href="../img/begliktas-main.jpg" class="glightbox absolute inset-0">
-                    <img src="../img/begliktas-main.jpg" alt="Бегликташ" class="w-full h-full object-cover transition duration-1000 group-hover:scale-105">
-                </a>
-                -->
-            </div>
+            <a href="../img/begliktash/begliktash-1.avif" class="glightbox md:col-span-2 md:row-span-2 relative group h-64 md:h-[550px] cursor-pointer overflow-hidden rounded-xl md:rounded-none block">
+                <img src="../img/begliktash/begliktash-1.avif" alt="Бегликташ" class="w-full h-full object-cover transition duration-1000 group-hover:scale-105">
+                <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition duration-500"></div>
+            </a>
 
-            <div class="hidden md:flex h-[270px] bg-gradient-to-br from-cyan-50 to-blue-100 items-center justify-center">
-                <div class="text-center"><p class="text-4xl mb-2">🛶</p><p class="text-cyan-700 text-xs font-medium">Река Ропотамо — лодка</p></div>
-            </div>
-            <div class="hidden md:flex h-[270px] bg-gradient-to-br from-amber-50 to-orange-100 items-center justify-center">
-                <div class="text-center"><p class="text-4xl mb-2">🏺</p><p class="text-amber-700 text-xs font-medium">Созопол — стария град</p></div>
-            </div>
-            <div class="hidden md:flex h-[270px] bg-gradient-to-br from-purple-50 to-purple-100 items-center justify-center">
-                <div class="text-center"><p class="text-4xl mb-2">🌿</p><p class="text-purple-600 text-xs font-medium">Лотосите на Ропотамо</p></div>
-            </div>
+            <a href="../img/begliktash/begliktash-2.avif" class="glightbox hidden md:block relative group h-[270px] cursor-pointer overflow-hidden rounded-xl block">
+                <img src="../img/begliktash/begliktash-2.avif" alt="Светилище Бегликташ" class="w-full h-full object-cover transition duration-1000 group-hover:scale-105">
+                <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition duration-500"></div>
+            </a>
 
-            <div class="hidden md:flex h-[270px] bg-brandBlue items-center justify-center cursor-pointer">
+            <a href="../img/begliktash/reka-ropotamo-lodka.avif" class="glightbox hidden md:block relative group h-[270px] cursor-pointer overflow-hidden rounded-xl block">
+                <img src="../img/begliktash/reka-ropotamo-lodka.avif" alt="Лодка по река Ропотамо" class="w-full h-full object-cover transition duration-1000 group-hover:scale-105">
+                <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition duration-500"></div>
+            </a>
+
+            <a href="../img/begliktash/begliktash-3.avif" class="glightbox hidden md:block relative group h-[270px] cursor-pointer overflow-hidden rounded-xl block">
+                <img src="../img/begliktash/begliktash-3.avif" alt="Мегалити Бегликташ" class="w-full h-full object-cover transition duration-1000 group-hover:scale-105">
+                <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition duration-500"></div>
+            </a>
+
+            <a href="../img/begliktash/ustie-reka-ropotoma.avif" class="glightbox hidden"></a>
+
+            <div onclick="document.querySelector('.glightbox').click()" class="hidden md:flex h-[270px] bg-brandBlue items-center justify-center cursor-pointer rounded-xl hover:bg-brandBlue/90 transition">
                 <span class="text-white font-bold text-sm flex items-center gap-2 border-2 border-brandGold px-6 py-3 rounded-xl backdrop-blur-md">
-                    📸 Снимките идват скоро
+                    📸 Разгледай галерията
                 </span>
             </div>
 
         </div>
-        <button class="md:hidden mt-6 w-full border-2 border-brandBlue text-brandBlue font-bold py-4 rounded-xl flex items-center justify-center gap-2">
-            Снимките ще бъдат добавени скоро
+        <button onclick="document.querySelector('.glightbox').click()" class="md:hidden mt-6 w-full border-2 border-brandBlue text-brandBlue font-bold py-4 rounded-xl flex items-center justify-center gap-2">
+            Вижте всички снимки
         </button>
     </section>
 
-    <!-- INCLUDED + ITINERARY + SIDEBAR -->
     <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-24">
         <div class="flex flex-col lg:flex-row gap-16 border-t-2 border-gray-200 pt-20">
 
@@ -206,12 +220,12 @@
                 <div class="bg-white p-8 rounded-2xl border border-gray-100 shadow-lg mb-6">
                     <ul class="text-gray-700 space-y-4 font-medium">
                         <li class="flex items-start gap-3"><span class="text-brandGold text-xl mt-0.5">✓</span> Транспорт с комфортен климатизиран автобус от Бургас и обратно</li>
-                        <li class="flex items-start gap-3"><span class="text-brandGold text-xl mt-0.5">✓</span> Лицензиран екскурзовод — специалист по тракийска история и Черноморието</li>
-                        <li class="flex items-start gap-3"><span class="text-brandGold text-xl mt-0.5">✓</span> Посещение на тракийското светилище Бегликташ с екскурзовод</li>
-                        <li class="flex items-start gap-3"><span class="text-brandGold text-xl mt-0.5">✓</span> Лодъчна обиколка по река Ропотамо</li>
+                        <li class="flex items-start gap-3"><span class="text-brandGold text-xl mt-0.5">✓</span> Лицензиран екскурзовод — специалист по история и природа на региона</li>
+                        <li class="flex items-start gap-3"><span class="text-brandGold text-xl mt-0.5">✓</span> Посещение на тракийското светилище Бегликташ с беседа</li>
+                        <li class="flex items-start gap-3"><span class="text-brandGold text-xl mt-0.5">✓</span> Билет за разходка с лодка по река Ропотамо</li>
                         <li class="flex items-start gap-3"><span class="text-brandGold text-xl mt-0.5">✓</span> Разходка из античния Созопол с водач</li>
-                        <li class="flex items-start gap-3"><span class="text-brandGold text-xl mt-0.5">✓</span> Всички входни такси и такси за лодката</li>
-                        <li class="flex items-start gap-3"><span class="text-brandGold text-xl mt-0.5">✓</span> Обяд в ресторант с гледка към морето</li>
+                        <li class="flex items-start gap-3"><span class="text-brandGold text-xl mt-0.5">✓</span> Всички входни такси за обектите</li>
+                        <li class="flex items-start gap-3"><span class="text-brandGold text-xl mt-0.5">✓</span> Обяд в ресторант край морето</li>
                     </ul>
                 </div>
 
@@ -223,7 +237,6 @@
                     </ul>
                 </div>
 
-                <!-- Guarantee -->
                 <div class="bg-green-50 border border-green-200 rounded-2xl p-6 flex gap-4 items-start mb-12">
                     <span class="text-3xl flex-shrink-0">🛡️</span>
                     <div>
@@ -232,52 +245,50 @@
                     </div>
                 </div>
 
-                <!-- Deep dive on each stop -->
                 <h3 class="text-3xl font-serif font-bold mb-8 text-brandBlue">Три спирки. Три истории.</h3>
                 <div class="space-y-6 mb-12">
 
                     <div class="bg-white border border-gray-100 rounded-2xl shadow-md overflow-hidden">
-                        <div class="bg-purple-900 px-6 py-4 flex items-center gap-3">
+                        <div class="bg-brandGold px-6 py-4 flex items-center gap-3">
                             <span class="text-2xl">🪨</span>
                             <div>
                                 <h4 class="font-serif font-bold text-white text-xl">Бегликташ</h4>
-                                <p class="text-purple-200 text-xs">Тракийско астрономическо светилище · ~3000 г. пр. Хр.</p>
+                                <p class="text-yellow-100 text-xs">Тракийско светилище · ~3000 г. пр. Хр.</p>
                             </div>
                         </div>
                         <div class="p-6">
-                            <p class="text-gray-600 text-sm leading-relaxed">Огромни гранитни блокове, наредени с прецизност, която астрономите изучават и днес. На деня на лятното слънцестоене слънчевият лъч минава точно по средата на два вертикални камъка — при нулева грешка. Без компютри, без инструменти. Само знание. Само небе. Бегликташ е едно от най-загадъчните места на Балканите и е на <strong>30 минути от Приморско</strong> — а повечето хора никога не са чували за него.</p>
+                            <p class="text-gray-600 text-sm leading-relaxed">Огромни гранитни блокове, наредени с прецизност, която изумява и днес. На деня на лятното слънцестоене слънчевият лъч минава точно по средата на два вертикални камъка. Бегликташ е едно от най-загадъчните места на Балканите — място за почит към боговете на слънцето и природата.</p>
                         </div>
                     </div>
 
                     <div class="bg-white border border-gray-100 rounded-2xl shadow-md overflow-hidden">
-                        <div class="bg-cyan-700 px-6 py-4 flex items-center gap-3">
+                        <div class="bg-green-600 px-6 py-4 flex items-center gap-3">
                             <span class="text-2xl">🛶</span>
                             <div>
                                 <h4 class="font-serif font-bold text-white text-xl">Река Ропотамо</h4>
-                                <p class="text-cyan-100 text-xs">Защитена природна зона · Лодъчна обиколка</p>
+                                <p class="text-green-100 text-xs">Защитена природна зона · Разходка с лодка</p>
                             </div>
                         </div>
                         <div class="p-6">
-                            <p class="text-gray-600 text-sm leading-relaxed">Ропотамо е една от последните диви реки по Черноморието — нейните брегове са покрити с вековни дъбове и лонгозна гора, а водата пази цели колонии от бяла водна лилия. Лодъчната обиколка е бавна и тиха — птици, влечуги, нетрогнати брегове. Природата тук се е съхранила именно защото хората не са я стигнали навреме. Хубаво, че вие я стигате днес.</p>
+                            <p class="text-gray-600 text-sm leading-relaxed">Ропотамо е една от последните диви реки по Черноморието. Бреговете ѝ са покрити с лонгозна гора, а водата пази колонии от водни лилии и редки птици. Разходката с лодка е бавна и тиха — истинско бягство в прегръдката на дивата природа, стигайки чак до вливането на реката в морето.</p>
                         </div>
                     </div>
 
                     <div class="bg-white border border-gray-100 rounded-2xl shadow-md overflow-hidden">
-                        <div class="bg-amber-700 px-6 py-4 flex items-center gap-3">
+                        <div class="bg-brandBlue px-6 py-4 flex items-center gap-3">
                             <span class="text-2xl">🏺</span>
                             <div>
                                 <h4 class="font-serif font-bold text-white text-xl">Созопол</h4>
-                                <p class="text-amber-100 text-xs">Античен гръцки полис · Аполония Понтика · 610 г. пр. Хр.</p>
+                                <p class="text-blue-200 text-xs">Античен гръцки полис · Аполония Понтика</p>
                             </div>
                         </div>
                         <div class="p-6">
-                            <p class="text-gray-600 text-sm leading-relaxed">Основан от милетски гърци преди 2700 години, Созопол е един от малкото градове в Европа, които са живи и непрекъснато населени от древността до наши дни. Старият град е на полуостров — от всяка улица виждате морето. Белосани дървени чардаци, павирани алеи и музей, където могат да се видят артефакти от дъното на залива. Разходката тук е финалът, който заслужавате след деня.</p>
+                            <p class="text-gray-600 text-sm leading-relaxed">Основан от милетски гърци преди 2700 години, Созопол е жив музей. Старият град е разположен на полуостров, където белосаните дървени къщи и тесните павирани улички разказват истории. Разходката тук е перфектният, спокоен финал, изпълнен с морски бриз и очарование.</p>
                         </div>
                     </div>
 
                 </div>
 
-                <!-- Itinerary -->
                 <h3 class="text-3xl font-serif font-bold mb-4 text-brandBlue">Програма на деня</h3>
                 <p class="text-gray-500 mb-8 font-light">От скалите на тракийците до морето на гърците — за един ден.</p>
 
@@ -290,29 +301,29 @@
                         <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-white p-6 rounded-2xl shadow-md border border-gray-100">
                             <p class="text-xs text-brandGold font-bold uppercase tracking-wider mb-1">08:00</p>
                             <h4 class="font-bold text-xl text-brandBlue mb-2">Тръгване от Бургас</h4>
-                            <p class="text-sm text-gray-600 leading-relaxed">Климатизиран автобус от централна точка в Бургас. Водачът ви въвежда в тракийската история по пътя — до Бегликташ са ~1 ч. 15 мин.</p>
+                            <p class="text-sm text-gray-600 leading-relaxed">Климатизиран автобус от централна точка в Бургас. Водачът ви въвежда в тракийската история по пътя — до Бегликташ пътуваме около час.</p>
                         </div>
                     </div>
 
                     <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
-                        <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-white bg-purple-800 text-white shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
-                            <span class="font-bold text-xs">🪨</span>
+                        <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-white bg-brandGold text-brandBlue shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
+                            <span class="font-bold text-xs">2</span>
                         </div>
                         <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-white p-6 rounded-2xl shadow-md border border-gray-100">
-                            <p class="text-xs text-purple-700 font-bold uppercase tracking-wider mb-1">09:15</p>
+                            <p class="text-xs text-brandGold font-bold uppercase tracking-wider mb-1">09:15</p>
                             <h4 class="font-bold text-xl text-brandBlue mb-2">Бегликташ — Тракийското светилище</h4>
-                            <p class="text-sm text-gray-600 leading-relaxed">~90 мин. Разходка из светилището с водач. Астрономическата логика на камъните, ритуалите на тракийците, легендите за жреците. Едно от най-мистичните места на Балканите — и вие сте тук.</p>
+                            <p class="text-sm text-gray-600 leading-relaxed">~90 мин. Разходка из светилището с водач. Астрономическата логика на камъните, ритуалите на тракийците, легендите за жреците. Едно от най-мистичните места на Балканите.</p>
                         </div>
                     </div>
 
                     <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
-                        <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-white bg-cyan-600 text-white shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
+                        <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-white bg-green-600 text-white shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
                             <span class="font-bold text-xs">🛶</span>
                         </div>
                         <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-white p-6 rounded-2xl shadow-md border border-gray-100">
-                            <p class="text-xs text-cyan-600 font-bold uppercase tracking-wider mb-1">11:00</p>
-                            <h4 class="font-bold text-xl text-brandBlue mb-2">Ропотамо — Лодъчна обиколка</h4>
-                            <p class="text-sm text-gray-600 leading-relaxed">~60 мин. Тихо плаване по реката. Водни лилии, дива природа, вековни дъбове над водата. Пълна тишина — точно след Бегликташ. Идеалният контраст.</p>
+                            <p class="text-xs text-green-600 font-bold uppercase tracking-wider mb-1">11:00</p>
+                            <h4 class="font-bold text-xl text-brandBlue mb-2">Ропотамо — Разходка с лодка</h4>
+                            <p class="text-sm text-gray-600 leading-relaxed">~60 мин. Тихо плаване по реката. Дива природа, вековни дървета над водата. Пълна тишина и релакс точно след разходката сред скалите.</p>
                         </div>
                     </div>
 
@@ -322,19 +333,19 @@
                         </div>
                         <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-white p-6 rounded-2xl shadow-md border border-gray-100">
                             <p class="text-xs text-brandGold font-bold uppercase tracking-wider mb-1">12:30</p>
-                            <h4 class="font-bold text-xl text-brandBlue mb-2">Обяд с гледка към морето</h4>
-                            <p class="text-sm text-gray-600 leading-relaxed">Включен обяд в ресторант с морска гледка. Риба, мидени супи, местни специалитети. Добре заслужена пауза преди финалната спирка.</p>
+                            <h4 class="font-bold text-xl text-brandBlue mb-2">Обяд с гледка</h4>
+                            <p class="text-sm text-gray-600 leading-relaxed">Включен обяд в ресторант в района. Вкусни специалитети и добре заслужена пауза преди финалната спирка.</p>
                         </div>
                     </div>
 
                     <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
-                        <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-white bg-amber-600 text-white shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
+                        <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-white bg-brandBlue text-white shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
                             <span class="font-bold text-xs">🏺</span>
                         </div>
                         <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-white p-6 rounded-2xl shadow-md border border-gray-100">
-                            <p class="text-xs text-amber-600 font-bold uppercase tracking-wider mb-1">14:00</p>
+                            <p class="text-xs text-brandBlue font-bold uppercase tracking-wider mb-1">14:30</p>
                             <h4 class="font-bold text-xl text-brandBlue mb-2">Созопол — Старият град</h4>
-                            <p class="text-sm text-gray-600 leading-relaxed">~2 часа. Разходка из полуострова с водач: античната история, Аполония Понтика, белосаните чардаци и морето от всяка улица. Свободно време за кафе, сувенири и последни снимки.</p>
+                            <p class="text-sm text-gray-600 leading-relaxed">~2 часа. Разходка из полуострова с водач: античната история, красивите възрожденски къщи и морето от всяка улица. Свободно време за кафе и снимки.</p>
                         </div>
                     </div>
 
@@ -345,19 +356,18 @@
                         <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-white p-6 rounded-2xl shadow-md border border-gray-100">
                             <p class="text-xs text-brandGold font-bold uppercase tracking-wider mb-1">~18:00</p>
                             <h4 class="font-bold text-xl text-brandBlue mb-2">Завръщане в Бургас</h4>
-                            <p class="text-sm text-gray-600 leading-relaxed">Пристигане ~18:30 ч. Тракийски ритуали, дива река и 2700 години история — всичко за един ден.</p>
+                            <p class="text-sm text-gray-600 leading-relaxed">Пристигане ~18:30 ч. Тракийски мистерии, дива река и хилядолетна история — един изпълнен със спомени ден.</p>
                         </div>
                     </div>
 
                 </div>
 
                 <div class="mt-6 bg-warmBg border border-gray-200 rounded-xl p-4">
-                    <p class="text-gray-500 text-xs italic">* Часовете са приблизителни. Конкретната програма се уточнява при резервацията. За ученически групи — адаптирана програма по история и биология.</p>
+                    <p class="text-gray-500 text-xs italic">* Часовете са приблизителни. Конкретната програма се уточнява при резервацията. За ученически групи — адаптирана програма по история и природа.</p>
                 </div>
 
             </div>
 
-            <!-- Sticky sidebar -->
             <div class="w-full lg:w-1/3">
                 <div class="sticky top-28">
                     <h3 class="font-serif font-bold mb-6 text-2xl text-brandBlue">Детайли за екскурзията</h3>
@@ -396,7 +406,7 @@
                             <li class="flex items-center gap-2"><span class="text-brandGold">👨‍👩‍👧‍👦</span> Семейства с деца</li>
                             <li class="flex items-center gap-2"><span class="text-brandGold">🌿</span> Любители на природата</li>
                             <li class="flex items-center gap-2"><span class="text-brandGold">🏛️</span> Любители на историята</li>
-                            <li class="flex items-center gap-2"><span class="text-brandGold">📸</span> Фотографи и творци</li>
+                            <li class="flex items-center gap-2"><span class="text-brandGold">📸</span> Фотографи и пътешественици</li>
                         </ul>
                     </div>
 
@@ -409,8 +419,8 @@
                         <a href="viber://chat?number=%2B359894060406" class="block text-center bg-purple-600 hover:bg-purple-500 text-white font-bold py-3 rounded-xl transition mb-3">
                             💬 Viber
                         </a>
-                        <a href="mailto:Stelatoursbg@gmail.com" class="block text-center border border-white/30 hover:border-brandGold text-white/80 hover:text-white text-sm py-3 rounded-xl transition">
-                            ✉️ Stelatoursbg@gmail.com
+                        <a href="mailto:stellatour99@gmail.com" class="block text-center border border-white/30 hover:border-brandGold text-white/80 hover:text-white text-sm py-3 rounded-xl transition">
+                            ✉️ stellatour99@gmail.com
                         </a>
                     </div>
                 </div>
@@ -419,29 +429,28 @@
         </div>
     </section>
 
-    <!-- BLUE FEATURE SECTION -->
     <section class="py-24 bg-brandBlue border-t-4 border-brandGold">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col lg:flex-row items-center gap-16">
 
                 <div class="w-full lg:w-1/2">
-                    <span class="text-brandGold font-bold uppercase tracking-widest text-xs mb-4 block">Три епохи. Един ден.</span>
-                    <h3 class="text-4xl font-serif font-bold mb-6 text-white leading-tight">Нито една от трите спирки не прилича на другите.</h3>
+                    <span class="text-brandGold font-bold uppercase tracking-widest text-xs mb-4 block">Балансирано пътуване</span>
+                    <h3 class="text-4xl font-serif font-bold mb-6 text-white leading-tight">Три спирки, които не уморяват.</h3>
                     <p class="text-blue-100 text-lg leading-relaxed mb-8 font-light">
-                        Това е рядкото пътуване, при което всяка следваща спирка нулира усещането от предишната. Мистиката на тракийските скали се стопява в тишината на реката, а тя — в живия шум на Созопол. Три преживявания за цената на едно пътуване.
+                        Това е рядкото пътуване, при което всяка следваща спирка обогатява усещането от предишната. Мистиката на тракийските скали се разтваря в тишината на реката, а тя — в очарователната атмосфера на стария Созопол.
                     </p>
                     <ul class="space-y-5 text-white font-medium">
                         <li class="flex items-center gap-4 bg-white/10 p-4 rounded-xl backdrop-blur-sm border border-white/10">
                             <span class="text-brandGold text-2xl">🪨</span>
-                            <span>Бегликташ е едно от малкото тракийски светилища в България, отворени за посетители.</span>
+                            <span>Бегликташ — едно от малкото енергийни тракийски светилища.</span>
                         </li>
                         <li class="flex items-center gap-4 bg-white/10 p-4 rounded-xl backdrop-blur-sm border border-white/10">
                             <span class="text-brandGold text-2xl">🛶</span>
-                            <span>Лодъчната обиколка по Ропотамо е преживяване, което децата помнят години.</span>
+                            <span>Река Ропотамо — разходка с лодка, която впечатлява всички възрасти.</span>
                         </li>
                         <li class="flex items-center gap-4 bg-white/10 p-4 rounded-xl backdrop-blur-sm border border-white/10">
                             <span class="text-brandGold text-2xl">🏺</span>
-                            <span>Созопол е жив — не музейна реплика, а реален 2700-годишен град с ресторанти и хора.</span>
+                            <span>Созопол — жив 2700-годишен град, не просто музейна реплика.</span>
                         </li>
                     </ul>
                 </div>
@@ -449,15 +458,10 @@
                 <div class="w-full lg:w-1/2">
                     <div class="relative p-2">
                         <div class="absolute inset-0 bg-brandGold rounded-3xl transform rotate-3"></div>
-                        <div class="relative rounded-2xl shadow-2xl w-full h-[450px] bg-gradient-to-br from-slate-700 to-purple-900 flex items-center justify-center">
-                            <div class="text-center opacity-40">
-                                <p class="text-6xl mb-3">🪨</p>
-                                <p class="text-white text-sm">Снимка — Бегликташ</p>
-                            </div>
-                        </div>
-                        <!-- When ready:
-                        <img src="../img/begliktas-wide.jpg" alt="Бегликташ" class="relative rounded-2xl shadow-2xl w-full h-[450px] object-cover grayscale hover:grayscale-0 transition duration-700">
-                        -->
+                        <a href="../img/begliktash/reka-ropotamo-lodka.avif" class="glightbox block relative rounded-2xl shadow-2xl w-full h-[450px] overflow-hidden group">
+                            <img src="../img/begliktash/reka-ropotamo-lodka.avif" alt="Лодка Ропотамо" class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
+                            <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition duration-500"></div>
+                        </a>
                     </div>
                 </div>
 
@@ -465,12 +469,11 @@
         </div>
     </section>
 
-    <!-- TESTIMONIAL -->
     <section class="py-24 bg-warmBg overflow-hidden">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <div class="text-brandGold mb-6 flex justify-center gap-2 text-2xl">★★★★★</div>
             <h2 class="text-3xl md:text-4xl font-serif font-bold text-brandBlue mb-8 leading-relaxed">
-                „Синът ми е на 12 и от Бегликташ не спираше да пита. После лодката по Ропотамо го замълча от красота. А Созопол го върна към въпросите. Перфектен ден."
+                „Синът ми е на 12 и на Бегликташ не спираше да пита. После лодката по Ропотамо го остави без думи от красотата. А Созопол го върна към въпросите. Перфектен баланс за един ден."
             </h2>
             <div class="flex flex-col items-center justify-center">
                 <div class="w-14 h-14 bg-brandBlue text-brandGold font-serif font-bold flex items-center justify-center rounded-full text-2xl mb-3 shadow-md">В</div>
@@ -480,7 +483,6 @@
         </div>
     </section>
 
-    <!-- CONTACT CTA -->
     <section class="py-24 bg-white text-gray-900 border-t border-gray-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
@@ -498,16 +500,15 @@
                     <h3 class="text-xl font-bold text-brandBlue mb-1">Viber</h3>
                     <p class="text-gray-500 font-medium">Пишете ни сега</p>
                 </a>
-                <a href="mailto:Stelatoursbg@gmail.com" class="bg-surface border border-gray-200 p-8 rounded-3xl text-center hover:shadow-xl hover:border-brandGold transition group">
+                <a href="mailto:stellatour99@gmail.com" class="bg-surface border border-gray-200 p-8 rounded-3xl text-center hover:shadow-xl hover:border-brandGold transition group">
                     <div class="text-4xl mb-4">✉️</div>
                     <h3 class="text-xl font-bold text-brandBlue mb-1">Имейл</h3>
-                    <p class="text-gray-500 font-medium">Stelatoursbg@gmail.com</p>
+                    <p class="text-gray-500 font-medium">stellatour99@gmail.com</p>
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- MORE EXCURSIONS -->
     <section class="py-20 bg-surface border-t border-gray-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
@@ -550,10 +551,10 @@
                         <p class="text-gray-500 text-xs mt-1">Еднодневна екскурзия до Турция</p>
                     </div>
                 </a>
-                <a href="../index_bg.html" class="bg-brandBlue p-6 rounded-2xl hover:bg-brandBlue/90 transition group flex gap-4 items-start">
+                <a href="../index.html" class="bg-brandBlue p-6 rounded-2xl hover:bg-brandBlue/90 transition group flex gap-4 items-start">
                     <span class="text-3xl flex-shrink-0">🏠</span>
                     <div>
-                        <p class="font-bold text-brandGold text-sm">Всички оферти на Stela Tours</p>
+                        <p class="font-bold text-brandGold text-sm">Всички оферти на Stela Tour</p>
                         <p class="text-white/60 text-xs mt-1">Към началната страница →</p>
                     </div>
                 </a>
@@ -561,7 +562,6 @@
         </div>
     </section>
 
-    <!-- FOOTER -->
     <footer class="bg-gray-900 text-white border-t border-gray-800 pt-16 pb-8">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col md:flex-row justify-between items-center gap-6 mb-12">
@@ -570,13 +570,13 @@
                     <span class="text-white text-2xl font-bold tracking-tight uppercase">Stela<span class="text-brandGold">Tour</span></span>
                 </div>
                 <div class="flex gap-6 text-sm font-medium text-gray-400">
-                    <a href="../index_bg.html#quick-escapes" class="hover:text-brandGold transition">Кратки почивки</a>
-                    <a href="../index_bg.html#journeys" class="hover:text-brandGold transition">Пътешествия</a>
-                    <a href="../index_bg.html#excursions" class="hover:text-brandGold transition">Екскурзии</a>
+                    <a href="../index.html#quick-escapes" class="hover:text-brandGold transition">Кратки почивки</a>
+                    <a href="../index.html#journeys" class="hover:text-brandGold transition">Пътешествия</a>
+                    <a href="../index.html#excursions" class="hover:text-brandGold transition">Екскурзии</a>
                 </div>
             </div>
             <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-500 font-light">
-                <p>&copy; 2026 Stela Tours Burgas. Всички права запазени.</p>
+                <p>&copy; 2026 Stela Tour. Всички права запазени.</p>
                 <div class="flex items-center gap-1">
                     <span>Дизайн за конверсии от</span>
                     <a href="https://ginkogrudev.com" target="_blank" class="text-brandGold font-bold hover:text-white transition">GG Solutions</a>

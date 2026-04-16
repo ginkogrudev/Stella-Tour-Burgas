@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Малко Търново — 4 Музея, Архитектурен Резерват и Водопад за Един Ден | Stela Tours</title>
+    <title>Малко Търново — 4 Музея, Архитектурен Резерват и Водопад за Един Ден | Stela Tour</title>
     <meta name="description" content="Еднодневна екскурзия до Малко Търново: посещение на 4 исторически музея, архитектурния резерват с. Бръшлян и водопада Докузак в сърцето на Странджа.">
 
-    <link rel="icon" type="image/png" href="../img/favicon.png">
-    <meta property="og:title" content="Малко Търново — 4 Музея + Бръшлян + Докузак | Stela Tours">
+    <link rel="icon" type="image/avif" href="../img/favicon.avif">
+    <meta property="og:title" content="Малко Търново — 4 Музея + Бръшлян + Докузак | Stela Tour">
     <meta property="og:description" content="Странджа за един ден. История, природа и жива архитектура — всичко между закуска и вечеря.">
     <meta property="og:type" content="website">
 
@@ -37,40 +37,67 @@
 </head>
 <body class="bg-warmBg text-gray-900 antialiased">
 
-    <!-- NAV -->
-    <nav class="fixed w-full z-50 bg-white/95 backdrop-blur-md border-b-4 border-brandGold shadow-sm transition-all duration-300">
+   <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 bg-white/95 backdrop-blur-md border-b-4 border-brandGold shadow-sm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
-                <a href="../index_bg.html" class="flex-shrink-0 flex items-center gap-3 cursor-pointer">
+                
+                <div class="flex-shrink-0 flex items-center gap-3 cursor-pointer" onclick="window.scrollTo(0,0)">
                     <div class="w-10 h-10 bg-brandBlue text-brandGold flex items-center justify-center font-serif font-bold rounded-xl shadow-md text-xl">S</div>
                     <span class="text-brandBlue text-2xl font-bold tracking-tight uppercase">Stela<span class="text-brandGold">Tour</span></span>
-                </a>
+                </div>
+                
                 <div class="hidden md:flex items-center space-x-8">
-                    <a href="../index_bg.html#excursions" class="text-gray-700 hover:text-brandGold font-bold text-sm uppercase tracking-wider transition">← Всички екскурзии</a>
+                    <a href="#quick-escapes" class="text-gray-700 hover:text-brandGold font-bold text-sm uppercase tracking-wider transition">Уикенди</a>
+                    <a href="#journeys" class="text-gray-700 hover:text-brandGold font-bold text-sm uppercase tracking-wider transition">Пътешествия</a>
+                    <a href="#green-schools" class="text-gray-700 hover:text-brandGold font-bold text-sm uppercase tracking-wider transition">За училища</a>
+                    
+                    <a href="index-en.html" class="text-brandBlue font-bold hover:text-brandGold flex items-center gap-1 text-sm border-l-2 pl-6 border-gray-200 transition">
+                        <span class="text-lg">🇬🇧</span> <span>EN</span>
+                    </a>
+
                     <a href="tel:+359894060406" class="bg-brandGold text-brandBlue px-6 py-2.5 rounded-xl font-bold text-sm hover:bg-yellow-400 hover:shadow-lg transition transform hover:-translate-y-1">
                         📞 Обади се
                     </a>
                 </div>
-                <div class="md:hidden flex items-center gap-3">
-                    <a href="tel:+359894060406" class="bg-brandGold text-brandBlue px-4 py-2 rounded-lg font-bold text-sm">📞 Обади се</a>
+
+                <div class="md:hidden flex items-center gap-4">
+                    <a href="index-en.html" class="text-brandBlue font-bold hover:text-brandGold flex items-center gap-1 text-sm transition">
+                        <span>EN</span>
+                    </a>
+                    <button onclick="toggleMobileMenu()" class="text-gray-900 hover:text-brandGold focus:outline-none p-2 transition">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
                 </div>
+
             </div>
+        </div>
+
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-gray-200 shadow-xl absolute w-full left-0 top-20 px-6 py-8 flex flex-col space-y-6">
+            <a href="#quick-escapes" onclick="toggleMobileMenu()" class="text-lg font-bold text-brandBlue hover:text-brandGold transition">Уикенди</a>
+            <a href="#journeys" onclick="toggleMobileMenu()" class="text-lg font-bold text-brandBlue hover:text-brandGold transition">Пътешествия</a>
+            <a href="#green-schools" onclick="toggleMobileMenu()" class="text-lg font-bold text-brandBlue hover:text-brandGold transition">За училища</a>
+            <a href="tel:+359894060406" class="bg-brandGold text-brandBlue text-center py-4 rounded-xl font-bold shadow-md hover:bg-yellow-400 transition mt-4">
+                📞 Обади ни се
+            </a>
         </div>
     </nav>
 
-    <!-- HERO -->
+    <script>
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            if (menu.classList.contains('hidden')) {
+                menu.classList.remove('hidden');
+            } else {
+                menu.classList.add('hidden');
+            }
+        }
+    </script>
+
     <div class="relative h-[85vh] flex items-end overflow-hidden">
         <div class="absolute inset-0">
-            <!-- Deep forest greens — Strandzha palette -->
-            <div class="w-full h-full bg-gradient-to-br from-emerald-950 via-green-900 to-stone-900 flex items-center justify-center">
-                <div class="text-center opacity-20">
-                    <p class="text-8xl mb-4">🌲</p>
-                    <p class="text-white text-sm tracking-widest uppercase">Снимка скоро</p>
-                </div>
-            </div>
-            <!-- When photo ready, replace div above with:
-            <img src="../img/malko-tarnovo-hero.jpg" class="w-full h-full object-cover transform scale-105 animate-[pulse_20s_ease-in-out_infinite_alternate]" alt="Малко Търново и Странджа">
-            -->
+            <img src="../img/malko-turnovo/malko-turnovo-hero.avif" class="w-full h-full object-cover transform scale-105 animate-[pulse_20s_ease-in-out_infinite_alternate]" alt="Малко Търново и Странджа">
             <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/55 to-transparent"></div>
         </div>
 
@@ -89,7 +116,6 @@
                     </p>
                 </div>
 
-                <!-- Booking card -->
                 <div class="bg-white p-8 rounded-2xl shadow-2xl min-w-[320px] border-t-4 border-brandBlue transform md:translate-y-10">
                     <p class="text-gray-500 text-sm font-bold uppercase tracking-wider mb-2">Цена на човек</p>
                     <div class="mb-2">
@@ -114,7 +140,6 @@
         </div>
     </div>
 
-    <!-- HOOK -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 mt-4">
         <div class="mb-16 max-w-4xl">
             <h2 class="text-4xl font-serif font-bold text-brandBlue mb-6">Четири музея. Едно село извън времето. Един водопад. Един ден.</h2>
@@ -123,7 +148,6 @@
             </p>
         </div>
 
-        <!-- Value stacking — the Hormozi play: show quantity of value -->
         <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-24">
             <div class="bg-white rounded-2xl shadow-md border border-gray-100 p-6 text-center">
                 <p class="text-4xl font-serif font-bold text-brandBlue mb-2">4</p>
@@ -144,51 +168,46 @@
         </div>
     </div>
 
-    <!-- PHOTO GALLERY -->
     <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-24">
         <div class="grid grid-cols-1 md:grid-cols-4 gap-3 md:gap-4 rounded-3xl overflow-hidden shadow-2xl">
 
-            <div class="md:col-span-2 md:row-span-2 relative h-64 md:h-[550px] bg-gradient-to-br from-emerald-100 to-green-200 flex items-center justify-center rounded-xl md:rounded-none">
-                <div class="text-center p-8">
-                    <p class="text-6xl mb-3">🏘️</p>
-                    <p class="text-green-800 text-sm font-medium">с. Бръшлян — архитектурен резерват</p>
-                    <p class="text-green-600 text-xs mt-1 italic">Снимка ще бъде добавена</p>
-                </div>
-                <!-- When ready:
-                <a href="../img/brashlyan-1.jpg" class="glightbox absolute inset-0">
-                    <img src="../img/brashlyan-1.jpg" alt="с. Бръшлян" class="w-full h-full object-cover transition duration-1000 group-hover:scale-105">
-                    <div class="absolute inset-0 bg-black/15 group-hover:bg-black/0 transition duration-500"></div>
-                </a>
-                -->
-            </div>
+            <a href="../img/malko-turnovo/selo-brashlqn.avif" class="glightbox md:col-span-2 md:row-span-2 relative group h-64 md:h-[550px] cursor-pointer overflow-hidden rounded-xl md:rounded-none block">
+                <img src="../img/malko-turnovo/selo-brashlqn.avif" alt="с. Бръшлян — архитектурен резерват" class="w-full h-full object-cover transition duration-1000 group-hover:scale-105">
+                <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition duration-500"></div>
+            </a>
 
-            <div class="hidden md:flex h-[270px] bg-gradient-to-br from-amber-50 to-stone-100 items-center justify-center">
-                <div class="text-center"><p class="text-4xl mb-2">🏛️</p><p class="text-stone-600 text-xs font-medium">Музей — Малко Търново</p></div>
-            </div>
-            <div class="hidden md:flex h-[270px] bg-gradient-to-br from-blue-50 to-cyan-100 items-center justify-center">
-                <div class="text-center"><p class="text-4xl mb-2">💧</p><p class="text-cyan-700 text-xs font-medium">Водопад Докузак</p></div>
-            </div>
-            <div class="hidden md:flex h-[270px] bg-gradient-to-br from-green-50 to-emerald-100 items-center justify-center">
-                <div class="text-center"><p class="text-4xl mb-2">🌲</p><p class="text-emerald-700 text-xs font-medium">Природата на Странджа</p></div>
-            </div>
+            <a href="../img/malko-turnovo/malko-turnovo-muzei-1.avif" class="glightbox hidden md:block relative group h-[270px] cursor-pointer overflow-hidden rounded-xl block">
+                <img src="../img/malko-turnovo/malko-turnovo-muzei-1.avif" alt="Музей — Малко Търново" class="w-full h-full object-cover transition duration-1000 group-hover:scale-105">
+                <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition duration-500"></div>
+            </a>
 
-            <div class="hidden md:flex h-[270px] bg-brandBlue items-center justify-center cursor-pointer">
+            <a href="../img/malko-turnovo/vodopad-dokuzak1.avif" class="glightbox hidden md:block relative group h-[270px] cursor-pointer overflow-hidden rounded-xl block">
+                <img src="../img/malko-turnovo/vodopad-dokuzak1.avif" alt="Водопад Докузак" class="w-full h-full object-cover transition duration-1000 group-hover:scale-105">
+                <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition duration-500"></div>
+            </a>
+
+            <a href="../img/malko-turnovo/strandja-alexandar-ivanov.avif" class="glightbox hidden md:block relative group h-[270px] cursor-pointer overflow-hidden rounded-xl block">
+                <img src="../img/malko-turnovo/strandja-alexandar-ivanov.avif" alt="Природата на Странджа" class="w-full h-full object-cover transition duration-1000 group-hover:scale-105">
+                <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition duration-500"></div>
+            </a>
+
+            <a href="../img/malko-turnovo/malko-turnovo-hero.avif" class="glightbox hidden"></a>
+
+            <div onclick="document.querySelector('.glightbox').click()" class="hidden md:flex h-[270px] bg-brandBlue items-center justify-center cursor-pointer rounded-xl hover:bg-brandBlue/90 transition">
                 <span class="text-white font-bold text-sm flex items-center gap-2 border-2 border-brandGold px-6 py-3 rounded-xl backdrop-blur-md">
-                    📸 Снимките идват скоро
+                    📸 Разгледай галерията
                 </span>
             </div>
 
         </div>
-        <button class="md:hidden mt-6 w-full border-2 border-brandBlue text-brandBlue font-bold py-4 rounded-xl flex items-center justify-center gap-2">
-            Снимките ще бъдат добавени скоро
+        <button onclick="document.querySelector('.glightbox').click()" class="md:hidden mt-6 w-full border-2 border-brandBlue text-brandBlue font-bold py-4 rounded-xl flex items-center justify-center gap-2">
+            Вижте всички снимки
         </button>
     </section>
 
-    <!-- INCLUDED + ITINERARY + SIDEBAR -->
     <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-24">
         <div class="flex flex-col lg:flex-row gap-16 border-t-2 border-gray-200 pt-20">
 
-            <!-- Main content -->
             <div class="w-full lg:w-2/3">
 
                 <h3 class="text-3xl font-serif font-bold mb-8 text-brandBlue">Какво е включено?</h3>
@@ -212,7 +231,6 @@
                     </ul>
                 </div>
 
-                <!-- Guarantee -->
                 <div class="bg-green-50 border border-green-200 rounded-2xl p-6 flex gap-4 items-start mb-12">
                     <span class="text-3xl flex-shrink-0">🛡️</span>
                     <div>
@@ -221,12 +239,10 @@
                     </div>
                 </div>
 
-                <!-- The 3 highlights — each destination gets its own callout -->
                 <h3 class="text-3xl font-serif font-bold mb-8 text-brandBlue">Три дестинации. Три свята.</h3>
 
                 <div class="space-y-6 mb-12">
 
-                    <!-- Malko Tarnovo museums -->
                     <div class="bg-white border border-gray-100 rounded-2xl shadow-md overflow-hidden">
                         <div class="bg-brandBlue px-6 py-4 flex items-center gap-3">
                             <span class="text-2xl">🏛️</span>
@@ -251,7 +267,6 @@
                         </div>
                     </div>
 
-                    <!-- Brashlyan -->
                     <div class="bg-white border border-gray-100 rounded-2xl shadow-md overflow-hidden">
                         <div class="bg-emerald-800 px-6 py-4 flex items-center gap-3">
                             <span class="text-2xl">🏘️</span>
@@ -262,7 +277,6 @@
                         </div>
                     </div>
 
-                    <!-- Dokuzak -->
                     <div class="bg-white border border-gray-100 rounded-2xl shadow-md overflow-hidden">
                         <div class="bg-cyan-700 px-6 py-4 flex items-center gap-3">
                             <span class="text-2xl">💧</span>
@@ -275,7 +289,6 @@
 
                 </div>
 
-                <!-- Itinerary -->
                 <h3 class="text-3xl font-serif font-bold mb-4 text-brandBlue">Програма на деня</h3>
                 <p class="text-gray-500 mb-8 font-light">Пълен ден в Странджа — история, природа и архитектура, едно след друго.</p>
 
@@ -355,7 +368,6 @@
 
             </div>
 
-            <!-- Sticky sidebar -->
             <div class="w-full lg:w-1/3">
                 <div class="sticky top-28">
                     <h3 class="font-serif font-bold mb-6 text-2xl text-brandBlue">Детайли за екскурзията</h3>
@@ -387,7 +399,6 @@
                         </div>
                     </div>
 
-                    <!-- For whom -->
                     <div class="bg-warmBg border border-gray-200 rounded-3xl p-6 mb-6">
                         <h4 class="font-bold text-gray-900 mb-4 text-sm uppercase tracking-wider">Перфектно за:</h4>
                         <ul class="space-y-3 text-sm text-gray-600 font-medium">
@@ -407,8 +418,8 @@
                         <a href="viber://chat?number=%2B359894060406" class="block text-center bg-purple-600 hover:bg-purple-500 text-white font-bold py-3 rounded-xl transition mb-3">
                             💬 Viber
                         </a>
-                        <a href="mailto:Stelatoursbg@gmail.com" class="block text-center border border-white/30 hover:border-brandGold text-white/80 hover:text-white text-sm py-3 rounded-xl transition">
-                            ✉️ Stelatoursbg@gmail.com
+                        <a href="mailto:stellatour99@gmail.com" class="block text-center border border-white/30 hover:border-brandGold text-white/80 hover:text-white text-sm py-3 rounded-xl transition">
+                            ✉️ stellatour99@gmail.com
                         </a>
                     </div>
                 </div>
@@ -417,7 +428,6 @@
         </div>
     </section>
 
-    <!-- BLUE FEATURE SECTION -->
     <section class="py-24 bg-brandBlue border-t-4 border-brandGold">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col lg:flex-row items-center gap-16">
@@ -448,15 +458,10 @@
                 <div class="w-full lg:w-1/2">
                     <div class="relative p-2">
                         <div class="absolute inset-0 bg-brandGold rounded-3xl transform rotate-3"></div>
-                        <div class="relative rounded-2xl shadow-2xl w-full h-[450px] bg-gradient-to-br from-emerald-800 to-green-950 flex items-center justify-center">
-                            <div class="text-center opacity-40">
-                                <p class="text-6xl mb-3">🌲</p>
-                                <p class="text-white text-sm">Снимка — Странджа</p>
-                            </div>
-                        </div>
-                        <!-- When ready:
-                        <img src="../img/strandzha-forest.jpg" alt="Гората на Странджа" class="relative rounded-2xl shadow-2xl w-full h-[450px] object-cover grayscale hover:grayscale-0 transition duration-700">
-                        -->
+                        <a href="../img/malko-turnovo/malko-turnovo-muzei2.avif" class="glightbox block relative rounded-2xl shadow-2xl w-full h-[450px] overflow-hidden group">
+                            <img src="../img/malko-turnovo/malko-turnovo-muzei2.avif" alt="Музей Малко Търново" class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
+                            <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition duration-500"></div>
+                        </a>
                     </div>
                 </div>
 
@@ -464,7 +469,6 @@
         </div>
     </section>
 
-    <!-- TESTIMONIAL -->
     <section class="py-24 bg-warmBg overflow-hidden">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <div class="text-brandGold mb-6 flex justify-center gap-2 text-2xl">★★★★★</div>
@@ -479,7 +483,6 @@
         </div>
     </section>
 
-    <!-- CONTACT CTA -->
     <section class="py-24 bg-white text-gray-900 border-t border-gray-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
@@ -500,16 +503,15 @@
                     <p class="text-gray-500 font-medium">Пишете ни сега</p>
                 </a>
 
-                <a href="mailto:Stelatoursbg@gmail.com" class="bg-surface border border-gray-200 p-8 rounded-3xl text-center hover:shadow-xl hover:border-brandGold transition group">
+                <a href="mailto:stellatour99@gmail.com" class="bg-surface border border-gray-200 p-8 rounded-3xl text-center hover:shadow-xl hover:border-brandGold transition group">
                     <div class="text-4xl mb-4">✉️</div>
                     <h3 class="text-xl font-bold text-brandBlue mb-1">Имейл</h3>
-                    <p class="text-gray-500 font-medium">Stelatoursbg@gmail.com</p>
+                    <p class="text-gray-500 font-medium">stellatour99@gmail.com</p>
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- MORE EXCURSIONS -->
     <section class="py-20 bg-surface border-t border-gray-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
@@ -552,10 +554,10 @@
                         <p class="text-gray-500 text-xs mt-1">Еднодневна екскурзия до Турция</p>
                     </div>
                 </a>
-                <a href="../index_bg.html" class="bg-brandBlue p-6 rounded-2xl hover:bg-brandBlue/90 transition group flex gap-4 items-start">
+                <a href="../index.html" class="bg-brandBlue p-6 rounded-2xl hover:bg-brandBlue/90 transition group flex gap-4 items-start">
                     <span class="text-3xl flex-shrink-0">🏠</span>
                     <div>
-                        <p class="font-bold text-brandGold text-sm">Всички оферти на Stela Tours</p>
+                        <p class="font-bold text-brandGold text-sm">Всички оферти на Stela Tour</p>
                         <p class="text-white/60 text-xs mt-1">Към началната страница →</p>
                     </div>
                 </a>
@@ -563,7 +565,6 @@
         </div>
     </section>
 
-    <!-- FOOTER -->
     <footer class="bg-gray-900 text-white border-t border-gray-800 pt-16 pb-8">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col md:flex-row justify-between items-center gap-6 mb-12">
@@ -572,13 +573,13 @@
                     <span class="text-white text-2xl font-bold tracking-tight uppercase">Stela<span class="text-brandGold">Tour</span></span>
                 </div>
                 <div class="flex gap-6 text-sm font-medium text-gray-400">
-                    <a href="../index_bg.html#quick-escapes" class="hover:text-brandGold transition">Кратки почивки</a>
-                    <a href="../index_bg.html#journeys" class="hover:text-brandGold transition">Пътешествия</a>
-                    <a href="../index_bg.html#excursions" class="hover:text-brandGold transition">Екскурзии</a>
+                    <a href="../index.html#quick-escapes" class="hover:text-brandGold transition">Кратки почивки</a>
+                    <a href="../index.html#journeys" class="hover:text-brandGold transition">Пътешествия</a>
+                    <a href="../index.html#excursions" class="hover:text-brandGold transition">Екскурзии</a>
                 </div>
             </div>
             <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-500 font-light">
-                <p>&copy; 2026 Stela Tours Burgas. Всички права запазени.</p>
+                <p>&copy; 2026 Stela Tour. Всички права запазени.</p>
                 <div class="flex items-center gap-1">
                     <span>Дизайн за конверсии от</span>
                     <a href="https://ginkogrudev.com" target="_blank" class="text-brandGold font-bold hover:text-white transition">GG Solutions</a>

@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Лозенград — Пазарен Ден в Турция | Еднодневна Екскурзия | Stela Tours</title>
-    <meta name="description" content="Еднодневна екскурзия до Лозенград, Турция в пазарен ден. Пазар, друга кухня, друг език, друга атмосфера — и обратно у дома до вечерта.">
+    <title>Лозенград — Пазарен Ден в Турция | Еднодневна Екскурзия | Stela Tour</title>
+    <meta name="description" content="Еднодневна екскурзия до Лозенград, Турция в пазарен ден. Пазар, автентична кухня, друг език и атмосфера — и обратно у дома до вечерта.">
 
-    <link rel="icon" type="image/png" href="../img/favicon.png">
-    <meta property="og:title" content="Лозенград — Пазарен Ден в Турция | Stela Tours">
-    <meta property="og:description" content="Турция за един ден. Пазар, кафе, миризми и цветове — и вкъщи до вечерта.">
+    <link rel="icon" type="image/avif" href="../img/favicon.avif">
+    <meta property="og:title" content="Лозенград — Пазарен Ден в Турция | Stela Tour">
+    <meta property="og:description" content="Турция за един ден. Пазар, ароматно кафе, подправки и цветове — и вкъщи до вечерта.">
     <meta property="og:type" content="website">
 
     <script src="https://cdn.tailwindcss.com"></script>
@@ -37,40 +37,67 @@
 </head>
 <body class="bg-warmBg text-gray-900 antialiased">
 
-    <!-- NAV -->
-    <nav class="fixed w-full z-50 bg-white/95 backdrop-blur-md border-b-4 border-brandGold shadow-sm transition-all duration-300">
+   <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 bg-white/95 backdrop-blur-md border-b-4 border-brandGold shadow-sm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
-                <a href="../index_bg.html" class="flex-shrink-0 flex items-center gap-3 cursor-pointer">
+                
+                <div class="flex-shrink-0 flex items-center gap-3 cursor-pointer" onclick="window.scrollTo(0,0)">
                     <div class="w-10 h-10 bg-brandBlue text-brandGold flex items-center justify-center font-serif font-bold rounded-xl shadow-md text-xl">S</div>
                     <span class="text-brandBlue text-2xl font-bold tracking-tight uppercase">Stela<span class="text-brandGold">Tour</span></span>
-                </a>
+                </div>
+                
                 <div class="hidden md:flex items-center space-x-8">
-                    <a href="../index_bg.html#excursions" class="text-gray-700 hover:text-brandGold font-bold text-sm uppercase tracking-wider transition">← Всички екскурзии</a>
+                    <a href="#quick-escapes" class="text-gray-700 hover:text-brandGold font-bold text-sm uppercase tracking-wider transition">Уикенди</a>
+                    <a href="#journeys" class="text-gray-700 hover:text-brandGold font-bold text-sm uppercase tracking-wider transition">Пътешествия</a>
+                    <a href="#green-schools" class="text-gray-700 hover:text-brandGold font-bold text-sm uppercase tracking-wider transition">За училища</a>
+                    
+                    <a href="index-en.html" class="text-brandBlue font-bold hover:text-brandGold flex items-center gap-1 text-sm border-l-2 pl-6 border-gray-200 transition">
+                        <span class="text-lg">🇬🇧</span> <span>EN</span>
+                    </a>
+
                     <a href="tel:+359894060406" class="bg-brandGold text-brandBlue px-6 py-2.5 rounded-xl font-bold text-sm hover:bg-yellow-400 hover:shadow-lg transition transform hover:-translate-y-1">
                         📞 Обади се
                     </a>
                 </div>
-                <div class="md:hidden flex items-center gap-3">
-                    <a href="tel:+359894060406" class="bg-brandGold text-brandBlue px-4 py-2 rounded-lg font-bold text-sm">📞 Обади се</a>
+
+                <div class="md:hidden flex items-center gap-4">
+                    <a href="index-en.html" class="text-brandBlue font-bold hover:text-brandGold flex items-center gap-1 text-sm transition">
+                        <span>EN</span>
+                    </a>
+                    <button onclick="toggleMobileMenu()" class="text-gray-900 hover:text-brandGold focus:outline-none p-2 transition">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
                 </div>
+
             </div>
+        </div>
+
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-gray-200 shadow-xl absolute w-full left-0 top-20 px-6 py-8 flex flex-col space-y-6">
+            <a href="#quick-escapes" onclick="toggleMobileMenu()" class="text-lg font-bold text-brandBlue hover:text-brandGold transition">Уикенди</a>
+            <a href="#journeys" onclick="toggleMobileMenu()" class="text-lg font-bold text-brandBlue hover:text-brandGold transition">Пътешествия</a>
+            <a href="#green-schools" onclick="toggleMobileMenu()" class="text-lg font-bold text-brandBlue hover:text-brandGold transition">За училища</a>
+            <a href="tel:+359894060406" class="bg-brandGold text-brandBlue text-center py-4 rounded-xl font-bold shadow-md hover:bg-yellow-400 transition mt-4">
+                📞 Обади ни се
+            </a>
         </div>
     </nav>
 
-    <!-- HERO -->
+    <script>
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            if (menu.classList.contains('hidden')) {
+                menu.classList.remove('hidden');
+            } else {
+                menu.classList.add('hidden');
+            }
+        }
+    </script>
+
     <div class="relative h-[85vh] flex items-end overflow-hidden">
         <div class="absolute inset-0">
-            <!-- Warm spice market tones — saffron, terracotta, dusk red -->
-            <div class="w-full h-full bg-gradient-to-br from-red-950 via-orange-900 to-amber-900 flex items-center justify-center">
-                <div class="text-center opacity-20">
-                    <p class="text-8xl mb-4">🛒</p>
-                    <p class="text-white text-sm tracking-widest uppercase">Снимка скоро</p>
-                </div>
-            </div>
-            <!-- When photo ready:
-            <img src="../img/lozengrad-hero.jpg" class="w-full h-full object-cover transform scale-105 animate-[pulse_20s_ease-in-out_infinite_alternate]" alt="Пазарът в Лозенград">
-            -->
+            <img src="../img/lozengrad/lozengrad.avif" class="w-full h-full object-cover transform scale-105 animate-[pulse_20s_ease-in-out_infinite_alternate]" alt="Пазарът в Лозенград">
             <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/55 to-transparent"></div>
         </div>
 
@@ -85,11 +112,10 @@
                         Турция за един ден.
                     </h1>
                     <p class="text-gray-200 text-xl drop-shadow-lg font-light leading-relaxed">
-                        Лозенград. Пазарен ден. Друга страна, друг шум, друг мирис — и вкъщи до вечерта. Без хотел. Без планиране. Само качвате се и слизате там.
+                        Лозенград. Пазарен ден. Друга страна, оживени разговори, нови аромати — и вкъщи до вечерта. Без хотел. Без планиране. Просто се качвате и се наслаждавате.
                     </p>
                 </div>
 
-                <!-- Booking card -->
                 <div class="bg-white p-8 rounded-2xl shadow-2xl min-w-[320px] border-t-4 border-brandBlue transform md:translate-y-10">
                     <p class="text-gray-500 text-sm font-bold uppercase tracking-wider mb-2">Цена на човек</p>
                     <div class="mb-2">
@@ -114,70 +140,71 @@
         </div>
     </div>
 
-    <!-- HOOK -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 mt-4">
         <div class="mb-16 max-w-4xl">
             <h2 class="text-4xl font-serif font-bold text-brandBlue mb-6">Лозенград е на 85 км от Бургас. Но усещането е като друг свят.</h2>
             <p class="text-gray-600 leading-relaxed text-xl font-light">
-                Веднъж преминете границата — всичко се сменя. Звуците, миризмите, цветовете на пазара, турското кафе, викащите продавачи, подправките на купчини. Лозенград е малък турски град, но пазарният му ден е истински — не туристически. Местни хора, местни стоки, местни цени. Качвате се в автобуса в Бургас. Слизате в Турция.
+                Веднъж щом преминете границата, всичко се променя. Звуците, ароматите, цветовете на пазара, уханието на турско кафе, подправките на купчини. Лозенград е малък град, но пазарният му ден е истински и автентичен. Срещате местни хора, откривате местни стоки и пазарувате на реални цени. Качвате се на автобуса в Бургас и слизате в Турция.
             </p>
         </div>
 
-        <!-- What makes this different — 3 simple cards -->
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-24">
             <div class="bg-white rounded-2xl shadow-md border border-gray-100 p-8">
                 <p class="text-4xl mb-4">🌍</p>
                 <h3 class="font-serif font-bold text-brandBlue text-xl mb-2">Друга страна</h3>
-                <p class="text-gray-500 text-sm leading-relaxed">Не курорт, не туристическа зона. Истинска Турция — с истински хора и истински пазар.</p>
+                <p class="text-gray-500 text-sm leading-relaxed">Не е курорт, нито изкуствена туристическа зона. Това е истинската Турция — с гостоприемни хора и жив пазар.</p>
             </div>
             <div class="bg-white rounded-2xl shadow-md border border-gray-100 p-8">
                 <p class="text-4xl mb-4">🛍️</p>
                 <h3 class="font-serif font-bold text-brandBlue text-xl mb-2">Истинско пазаруване</h3>
-                <p class="text-gray-500 text-sm leading-relaxed">Подправки, текстил, кожа, сладкиши. Цени, каквито в България не намирате. И пазаренето е включено в програмата.</p>
+                <p class="text-gray-500 text-sm leading-relaxed">Подправки, текстил, кожени изделия и невероятни сладкиши. А пазаренето е част от преживяването.</p>
             </div>
             <div class="bg-brandBlue rounded-2xl shadow-md p-8">
                 <p class="text-4xl mb-4">🏠</p>
                 <h3 class="font-serif font-bold text-brandGold text-xl mb-2">Вкъщи до вечерта</h3>
-                <p class="text-white/80 text-sm leading-relaxed">Тръгвате сутринта. Обядвате в Турция. Прибирате се с пълни торби вечерта. Без хотел, без планиране.</p>
+                <p class="text-white/80 text-sm leading-relaxed">Тръгвате сутринта. Обядвате в Турция. Прибирате се с пълни торби вечерта. Без хотел, без сложни планове.</p>
             </div>
         </div>
     </div>
 
-    <!-- PHOTO GALLERY -->
     <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-24">
         <div class="grid grid-cols-1 md:grid-cols-4 gap-3 md:gap-4 rounded-3xl overflow-hidden shadow-2xl">
 
-            <div class="md:col-span-2 md:row-span-2 relative h-64 md:h-[550px] bg-gradient-to-br from-orange-800 to-red-950 flex items-center justify-center rounded-xl md:rounded-none">
-                <div class="text-center p-8">
-                    <p class="text-6xl mb-3">🛒</p>
-                    <p class="text-orange-200 text-sm font-medium">Пазарът в Лозенград</p>
-                    <p class="text-orange-300/60 text-xs mt-1 italic">Снимка ще бъде добавена</p>
-                </div>
-            </div>
+            <a href="../img/lozengrad/turkish-market-1.avif" class="glightbox md:col-span-2 md:row-span-2 relative group h-64 md:h-[550px] cursor-pointer overflow-hidden rounded-xl md:rounded-none block">
+                <img src="../img/lozengrad/turkish-market-1.avif" alt="Пазар в Турция" class="w-full h-full object-cover transition duration-1000 group-hover:scale-105">
+                <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition duration-500"></div>
+            </a>
 
-            <div class="hidden md:flex h-[270px] bg-gradient-to-br from-yellow-50 to-amber-100 items-center justify-center">
-                <div class="text-center"><p class="text-4xl mb-2">🌶️</p><p class="text-amber-700 text-xs font-medium">Подправки и пазар</p></div>
-            </div>
-            <div class="hidden md:flex h-[270px] bg-gradient-to-br from-red-50 to-rose-100 items-center justify-center">
-                <div class="text-center"><p class="text-4xl mb-2">☕</p><p class="text-red-700 text-xs font-medium">Турско кафе</p></div>
-            </div>
-            <div class="hidden md:flex h-[270px] bg-gradient-to-br from-stone-50 to-stone-100 items-center justify-center">
-                <div class="text-center"><p class="text-4xl mb-2">🧆</p><p class="text-stone-600 text-xs font-medium">Турска кухня</p></div>
-            </div>
+            <a href="../img/lozengrad/turkish-spices.avif" class="glightbox hidden md:block relative group h-[270px] cursor-pointer overflow-hidden rounded-xl block">
+                <img src="../img/lozengrad/turkish-spices.avif" alt="Турски подправки" class="w-full h-full object-cover transition duration-1000 group-hover:scale-105">
+                <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition duration-500"></div>
+            </a>
 
-            <div class="hidden md:flex h-[270px] bg-brandBlue items-center justify-center cursor-pointer">
+            <a href="../img/lozengrad/turkish-coffe.avif" class="glightbox hidden md:block relative group h-[270px] cursor-pointer overflow-hidden rounded-xl block">
+                <img src="../img/lozengrad/turkish-coffe.avif" alt="Турско кафе" class="w-full h-full object-cover transition duration-1000 group-hover:scale-105">
+                <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition duration-500"></div>
+            </a>
+
+            <a href="../img/lozengrad/turkish-street-food.avif" class="glightbox hidden md:block relative group h-[270px] cursor-pointer overflow-hidden rounded-xl block">
+                <img src="../img/lozengrad/turkish-street-food.avif" alt="Турска улична храна" class="w-full h-full object-cover transition duration-1000 group-hover:scale-105">
+                <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition duration-500"></div>
+            </a>
+
+            <a href="../img/lozengrad/lozengrad.avif" class="glightbox hidden"></a>
+            <a href="../img/lozengrad/turkish-market-2.avif" class="glightbox hidden"></a>
+
+            <div onclick="document.querySelector('.glightbox').click()" class="hidden md:flex h-[270px] bg-brandBlue items-center justify-center cursor-pointer rounded-xl hover:bg-brandBlue/90 transition">
                 <span class="text-white font-bold text-sm flex items-center gap-2 border-2 border-brandGold px-6 py-3 rounded-xl backdrop-blur-md">
-                    📸 Снимките идват скоро
+                    📸 Разгледай галерията
                 </span>
             </div>
 
         </div>
-        <button class="md:hidden mt-6 w-full border-2 border-brandBlue text-brandBlue font-bold py-4 rounded-xl flex items-center justify-center gap-2">
-            Снимките ще бъдат добавени скоро
+        <button onclick="document.querySelector('.glightbox').click()" class="md:hidden mt-6 w-full border-2 border-brandBlue text-brandBlue font-bold py-4 rounded-xl flex items-center justify-center gap-2">
+            Вижте всички снимки
         </button>
     </section>
 
-    <!-- INCLUDED + ITINERARY + SIDEBAR -->
     <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-24">
         <div class="flex flex-col lg:flex-row gap-16 border-t-2 border-gray-200 pt-20">
 
@@ -187,9 +214,9 @@
                 <div class="bg-white p-8 rounded-2xl border border-gray-100 shadow-lg mb-6">
                     <ul class="text-gray-700 space-y-4 font-medium">
                         <li class="flex items-start gap-3"><span class="text-brandGold text-xl mt-0.5">✓</span> Транспорт с климатизиран автобус от Бургас до Лозенград и обратно</li>
-                        <li class="flex items-start gap-3"><span class="text-brandGold text-xl mt-0.5">✓</span> Водач — съдейства при граничен контрол и ориентация в града</li>
+                        <li class="flex items-start gap-3"><span class="text-brandGold text-xl mt-0.5">✓</span> Водач — съдейства при граничния контрол и ориентацията в града</li>
                         <li class="flex items-start gap-3"><span class="text-brandGold text-xl mt-0.5">✓</span> Свободно време на пазара — за разглеждане и пазаруване</li>
-                        <li class="flex items-start gap-3"><span class="text-brandGold text-xl mt-0.5">✓</span> Обяд в турски ресторант</li>
+                        <li class="flex items-start gap-3"><span class="text-brandGold text-xl mt-0.5">✓</span> Обяд в традиционен турски ресторант</li>
                         <li class="flex items-start gap-3"><span class="text-brandGold text-xl mt-0.5">✓</span> Разходка из стария град с водача</li>
                     </ul>
                 </div>
@@ -203,32 +230,29 @@
                     </ul>
                 </div>
 
-                <!-- Practical tip box — unique to this excursion -->
                 <div class="bg-amber-50 border border-amber-200 rounded-2xl p-6 flex gap-4 items-start mb-8">
                     <span class="text-3xl flex-shrink-0">💡</span>
                     <div>
                         <p class="font-bold text-gray-900 text-base mb-1">Практично: Какво да вземете</p>
                         <ul class="text-gray-600 text-sm leading-relaxed space-y-1">
-                            <li>• Лична карта или паспорт — задължителни за граница</li>
+                            <li>• Лична карта или задграничен паспорт — задължителни за преминаване на границата</li>
                             <li>• Турски лири или евро за пазаруване</li>
-                            <li>• Чанта или торба за покупки</li>
+                            <li>• Удобна чанта или торба за вашите покупки</li>
                             <li>• Удобни обувки — пазарът се обхожда пеша</li>
                         </ul>
                     </div>
                 </div>
 
-                <!-- Guarantee -->
                 <div class="bg-green-50 border border-green-200 rounded-2xl p-6 flex gap-4 items-start mb-12">
                     <span class="text-3xl flex-shrink-0">🛡️</span>
                     <div>
                         <p class="font-serif font-bold text-gray-900 text-lg mb-1">Гаранция за добър ден</p>
-                        <p class="text-gray-600 text-sm leading-relaxed">Ако не сте доволни — обаждате се и получавате парите обратно. Без въпроси. Едно обаждане.</p>
+                        <p class="text-gray-600 text-sm leading-relaxed">Ако не сте доволни — обаждате се и получавате парите си обратно. Без излишни въпроси. Само с едно обаждане.</p>
                     </div>
                 </div>
 
-                <!-- Itinerary -->
-                <h3 class="text-3xl font-serif font-bold mb-4 text-brandBlue">Как изглежда денят</h3>
-                <p class="text-gray-500 mb-8 font-light">Тръгвате от Бургас. Обядвате в Турция. Прибирате се с покупки.</p>
+                <h3 class="text-3xl font-serif font-bold mb-4 text-brandBlue">Как протича денят</h3>
+                <p class="text-gray-500 mb-8 font-light">Тръгвате от Бургас. Обядвате в Турция. Прибирате се с покупки и добро настроение.</p>
 
                 <div class="space-y-8 text-gray-700 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-1 before:bg-brandGold/30">
 
@@ -239,7 +263,7 @@
                         <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-white p-6 rounded-2xl shadow-md border border-gray-100">
                             <p class="text-xs text-brandGold font-bold uppercase tracking-wider mb-1">07:00</p>
                             <h4 class="font-bold text-xl text-brandBlue mb-2">Тръгване от Бургас</h4>
-                            <p class="text-sm text-gray-600 leading-relaxed">Ранно тръгване — границата отнема време. Автобусът тръгва от централна точка в Бургас. До Лозенград са около 1.5 часа.</p>
+                            <p class="text-sm text-gray-600 leading-relaxed">Ранно тръгване, тъй като преминаването на границата отнема време. Автобусът тръгва от удобна централна точка в Бургас. Пътуването до Лозенград е около час и половина.</p>
                         </div>
                     </div>
 
@@ -250,7 +274,7 @@
                         <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-white p-6 rounded-2xl shadow-md border border-gray-100">
                             <p class="text-xs text-brandGold font-bold uppercase tracking-wider mb-1">~08:30</p>
                             <h4 class="font-bold text-xl text-brandBlue mb-2">Граничен контрол</h4>
-                            <p class="text-sm text-gray-600 leading-relaxed">Водачът ви съдейства с документите. Нужна е лична карта или паспорт. Обикновено минава без забавяне.</p>
+                            <p class="text-sm text-gray-600 leading-relaxed">Нашият водач ви съдейства с всички процедури и документи. Обикновено преминаването става бързо и организирано.</p>
                         </div>
                     </div>
 
@@ -261,7 +285,7 @@
                         <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-white p-6 rounded-2xl shadow-md border border-gray-100">
                             <p class="text-xs text-red-700 font-bold uppercase tracking-wider mb-1">09:30</p>
                             <h4 class="font-bold text-xl text-brandBlue mb-2">Пазарът в Лозенград</h4>
-                            <p class="text-sm text-gray-600 leading-relaxed">~2.5 часа свободно на пазара. Подправки, текстил, кожени изделия, домашни сладкиши, сирена. Водачът е наблизо ако имате нужда — иначе вие решавате как минава времето.</p>
+                            <p class="text-sm text-gray-600 leading-relaxed">Около 2.5 часа на ваше разположение. Разгледайте сергиите с пресни подправки, текстил, кожени изделия и домашни сладкиши като баклава и локум. Водачът е наблизо, ако имате нужда от съдействие.</p>
                         </div>
                     </div>
 
@@ -272,7 +296,7 @@
                         <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-white p-6 rounded-2xl shadow-md border border-gray-100">
                             <p class="text-xs text-brandGold font-bold uppercase tracking-wider mb-1">12:30</p>
                             <h4 class="font-bold text-xl text-brandBlue mb-2">Обяд в Лозенград</h4>
-                            <p class="text-sm text-gray-600 leading-relaxed">Включен обяд в местен турски ресторант. Кебап, мезета, хляб от фурна. Истинска турска кухня — не туристическа версия.</p>
+                            <p class="text-sm text-gray-600 leading-relaxed">Включен обяд в автентичен турски ресторант. Вкусен кебап, пресни мезета и топъл хляб от фурната — истински празник за сетивата.</p>
                         </div>
                     </div>
 
@@ -283,7 +307,7 @@
                         <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-white p-6 rounded-2xl shadow-md border border-gray-100">
                             <p class="text-xs text-brandGold font-bold uppercase tracking-wider mb-1">14:00</p>
                             <h4 class="font-bold text-xl text-brandBlue mb-2">Разходка из стария град</h4>
-                            <p class="text-sm text-gray-600 leading-relaxed">~60 мин. с водача. Лозенград е стар тракийски и после османски град с интересна история. Джамия, чаршия, стари улици. После — последни покупки преди тръгване.</p>
+                            <p class="text-sm text-gray-600 leading-relaxed">Кратка разходка с водача. Лозенград има красива стара част, джамия и чаршия, където можете да усетите духа на мястото. След това имате време за последни покупки преди тръгване.</p>
                         </div>
                     </div>
 
@@ -294,19 +318,18 @@
                         <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-white p-6 rounded-2xl shadow-md border border-gray-100">
                             <p class="text-xs text-brandGold font-bold uppercase tracking-wider mb-1">~19:00</p>
                             <h4 class="font-bold text-xl text-brandBlue mb-2">Завръщане в Бургас</h4>
-                            <p class="text-sm text-gray-600 leading-relaxed">Пристигане ~19:30. Пълни торби, турско кафе в стомаха и история, която ще разкажете утре.</p>
+                            <p class="text-sm text-gray-600 leading-relaxed">Пристигане около 19:30. Пълни торби, вкусът на ароматно турско кафе и преживяване, което ще разкажете на приятели.</p>
                         </div>
                     </div>
 
                 </div>
 
                 <div class="mt-6 bg-warmBg border border-gray-200 rounded-xl p-4">
-                    <p class="text-gray-500 text-xs italic">* Часовете са приблизителни и зависят от натовареността на граничния контрол. Програмата се уточнява при резервацията. Необходим документ за самоличност — лична карта или паспорт.</p>
+                    <p class="text-gray-500 text-xs italic">* Часовете са приблизителни и зависят от натовареността на граничния пункт. Програмата се уточнява допълнително при резервация.</p>
                 </div>
 
             </div>
 
-            <!-- Sticky sidebar -->
             <div class="w-full lg:w-1/3">
                 <div class="sticky top-28">
                     <h3 class="font-serif font-bold mb-6 text-2xl text-brandBlue">Детайли</h3>
@@ -344,21 +367,21 @@
                             <li class="flex items-center gap-2"><span class="text-brandGold">🛍️</span> Любители на пазаруването</li>
                             <li class="flex items-center gap-2"><span class="text-brandGold">👨‍👩‍👧‍👦</span> Семейства и приятели</li>
                             <li class="flex items-center gap-2"><span class="text-brandGold">🌍</span> Тези, които не са виждали Турция</li>
-                            <li class="flex items-center gap-2"><span class="text-brandGold">🍽️</span> Любители на турска кухня</li>
+                            <li class="flex items-center gap-2"><span class="text-brandGold">🍽️</span> Любители на турската кухня</li>
                         </ul>
                     </div>
 
                     <div class="bg-brandBlue p-8 rounded-3xl text-white shadow-xl">
                         <h4 class="font-serif font-bold text-xl mb-4 text-brandGold">Резервирайте</h4>
-                        <p class="text-sm text-blue-100 mb-6 font-light leading-relaxed">Казвате ни кога и колко сте. Ние наредваме всичко — вие само се явявате.</p>
+                        <p class="text-sm text-blue-100 mb-6 font-light leading-relaxed">Казвате ни кога и колко сте. Ние организираме всичко — вие само се наслаждавате.</p>
                         <a href="tel:+359894060406" class="block text-center bg-brandGold text-brandBlue font-bold py-3 rounded-xl hover:bg-yellow-400 transition mb-3">
                             📞 +359 894 060 406
                         </a>
                         <a href="viber://chat?number=%2B359894060406" class="block text-center bg-purple-600 hover:bg-purple-500 text-white font-bold py-3 rounded-xl transition mb-3">
                             💬 Viber
                         </a>
-                        <a href="mailto:Stelatoursbg@gmail.com" class="block text-center border border-white/30 hover:border-brandGold text-white/80 hover:text-white text-sm py-3 rounded-xl transition">
-                            ✉️ Stelatoursbg@gmail.com
+                        <a href="mailto:stellatour99@gmail.com" class="block text-center border border-white/30 hover:border-brandGold text-white/80 hover:text-white text-sm py-3 rounded-xl transition">
+                            ✉️ stellatour99@gmail.com
                         </a>
                     </div>
                 </div>
@@ -367,29 +390,28 @@
         </div>
     </section>
 
-    <!-- BLUE FEATURE SECTION -->
     <section class="py-24 bg-brandBlue border-t-4 border-brandGold">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col lg:flex-row items-center gap-16">
 
                 <div class="w-full lg:w-1/2">
-                    <span class="text-brandGold font-bold uppercase tracking-widest text-xs mb-4 block">85 км от Бургас</span>
+                    <span class="text-brandGold font-bold uppercase tracking-widest text-xs mb-4 block">Само на 85 км от Бургас</span>
                     <h3 class="text-4xl font-serif font-bold mb-6 text-white leading-tight">Друга страна без сложно планиране.</h3>
                     <p class="text-blue-100 text-lg leading-relaxed mb-8 font-light">
-                        Повечето хора мислят, че пътуването до Турция изисква хотел, виза и дни планиране. Лозенград доказва обратното. Качвате се в автобуса сутринта и до вечерта сте видели истинска Турция — пазара, кухнята, улиците. После се прибирате у дома.
+                        Повечето хора мислят, че пътуването до Турция изисква хотел, много свободно време и сложно планиране. Лозенград доказва обратното. Качвате се в автобуса сутринта и до обяд вече сте потопени в автентичната атмосфера на Турция — пазара, вкусната храна, колоритните улици.
                     </p>
                     <ul class="space-y-5 text-white font-medium">
                         <li class="flex items-center gap-4 bg-white/10 p-4 rounded-xl backdrop-blur-sm border border-white/10">
                             <span class="text-brandGold text-2xl">🛒</span>
-                            <span>Пазарният ден в Лозенград е за местни хора — не за туристи. Цените го показват.</span>
+                            <span>Пазарен ден за местните — цените и стоките го доказват.</span>
                         </li>
                         <li class="flex items-center gap-4 bg-white/10 p-4 rounded-xl backdrop-blur-sm border border-white/10">
                             <span class="text-brandGold text-2xl">🍽️</span>
-                            <span>Турски обяд в Турция — не версия за туристи, а истинска кухня.</span>
+                            <span>Автентичен турски обяд — истинска храна с местни продукти.</span>
                         </li>
                         <li class="flex items-center gap-4 bg-white/10 p-4 rounded-xl backdrop-blur-sm border border-white/10">
                             <span class="text-brandGold text-2xl">🚌</span>
-                            <span>Ние се грижим за всичко — вие само носите личната карта и торбата за пазаруване.</span>
+                            <span>Ние се грижим за пътя — вие просто носете личната си карта и усмивката си.</span>
                         </li>
                     </ul>
                 </div>
@@ -397,15 +419,10 @@
                 <div class="w-full lg:w-1/2">
                     <div class="relative p-2">
                         <div class="absolute inset-0 bg-brandGold rounded-3xl transform rotate-3"></div>
-                        <div class="relative rounded-2xl shadow-2xl w-full h-[450px] bg-gradient-to-br from-red-800 to-orange-950 flex items-center justify-center">
-                            <div class="text-center opacity-40">
-                                <p class="text-6xl mb-3">🛒</p>
-                                <p class="text-white text-sm">Снимка — пазарът в Лозенград</p>
-                            </div>
-                        </div>
-                        <!-- When ready:
-                        <img src="../img/lozengrad-market.jpg" alt="Пазарът в Лозенград" class="relative rounded-2xl shadow-2xl w-full h-[450px] object-cover grayscale hover:grayscale-0 transition duration-700">
-                        -->
+                        <a href="../img/lozengrad/turkish-market-2.avif" class="glightbox block relative rounded-2xl shadow-2xl w-full h-[450px] overflow-hidden group">
+                            <img src="../img/lozengrad/turkish-market-2.avif" alt="Лозенград пазар" class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
+                            <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition duration-500"></div>
+                        </a>
                     </div>
                 </div>
 
@@ -413,12 +430,11 @@
         </div>
     </section>
 
-    <!-- TESTIMONIAL -->
     <section class="py-24 bg-warmBg overflow-hidden">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <div class="text-brandGold mb-6 flex justify-center gap-2 text-2xl">★★★★★</div>
             <h2 class="text-3xl md:text-4xl font-serif font-bold text-brandBlue mb-8 leading-relaxed">
-                „Никога не бях ходила в Турция. Мислех, че е сложно. Качих се в автобуса в Бургас и следобед вече пиех турско кафе на пазара. Прибрах се с подправки, кожена чанта и много добро настроение."
+                „Никога преди не бях ходила в Турция. Мислех, че е прекалено сложно и уморително. Качих се на автобуса в Бургас и следобед вече пиех кафе на турския пазар. Прибрах се с чудесни подправки, кожена чанта и много добро настроение."
             </h2>
             <div class="flex flex-col items-center justify-center">
                 <div class="w-14 h-14 bg-brandBlue text-brandGold font-serif font-bold flex items-center justify-center rounded-full text-2xl mb-3 shadow-md">Е</div>
@@ -428,12 +444,11 @@
         </div>
     </section>
 
-    <!-- CONTACT CTA -->
     <section class="py-24 bg-white text-gray-900 border-t border-gray-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <h2 class="text-4xl font-serif font-bold mb-4 text-brandBlue">Готови ли сте за Турция?</h2>
-                <p class="text-gray-600 text-lg max-w-2xl mx-auto font-light">Обадете се. Казвате ни кога искате да тръгнете и колко сте. Ние правим останалото.</p>
+                <h2 class="text-4xl font-serif font-bold mb-4 text-brandBlue">Готови ли сте за едно малко бягство?</h2>
+                <p class="text-gray-600 text-lg max-w-2xl mx-auto font-light">Свържете се с нас. Кажете ни кога искате да пътувате и за колко човека, а ние ще се погрижим за всичко останало.</p>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
                 <a href="tel:+359894060406" class="bg-surface border border-gray-200 p-8 rounded-3xl text-center hover:shadow-xl hover:border-brandGold transition group">
@@ -446,16 +461,15 @@
                     <h3 class="text-xl font-bold text-brandBlue mb-1">Viber</h3>
                     <p class="text-gray-500 font-medium">Пишете ни сега</p>
                 </a>
-                <a href="mailto:Stelatoursbg@gmail.com" class="bg-surface border border-gray-200 p-8 rounded-3xl text-center hover:shadow-xl hover:border-brandGold transition group">
+                <a href="mailto:stellatour99@gmail.com" class="bg-surface border border-gray-200 p-8 rounded-3xl text-center hover:shadow-xl hover:border-brandGold transition group">
                     <div class="text-4xl mb-4">✉️</div>
                     <h3 class="text-xl font-bold text-brandBlue mb-1">Имейл</h3>
-                    <p class="text-gray-500 font-medium">Stelatoursbg@gmail.com</p>
+                    <p class="text-gray-500 font-medium">stellatour99@gmail.com</p>
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- MORE EXCURSIONS -->
     <section class="py-20 bg-surface border-t border-gray-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
@@ -498,10 +512,10 @@
                         <p class="text-gray-500 text-xs mt-1">Животни и стар бит — за деца и семейства</p>
                     </div>
                 </a>
-                <a href="../index_bg.html" class="bg-brandBlue p-6 rounded-2xl hover:bg-brandBlue/90 transition group flex gap-4 items-start">
+                <a href="../index.html" class="bg-brandBlue p-6 rounded-2xl hover:bg-brandBlue/90 transition group flex gap-4 items-start">
                     <span class="text-3xl flex-shrink-0">🏠</span>
                     <div>
-                        <p class="font-bold text-brandGold text-sm">Всички оферти на Stela Tours</p>
+                        <p class="font-bold text-brandGold text-sm">Всички оферти на Stela Tour</p>
                         <p class="text-white/60 text-xs mt-1">Към началната страница →</p>
                     </div>
                 </a>
@@ -509,7 +523,6 @@
         </div>
     </section>
 
-    <!-- FOOTER -->
     <footer class="bg-gray-900 text-white border-t border-gray-800 pt-16 pb-8">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col md:flex-row justify-between items-center gap-6 mb-12">
@@ -518,13 +531,13 @@
                     <span class="text-white text-2xl font-bold tracking-tight uppercase">Stela<span class="text-brandGold">Tour</span></span>
                 </div>
                 <div class="flex gap-6 text-sm font-medium text-gray-400">
-                    <a href="../index_bg.html#quick-escapes" class="hover:text-brandGold transition">Кратки почивки</a>
-                    <a href="../index_bg.html#journeys" class="hover:text-brandGold transition">Пътешествия</a>
-                    <a href="../index_bg.html#excursions" class="hover:text-brandGold transition">Екскурзии</a>
+                    <a href="../index.html#quick-escapes" class="hover:text-brandGold transition">Кратки почивки</a>
+                    <a href="../index.html#journeys" class="hover:text-brandGold transition">Пътешествия</a>
+                    <a href="../index.html#excursions" class="hover:text-brandGold transition">Екскурзии</a>
                 </div>
             </div>
             <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-500 font-light">
-                <p>&copy; 2026 Stela Tours Burgas. Всички права запазени.</p>
+                <p>&copy; 2026 Stela Tour. Всички права запазени.</p>
                 <div class="flex items-center gap-1">
                     <span>Дизайн за конверсии от</span>
                     <a href="https://ginkogrudev.com" target="_blank" class="text-brandGold font-bold hover:text-white transition">GG Solutions</a>
