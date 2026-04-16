@@ -120,11 +120,13 @@ const translations = {
 };
 
 // === FUNCTIONS ===
-
-// 1. Mobile Menu
-function toggleMobileMenu() {
-    const menu = document.getElementById('mobile-menu');
-    menu.classList.toggle('hidden');
+ function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            if (menu.classList.contains('hidden')) {
+                menu.classList.remove('hidden');
+            } else {
+                menu.classList.add('hidden');
+            }
 }
 
 // 2. Language Toggle
