@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Сарамсаклъ · Hotel Dobra — Stella Tour 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>tailwind.config={theme:{extend:{colors:{brandBlue:'#003580',brandGold:'#dcae1d',warmBg:'#fdf8f0'},fontFamily:{playfair:['"Playfair Display"','serif'],inter:['Inter','sans-serif']}}}}</script>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:#fdf8f0; font-family:'Inter',sans-serif; }
+  .back-nav { position:fixed; top:0; left:0; right:0; z-index:100; background:rgba(0,53,128,0.97); backdrop-filter:blur(12px); }
+  .hero { min-height:88vh; background:#0f172a; position:relative; display:flex; align-items:flex-end; overflow:hidden; }
+  .hero-bg-fb { position:absolute; inset:0; background:url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1800') center/cover; opacity:0.55; }
+  .hero-gradient { position:absolute; inset:0; background:linear-gradient(to bottom, rgba(0,60,40,0.1) 0%, rgba(0,60,40,0.75) 60%, rgba(0,30,20,0.97) 100%); }
+  .hero-content { position:relative; z-index:2; width:100%; max-width:1200px; margin:0 auto; padding:0 24px 80px; }
+  .check-item { display:flex; gap:12px; align-items:flex-start; padding:12px 0; border-bottom:1px solid #f0ebe0; }
+  .check-item:last-child { border-bottom:none; }
+  .gallery-grid { display:grid; grid-template-columns:2fr 1fr 1fr; grid-template-rows:200px 200px; gap:8px; border-radius:16px; overflow:hidden; }
+  .gallery-grid .main-img { grid-row:1/3; }
+  .gallery-img { background:#ddd; overflow:hidden; }
+  .gallery-img img { width:100%; height:100%; object-fit:cover; transition:transform 0.4s; }
+  .gallery-img:hover img { transform:scale(1.05); }
+  .lang-btn { cursor:pointer; padding:4px 12px; border-radius:20px; font-size:13px; font-weight:600; border:1px solid; transition:all 0.2s; }
+  .lang-btn.active { background:#dcae1d; border-color:#dcae1d; color:#003580; }
+  .lang-btn.inactive { background:transparent; border-color:rgba(255,255,255,0.3); color:rgba(255,255,255,0.7); }
+  .bg-content { display:block; } .en-content { display:none; }
+  body.lang-en .bg-content { display:none; } body.lang-en .en-content { display:block; }
+  .sticky-cta { position:fixed; bottom:0; left:0; right:0; z-index:99; background:#003580; padding:12px 20px; display:flex; gap:12px; box-shadow:0 -4px 24px rgba(0,0,0,0.2); }
+  @media (min-width:768px) { .sticky-cta { display:none; } }
+</style>
+</head>
+<body>
+
+<nav class="back-nav">
+  <div style="max-width:1200px;margin:0 auto;padding:0 24px;height:60px;display:flex;align-items:center;justify-content:space-between;">
+    <a href="turkey-destinations.html" style="color:rgba(255,255,255,0.8);text-decoration:none;font-size:14px;display:flex;align-items:center;gap:6px;">
+      ← <span class="bg-content">Всички дестинации</span><span class="en-content">All destinations</span>
+    </a>
+    <a href="index.html" style="font-family:'Playfair Display',serif;font-weight:700;font-size:20px;color:white;text-decoration:none;">Stella<span style="color:#dcae1d;">Tour</span></a>
+    <div style="display:flex;gap:8px;">
+      <button class="lang-btn active" id="btn-bg" onclick="setLang('bg')">БГ</button>
+      <button class="lang-btn inactive" id="btn-en" onclick="setLang('en')">EN</button>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" style="padding-top:60px;">
+  <div class="hero-bg-fb"></div>
+  <div class="hero-gradient"></div>
+  <div class="hero-content">
+    <div style="display:grid;grid-template-columns:1fr auto;gap:40px;align-items:end;max-width:1200px;margin:0 auto;">
+      <div>
+        <div style="display:inline-flex;align-items:center;gap:6px;background:rgba(34,197,94,0.25);border:1px solid rgba(34,197,94,0.5);color:#86efac;padding:5px 14px;border-radius:20px;font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:16px;">
+          🏖️ Синьо знаме · Директно на плажа
+        </div>
+        <h1 style="font-family:'Playfair Display',serif;font-size:clamp(40px,7vw,82px);font-weight:900;color:white;line-height:1.05;margin-bottom:16px;" class="bg-content">
+          Сарамсаклъ<br><em style="color:#dcae1d;">Просто море и слънце.</em>
+        </h1>
+        <h1 style="font-family:'Playfair Display',serif;font-size:clamp(40px,7vw,82px);font-weight:900;color:white;line-height:1.05;margin-bottom:16px;" class="en-content">
+          Sarımsaklı<br><em style="color:#dcae1d;">Simply sea and sun.</em>
+        </h1>
+        <p style="font-size:18px;color:rgba(255,255,255,0.8);max-width:560px;line-height:1.6;" class="bg-content">Дълъг пясъчен плаж с „Синьо знаме", тих и чист. Hotel Dobra е на стъпки от морето. На 7 км — целият Айвалък с историята му.</p>
+        <p style="font-size:18px;color:rgba(255,255,255,0.8);max-width:560px;line-height:1.6;" class="en-content">A long Blue Flag sandy beach, quiet and clean. Hotel Dobra is steps from the sea. Just 7km away — all of Ayvalık with its history.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:24px;">
+          <span style="background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.3);color:white;padding:6px 14px;border-radius:20px;font-size:13px;">🏖️ Синьо знаме</span>
+          <span style="background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.3);color:white;padding:6px 14px;border-radius:20px;font-size:13px;">👨‍👩‍👧 Идеален за семейства</span>
+          <span style="background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.3);color:white;padding:6px 14px;border-radius:20px;font-size:13px;">📍 7 км от Айвалък</span>
+        </div>
+      </div>
+
+      <!-- BOOKING CARD -->
+      <div style="background:white;border-radius:20px;padding:32px;box-shadow:0 8px 40px rgba(0,53,128,0.15);min-width:280px;max-width:320px;">
+        <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#dcae1d;margin-bottom:8px;" class="bg-content">Резервирайте сега</div>
+        <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#dcae1d;margin-bottom:8px;" class="en-content">Book now</div>
+        <div style="color:#dcae1d;font-size:18px;margin-bottom:8px;">★★★</div>
+        <h3 style="font-family:'Playfair Display',serif;font-size:20px;color:#003580;font-weight:700;margin-bottom:4px;">Hotel Dobra</h3>
+        <p style="font-size:13px;color:#64748b;margin-bottom:20px;" class="bg-content">Сарамсаклъ, до Айвалък, Турция</p>
+        <p style="font-size:13px;color:#64748b;margin-bottom:20px;" class="en-content">Sarımsaklı, near Ayvalık, Turkey</p>
+        <div style="background:#f8fafc;border-radius:10px;padding:16px;margin-bottom:16px;">
+          <div style="font-size:12px;color:#64748b;margin-bottom:8px;" class="bg-content">Включено:</div>
+          <div style="font-size:12px;color:#64748b;margin-bottom:8px;" class="en-content">Included:</div>
+          <div style="display:flex;flex-direction:column;gap:6px;font-size:13px;">
+            <span>✅ <span class="bg-content">Нощувки с закуска</span><span class="en-content">Bed & breakfast</span></span>
+            <span>✅ <span class="bg-content">Трансфер от Бургас</span><span class="en-content">Transfer from Burgas</span></span>
+            <span>✅ <span class="bg-content">Организация</span><span class="en-content">Full organisation</span></span>
+          </div>
+        </div>
+        <a href="tel:+359894060406" style="display:block;background:#dcae1d;color:#003580;padding:14px;border-radius:12px;font-weight:700;font-size:15px;text-decoration:none;text-align:center;margin-bottom:10px;">📞 +359 894 060 406</a>
+        <a href="viber://chat?number=359894060406" style="display:block;background:#003580;color:white;padding:12px;border-radius:12px;font-weight:600;font-size:14px;text-decoration:none;text-align:center;">💬 Viber</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section style="background:white;padding:56px 24px;">
+  <div style="max-width:900px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:32px;text-align:center;">
+    <div>
+      <div style="font-family:'Playfair Display',serif;font-size:48px;font-weight:900;color:#003580;">🏖️</div>
+      <div style="font-size:14px;color:#64748b;margin-top:8px;" class="bg-content">Синьо знаме — чист пясъчен плаж</div>
+      <div style="font-size:14px;color:#64748b;margin-top:8px;" class="en-content">Blue Flag — clean sandy beach</div>
+    </div>
+    <div>
+      <div style="font-family:'Playfair Display',serif;font-size:48px;font-weight:900;color:#003580;">7км</div>
+      <div style="font-size:14px;color:#64748b;margin-top:8px;" class="bg-content">до историческия Айвалък</div>
+      <div style="font-size:14px;color:#64748b;margin-top:8px;" class="en-content">to historic Ayvalık</div>
+    </div>
+    <div>
+      <div style="font-family:'Playfair Display',serif;font-size:48px;font-weight:900;color:#003580;">★★★</div>
+      <div style="font-size:14px;color:#64748b;margin-top:8px;" class="bg-content">уютен семеен хотел</div>
+      <div style="font-size:14px;color:#64748b;margin-top:8px;" class="en-content">cosy family hotel</div>
+    </div>
+    <div>
+      <div style="font-family:'Playfair Display',serif;font-size:48px;font-weight:900;color:#003580;">✈️</div>
+      <div style="font-size:14px;color:#64748b;margin-top:8px;" class="bg-content">директен трансфер от Бургас</div>
+      <div style="font-size:14px;color:#64748b;margin-top:8px;" class="en-content">direct transfer from Burgas</div>
+    </div>
+  </div>
+</section>
+
+<!-- DESTINATION INFO -->
+<section style="padding:80px 24px;background:#fdf8f0;">
+  <div style="max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;">
+    <div>
+      <div style="font-size:12px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:#dcae1d;margin-bottom:12px;" class="bg-content">За дестинацията</div>
+      <div style="font-size:12px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:#dcae1d;margin-bottom:12px;" class="en-content">About the destination</div>
+      <h2 style="font-family:'Playfair Display',serif;font-size:clamp(28px,4vw,42px);font-weight:900;color:#003580;line-height:1.1;margin-bottom:20px;" class="bg-content">Сарамсаклъ: Плажен рай до Айвалък</h2>
+      <h2 style="font-family:'Playfair Display',serif;font-size:clamp(28px,4vw,42px);font-weight:900;color:#003580;line-height:1.1;margin-bottom:20px;" class="en-content">Sarımsaklı: Beach paradise near Ayvalık</h2>
+      <p style="color:#334155;font-size:16px;line-height:1.8;margin-bottom:16px;" class="bg-content">Сарамсаклъ е курортният квартал на Айвалък — дълъг пясъчен плаж с „Синьо знаме", тих и чист. Hotel Dobra е уютно семейно заведение на стъпки от морето. Идеален за тези, на които им трябва просто: море, слънце и добра компания.</p>
+      <p style="color:#334155;font-size:16px;line-height:1.8;margin-bottom:16px;" class="en-content">Sarımsaklı is Ayvalık's beach resort — a long sandy beach with Blue Flag status, quiet and clean. Hotel Dobra is a cosy family property just steps from the sea. Perfect for those who want it simple: sea, sun and good company.</p>
+      <div style="border-left:3px solid #dcae1d;background:rgba(220,174,29,0.08);padding:16px 20px;margin:20px 0;border-radius:0 8px 8px 0;">
+        <p style="font-family:'Playfair Display',serif;font-style:italic;font-size:17px;color:#1e293b;" class="bg-content">„На 7 км — целият Айвалък с историята му. Но тук е само морето."</p>
+        <p style="font-family:'Playfair Display',serif;font-style:italic;font-size:17px;color:#1e293b;" class="en-content">"7km away — all of Ayvalık with its history. But here, it's just the sea."</p>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:24px;">
+        <div style="background:white;border-radius:10px;padding:16px;border:1px solid #e8ddd0;display:flex;gap:12px;align-items:flex-start;">
+          <span style="font-size:24px;">🏖️</span>
+          <div>
+            <div style="font-size:12px;font-weight:700;text-transform:uppercase;color:#003580;" class="bg-content">Пясъчен плаж</div>
+            <div style="font-size:12px;font-weight:700;text-transform:uppercase;color:#003580;" class="en-content">Sandy beach</div>
+            <div style="font-size:13px;color:#64748b;margin-top:4px;" class="bg-content">Дълъг и тих. Синьо знаме за чистота.</div>
+            <div style="font-size:13px;color:#64748b;margin-top:4px;" class="en-content">Long and quiet. Blue Flag for cleanliness.</div>
+          </div>
+        </div>
+        <div style="background:white;border-radius:10px;padding:16px;border:1px solid #e8ddd0;display:flex;gap:12px;align-items:flex-start;">
+          <span style="font-size:24px;">👨‍👩‍👧</span>
+          <div>
+            <div style="font-size:12px;font-weight:700;text-transform:uppercase;color:#003580;" class="bg-content">За семейства</div>
+            <div style="font-size:12px;font-weight:700;text-transform:uppercase;color:#003580;" class="en-content">Family-friendly</div>
+            <div style="font-size:13px;color:#64748b;margin-top:4px;" class="bg-content">Плитка вода, тих плаж, безопасно за деца.</div>
+            <div style="font-size:13px;color:#64748b;margin-top:4px;" class="en-content">Shallow water, quiet beach, safe for children.</div>
+          </div>
+        </div>
+        <div style="background:white;border-radius:10px;padding:16px;border:1px solid #e8ddd0;display:flex;gap:12px;align-items:flex-start;">
+          <span style="font-size:24px;">🫒</span>
+          <div>
+            <div style="font-size:12px;font-weight:700;text-transform:uppercase;color:#003580;" class="bg-content">Близо до Айвалък</div>
+            <div style="font-size:12px;font-weight:700;text-transform:uppercase;color:#003580;" class="en-content">Close to Ayvalık</div>
+            <div style="font-size:13px;color:#64748b;margin-top:4px;" class="bg-content">7 км до историческия град, пазари и ресторанти.</div>
+            <div style="font-size:13px;color:#64748b;margin-top:4px;" class="en-content">7km to the historic town, markets and restaurants.</div>
+          </div>
+        </div>
+        <div style="background:white;border-radius:10px;padding:16px;border:1px solid #e8ddd0;display:flex;gap:12px;align-items:flex-start;">
+          <span style="font-size:24px;">🌅</span>
+          <div>
+            <div style="font-size:12px;font-weight:700;text-transform:uppercase;color:#003580;" class="bg-content">Егейски залези</div>
+            <div style="font-size:12px;font-weight:700;text-transform:uppercase;color:#003580;" class="en-content">Aegean sunsets</div>
+            <div style="font-size:13px;color:#64748b;margin-top:4px;" class="bg-content">Наблюдавайте залеза директно от плажа.</div>
+            <div style="font-size:13px;color:#64748b;margin-top:4px;" class="en-content">Watch the sunset directly from the beach.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- GALLERY -->
+    <div class="gallery-grid">
+      <div class="gallery-img main-img">
+        <img src="../img/sarimsakli/beach.avif" alt="Сарамсаклъ плаж" onerror="this.src='https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800'">
+      </div>
+      <div class="gallery-img">
+        <img src="../img/sarimsakli/sea.avif" alt="Море" onerror="this.src='https://images.unsplash.com/photo-1519046904884-53103b34b206?w=400'">
+      </div>
+      <div class="gallery-img">
+        <img src="../img/sarimsakli/sunset.avif" alt="Залез" onerror="this.src='https://images.unsplash.com/photo-1476041800959-2f6bb412c8ce?w=400'">
+      </div>
+      <div class="gallery-img">
+        <img src="../img/sarimsakli/ayvalik.avif" alt="Айвалък" onerror="this.src='https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400'">
+      </div>
+      <div class="gallery-img">
+        <img src="../img/sarimsakli/family.avif" alt="Семейство" onerror="this.src='https://images.unsplash.com/photo-1476168823529-42afc5f77c4b?w=400'">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOTEL DOBRA -->
+<section style="padding:80px 24px;background:white;">
+  <div style="max-width:1100px;margin:0 auto;">
+    <div style="text-align:center;margin-bottom:56px;">
+      <div style="font-size:12px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:#dcae1d;margin-bottom:12px;" class="bg-content">Настаняване</div>
+      <div style="font-size:12px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:#dcae1d;margin-bottom:12px;" class="en-content">Accommodation</div>
+      <h2 style="font-family:'Playfair Display',serif;font-size:clamp(28px,4vw,44px);font-weight:900;color:#003580;margin-bottom:8px;">Hotel Dobra ★★★</h2>
+      <p style="color:#64748b;font-size:16px;" class="bg-content">Уютно семейно заведение на стъпки от морето</p>
+      <p style="color:#64748b;font-size:16px;" class="en-content">Cosy family hotel steps from the sea</p>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;">
+      <div>
+        <div style="border-radius:16px;overflow:hidden;margin-bottom:16px;height:320px;">
+          <img src="../img/sarimsakli/dobra-front.avif" alt="Hotel Dobra" onerror="this.src='https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=800'" style="width:100%;height:100%;object-fit:cover;">
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+          <div style="border-radius:10px;overflow:hidden;height:160px;">
+            <img src="../img/sarimsakli/dobra-room.avif" alt="Стая" onerror="this.src='https://images.unsplash.com/photo-1590490360182-c33d57733427?w=400'" style="width:100%;height:100%;object-fit:cover;">
+          </div>
+          <div style="border-radius:10px;overflow:hidden;height:160px;">
+            <img src="../img/sarimsakli/dobra-view.avif" alt="Изглед" onerror="this.src='https://images.unsplash.com/photo-1476041800959-2f6bb412c8ce?w=400'" style="width:100%;height:100%;object-fit:cover;">
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <p style="color:#334155;font-size:16px;line-height:1.8;margin-bottom:24px;" class="bg-content">Hotel Dobra е уютно семейно заведение, идеално разположено на крачки от дългия пясъчен плаж. Семейна атмосфера, чисти стаи и домашна закуска всяка сутрин.</p>
+        <p style="color:#334155;font-size:16px;line-height:1.8;margin-bottom:24px;" class="en-content">Hotel Dobra is a cosy family property, ideally situated just steps from the long sandy beach. Family atmosphere, clean rooms, and a home-style breakfast every morning.</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:28px;">
+          <div style="background:#fdf8f0;border-radius:10px;padding:16px;border:1px solid #e8ddd0;">
+            <div style="font-size:22px;margin-bottom:6px;">🍳</div>
+            <div style="font-size:13px;font-weight:600;color:#003580;" class="bg-content">Закуска включена</div>
+            <div style="font-size:13px;font-weight:600;color:#003580;" class="en-content">Breakfast included</div>
+            <div style="font-size:12px;color:#64748b;margin-top:4px;" class="bg-content">Домашна закуска всяка сутрин</div>
+            <div style="font-size:12px;color:#64748b;margin-top:4px;" class="en-content">Home-style breakfast every morning</div>
+          </div>
+          <div style="background:#fdf8f0;border-radius:10px;padding:16px;border:1px solid #e8ddd0;">
+            <div style="font-size:22px;margin-bottom:6px;">🌊</div>
+            <div style="font-size:13px;font-weight:600;color:#003580;" class="bg-content">Стъпки от плажа</div>
+            <div style="font-size:13px;font-weight:600;color:#003580;" class="en-content">Steps from the beach</div>
+            <div style="font-size:12px;color:#64748b;margin-top:4px;" class="bg-content">Директен достъп до морето</div>
+            <div style="font-size:12px;color:#64748b;margin-top:4px;" class="en-content">Direct access to the sea</div>
+          </div>
+          <div style="background:#fdf8f0;border-radius:10px;padding:16px;border:1px solid #e8ddd0;">
+            <div style="font-size:22px;margin-bottom:6px;">❄️</div>
+            <div style="font-size:13px;font-weight:600;color:#003580;" class="bg-content">Климатик в стаите</div>
+            <div style="font-size:13px;font-weight:600;color:#003580;" class="en-content">Air conditioning</div>
+            <div style="font-size:12px;color:#64748b;margin-top:4px;" class="bg-content">Комфорт и в горещите дни</div>
+            <div style="font-size:12px;color:#64748b;margin-top:4px;" class="en-content">Comfortable even on hot days</div>
+          </div>
+          <div style="background:#fdf8f0;border-radius:10px;padding:16px;border:1px solid #e8ddd0;">
+            <div style="font-size:22px;margin-bottom:6px;">📶</div>
+            <div style="font-size:13px;font-weight:600;color:#003580;" class="bg-content">Безплатен Wi-Fi</div>
+            <div style="font-size:13px;font-weight:600;color:#003580;" class="en-content">Free Wi-Fi</div>
+            <div style="font-size:12px;color:#64748b;margin-top:4px;" class="bg-content">В целия хотел</div>
+            <div style="font-size:12px;color:#64748b;margin-top:4px;" class="en-content">Throughout the hotel</div>
+          </div>
+        </div>
+
+        <h4 style="font-family:'Playfair Display',serif;font-size:20px;color:#003580;margin-bottom:16px;" class="bg-content">Стаи</h4>
+        <h4 style="font-family:'Playfair Display',serif;font-size:20px;color:#003580;margin-bottom:16px;" class="en-content">Rooms</h4>
+        <div>
+          <div class="check-item">
+            <span style="color:#dcae1d;font-size:18px;margin-top:1px;">✓</span>
+            <div>
+              <div style="font-weight:600;color:#1e293b;" class="bg-content">Стандартна двойна стая</div>
+              <div style="font-weight:600;color:#1e293b;" class="en-content">Standard double room</div>
+              <div style="font-size:13px;color:#64748b;" class="bg-content">Двойно или две единични легла · Климатик · Баня</div>
+              <div style="font-size:13px;color:#64748b;" class="en-content">Double or twin beds · A/C · Bathroom</div>
+            </div>
+          </div>
+          <div class="check-item">
+            <span style="color:#dcae1d;font-size:18px;margin-top:1px;">✓</span>
+            <div>
+              <div style="font-weight:600;color:#1e293b;" class="bg-content">Фамилна стая</div>
+              <div style="font-weight:600;color:#1e293b;" class="en-content">Family room</div>
+              <div style="font-size:13px;color:#64748b;" class="bg-content">По-голяма площ · Допълнително легло · За 3-4 души</div>
+              <div style="font-size:13px;color:#64748b;" class="en-content">Larger area · Extra bed · For 3-4 people</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INCLUDED -->
+<section style="padding:80px 24px;background:#fdf8f0;">
+  <div style="max-width:900px;margin:0 auto;">
+    <h2 style="font-family:'Playfair Display',serif;font-size:clamp(28px,4vw,40px);font-weight:900;color:#003580;text-align:center;margin-bottom:48px;" class="bg-content">Включено в пакета</h2>
+    <h2 style="font-family:'Playfair Display',serif;font-size:clamp(28px,4vw,40px);font-weight:900;color:#003580;text-align:center;margin-bottom:48px;" class="en-content">What's included</h2>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:32px;">
+      <div style="background:white;border-radius:16px;padding:28px;border:2px solid #e8ddd0;">
+        <h4 style="font-size:16px;font-weight:700;color:#003580;margin-bottom:20px;" class="bg-content">✅ Включено</h4>
+        <h4 style="font-size:16px;font-weight:700;color:#003580;margin-bottom:20px;" class="en-content">✅ Included</h4>
+        <div style="display:flex;flex-direction:column;gap:12px;">
+          <div style="display:flex;gap:10px;align-items:start;font-size:14px;"><span style="color:#22c55e;font-weight:700;flex-shrink:0;">✓</span><span class="bg-content">Нощувки с домашна закуска</span><span class="en-content">Accommodation with home-style breakfast</span></div>
+          <div style="display:flex;gap:10px;align-items:start;font-size:14px;"><span style="color:#22c55e;font-weight:700;flex-shrink:0;">✓</span><span class="bg-content">Трансфер от/до Бургас</span><span class="en-content">Transfer from/to Burgas</span></div>
+          <div style="display:flex;gap:10px;align-items:start;font-size:14px;"><span style="color:#22c55e;font-weight:700;flex-shrink:0;">✓</span><span class="bg-content">Организация на пътуването</span><span class="en-content">Trip organisation</span></div>
+          <div style="display:flex;gap:10px;align-items:start;font-size:14px;"><span style="color:#22c55e;font-weight:700;flex-shrink:0;">✓</span><span class="bg-content">Безплатен Wi-Fi</span><span class="en-content">Free Wi-Fi</span></div>
+        </div>
+      </div>
+      <div style="background:white;border-radius:16px;padding:28px;border:2px solid #e8ddd0;">
+        <h4 style="font-size:16px;font-weight:700;color:#64748b;margin-bottom:20px;" class="bg-content">ℹ️ Не е включено</h4>
+        <h4 style="font-size:16px;font-weight:700;color:#64748b;margin-bottom:20px;" class="en-content">ℹ️ Not included</h4>
+        <div style="display:flex;flex-direction:column;gap:12px;">
+          <div style="display:flex;gap:10px;align-items:start;font-size:14px;color:#64748b;"><span style="flex-shrink:0;">—</span><span class="bg-content">Обяди и вечери</span><span class="en-content">Lunches and dinners</span></div>
+          <div style="display:flex;gap:10px;align-items:start;font-size:14px;color:#64748b;"><span style="flex-shrink:0;">—</span><span class="bg-content">Лични разходи</span><span class="en-content">Personal expenses</span></div>
+        </div>
+        <div style="background:#fdf8f0;border-radius:10px;padding:14px;margin-top:20px;border:1px solid #e8ddd0;">
+          <p style="font-size:13px;color:#64748b;" class="bg-content">💡 Лична карта е достатъчна. В Айвалък (7 км) ще намерите перфектните ресторанти с морска храна.</p>
+          <p style="font-size:13px;color:#64748b;" class="en-content">💡 National ID is sufficient. In Ayvalık (7km) you'll find perfect seafood restaurants.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GUARANTEE -->
+<section style="background:#003580;padding:56px 24px;text-align:center;">
+  <div style="max-width:700px;margin:0 auto;">
+    <div style="font-size:48px;margin-bottom:16px;">🛡️</div>
+    <h3 style="font-family:'Playfair Display',serif;font-size:clamp(24px,4vw,36px);font-weight:900;color:white;margin-bottom:16px;" class="bg-content">Нашата гаранция</h3>
+    <h3 style="font-family:'Playfair Display',serif;font-size:clamp(24px,4vw,36px);font-weight:900;color:white;margin-bottom:16px;" class="en-content">Our guarantee</h3>
+    <p style="color:rgba(255,255,255,0.85);font-size:17px;line-height:1.7;" class="bg-content">Работим само с проверени хотели. Ние организираме всичко — вие просто се наслаждавате на морето.</p>
+    <p style="color:rgba(255,255,255,0.85);font-size:17px;line-height:1.7;" class="en-content">We only work with verified hotels. We organise everything — you simply enjoy the sea.</p>
+  </div>
+</section>
+
+<!-- CTA -->
+<section style="background:#fdf8f0;padding:80px 24px;text-align:center;">
+  <div style="max-width:600px;margin:0 auto;">
+    <h2 style="font-family:'Playfair Display',serif;font-size:clamp(28px,5vw,48px);font-weight:900;color:#003580;margin-bottom:16px;" class="bg-content">Готови за морето?</h2>
+    <h2 style="font-family:'Playfair Display',serif;font-size:clamp(28px,5vw,48px);font-weight:900;color:#003580;margin-bottom:16px;" class="en-content">Ready for the sea?</h2>
+    <p style="color:#64748b;font-size:17px;margin-bottom:40px;" class="bg-content">Обадете се или пишете на Viber. Ние организираме всичко.</p>
+    <p style="color:#64748b;font-size:17px;margin-bottom:40px;" class="en-content">Call or message us on Viber. We organise everything.</p>
+    <div style="display:flex;flex-wrap:wrap;gap:16px;justify-content:center;margin-bottom:24px;">
+      <a href="tel:+359894060406" style="background:#dcae1d;color:#003580;padding:16px 40px;border-radius:40px;font-weight:700;font-size:18px;text-decoration:none;">📞 +359 894 060 406</a>
+      <a href="viber://chat?number=359894060406" style="background:#003580;color:white;padding:16px 40px;border-radius:40px;font-weight:600;font-size:18px;text-decoration:none;">💬 Viber</a>
+    </div>
+    <p style="color:#64748b;font-size:14px;">✉️ stellatoursbg@gmail.com</p>
+  </div>
+</section>
+
+<!-- OTHER DESTINATIONS -->
+<section style="padding:60px 24px;background:white;border-top:1px solid #e8ddd0;">
+  <div style="max-width:900px;margin:0 auto;text-align:center;">
+    <h3 style="font-family:'Playfair Display',serif;font-size:24px;color:#003580;margin-bottom:32px;" class="bg-content">Разгледайте и другите ни дестинации</h3>
+    <h3 style="font-family:'Playfair Display',serif;font-size:24px;color:#003580;margin-bottom:32px;" class="en-content">Explore our other destinations</h3>
+    <div style="display:flex;flex-wrap:wrap;gap:16px;justify-content:center;">
+      <a href="gokceada-panaya.html" style="display:flex;align-items:center;gap:10px;background:#fdf8f0;border:1px solid #e8ddd0;border-radius:12px;padding:16px 24px;text-decoration:none;color:#003580;font-weight:600;">
+        🌊 <span class="bg-content">Гьокчеада · Hotel Panaya ★★★</span><span class="en-content">Gökçeada · Hotel Panaya ★★★</span>
+      </a>
+      <a href="ayvalik-bacacan.html" style="display:flex;align-items:center;gap:10px;background:#fdf8f0;border:1px solid #e8ddd0;border-radius:12px;padding:16px 24px;text-decoration:none;color:#003580;font-weight:600;">
+        🏨 <span class="bg-content">Айвалък · Hotel Bacacan ★★★★</span><span class="en-content">Ayvalık · Hotel Bacacan ★★★★</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer style="background:#0f172a;color:rgba(255,255,255,0.5);padding:32px 24px;text-align:center;font-size:13px;">
+  <div style="font-family:'Playfair Display',serif;font-size:20px;color:white;margin-bottom:8px;">Stella<span style="color:#dcae1d;">Tour</span></div>
+  <p>© 2026 Stella Tour · Бургас · Всички права запазени</p>
+  <p style="margin-top:4px;font-size:11px;color:rgba(255,255,255,0.25);">Дизайн от GG Solutions</p>
+</footer>
+
+<div class="sticky-cta">
+  <a href="tel:+359894060406" style="flex:1;background:#dcae1d;color:#003580;padding:12px;border-radius:12px;font-weight:700;font-size:14px;text-decoration:none;text-align:center;">📞 Обади се</a>
+  <a href="viber://chat?number=359894060406" style="flex:1;background:white;color:#003580;padding:12px;border-radius:12px;font-weight:600;font-size:14px;text-decoration:none;text-align:center;">💬 Viber</a>
+</div>
+
+<script>
+function setLang(lang) {
+  if (lang==='en') { document.body.classList.add('lang-en'); document.getElementById('btn-bg').classList.replace('active','inactive'); document.getElementById('btn-en').classList.replace('inactive','active'); }
+  else { document.body.classList.remove('lang-en'); document.getElementById('btn-en').classList.replace('active','inactive'); document.getElementById('btn-bg').classList.replace('inactive','active'); }
+}
+</script>
+</body>
+</html>

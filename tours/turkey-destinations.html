@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Егейска Турция 2026 — Stella Tour</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          brandBlue: '#003580',
+          brandGold: '#dcae1d',
+          warmBg: '#fdf8f0',
+          darkBg: '#0f172a',
+        },
+        fontFamily: {
+          playfair: ['"Playfair Display"', 'serif'],
+          inter: ['Inter', 'sans-serif'],
+        }
+      }
+    }
+  }
+</script>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #fdf8f0; font-family: 'Inter', sans-serif; }
+
+  /* NAV */
+  .nav-logo { font-family: 'Playfair Display', serif; font-weight: 700; }
+  .nav-logo span { color: #dcae1d; }
+
+  /* HERO */
+  .hero {
+    min-height: 90vh;
+    background: #0f172a;
+    position: relative;
+    display: flex; align-items: flex-end;
+    overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background: url('https://images.unsplash.com/photo-1527838832700-5059252407fa?w=1800') center/cover;
+    opacity: 0.45;
+  }
+  .hero-gradient {
+    position: absolute; inset: 0;
+    background: linear-gradient(to bottom, rgba(0,20,60,0.2) 0%, rgba(0,20,60,0.85) 70%, rgba(0,20,60,0.97) 100%);
+  }
+  .hero-content { position: relative; z-index: 2; padding: 0 0 80px; }
+
+  /* DESTINATION CARDS */
+  .dest-card {
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: block;
+    text-decoration: none;
+    color: inherit;
+  }
+  .dest-card:hover { transform: translateY(-8px); box-shadow: 0 24px 48px rgba(0,53,128,0.15); }
+
+  .dest-card-img {
+    height: 260px;
+    background: #ddd;
+    position: relative;
+    overflow: hidden;
+  }
+  .dest-card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
+  .dest-card:hover .dest-card-img img { transform: scale(1.05); }
+
+  .star-badge {
+    position: absolute; top: 16px; left: 16px;
+    background: rgba(0,53,128,0.9);
+    color: white; font-size: 12px; font-weight: 600;
+    padding: 5px 12px; border-radius: 20px;
+    backdrop-filter: blur(4px);
+  }
+
+  /* VIDEO SECTION */
+  .video-wrapper {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0; overflow: hidden;
+    border-radius: 16px;
+  }
+  .video-wrapper iframe, .video-wrapper video {
+    position: absolute; top: 0; left: 0;
+    width: 100%; height: 100%;
+  }
+  .video-placeholder {
+    position: absolute; inset: 0;
+    background: #0f172a;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    color: white;
+  }
+  .play-btn {
+    width: 80px; height: 80px;
+    background: #dcae1d;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 20px;
+    cursor: pointer;
+    transition: transform 0.2s, background 0.2s;
+  }
+  .play-btn:hover { transform: scale(1.1); background: #f0c430; }
+  .play-btn svg { fill: #003580; margin-left: 5px; }
+
+  /* GUARANTEE STRIP */
+  .guarantee-strip {
+    background: #003580;
+    color: white;
+  }
+
+  /* LANG TOGGLE */
+  .lang-btn { cursor: pointer; padding: 4px 12px; border-radius: 20px; font-size: 13px; font-weight: 600; border: 1px solid; transition: all 0.2s; }
+  .lang-btn.active { background: #dcae1d; border-color: #dcae1d; color: #003580; }
+  .lang-btn.inactive { background: transparent; border-color: rgba(255,255,255,0.3); color: rgba(255,255,255,0.7); }
+
+  /* BG/EN content */
+  .bg-content { display: block; }
+  .en-content { display: none; }
+  body.lang-en .bg-content { display: none; }
+  body.lang-en .en-content { display: block; }
+
+  /* PULSE DOT */
+  @keyframes pulse { 0%,100% { opacity:1; transform:scale(1); } 50% { opacity:0.6; transform:scale(1.4); } }
+  .pulse-dot { animation: pulse 2s infinite; }
+
+  /* FAQ ACCORDION */
+  .faq-item { border-bottom: 1px solid #e8ddd0; }
+  .faq-q { padding: 18px 0; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-weight: 600; }
+  .faq-a { display: none; padding-bottom: 16px; color: #64748b; line-height: 1.7; }
+  .faq-item.open .faq-a { display: block; }
+  .faq-item.open .faq-chevron { transform: rotate(180deg); }
+  .faq-chevron { transition: transform 0.2s; color: #003580; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav style="position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(15,23,42,0.95);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,0.1);">
+  <div style="max-width:1200px;margin:0 auto;padding:0 24px;height:64px;display:flex;align-items:center;justify-content:space-between;">
+    <a href="index.html" class="nav-logo" style="color:white;text-decoration:none;font-size:22px;">Stella<span>Tour</span></a>
+    <div style="display:flex;align-items:center;gap:16px;">
+      <button class="lang-btn active" id="btn-bg" onclick="setLang('bg')">БГ</button>
+      <button class="lang-btn inactive" id="btn-en" onclick="setLang('en')">EN</button>
+      <a href="tel:+359894060406" style="background:#dcae1d;color:#003580;padding:8px 20px;border-radius:24px;font-weight:700;font-size:14px;text-decoration:none;display:none;" class="sm:flex">
+        📞 Обади се
+      </a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" style="padding-top:64px;">
+  <div class="hero-bg"></div>
+  <div class="hero-gradient"></div>
+  <div class="hero-content" style="width:100%;max-width:1200px;margin:0 auto;padding:0 24px 80px;">
+
+    <!-- BG -->
+    <div class="bg-content">
+      <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(220,174,29,0.2);border:1px solid rgba(220,174,29,0.5);color:#dcae1d;padding:6px 16px;border-radius:20px;font-size:13px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:24px;">
+        <span class="pulse-dot" style="width:6px;height:6px;background:#dcae1d;border-radius:50%;display:inline-block;"></span>
+        Ново · Лято 2026
+      </div>
+      <h1 style="font-family:'Playfair Display',serif;font-size:clamp(42px,7vw,88px);font-weight:900;color:white;line-height:1.05;margin-bottom:20px;">
+        Три дестинации.<br><em style="color:#dcae1d;">Едно Егейско море.</em>
+      </h1>
+      <p style="font-size:clamp(16px,2vw,22px);color:rgba(255,255,255,0.8);max-width:600px;margin-bottom:40px;line-height:1.6;">
+        Остров, бряг и залив — три нови почивки директно от Бургас до Турция. Ние организираме всичко.
+      </p>
+      <div style="display:flex;flex-wrap:wrap;gap:12px;">
+        <a href="#destinations" style="background:#dcae1d;color:#003580;padding:14px 32px;border-radius:32px;font-weight:700;font-size:16px;text-decoration:none;">Разгледай дестинациите</a>
+        <a href="tel:+359894060406" style="background:transparent;color:white;border:2px solid rgba(255,255,255,0.4);padding:14px 32px;border-radius:32px;font-weight:600;font-size:16px;text-decoration:none;">📞 Обади се сега</a>
+      </div>
+    </div>
+
+    <!-- EN -->
+    <div class="en-content">
+      <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(220,174,29,0.2);border:1px solid rgba(220,174,29,0.5);color:#dcae1d;padding:6px 16px;border-radius:20px;font-size:13px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:24px;">
+        <span class="pulse-dot" style="width:6px;height:6px;background:#dcae1d;border-radius:50%;display:inline-block;"></span>
+        New · Summer 2026
+      </div>
+      <h1 style="font-family:'Playfair Display',serif;font-size:clamp(42px,7vw,88px);font-weight:900;color:white;line-height:1.05;margin-bottom:20px;">
+        Three destinations.<br><em style="color:#dcae1d;">One Aegean Sea.</em>
+      </h1>
+      <p style="font-size:clamp(16px,2vw,22px);color:rgba(255,255,255,0.8);max-width:600px;margin-bottom:40px;line-height:1.6;">
+        An island, a coast, and a bay — three new holidays direct from Burgas to the Turkish Aegean.
+      </p>
+      <div style="display:flex;flex-wrap:wrap;gap:12px;">
+        <a href="#destinations" style="background:#dcae1d;color:#003580;padding:14px 32px;border-radius:32px;font-weight:700;font-size:16px;text-decoration:none;">Explore destinations</a>
+        <a href="tel:+359894060406" style="background:transparent;color:white;border:2px solid rgba(255,255,255,0.4);padding:14px 32px;border-radius:32px;font-weight:600;font-size:16px;text-decoration:none;">📞 Call us</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div style="background:#003580;color:white;padding:16px 24px;">
+  <div style="max-width:1200px;margin:0 auto;display:flex;flex-wrap:wrap;gap:24px;justify-content:center;align-items:center;">
+    <div style="display:flex;align-items:center;gap:8px;font-size:14px;">✅ <span class="bg-content">Включен трансфер</span><span class="en-content">Transfer included</span></div>
+    <div style="width:1px;height:20px;background:rgba(255,255,255,0.2);"></div>
+    <div style="display:flex;align-items:center;gap:8px;font-size:14px;">✅ <span class="bg-content">Организираме фериботите</span><span class="en-content">Ferry tickets arranged</span></div>
+    <div style="width:1px;height:20px;background:rgba(255,255,255,0.2);"></div>
+    <div style="display:flex;align-items:center;gap:8px;font-size:14px;">✅ <span class="bg-content">Закуска всяка сутрин</span><span class="en-content">Breakfast daily</span></div>
+    <div style="width:1px;height:20px;background:rgba(255,255,255,0.2);"></div>
+    <div style="display:flex;align-items:center;gap:8px;font-size:14px;">⭐ <span class="bg-content">Хотели с реални отзиви</span><span class="en-content">Hotels with real reviews</span></div>
+  </div>
+</div>
+
+<!-- VIDEO SECTION -->
+<section style="background:#0f172a;padding:80px 24px;">
+  <div style="max-width:1000px;margin:0 auto;">
+    <div style="text-align:center;margin-bottom:48px;">
+      <div style="font-size:12px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:#dcae1d;margin-bottom:12px;" class="bg-content">Усети дестинацията</div>
+      <div style="font-size:12px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:#dcae1d;margin-bottom:12px;" class="en-content">Feel the destination</div>
+      <h2 style="font-family:'Playfair Display',serif;font-size:clamp(28px,4vw,44px);font-weight:800;color:white;line-height:1.2;" class="bg-content">Гьокчеада — Небесният остров</h2>
+      <h2 style="font-family:'Playfair Display',serif;font-size:clamp(28px,4vw,44px);font-weight:800;color:white;line-height:1.2;" class="en-content">Gökçeada — The Heavenly Island</h2>
+    </div>
+    <div class="video-wrapper">
+      <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/15AEoStlfr0?si=5LUR76j0xNz5sR2B&amp;start=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- THREE DESTINATIONS -->
+<section id="destinations" style="padding:80px 24px;background:#fdf8f0;">
+  <div style="max-width:1200px;margin:0 auto;">
+
+    <div style="text-align:center;margin-bottom:64px;">
+      <div style="font-size:12px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:#dcae1d;margin-bottom:12px;" class="bg-content">Изберете вашата почивка</div>
+      <div style="font-size:12px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:#dcae1d;margin-bottom:12px;" class="en-content">Choose your holiday</div>
+      <h2 style="font-family:'Playfair Display',serif;font-size:clamp(30px,5vw,52px);font-weight:900;color:#003580;line-height:1.1;margin-bottom:16px;" class="bg-content">Три начина да преживееш Егея</h2>
+      <h2 style="font-family:'Playfair Display',serif;font-size:clamp(30px,5vw,52px);font-weight:900;color:#003580;line-height:1.1;margin-bottom:16px;" class="en-content">Three ways to experience the Aegean</h2>
+      <p style="color:#64748b;max-width:520px;margin:0 auto;font-size:16px;" class="bg-content">Всяка дестинация е различен характер. Едно море, три истории.</p>
+      <p style="color:#64748b;max-width:520px;margin:0 auto;font-size:16px;" class="en-content">Each destination has its own character. One sea, three stories.</p>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:32px;">
+
+      <!-- CARD 1: ГЬОКЧЕАДА -->
+      <a href="gokceada-panaya.html" class="dest-card">
+        <div class="dest-card-img">
+          <img src="../img/gokceada/hero.avif" alt="Гьокчеада" onerror="this.src='https://images.unsplash.com/photo-1601581975053-7c034f37bf82?w=800'">
+          <div class="star-badge">Hotel Panaya ★★★</div>
+          <div style="position:absolute;bottom:16px;left:16px;background:#dcae1d;color:#003580;font-size:11px;font-weight:700;padding:4px 10px;border-radius:12px;">9.5/10 ⭐</div>
+        </div>
+        <div style="padding:28px;">
+          <div style="font-size:11px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:#dcae1d;margin-bottom:8px;" class="bg-content">Остров · Чанакале</div>
+          <div style="font-size:11px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:#dcae1d;margin-bottom:8px;" class="en-content">Island · Çanakkale</div>
+          <h3 style="font-family:'Playfair Display',serif;font-size:26px;font-weight:800;color:#003580;margin-bottom:12px;">Гьокчеада</h3>
+          <p style="color:#64748b;font-size:14px;line-height:1.7;margin-bottom:20px;" class="bg-content">Най-тихото откритие в Егея. Кристални заливчета, гръцки каменни села и 3000 години история. Без тълпи. Без шезлонги на всеки метър.</p>
+          <p style="color:#64748b;font-size:14px;line-height:1.7;margin-bottom:20px;" class="en-content">The Aegean's best-kept secret. Crystal coves, Greek stone villages, 3,000 years of history. No crowds. No tourists on every corner.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px;">
+            <span style="background:#f0f4ff;color:#003580;padding:4px 10px;border-radius:12px;font-size:12px;font-weight:500;" class="bg-content">🤿 Гмуркане</span>
+            <span style="background:#f0f4ff;color:#003580;padding:4px 10px;border-radius:12px;font-size:12px;font-weight:500;" class="bg-content">🏖️ Плажове</span>
+            <span style="background:#f0f4ff;color:#003580;padding:4px 10px;border-radius:12px;font-size:12px;font-weight:500;" class="bg-content">🌊 Кайтсърф</span>
+            <span style="background:#f0f4ff;color:#003580;padding:4px 10px;border-radius:12px;font-size:12px;font-weight:500;" class="en-content">🤿 Diving</span>
+            <span style="background:#f0f4ff;color:#003580;padding:4px 10px;border-radius:12px;font-size:12px;font-weight:500;" class="en-content">🏖️ Beaches</span>
+            <span style="background:#f0f4ff;color:#003580;padding:4px 10px;border-radius:12px;font-size:12px;font-weight:500;" class="en-content">🌊 Kitesurfing</span>
+          </div>
+          <div style="display:flex;align-items:center;justify-content:space-between;">
+            <span style="font-size:13px;color:#64748b;" class="bg-content">⛴️ Ферибот от Кабатепе</span>
+            <span style="font-size:13px;color:#64748b;" class="en-content">⛴️ Ferry from Kabatepe</span>
+            <span style="color:#003580;font-weight:700;font-size:14px;">Виж повече →</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- CARD 2: АЙВАЛЪК -->
+      <a href="ayvalik-bacacan.html" class="dest-card">
+        <div class="dest-card-img">
+          <img src="../img/ayvalik/hero.avif" alt="Айвалък" onerror="this.src='https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800'">
+          <div class="star-badge">Hotel Bacacan ★★★★</div>
+          <div style="position:absolute;bottom:16px;left:16px;background:#dcae1d;color:#003580;font-size:11px;font-weight:700;padding:4px 10px;border-radius:12px;">4 звезди · На брега</div>
+        </div>
+        <div style="padding:28px;">
+          <div style="font-size:11px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:#dcae1d;margin-bottom:8px;" class="bg-content">Крайбрежен град · Балъкесир</div>
+          <div style="font-size:11px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:#dcae1d;margin-bottom:8px;" class="en-content">Coastal town · Balıkesir</div>
+          <h3 style="font-family:'Playfair Display',serif;font-size:26px;font-weight:800;color:#003580;margin-bottom:12px;">Айвалък</h3>
+          <p style="color:#64748b;font-size:14px;line-height:1.7;margin-bottom:20px;" class="bg-content">Перлата на Егея. Калдъръмени улички, мирис на маслини и морски залез от Шейтан Суфраси — видян от малцина.</p>
+          <p style="color:#64748b;font-size:14px;line-height:1.7;margin-bottom:20px;" class="en-content">The Pearl of the Aegean. Cobblestone streets, olive groves, and the most spectacular sunset in Turkey at Şeytan Sofrası.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px;">
+            <span style="background:#f0f4ff;color:#003580;padding:4px 10px;border-radius:12px;font-size:12px;font-weight:500;" class="bg-content">🫒 Маслинова кухня</span>
+            <span style="background:#f0f4ff;color:#003580;padding:4px 10px;border-radius:12px;font-size:12px;font-weight:500;" class="bg-content">🏛️ История</span>
+            <span style="background:#f0f4ff;color:#003580;padding:4px 10px;border-radius:12px;font-size:12px;font-weight:500;" class="bg-content">⛵ Остров Джунда</span>
+            <span style="background:#f0f4ff;color:#003580;padding:4px 10px;border-radius:12px;font-size:12px;font-weight:500;" class="en-content">🫒 Olive cuisine</span>
+            <span style="background:#f0f4ff;color:#003580;padding:4px 10px;border-radius:12px;font-size:12px;font-weight:500;" class="en-content">🏛️ History</span>
+            <span style="background:#f0f4ff;color:#003580;padding:4px 10px;border-radius:12px;font-size:12px;font-weight:500;" class="en-content">⛵ Cunda Island</span>
+          </div>
+          <div style="display:flex;align-items:center;justify-content:space-between;">
+            <span style="font-size:13px;color:#64748b;" class="bg-content">🏨 Директно на брега</span>
+            <span style="font-size:13px;color:#64748b;" class="en-content">🏨 Directly on the shore</span>
+            <span style="color:#003580;font-weight:700;font-size:14px;">Виж повече →</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- CARD 3: САРАМСАКЛЪ -->
+      <a href="sarimsakli-dobra.html" class="dest-card">
+        <div class="dest-card-img">
+          <img src="../img/sarimsakli/hero.avif" alt="Сарамсаклъ" onerror="this.src='https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800'">
+          <div class="star-badge">Hotel Dobra ★★★</div>
+          <div style="position:absolute;bottom:16px;left:16px;background:#dcae1d;color:#003580;font-size:11px;font-weight:700;padding:4px 10px;border-radius:12px;">🏖️ Сини знаме</div>
+        </div>
+        <div style="padding:28px;">
+          <div style="font-size:11px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:#dcae1d;margin-bottom:8px;" class="bg-content">Плажен курорт · до Айвалък</div>
+          <div style="font-size:11px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:#dcae1d;margin-bottom:8px;" class="en-content">Beach resort · near Ayvalık</div>
+          <h3 style="font-family:'Playfair Display',serif;font-size:26px;font-weight:800;color:#003580;margin-bottom:12px;">Сарамсаклъ</h3>
+          <p style="color:#64748b;font-size:14px;line-height:1.7;margin-bottom:20px;" class="bg-content">За тези, на които им трябва просто: море, слънце и добра компания. Дълъг пясъчен плаж с „Синьо знаме" на стъпки от хотела.</p>
+          <p style="color:#64748b;font-size:14px;line-height:1.7;margin-bottom:20px;" class="en-content">For those who want simplicity: sea, sun, and good company. A long Blue Flag beach just steps from the hotel.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px;">
+            <span style="background:#f0f4ff;color:#003580;padding:4px 10px;border-radius:12px;font-size:12px;font-weight:500;" class="bg-content">🏖️ Пясъчен плаж</span>
+            <span style="background:#f0f4ff;color:#003580;padding:4px 10px;border-radius:12px;font-size:12px;font-weight:500;" class="bg-content">👨‍👩‍👧 Семейства</span>
+            <span style="background:#f0f4ff;color:#003580;padding:4px 10px;border-radius:12px;font-size:12px;font-weight:500;" class="bg-content">🌊 Чисто море</span>
+            <span style="background:#f0f4ff;color:#003580;padding:4px 10px;border-radius:12px;font-size:12px;font-weight:500;" class="en-content">🏖️ Sandy beach</span>
+            <span style="background:#f0f4ff;color:#003580;padding:4px 10px;border-radius:12px;font-size:12px;font-weight:500;" class="en-content">👨‍👩‍👧 Family-friendly</span>
+            <span style="background:#f0f4ff;color:#003580;padding:4px 10px;border-radius:12px;font-size:12px;font-weight:500;" class="en-content">🌊 Clean water</span>
+          </div>
+          <div style="display:flex;align-items:center;justify-content:space-between;">
+            <span style="font-size:13px;color:#64748b;" class="bg-content">📍 7 км от Айвалък</span>
+            <span style="font-size:13px;color:#64748b;" class="en-content">📍 7km from Ayvalık</span>
+            <span style="color:#003580;font-weight:700;font-size:14px;">Виж повече →</span>
+          </div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- WHY STELLA TOUR — Grand Slam Value Stack -->
+<section style="padding:80px 24px;background:white;">
+  <div style="max-width:1000px;margin:0 auto;">
+    <div style="text-align:center;margin-bottom:56px;">
+      <div style="font-size:12px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:#dcae1d;margin-bottom:12px;" class="bg-content">Защо с нас?</div>
+      <div style="font-size:12px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:#dcae1d;margin-bottom:12px;" class="en-content">Why with us?</div>
+      <h2 style="font-family:'Playfair Display',serif;font-size:clamp(28px,4vw,44px);font-weight:900;color:#003580;margin-bottom:16px;" class="bg-content">Ние се грижим за всичко.<br>Ти само се радваш.</h2>
+      <h2 style="font-family:'Playfair Display',serif;font-size:clamp(28px,4vw,44px);font-weight:900;color:#003580;margin-bottom:16px;" class="en-content">We handle everything.<br>You just enjoy.</h2>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:24px;">
+      <div style="background:#fdf8f0;border-radius:12px;padding:28px;border:1px solid #e8ddd0;">
+        <div style="font-size:32px;margin-bottom:12px;">🚌</div>
+        <h4 style="font-family:'Playfair Display',serif;font-size:18px;color:#003580;margin-bottom:8px;" class="bg-content">Организиран трансфер</h4>
+        <h4 style="font-family:'Playfair Display',serif;font-size:18px;color:#003580;margin-bottom:8px;" class="en-content">Organised transfer</h4>
+        <p style="font-size:14px;color:#64748b;line-height:1.6;" class="bg-content">От Бургас директно до хотела. Без претоварвания, без стрес с коли.</p>
+        <p style="font-size:14px;color:#64748b;line-height:1.6;" class="en-content">From Burgas directly to your hotel. No transfer hassle, no car stress.</p>
+      </div>
+      <div style="background:#fdf8f0;border-radius:12px;padding:28px;border:1px solid #e8ddd0;">
+        <div style="font-size:32px;margin-bottom:12px;">⛴️</div>
+        <h4 style="font-family:'Playfair Display',serif;font-size:18px;color:#003580;margin-bottom:8px;" class="bg-content">Фериботни билети</h4>
+        <h4 style="font-family:'Playfair Display',serif;font-size:18px;color:#003580;margin-bottom:8px;" class="en-content">Ferry tickets</h4>
+        <p style="font-size:14px;color:#64748b;line-height:1.6;" class="bg-content">За Гьокчеада — ние организираме фериботните билети от Кабатепе.</p>
+        <p style="font-size:14px;color:#64748b;line-height:1.6;" class="en-content">For Gökçeada — we organise the ferry tickets from Kabatepe.</p>
+      </div>
+      <div style="background:#fdf8f0;border-radius:12px;padding:28px;border:1px solid #e8ddd0;">
+        <div style="font-size:32px;margin-bottom:12px;">🛎️</div>
+        <h4 style="font-family:'Playfair Display',serif;font-size:18px;color:#003580;margin-bottom:8px;" class="bg-content">Хотелска резервация</h4>
+        <h4 style="font-family:'Playfair Display',serif;font-size:18px;color:#003580;margin-bottom:8px;" class="en-content">Hotel booking</h4>
+        <p style="font-size:14px;color:#64748b;line-height:1.6;" class="bg-content">Резервираме директно с хотела. Проверени лично. Без изненади при пристигане.</p>
+        <p style="font-size:14px;color:#64748b;line-height:1.6;" class="en-content">We book directly with the hotel. Personally checked. No surprises on arrival.</p>
+      </div>
+      <div style="background:#fdf8f0;border-radius:12px;padding:28px;border:1px solid #e8ddd0;">
+        <div style="font-size:32px;margin-bottom:12px;">📋</div>
+        <h4 style="font-family:'Playfair Display',serif;font-size:18px;color:#003580;margin-bottom:8px;" class="bg-content">Документи и помощ</h4>
+        <h4 style="font-family:'Playfair Display',serif;font-size:18px;color:#003580;margin-bottom:8px;" class="en-content">Documents & support</h4>
+        <p style="font-size:14px;color:#64748b;line-height:1.6;" class="bg-content">Помагаме с всички документи. Отговаряме на въпросите ти преди и по време на пътуването.</p>
+        <p style="font-size:14px;color:#64748b;line-height:1.6;" class="en-content">We help with all paperwork. We answer your questions before and during the trip.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section style="padding:80px 24px;background:#fdf8f0;">
+  <div style="max-width:760px;margin:0 auto;">
+    <div style="text-align:center;margin-bottom:48px;">
+      <h2 style="font-family:'Playfair Display',serif;font-size:clamp(28px,4vw,40px);font-weight:900;color:#003580;" class="bg-content">Чести въпроси</h2>
+      <h2 style="font-family:'Playfair Display',serif;font-size:clamp(28px,4vw,40px);font-weight:900;color:#003580;" class="en-content">Frequently Asked Questions</h2>
+    </div>
+
+    <div class="bg-content">
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Трябва ли ми виза за Турция? <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></div>
+        <div class="faq-a">Не. Български граждани влизат в Турция само с лична карта. Паспортът не е задължителен.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Как се плаща? <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></div>
+        <div class="faq-a">Обаждаш се или пишеш на Viber. Уточняваме детайлите заедно и се договаряме за начина на плащане — в брой или по банков път.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Какво е включено в цената? <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></div>
+        <div class="faq-a">Нощувките с закуска, трансферът от Бургас и фериботните билети (за Гьокчеада). Разходите за лично харчене, обяди и вечери не са включени.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Кога да резервирам? <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></div>
+        <div class="faq-a">Колкото по-рано, толкова по-добре. Хотелите в Гьокчеада имат ограничен брой стаи и се запълват бързо през лятото. Препоръчваме резервация поне 6 седмици предварително.</div>
+      </div>
+    </div>
+    <div class="en-content">
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Do I need a visa for Turkey? <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></div>
+        <div class="faq-a">No. Bulgarian citizens enter Turkey with just their national ID card. A passport is not required.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">How do I book? <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></div>
+        <div class="faq-a">Call or message us on Viber. We'll discuss the details together and agree on payment — cash or bank transfer.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA SECTION -->
+<section style="background:#003580;padding:80px 24px;text-align:center;">
+  <div style="max-width:700px;margin:0 auto;">
+    <h2 style="font-family:'Playfair Display',serif;font-size:clamp(28px,5vw,52px);font-weight:900;color:white;margin-bottom:16px;" class="bg-content">Готови ли сте за Егея?</h2>
+    <h2 style="font-family:'Playfair Display',serif;font-size:clamp(28px,5vw,52px);font-weight:900;color:white;margin-bottom:16px;" class="en-content">Ready for the Aegean?</h2>
+    <p style="color:rgba(255,255,255,0.75);font-size:17px;margin-bottom:40px;" class="bg-content">Обадете се сега и ние ще организираме всичко вместо вас.</p>
+    <p style="color:rgba(255,255,255,0.75);font-size:17px;margin-bottom:40px;" class="en-content">Call us now and we'll organise everything for you.</p>
+    <div style="display:flex;flex-wrap:wrap;gap:16px;justify-content:center;">
+      <a href="tel:+359894060406" style="background:#dcae1d;color:#003580;padding:16px 40px;border-radius:40px;font-weight:700;font-size:18px;text-decoration:none;display:flex;align-items:center;gap:10px;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.41 11.5a19.79 19.79 0 01-3.07-8.67A2 2 0 012.32 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.4a16 16 0 006.29 6.29l1.27-.77a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"></path></svg>
+        +359 894 060 406
+      </a>
+      <a href="viber://chat?number=359894060406" style="background:rgba(255,255,255,0.15);color:white;border:2px solid rgba(255,255,255,0.4);padding:16px 40px;border-radius:40px;font-weight:600;font-size:18px;text-decoration:none;">
+        💬 Viber
+      </a>
+    </div>
+    <p style="color:rgba(255,255,255,0.4);font-size:13px;margin-top:24px;" class="bg-content">✉️ stellatoursbg@gmail.com</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer style="background:#0f172a;color:rgba(255,255,255,0.5);padding:32px 24px;text-align:center;font-size:13px;">
+  <div style="font-family:'Playfair Display',serif;font-size:20px;color:white;margin-bottom:8px;">Stella<span style="color:#dcae1d;">Tour</span></div>
+  <p>© 2026 Stella Tour · Бургас · Всички права запазени</p>
+  <p style="margin-top:4px;font-size:11px;color:rgba(255,255,255,0.25);">Дизайн от GG Solutions</p>
+</footer>
+
+<script>
+function setLang(lang) {
+  if (lang === 'en') {
+    document.body.classList.add('lang-en');
+    document.getElementById('btn-bg').classList.replace('active','inactive');
+    document.getElementById('btn-en').classList.replace('inactive','active');
+  } else {
+    document.body.classList.remove('lang-en');
+    document.getElementById('btn-en').classList.replace('active','inactive');
+    document.getElementById('btn-bg').classList.replace('inactive','active');
+  }
+}
+
+function toggleFaq(el) {
+  const item = el.parentElement;
+  item.classList.toggle('open');
+}
+</script>
+</body>
+</html>

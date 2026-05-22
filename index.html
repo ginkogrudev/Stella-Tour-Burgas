@@ -34,62 +34,62 @@
 <body class="bg-warmBg text-gray-800 antialiased relative">
 
   <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 bg-white/95 backdrop-blur-md border-b-4 border-brandGold shadow-sm">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between items-center h-20">
- 
-            <!-- LOGO — scrolls to top on homepage -->
-            <a href="index.html" onclick="window.scrollTo({top:0,behavior:'smooth'}); return false;"
-               class="flex-shrink-0 flex items-center gap-3">
-                <div class="w-10 h-10 bg-brandBlue text-brandGold flex items-center justify-center font-serif font-bold rounded-xl shadow-md text-xl">S</div>
-                <span class="text-brandBlue text-2xl font-bold tracking-tight uppercase">Stela<span class="text-brandGold">Tour</span></span>
-            </a>
- 
-            <!-- DESKTOP LINKS -->
-            <div class="hidden md:flex items-center space-x-8">
-                <a href="#quick-escapes" class="text-gray-700 hover:text-brandGold font-bold text-sm uppercase tracking-wider transition">Уикенди</a>
-                <a href="#journeys"      class="text-gray-700 hover:text-brandGold font-bold text-sm uppercase tracking-wider transition">Пътешествия</a>
-                <a href="#green-schools" class="text-gray-700 hover:text-brandGold font-bold text-sm uppercase tracking-wider transition">За училища</a>
-                <a href="index-en.html"  class="text-brandBlue font-bold hover:text-brandGold flex items-center gap-1 text-sm border-l-2 pl-6 border-gray-200 transition">
-                    <span class="text-lg">🇬🇧</span><span>EN</span>
-                </a>
-                <a href="tel:+359894060406" class="bg-brandGold text-brandBlue px-6 py-2.5 rounded-xl font-bold text-sm hover:bg-yellow-400 hover:shadow-lg transition transform hover:-translate-y-1">
-                    📞 Обади се
-                </a>
-            </div>
- 
-            <!-- MOBILE RIGHT — phone pill + hamburger always visible -->
-            <div class="md:hidden flex items-center gap-3">
-                <a href="tel:+359894060406" class="bg-brandGold text-brandBlue px-4 py-2 rounded-lg font-bold text-sm">
-                    📞
-                </a>
-                <button id="hamburger" onclick="toggleMenu()" aria-label="Меню"
-                        class="text-gray-800 hover:text-brandGold p-2 transition focus:outline-none">
-                    <svg id="icon-open"   class="w-7 h-7"             fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
-                    <svg id="icon-close"  class="w-7 h-7 hidden"      fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
-                </button>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex-shrink-0 flex items-center gap-3 cursor-pointer" onclick="window.scrollTo(0,0)">
+                    <a href = "index.html">
+                    <span class="text-brandBlue text-2xl font-bold tracking-tight uppercase">Stela<span class="text-brandGold">Tour</span></span>
+                    </a>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#quick-escapes" class="text-gray-700 hover:text-brandGold font-bold text-sm uppercase tracking-wider transition">Уикенди</a>
+                    <a href="#journeys" class="text-gray-700 hover:text-brandGold font-bold text-sm uppercase tracking-wider transition">Пътешествия</a>
+                    <a href="#turkey" class="text-gray-700 hover:text-brandGold font-bold text-sm uppercase tracking-wider transition">Турция</a>
+                    <a href="#green-schools" class="text-gray-700 hover:text-brandGold font-bold text-sm uppercase tracking-wider transition">За училища</a>
+                    
+                    <a href="index-en.html" class="text-brandBlue font-bold hover:text-brandGold flex items-center gap-1 text-sm border-l-2 pl-6 border-gray-200 transition">
+                        <span class="text-lg">🇬🇧</span> <span>EN</span>
+                    </a>
+
+                    <a href="tel:+359894060406" class="bg-brandGold text-brandBlue px-6 py-2.5 rounded-xl font-bold text-sm hover:bg-yellow-400 hover:shadow-lg transition transform hover:-translate-y-1">
+                        📞 Обади се
+                    </a>
+                </div>
+
+                <div class="md:hidden flex items-center gap-4">
+                    <a href="index-en.html" class="text-brandBlue font-bold hover:text-brandGold flex items-center gap-1 text-sm transition">
+                        <span>EN</span>
+                    </a>
+                    <button onclick="toggleMobileMenu()" class="text-gray-900 hover:text-brandGold focus:outline-none p-2 transition">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+
             </div>
         </div>
-    </div>
- 
-    <!-- MOBILE MENU DRAWER -->
-    <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 shadow-xl">
-        <div class="px-6 py-6 flex flex-col gap-5">
-            <a href="#quick-escapes" onclick="toggleMenu()" class="text-lg font-bold text-brandBlue hover:text-brandGold transition">Уикенди</a>
-            <a href="#journeys"      onclick="toggleMenu()" class="text-lg font-bold text-brandBlue hover:text-brandGold transition">Пътешествия</a>
-            <a href="#green-schools" onclick="toggleMenu()" class="text-lg font-bold text-brandBlue hover:text-brandGold transition">За училища</a>
-            <hr class="border-gray-200">
-            <a href="index-en.html" class="text-base font-bold text-gray-500 hover:text-brandGold flex items-center gap-2 transition">
-                <span>🇬🇧</span> English
-            </a>
-            <a href="viber://chat?number=%2B359894060406" class="bg-purple-700 hover:bg-purple-600 text-white text-center py-4 rounded-xl font-bold transition">
-                💬 Пишете на Viber
-            </a>
-            <a href="tel:+359894060406" class="bg-brandGold text-brandBlue text-center py-4 rounded-xl font-bold hover:bg-yellow-400 transition">
-                📞 Обадете ни се
+
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-gray-200 shadow-xl absolute w-full left-0 top-20 px-6 py-8 flex flex-col space-y-6">
+            <a href="#quick-escapes" onclick="toggleMobileMenu()" class="text-lg font-bold text-brandBlue hover:text-brandGold transition">Уикенди</a>
+            <a href="#journeys" onclick="toggleMobileMenu()" class="text-lg font-bold text-brandBlue hover:text-brandGold transition">Пътешествия</a>
+            <a href="#green-schools" onclick="toggleMobileMenu()" class="text-lg font-bold text-brandBlue hover:text-brandGold transition">За училища</a>
+            <a href="tel:+359894060406" class="bg-brandGold text-brandBlue text-center py-4 rounded-xl font-bold shadow-md hover:bg-yellow-400 transition mt-4">
+                📞 Обади ни се
             </a>
         </div>
-    </div>
-</nav>
+    </nav>
+
+    <script>
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            if (menu.classList.contains('hidden')) {
+                menu.classList.remove('hidden');
+            } else {
+                menu.classList.add('hidden');
+            }
+        }
+    </script>
 
     <section class="relative flex flex-col justify-center items-center min-h-[85vh] pt-32 pb-16 overflow-hidden bg-brandBlue">
         
@@ -338,6 +338,113 @@
 
         </div>
     </section>
+
+    <!-- TURKEY OFFERS SECTION -->
+    <section id="turkey" class="py-24 bg-brandBlue border-t-4 border-brandGold relative overflow-hidden">
+
+        <!-- Subtle dot pattern -->
+        <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(circle at 2px 2px, rgba(220,174,29,0.6) 1px, transparent 0); background-size: 28px 28px;"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+
+            <div class="text-center mb-16">
+                <span class="text-brandGold font-bold tracking-widest uppercase text-sm mb-2 block">Ново за 2026</span>
+                <h2 class="text-4xl md:text-5xl font-serif font-bold text-white mb-4">Турция — Егейско море</h2>
+                <p class="text-blue-200 text-lg max-w-2xl mx-auto font-light">
+                    Три нови дестинации. Кристално море, маслинови горички, острови извън времето. На броени часове от Бургас.
+                </p>
+                <div class="h-1 w-24 bg-brandGold mx-auto rounded-full mt-8"></div>
+            </div>
+
+            <!-- Video -->
+            <div class="max-w-3xl mx-auto mb-16 rounded-2xl overflow-hidden shadow-2xl border-2 border-brandGold/30">
+                <div class="relative" style="padding-bottom: 56.25%;">
+                    <iframe
+                        class="absolute inset-0 w-full h-full"
+                        src="https://www.youtube-nocookie.com/embed/15AEoStlfr0?si=5LUR76j0xNz5sR2B&start=1"
+                        title="Stella Tour — Турция Егейско море 2026"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin"
+                        allowfullscreen>
+                    </iframe>
+                </div>
+            </div>
+
+            <!-- 3 destination cards -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+
+                <!-- Gokceada -->
+                <a href="tours/gokceada-panaya.html" class="group bg-white/10 hover:bg-white/20 border border-white/20 hover:border-brandGold rounded-2xl overflow-hidden transition duration-300">
+                    <div class="h-48 overflow-hidden relative">
+                        <div class="w-full h-full bg-gradient-to-br from-blue-900 to-teal-800 flex items-center justify-center">
+                            <span class="text-6xl opacity-60">🏝️</span>
+                        </div>
+                        <div class="absolute top-3 left-3">
+                            <span class="bg-brandGold text-brandBlue text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">Ново</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-brandGold font-bold text-xs uppercase tracking-widest mb-2">Чанаккале, Турция</p>
+                        <h3 class="font-serif font-bold text-white text-2xl mb-2 group-hover:text-brandGold transition">Гьокчеада</h3>
+                        <p class="text-blue-200 text-sm leading-relaxed mb-4">Най-големият остров в Турция. 3000 години история, кристална вода и вкус на живот, какъвто градът не познава.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-white/60 text-xs">Hotel Panaya ★★★</span>
+                            <span class="text-brandGold font-bold text-sm group-hover:translate-x-1 transition-transform inline-block">Виж повече →</span>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Ayvalik Bacacan -->
+                <a href="tours/ayvalik-bacacan.html" class="group bg-white/10 hover:bg-white/20 border border-white/20 hover:border-brandGold rounded-2xl overflow-hidden transition duration-300">
+                    <div class="h-48 overflow-hidden relative">
+                        <div class="w-full h-full bg-gradient-to-br from-amber-800 to-orange-900 flex items-center justify-center">
+                            <span class="text-6xl opacity-60">🫒</span>
+                        </div>
+                        <div class="absolute top-3 left-3">
+                            <span class="bg-brandGold text-brandBlue text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">Ново</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-brandGold font-bold text-xs uppercase tracking-widest mb-2">Егейска Турция</p>
+                        <h3 class="font-serif font-bold text-white text-2xl mb-2 group-hover:text-brandGold transition">Айвалък</h3>
+                        <p class="text-blue-200 text-sm leading-relaxed mb-4">Перлата на Егея. Маслинови горички, калдъръмени улички, остров Джунда и Шейтан Суфраси — най-красивият залез в Турция.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-white/60 text-xs">Hotel Bacacan ★★★★</span>
+                            <span class="text-brandGold font-bold text-sm group-hover:translate-x-1 transition-transform inline-block">Виж повече →</span>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Aegean Elegance overview -->
+                <a href="tours/turkey-destinations.html" class="group bg-brandGold/20 hover:bg-brandGold/30 border border-brandGold/50 hover:border-brandGold rounded-2xl overflow-hidden transition duration-300">
+                    <div class="h-48 overflow-hidden relative">
+                        <div class="w-full h-full bg-gradient-to-br from-yellow-800 to-amber-900 flex items-center justify-center">
+                            <span class="text-6xl opacity-60">🌊</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-brandGold font-bold text-xs uppercase tracking-widest mb-2">Всички оферти</p>
+                        <h3 class="font-serif font-bold text-white text-2xl mb-2 group-hover:text-brandGold transition">Турски оферти 2026</h3>
+                        <p class="text-blue-200 text-sm leading-relaxed mb-4">Разгледайте всички наши нови пакети за Турция — хотели, включено пътуване и пълна програма.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-white/60 text-xs">3 дестинации</span>
+                            <span class="text-brandGold font-bold text-sm group-hover:translate-x-1 transition-transform inline-block">Всички оферти →</span>
+                        </div>
+                    </div>
+                </a>
+
+            </div>
+
+            <div class="text-center">
+                <a href="tours/turkey-destinations.html" class="inline-block bg-brandGold text-brandBlue font-bold px-10 py-4 rounded-xl hover:bg-yellow-400 hover:shadow-xl transition transform hover:-translate-y-1 text-sm uppercase tracking-wide">
+                    Разгледай всички турски оферти →
+                </a>
+            </div>
+
+        </div>
+    </section>
+
 
     <section id="green-schools" class="py-24 bg-white border-t-2 border-green-100 relative">
         <div class="absolute right-0 bottom-0 w-64 h-64 bg-green-50 rounded-tl-full -z-10"></div>

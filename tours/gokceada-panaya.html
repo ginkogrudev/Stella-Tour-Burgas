@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Гьокчеада · Hotel Panaya ★★★ — Stella Tour 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>tailwind.config={theme:{extend:{colors:{brandBlue:'#003580',brandGold:'#dcae1d',warmBg:'#fdf8f0'},fontFamily:{playfair:['"Playfair Display"','serif'],inter:['Inter','sans-serif']}}}}</script>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:#fdf8f0; font-family:'Inter',sans-serif; }
+  .back-nav { position:fixed; top:0; left:0; right:0; z-index:100; background:rgba(0,53,128,0.97); backdrop-filter:blur(12px); }
+  .hero { min-height:88vh; background:#0f172a; position:relative; display:flex; align-items:flex-end; overflow:hidden; }
+  .hero-bg { position:absolute; inset:0; background:url('../img/gokceada/hero.avif') center/cover; opacity:0.55; }
+  .hero-bg-fb { position:absolute; inset:0; background:url('https://images.unsplash.com/photo-1601581975053-7c034f37bf82?w=1800') center/cover; opacity:0.55; }
+  .hero-gradient { position:absolute; inset:0; background:linear-gradient(to bottom, rgba(0,30,80,0.1) 0%, rgba(0,50,40,0.7) 60%, rgba(0,30,50,0.97) 100%); }
+  .hero-content { position:relative; z-index:2; width:100%; max-width:1200px; margin:0 auto; padding:0 24px 80px; }
+  .check-item { display:flex; gap:12px; align-items:flex-start; padding:12px 0; border-bottom:1px solid #f0ebe0; }
+  .check-item:last-child { border-bottom:none; }
+  .gallery-grid { display:grid; grid-template-columns:2fr 1fr 1fr; grid-template-rows:200px 200px; gap:8px; border-radius:16px; overflow:hidden; }
+  .gallery-grid .main-img { grid-row:1/3; }
+  .gallery-img { background:#ddd; overflow:hidden; }
+  .gallery-img img { width:100%; height:100%; object-fit:cover; transition:transform 0.4s; }
+  .gallery-img:hover img { transform:scale(1.05); }
+  .lang-btn { cursor:pointer; padding:4px 12px; border-radius:20px; font-size:13px; font-weight:600; border:1px solid; transition:all 0.2s; }
+  .lang-btn.active { background:#dcae1d; border-color:#dcae1d; color:#003580; }
+  .lang-btn.inactive { background:transparent; border-color:rgba(255,255,255,0.3); color:rgba(255,255,255,0.7); }
+  .bg-content { display:block; } .en-content { display:none; }
+  body.lang-en .bg-content { display:none; } body.lang-en .en-content { display:block; }
+  .sticky-cta { position:fixed; bottom:0; left:0; right:0; z-index:99; background:#003580; padding:12px 20px; display:flex; gap:12px; box-shadow:0 -4px 24px rgba(0,0,0,0.2); }
+  @media (min-width:768px) { .sticky-cta { display:none; } }
+  @keyframes float { 0%,100% { transform:translateY(0); } 50% { transform:translateY(-6px); } }
+  .float-badge { animation:float 3s infinite; }
+</style>
+</head>
+<body>
+
+<nav class="back-nav">
+  <div style="max-width:1200px;margin:0 auto;padding:0 24px;height:60px;display:flex;align-items:center;justify-content:space-between;">
+    <a href="turkey-destinations.html" style="color:rgba(255,255,255,0.8);text-decoration:none;font-size:14px;display:flex;align-items:center;gap:6px;">
+      ← <span class="bg-content">Всички дестинации</span><span class="en-content">All destinations</span>
+    </a>
+    <a href="index.html" style="font-family:'Playfair Display',serif;font-weight:700;font-size:20px;color:white;text-decoration:none;">Stella<span style="color:#dcae1d;">Tour</span></a>
+    <div style="display:flex;gap:8px;">
+      <button class="lang-btn active" id="btn-bg" onclick="setLang('bg')">БГ</button>
+      <button class="lang-btn inactive" id="btn-en" onclick="setLang('en')">EN</button>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" style="padding-top:60px;">
+  <div class="hero-bg-fb"></div>
+  <div class="hero-gradient"></div>
+  <div class="hero-content">
+    <div style="display:grid;grid-template-columns:1fr auto;gap:40px;align-items:end;max-width:1200px;margin:0 auto;">
+      <div>
+        <div style="display:inline-flex;align-items:center;gap:6px;background:rgba(220,174,29,0.25);border:1px solid rgba(220,174,29,0.5);color:#dcae1d;padding:5px 14px;border-radius:20px;font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:16px;">★★★ Хотел · 9.5/10 ⭐</div>
+        <h1 style="font-family:'Playfair Display',serif;font-size:clamp(40px,7vw,82px);font-weight:900;color:white;line-height:1.05;margin-bottom:16px;" class="bg-content">Гьокчеада<br><em style="color:#dcae1d;">Небесният остров.</em></h1>
+        <h1 style="font-family:'Playfair Display',serif;font-size:clamp(40px,7vw,82px);font-weight:900;color:white;line-height:1.05;margin-bottom:16px;" class="en-content">Gökçeada<br><em style="color:#dcae1d;">The Heavenly Island.</em></h1>
+        <p style="font-size:18px;color:rgba(255,255,255,0.8);max-width:580px;line-height:1.6;" class="bg-content">Най-големият остров в Турция — 3000 години история, кристални заливчета и вкусове, за които се разказва дълго.</p>
+        <p style="font-size:18px;color:rgba(255,255,255,0.8);max-width:580px;line-height:1.6;" class="en-content">Turkey's largest island — 3,000 years of history, crystal coves, and flavours you'll talk about for years.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:24px;">
+          <span style="background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.3);color:white;padding:6px 14px;border-radius:20px;font-size:13px;">📍 Чанакале, Турция</span>
+          <span style="background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.3);color:white;padding:6px 14px;border-radius:20px;font-size:13px;">⛴️ Ферибот от Кабатепе</span>
+          <span style="background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.3);color:white;padding:6px 14px;border-radius:20px;font-size:13px;">🏨 Hotel Panaya</span>
+          <span style="background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.3);color:white;padding:6px 14px;border-radius:20px;font-size:13px;">🌊 Подводен национален парк</span>
+        </div>
+      </div>
+
+      <!-- BOOKING CARD -->
+      <div style="background:white;border-radius:20px;padding:32px;box-shadow:0 8px 40px rgba(0,53,128,0.2);min-width:280px;max-width:320px;">
+        <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#dcae1d;margin-bottom:8px;" class="bg-content">Резервирайте сега</div>
+        <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#dcae1d;margin-bottom:8px;" class="en-content">Book now</div>
+        <div style="color:#dcae1d;font-size:18px;margin-bottom:8px;">★★★</div>
+        <h3 style="font-family:'Playfair Display',serif;font-size:20px;color:#003580;font-weight:700;margin-bottom:4px;">Hotel Panaya</h3>
+        <div style="display:flex;align-items:center;gap:6px;margin-bottom:4px;">
+          <span style="background:#dcae1d;color:#003580;font-size:11px;font-weight:700;padding:2px 8px;border-radius:10px;">9.5 / 10</span>
+          <span style="font-size:12px;color:#64748b;" class="bg-content">от гостите</span>
+          <span style="font-size:12px;color:#64748b;" class="en-content">from guests</span>
+        </div>
+        <p style="font-size:13px;color:#64748b;margin-bottom:20px;" class="bg-content">Гьокчеада, Чанакале, Турция</p>
+        <p style="font-size:13px;color:#64748b;margin-bottom:20px;" class="en-content">Gökçeada, Çanakkale, Turkey</p>
+        <div style="background:#f8fafc;border-radius:10px;padding:16px;margin-bottom:16px;">
+          <div style="font-size:12px;color:#64748b;margin-bottom:8px;" class="bg-content">Включено:</div>
+          <div style="font-size:12px;color:#64748b;margin-bottom:8px;" class="en-content">Included:</div>
+          <div style="display:flex;flex-direction:column;gap:6px;font-size:13px;">
+            <span>✅ <span class="bg-content">Нощувки с богата закуска</span><span class="en-content">Bed & rich breakfast</span></span>
+            <span>✅ <span class="bg-content">Трансфер от Бургас</span><span class="en-content">Transfer from Burgas</span></span>
+            <span>✅ <span class="bg-content">Фериботни билети (Кабатепе)</span><span class="en-content">Ferry tickets (Kabatepe)</span></span>
+          </div>
+        </div>
+        <div style="background:#fff3cd;border:1px solid #dcae1d;border-radius:8px;padding:10px;margin-bottom:16px;font-size:12px;color:#92650a;" class="bg-content">⚠️ Ограничен брой стаи. Резервирайте рано.</div>
+        <div style="background:#fff3cd;border:1px solid #dcae1d;border-radius:8px;padding:10px;margin-bottom:16px;font-size:12px;color:#92650a;" class="en-content">⚠️ Limited rooms. Book early.</div>
+        <a href="tel:+359894060406" style="display:block;background:#dcae1d;color:#003580;padding:14px;border-radius:12px;font-weight:700;font-size:15px;text-decoration:none;text-align:center;margin-bottom:10px;">📞 +359 894 060 406</a>
+        <a href="viber://chat?number=359894060406" style="display:block;background:#003580;color:white;padding:12px;border-radius:12px;font-weight:600;font-size:14px;text-decoration:none;text-align:center;">💬 Viber</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<section style="background:white;padding:56px 24px;">
+  <div style="max-width:900px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:32px;text-align:center;">
+    <div>
+      <div style="font-family:'Playfair Display',serif;font-size:48px;font-weight:900;color:#003580;">287</div>
+      <div style="font-size:14px;color:#64748b;margin-top:4px;" class="bg-content">кв. км — най-голям остров в Турция</div>
+      <div style="font-size:14px;color:#64748b;margin-top:4px;" class="en-content">sq km — Turkey's largest island</div>
+    </div>
+    <div>
+      <div style="font-family:'Playfair Display',serif;font-size:48px;font-weight:900;color:#003580;">3000</div>
+      <div style="font-size:14px;color:#64748b;margin-top:4px;" class="bg-content">години история — споменат в Илиадата</div>
+      <div style="font-size:14px;color:#64748b;margin-top:4px;" class="en-content">years of history — mentioned in the Iliad</div>
+    </div>
+    <div>
+      <div style="font-family:'Playfair Display',serif;font-size:48px;font-weight:900;color:#003580;">9.5</div>
+      <div style="font-size:14px;color:#64748b;margin-top:4px;" class="bg-content">оценка на Hotel Panaya от гостите</div>
+      <div style="font-size:14px;color:#64748b;margin-top:4px;" class="en-content">Hotel Panaya guest rating</div>
+    </div>
+    <div>
+      <div style="font-family:'Playfair Display',serif;font-size:48px;font-weight:900;color:#003580;">#1</div>
+      <div style="font-size:14px;color:#64748b;margin-top:4px;" class="bg-content">подводен нац. парк в Турция</div>
+      <div style="font-size:14px;color:#64748b;margin-top:4px;" class="en-content">underwater national park in Turkey</div>
+    </div>
+  </div>
+</section>
+
+<!-- ISLAND INFO -->
+<section style="padding:80px 24px;background:#fdf8f0;">
+  <div style="max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;">
+    <div>
+      <div style="font-size:12px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:#dcae1d;margin-bottom:12px;" class="bg-content">За острова</div>
+      <div style="font-size:12px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:#dcae1d;margin-bottom:12px;" class="en-content">About the island</div>
+      <h2 style="font-family:'Playfair Display',serif;font-size:clamp(28px,4vw,42px);font-weight:900;color:#003580;line-height:1.1;margin-bottom:20px;" class="bg-content">Остров с три хиляди години памет</h2>
+      <h2 style="font-family:'Playfair Display',serif;font-size:clamp(28px,4vw,42px);font-weight:900;color:#003580;line-height:1.1;margin-bottom:20px;" class="en-content">An island with three thousand years of memory</h2>
+      <p style="color:#334155;font-size:16px;line-height:1.8;margin-bottom:16px;" class="bg-content">Гьокчеада — известен и като Имброс — е остров с два характера. На повърхността: синьо Егейско море, маслинови гори, безкрайни плажове и бавен ритъм. Под повърхността: 3000 години история, гръцки каменни села и вкус на древното средиземноморско минало.</p>
+      <p style="color:#334155;font-size:16px;line-height:1.8;margin-bottom:16px;" class="en-content">Gökçeada — also known as Imbros — is an island of two characters. On the surface: blue Aegean, olive forests, endless beaches and a slow rhythm. Beneath: 3,000 years of history, Greek stone villages, and the taste of an ancient Mediterranean past.</p>
+      <div style="border-left:3px solid #dcae1d;background:rgba(220,174,29,0.08);padding:16px 20px;margin:20px 0;border-radius:0 8px 8px 0;">
+        <p style="font-family:'Playfair Display',serif;font-style:italic;font-size:17px;color:#1e293b;" class="bg-content">„Гьокчеада е блажено бягство от пренаселеното егейско крайбрежие." — Rough Guide</p>
+        <p style="font-family:'Playfair Display',serif;font-style:italic;font-size:17px;color:#1e293b;" class="en-content">"Gökçeada is a blissful escape from the overcrowded Aegean coast." — Rough Guide</p>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:24px;">
+        <div style="background:white;border-radius:10px;padding:16px;border:1px solid #e8ddd0;display:flex;gap:12px;align-items:flex-start;">
+          <span style="font-size:24px;">🏖️</span>
+          <div>
+            <div style="font-size:12px;font-weight:700;text-transform:uppercase;color:#003580;" class="bg-content">Плажове без тълпи</div>
+            <div style="font-size:12px;font-weight:700;text-transform:uppercase;color:#003580;" class="en-content">Crowd-free beaches</div>
+            <div style="font-size:13px;color:#64748b;margin-top:4px;" class="bg-content">Айдънджък, Кефалос, Гизли Лиман — кристална вода без шезлонги на всеки метър.</div>
+            <div style="font-size:13px;color:#64748b;margin-top:4px;" class="en-content">Aydıncık, Kefalos, Gizli Liman — crystal water without sun-loungers at every step.</div>
+          </div>
+        </div>
+        <div style="background:white;border-radius:10px;padding:16px;border:1px solid #e8ddd0;display:flex;gap:12px;align-items:flex-start;">
+          <span style="font-size:24px;">🏘️</span>
+          <div>
+            <div style="font-size:12px;font-weight:700;text-transform:uppercase;color:#003580;" class="bg-content">Гръцките села</div>
+            <div style="font-size:12px;font-weight:700;text-transform:uppercase;color:#003580;" class="en-content">Greek villages</div>
+            <div style="font-size:13px;color:#64748b;margin-top:4px;" class="bg-content">Зейтинли и Тепекьой — калдъръм, каменни стени, цветя по прозорците.</div>
+            <div style="font-size:13px;color:#64748b;margin-top:4px;" class="en-content">Zeytinliköy and Tepeköy — cobblestones, stone walls, flowers on windowsills.</div>
+          </div>
+        </div>
+        <div style="background:white;border-radius:10px;padding:16px;border:1px solid #e8ddd0;display:flex;gap:12px;align-items:flex-start;">
+          <span style="font-size:24px;">🌊</span>
+          <div>
+            <div style="font-size:12px;font-weight:700;text-transform:uppercase;color:#003580;" class="bg-content">Кайтсърф и гмуркане</div>
+            <div style="font-size:12px;font-weight:700;text-transform:uppercase;color:#003580;" class="en-content">Kitesurfing & diving</div>
+            <div style="font-size:13px;color:#64748b;margin-top:4px;" class="bg-content">Плажът Айдънджък е сред топ 5 в Турция за кайтсърф.</div>
+            <div style="font-size:13px;color:#64748b;margin-top:4px;" class="en-content">Aydıncık beach is among Turkey's top 5 for kitesurfing.</div>
+          </div>
+        </div>
+        <div style="background:white;border-radius:10px;padding:16px;border:1px solid #e8ddd0;display:flex;gap:12px;align-items:flex-start;">
+          <span style="font-size:24px;">🍷</span>
+          <div>
+            <div style="font-size:12px;font-weight:700;text-transform:uppercase;color:#003580;" class="bg-content">Местната кухня</div>
+            <div style="font-size:12px;font-weight:700;text-transform:uppercase;color:#003580;" class="en-content">Local cuisine</div>
+            <div style="font-size:13px;color:#64748b;margin-top:4px;" class="bg-content">Козе сирене, прясна риба, местно вино. Органичното земеделие е развито тук първо в Турция.</div>
+            <div style="font-size:13px;color:#64748b;margin-top:4px;" class="en-content">Goat cheese, fresh fish, local wine. Organic farming was pioneered here first in Turkey.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- GALLERY -->
+    <div class="gallery-grid">
+      <div class="gallery-img main-img">
+        <img src="../img/gokceada/beach.avif" alt="Гьокчеада плаж" onerror="this.src='https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800'">
+      </div>
+      <div class="gallery-img">
+        <img src="../img/gokceada/village.avif" alt="Гръцко село" onerror="this.src='https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=400'">
+      </div>
+      <div class="gallery-img">
+        <img src="../img/gokceada/kitesurf.avif" alt="Кайтсърф" onerror="this.src='https://images.unsplash.com/photo-1533750546698-94f0cd6dc2dc?w=400'">
+      </div>
+      <div class="gallery-img">
+        <img src="../img/gokceada/diving.avif" alt="Гмуркане" onerror="this.src='https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=400'">
+      </div>
+      <div class="gallery-img">
+        <img src="../img/gokceada/food.avif" alt="Местна кухня" onerror="this.src='https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=400'">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOTEL PANAYA -->
+<section style="padding:80px 24px;background:white;">
+  <div style="max-width:1100px;margin:0 auto;">
+    <div style="text-align:center;margin-bottom:56px;">
+      <div style="font-size:12px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:#dcae1d;margin-bottom:12px;" class="bg-content">Настаняване</div>
+      <div style="font-size:12px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:#dcae1d;margin-bottom:12px;" class="en-content">Accommodation</div>
+      <h2 style="font-family:'Playfair Display',serif;font-size:clamp(28px,4vw,44px);font-weight:900;color:#003580;margin-bottom:4px;">Hotel Panaya ★★★</h2>
+      <div style="display:inline-flex;align-items:center;gap:8px;background:#dcae1d;color:#003580;padding:4px 16px;border-radius:20px;font-weight:700;font-size:14px;margin-bottom:8px;">9.5 / 10</div>
+      <p style="color:#64748b;font-size:16px;" class="bg-content">Вашият дом на острова</p>
+      <p style="color:#64748b;font-size:16px;" class="en-content">Your home on the island</p>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;">
+      <div>
+        <div style="border-radius:16px;overflow:hidden;margin-bottom:16px;height:320px;">
+          <img src="../img/gokceada/panaya-front.avif" alt="Hotel Panaya" onerror="this.src='https://images.unsplash.com/photo-1564501049412-61c2a3083791?w=800'" style="width:100%;height:100%;object-fit:cover;">
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+          <div style="border-radius:10px;overflow:hidden;height:160px;">
+            <img src="../img/gokceada/panaya-room.avif" alt="Стая" onerror="this.src='https://images.unsplash.com/photo-1590490360182-c33d57733427?w=400'" style="width:100%;height:100%;object-fit:cover;">
+          </div>
+          <div style="border-radius:10px;overflow:hidden;height:160px;">
+            <img src="../img/gokceada/panaya-breakfast.avif" alt="Закуска" onerror="this.src='https://images.unsplash.com/photo-1533089860892-a7c6f0a88666?w=400'" style="width:100%;height:100%;object-fit:cover;">
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <p style="color:#334155;font-size:16px;line-height:1.8;margin-bottom:16px;" class="bg-content">Hotel Panaya се управлява от двама братя и това си личи — всяко кътче се поддържа перфектно. 25 стаи, всяка с балкон с изглед. Отзивите от над 100 гости го определят като „Най-добрият хотел на острова".</p>
+        <p style="color:#334155;font-size:16px;line-height:1.8;margin-bottom:16px;" class="en-content">Hotel Panaya is run by two brothers, and it shows — every corner is kept perfectly. 25 rooms, each with a balcony view. Reviews from over 100 guests call it "The best hotel on the island".</p>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:28px;">
+          <div style="background:#fdf8f0;border-radius:10px;padding:16px;border:1px solid #e8ddd0;">
+            <div style="font-size:22px;margin-bottom:6px;">🍳</div>
+            <div style="font-size:13px;font-weight:600;color:#003580;" class="bg-content">Богата закуска</div>
+            <div style="font-size:13px;font-weight:600;color:#003580;" class="en-content">Rich breakfast</div>
+            <div style="font-size:12px;color:#64748b;margin-top:4px;" class="bg-content">Открит буфет всяка сутрин</div>
+            <div style="font-size:12px;color:#64748b;margin-top:4px;" class="en-content">Open buffet every morning</div>
+          </div>
+          <div style="background:#fdf8f0;border-radius:10px;padding:16px;border:1px solid #e8ddd0;">
+            <div style="font-size:22px;margin-bottom:6px;">🪟</div>
+            <div style="font-size:13px;font-weight:600;color:#003580;" class="bg-content">Личен балкон</div>
+            <div style="font-size:13px;font-weight:600;color:#003580;" class="en-content">Private balcony</div>
+            <div style="font-size:12px;color:#64748b;margin-top:4px;" class="bg-content">Всяка стая с изглед</div>
+            <div style="font-size:12px;color:#64748b;margin-top:4px;" class="en-content">Every room with a view</div>
+          </div>
+          <div style="background:#fdf8f0;border-radius:10px;padding:16px;border:1px solid #e8ddd0;">
+            <div style="font-size:22px;margin-bottom:6px;">🅿️</div>
+            <div style="font-size:13px;font-weight:600;color:#003580;" class="bg-content">Безплатен паркинг</div>
+            <div style="font-size:13px;font-weight:600;color:#003580;" class="en-content">Free parking</div>
+            <div style="font-size:12px;color:#64748b;margin-top:4px;" class="bg-content">Частен паркинг за гости</div>
+            <div style="font-size:12px;color:#64748b;margin-top:4px;" class="en-content">Private guest parking</div>
+          </div>
+          <div style="background:#fdf8f0;border-radius:10px;padding:16px;border:1px solid #e8ddd0;">
+            <div style="font-size:22px;margin-bottom:6px;">🗺️</div>
+            <div style="font-size:13px;font-weight:600;color:#003580;" class="bg-content">Местни съвети</div>
+            <div style="font-size:13px;font-weight:600;color:#003580;" class="en-content">Local tips</div>
+            <div style="font-size:12px;color:#64748b;margin-top:4px;" class="bg-content">Собственикът е най-добрият водач на острова.</div>
+            <div style="font-size:12px;color:#64748b;margin-top:4px;" class="en-content">The owner is the island's best guide.</div>
+          </div>
+        </div>
+
+        <h4 style="font-family:'Playfair Display',serif;font-size:20px;color:#003580;margin-bottom:16px;" class="bg-content">Видове стаи</h4>
+        <h4 style="font-family:'Playfair Display',serif;font-size:20px;color:#003580;margin-bottom:16px;" class="en-content">Room types</h4>
+        <div>
+          <div class="check-item">
+            <span style="color:#dcae1d;font-size:18px;margin-top:1px;">✓</span>
+            <div>
+              <div style="font-weight:600;color:#1e293b;" class="bg-content">Двойна стая</div>
+              <div style="font-weight:600;color:#1e293b;" class="en-content">Double room</div>
+              <div style="font-size:13px;color:#64748b;" class="bg-content">Голямо двойно легло · Балкон с изглед · Климатик · Smart TV</div>
+              <div style="font-size:13px;color:#64748b;" class="en-content">Large double bed · View balcony · A/C · Smart TV</div>
+            </div>
+          </div>
+          <div class="check-item">
+            <span style="color:#dcae1d;font-size:18px;margin-top:1px;">✓</span>
+            <div>
+              <div style="font-weight:600;color:#1e293b;" class="bg-content">Тройна стая</div>
+              <div style="font-weight:600;color:#1e293b;" class="en-content">Triple room</div>
+              <div style="font-size:13px;color:#64748b;" class="bg-content">Три легла (или 2+1) · По-голяма площ · Личен балкон</div>
+              <div style="font-size:13px;color:#64748b;" class="en-content">Three beds (or 2+1) · Larger area · Private balcony</div>
+            </div>
+          </div>
+          <div class="check-item">
+            <span style="color:#dcae1d;font-size:18px;margin-top:1px;">✓</span>
+            <div>
+              <div style="font-weight:600;color:#1e293b;" class="bg-content">Сюит апартамент</div>
+              <div style="font-weight:600;color:#1e293b;" class="en-content">Suite apartment</div>
+              <div style="font-size:13px;color:#64748b;" class="bg-content">Отделна хол-зона · Панорамен балкон · Вана + душ кабина</div>
+              <div style="font-size:13px;color:#64748b;" class="en-content">Separate living area · Panoramic balcony · Bath + shower cubicle</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT'S INCLUDED -->
+<section style="padding:80px 24px;background:#fdf8f0;">
+  <div style="max-width:900px;margin:0 auto;">
+    <h2 style="font-family:'Playfair Display',serif;font-size:clamp(28px,4vw,40px);font-weight:900;color:#003580;text-align:center;margin-bottom:48px;" class="bg-content">Включено в пакета</h2>
+    <h2 style="font-family:'Playfair Display',serif;font-size:clamp(28px,4vw,40px);font-weight:900;color:#003580;text-align:center;margin-bottom:48px;" class="en-content">What's included</h2>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:32px;">
+      <div style="background:white;border-radius:16px;padding:28px;border:2px solid #e8ddd0;">
+        <h4 style="font-size:16px;font-weight:700;color:#003580;margin-bottom:20px;" class="bg-content">✅ Включено</h4>
+        <h4 style="font-size:16px;font-weight:700;color:#003580;margin-bottom:20px;" class="en-content">✅ Included</h4>
+        <div style="display:flex;flex-direction:column;gap:12px;">
+          <div style="display:flex;gap:10px;align-items:start;font-size:14px;"><span style="color:#22c55e;font-weight:700;flex-shrink:0;">✓</span><span class="bg-content">Нощувки с богата закуска</span><span class="en-content">Accommodation with rich breakfast</span></div>
+          <div style="display:flex;gap:10px;align-items:start;font-size:14px;"><span style="color:#22c55e;font-weight:700;flex-shrink:0;">✓</span><span class="bg-content">Трансфер от/до Бургас</span><span class="en-content">Transfer from/to Burgas</span></div>
+          <div style="display:flex;gap:10px;align-items:start;font-size:14px;"><span style="color:#22c55e;font-weight:700;flex-shrink:0;">✓</span><span class="bg-content">Фериботни билети (Кабатепе → Гьокчеада)</span><span class="en-content">Ferry tickets (Kabatepe → Gökçeada)</span></div>
+          <div style="display:flex;gap:10px;align-items:start;font-size:14px;"><span style="color:#22c55e;font-weight:700;flex-shrink:0;">✓</span><span class="bg-content">Безплатен паркинг на хотела</span><span class="en-content">Free hotel parking</span></div>
+          <div style="display:flex;gap:10px;align-items:start;font-size:14px;"><span style="color:#22c55e;font-weight:700;flex-shrink:0;">✓</span><span class="bg-content">Организация на цялото пътуване</span><span class="en-content">Full trip organisation</span></div>
+        </div>
+      </div>
+      <div style="background:white;border-radius:16px;padding:28px;border:2px solid #e8ddd0;">
+        <h4 style="font-size:16px;font-weight:700;color:#64748b;margin-bottom:20px;" class="bg-content">ℹ️ Не е включено</h4>
+        <h4 style="font-size:16px;font-weight:700;color:#64748b;margin-bottom:20px;" class="en-content">ℹ️ Not included</h4>
+        <div style="display:flex;flex-direction:column;gap:12px;">
+          <div style="display:flex;gap:10px;align-items:start;font-size:14px;color:#64748b;"><span style="flex-shrink:0;">—</span><span class="bg-content">Обяди и вечери</span><span class="en-content">Lunches and dinners</span></div>
+          <div style="display:flex;gap:10px;align-items:start;font-size:14px;color:#64748b;"><span style="flex-shrink:0;">—</span><span class="bg-content">Лични разходи</span><span class="en-content">Personal expenses</span></div>
+          <div style="display:flex;gap:10px;align-items:start;font-size:14px;color:#64748b;"><span style="flex-shrink:0;">—</span><span class="bg-content">Наем на колело / мотопед на острова</span><span class="en-content">Bike / moped rental on the island</span></div>
+        </div>
+        <div style="background:#fdf8f0;border-radius:10px;padding:14px;margin-top:20px;border:1px solid #e8ddd0;">
+          <p style="font-size:13px;color:#64748b;" class="bg-content">💡 Лична карта е достатъчна. Носете турски лири за местния пазар.</p>
+          <p style="font-size:13px;color:#64748b;" class="en-content">💡 National ID card is sufficient. Bring Turkish lira for local markets.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GUARANTEE -->
+<section style="background:#003580;padding:56px 24px;text-align:center;">
+  <div style="max-width:700px;margin:0 auto;">
+    <div style="font-size:48px;margin-bottom:16px;">🛡️</div>
+    <h3 style="font-family:'Playfair Display',serif;font-size:clamp(24px,4vw,36px);font-weight:900;color:white;margin-bottom:16px;" class="bg-content">Нашата гаранция</h3>
+    <h3 style="font-family:'Playfair Display',serif;font-size:clamp(24px,4vw,36px);font-weight:900;color:white;margin-bottom:16px;" class="en-content">Our guarantee</h3>
+    <p style="color:rgba(255,255,255,0.85);font-size:17px;line-height:1.7;" class="bg-content">Работим само с проверени хотели. Hotel Panaya е потвърден лично от нас. Ние организираме фериботните билети — вие просто се качвате.</p>
+    <p style="color:rgba(255,255,255,0.85);font-size:17px;line-height:1.7;" class="en-content">We only work with verified hotels. Hotel Panaya has been personally confirmed by us. We organise the ferry tickets — you simply board.</p>
+  </div>
+</section>
+
+<!-- CTA -->
+<section style="background:#fdf8f0;padding:80px 24px;text-align:center;">
+  <div style="max-width:600px;margin:0 auto;">
+    <h2 style="font-family:'Playfair Display',serif;font-size:clamp(28px,5vw,48px);font-weight:900;color:#003580;margin-bottom:16px;" class="bg-content">Готови за Небесния остров?</h2>
+    <h2 style="font-family:'Playfair Display',serif;font-size:clamp(28px,5vw,48px);font-weight:900;color:#003580;margin-bottom:16px;" class="en-content">Ready for the Heavenly Island?</h2>
+    <p style="color:#64748b;font-size:17px;margin-bottom:40px;" class="bg-content">Обадете се или пишете на Viber. Ние се грижим за всички детайли.</p>
+    <p style="color:#64748b;font-size:17px;margin-bottom:40px;" class="en-content">Call or message us on Viber. We take care of every detail.</p>
+    <div style="display:flex;flex-wrap:wrap;gap:16px;justify-content:center;margin-bottom:24px;">
+      <a href="tel:+359894060406" style="background:#dcae1d;color:#003580;padding:16px 40px;border-radius:40px;font-weight:700;font-size:18px;text-decoration:none;">📞 +359 894 060 406</a>
+      <a href="viber://chat?number=359894060406" style="background:#003580;color:white;padding:16px 40px;border-radius:40px;font-weight:600;font-size:18px;text-decoration:none;">💬 Viber</a>
+    </div>
+    <p style="color:#64748b;font-size:14px;">✉️ stellatoursbg@gmail.com</p>
+  </div>
+</section>
+
+<!-- OTHER DESTINATIONS -->
+<section style="padding:60px 24px;background:white;border-top:1px solid #e8ddd0;">
+  <div style="max-width:900px;margin:0 auto;text-align:center;">
+    <h3 style="font-family:'Playfair Display',serif;font-size:24px;color:#003580;margin-bottom:32px;" class="bg-content">Разгледайте и другите ни дестинации</h3>
+    <h3 style="font-family:'Playfair Display',serif;font-size:24px;color:#003580;margin-bottom:32px;" class="en-content">Explore our other destinations</h3>
+    <div style="display:flex;flex-wrap:wrap;gap:16px;justify-content:center;">
+      <a href="ayvalik-bacacan.html" style="display:flex;align-items:center;gap:10px;background:#fdf8f0;border:1px solid #e8ddd0;border-radius:12px;padding:16px 24px;text-decoration:none;color:#003580;font-weight:600;">
+        🌊 <span class="bg-content">Айвалък · Hotel Bacacan ★★★★</span><span class="en-content">Ayvalık · Hotel Bacacan ★★★★</span>
+      </a>
+      <a href="sarimsakli-dobra.html" style="display:flex;align-items:center;gap:10px;background:#fdf8f0;border:1px solid #e8ddd0;border-radius:12px;padding:16px 24px;text-decoration:none;color:#003580;font-weight:600;">
+        🏖️ <span class="bg-content">Сарамсаклъ · Hotel Dobra</span><span class="en-content">Sarımsaklı · Hotel Dobra</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer style="background:#0f172a;color:rgba(255,255,255,0.5);padding:32px 24px;text-align:center;font-size:13px;">
+  <div style="font-family:'Playfair Display',serif;font-size:20px;color:white;margin-bottom:8px;">Stella<span style="color:#dcae1d;">Tour</span></div>
+  <p>© 2026 Stella Tour · Бургас · Всички права запазени</p>
+  <p style="margin-top:4px;font-size:11px;color:rgba(255,255,255,0.25);">Дизайн от GG Solutions</p>
+</footer>
+
+<div class="sticky-cta">
+  <a href="tel:+359894060406" style="flex:1;background:#dcae1d;color:#003580;padding:12px;border-radius:12px;font-weight:700;font-size:14px;text-decoration:none;text-align:center;">📞 Обади се</a>
+  <a href="viber://chat?number=359894060406" style="flex:1;background:white;color:#003580;padding:12px;border-radius:12px;font-weight:600;font-size:14px;text-decoration:none;text-align:center;">💬 Viber</a>
+</div>
+
+<script>
+function setLang(lang) {
+  if (lang === 'en') { document.body.classList.add('lang-en'); document.getElementById('btn-bg').classList.replace('active','inactive'); document.getElementById('btn-en').classList.replace('inactive','active'); }
+  else { document.body.classList.remove('lang-en'); document.getElementById('btn-en').classList.replace('active','inactive'); document.getElementById('btn-bg').classList.replace('inactive','active'); }
+}
+</script>
+</body>
+</html>
