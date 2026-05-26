@@ -1,11 +1,17 @@
 <!DOCTYPE html>
-<html lang="bg">
+<html lang="bg" class="scroll-smooth">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Егейска Турция 2026 — Stella Tour</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="icon" type="image/avif" href="../img/favicon.avif">
+
 <script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="../style/style.css">
+
 <script>
   tailwind.config = {
     theme: {
@@ -13,24 +19,29 @@
         colors: {
           brandBlue: '#003580',
           brandGold: '#dcae1d',
-          warmBg: '#fdf8f0',
+          surface: '#f8fafc',
+          warmBg: '#fdfbf7', /* Топъл, кремав фон за мекота */
           darkBg: '#0f172a',
         },
         fontFamily: {
-          playfair: ['"Playfair Display"', 'serif'],
-          inter: ['Inter', 'sans-serif'],
+          sans: ['Inter', 'sans-serif'],
+          serif: ['Playfair Display', 'serif'],
         }
       }
     }
   }
 </script>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9YCTHHJSJE"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-9YCTHHJSJE');
+</script>
+
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { background: #fdf8f0; font-family: 'Inter', sans-serif; }
-
-  /* NAV */
-  .nav-logo { font-family: 'Playfair Display', serif; font-weight: 700; }
-  .nav-logo span { color: #dcae1d; }
 
   /* HERO */
   .hero {
@@ -91,35 +102,6 @@
     position: absolute; top: 0; left: 0;
     width: 100%; height: 100%;
   }
-  .video-placeholder {
-    position: absolute; inset: 0;
-    background: #0f172a;
-    display: flex; flex-direction: column;
-    align-items: center; justify-content: center;
-    color: white;
-  }
-  .play-btn {
-    width: 80px; height: 80px;
-    background: #dcae1d;
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    margin-bottom: 20px;
-    cursor: pointer;
-    transition: transform 0.2s, background 0.2s;
-  }
-  .play-btn:hover { transform: scale(1.1); background: #f0c430; }
-  .play-btn svg { fill: #003580; margin-left: 5px; }
-
-  /* GUARANTEE STRIP */
-  .guarantee-strip {
-    background: #003580;
-    color: white;
-  }
-
-  /* LANG TOGGLE */
-  .lang-btn { cursor: pointer; padding: 4px 12px; border-radius: 20px; font-size: 13px; font-weight: 600; border: 1px solid; transition: all 0.2s; }
-  .lang-btn.active { background: #dcae1d; border-color: #dcae1d; color: #003580; }
-  .lang-btn.inactive { background: transparent; border-color: rgba(255,255,255,0.3); color: rgba(255,255,255,0.7); }
 
   /* BG/EN content */
   .bg-content { display: block; }
@@ -140,29 +122,41 @@
   .faq-chevron { transition: transform 0.2s; color: #003580; }
 </style>
 </head>
-<body>
+<body class="bg-warmBg font-sans antialiased text-slate-800">
 
-<!-- NAV -->
-<nav style="position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(15,23,42,0.95);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,0.1);">
-  <div style="max-width:1200px;margin:0 auto;padding:0 24px;height:64px;display:flex;align-items:center;justify-content:space-between;">
-    <a href="index.html" class="nav-logo" style="color:white;text-decoration:none;font-size:22px;">Stella<span>Tour</span></a>
-    <div style="display:flex;align-items:center;gap:16px;">
-      <button class="lang-btn active" id="btn-bg" onclick="setLang('bg')">БГ</button>
-      <button class="lang-btn inactive" id="btn-en" onclick="setLang('en')">EN</button>
-      <a href="tel:+359894060406" style="background:#dcae1d;color:#003580;padding:8px 20px;border-radius:24px;font-weight:700;font-size:14px;text-decoration:none;display:none;" class="sm:flex">
+<nav class="fixed top-0 left-0 right-0 z-[100] bg-warmBg/90 backdrop-blur-md border-b border-brandGold/20 shadow-sm transition-all duration-300">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+    
+    <a href="../index.html" class="text-brandBlue hover:text-brandGold transition flex items-center gap-2 font-medium text-sm">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+      <span class="bg-content hidden sm:inline">Начало</span>
+      <span class="sm:hidden">Назад</span>
+    </a>
+
+    <a href="../index.html" class="font-serif font-bold text-2xl sm:text-3xl text-brandBlue tracking-tight absolute left-1/2 transform -translate-x-1/2">
+      Stella<span class="text-brandGold">Tour</span>
+    </a>
+
+    <div class="flex items-center gap-4">
+      <div class="flex items-center gap-2">
+        <div class="flex bg-brandBlue/5 rounded-full p-1 border border-brandBlue/10">
+          <button class="px-3 py-1 rounded-full text-xs font-bold transition-all bg-brandGold text-brandBlue shadow-sm" id="btn-bg" onclick="setLang('bg')">БГ</button>
+          <button class="px-3 py-1 rounded-full text-xs font-bold transition-all text-brandBlue/60 hover:text-brandBlue" id="btn-en" onclick="setLang('en')">EN</button>
+        </div>
+      </div>
+      <a href="tel:+359894060406" class="hidden sm:flex bg-brandGold text-brandBlue px-5 py-2 rounded-full font-bold text-sm hover:bg-yellow-400 transition-colors shadow-sm">
         📞 Обади се
       </a>
     </div>
+    
   </div>
 </nav>
 
-<!-- HERO -->
-<section class="hero" style="padding-top:64px;">
+<section class="hero" style="padding-top:80px;">
   <div class="hero-bg"></div>
   <div class="hero-gradient"></div>
   <div class="hero-content" style="width:100%;max-width:1200px;margin:0 auto;padding:0 24px 80px;">
 
-    <!-- BG -->
     <div class="bg-content">
       <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(220,174,29,0.2);border:1px solid rgba(220,174,29,0.5);color:#dcae1d;padding:6px 16px;border-radius:20px;font-size:13px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:24px;">
         <span class="pulse-dot" style="width:6px;height:6px;background:#dcae1d;border-radius:50%;display:inline-block;"></span>
@@ -180,7 +174,6 @@
       </div>
     </div>
 
-    <!-- EN -->
     <div class="en-content">
       <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(220,174,29,0.2);border:1px solid rgba(220,174,29,0.5);color:#dcae1d;padding:6px 16px;border-radius:20px;font-size:13px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:24px;">
         <span class="pulse-dot" style="width:6px;height:6px;background:#dcae1d;border-radius:50%;display:inline-block;"></span>
@@ -201,7 +194,6 @@
   </div>
 </section>
 
-<!-- TRUST BAR -->
 <div style="background:#003580;color:white;padding:16px 24px;">
   <div style="max-width:1200px;margin:0 auto;display:flex;flex-wrap:wrap;gap:24px;justify-content:center;align-items:center;">
     <div style="display:flex;align-items:center;gap:8px;font-size:14px;">✅ <span class="bg-content">Включен трансфер</span><span class="en-content">Transfer included</span></div>
@@ -214,14 +206,13 @@
   </div>
 </div>
 
-<!-- VIDEO SECTION -->
 <section style="background:#0f172a;padding:80px 24px;">
   <div style="max-width:1000px;margin:0 auto;">
     <div style="text-align:center;margin-bottom:48px;">
       <div style="font-size:12px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:#dcae1d;margin-bottom:12px;" class="bg-content">Усети дестинацията</div>
       <div style="font-size:12px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:#dcae1d;margin-bottom:12px;" class="en-content">Feel the destination</div>
-      <h2 style="font-family:'Playfair Display',serif;font-size:clamp(28px,4vw,44px);font-weight:800;color:white;line-height:1.2;" class="bg-content">Гьокчеада — Небесният остров</h2>
-      <h2 style="font-family:'Playfair Display',serif;font-size:clamp(28px,4vw,44px);font-weight:800;color:white;line-height:1.2;" class="en-content">Gökçeada — The Heavenly Island</h2>
+      <h2 style="font-family:'Playfair Display',serif;font-size:clamp(28px,4vw,44px);font-weight:800;color:white;line-height:1.2;" class="bg-content">Усети Айвалък — Твоят идеален отпуск</h2>
+      <h2 style="font-family:'Playfair Display',serif;font-size:clamp(28px,4vw,44px);font-weight:800;color:white;line-height:1.2;" class="en-content">Feel Ayvalık — Your Perfect Vacation</h2>
     </div>
     <div class="video-wrapper">
       <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/15AEoStlfr0?si=5LUR76j0xNz5sR2B&amp;start=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
@@ -229,7 +220,6 @@
   </div>
 </section>
 
-<!-- THREE DESTINATIONS -->
 <section id="destinations" style="padding:80px 24px;background:#fdf8f0;">
   <div style="max-width:1200px;margin:0 auto;">
 
@@ -244,10 +234,9 @@
 
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:32px;">
 
-      <!-- CARD 1: ГЬОКЧЕАДА -->
       <a href="gokceada-panaya.html" class="dest-card">
         <div class="dest-card-img">
-          <img src="../img/gokceada/hero.avif" alt="Гьокчеада" onerror="this.src='https://images.unsplash.com/photo-1601581975053-7c034f37bf82?w=800'">
+          <img src="../img/ayvalik/gokceada-beach-3.avif" alt="Гьокчеада" onerror="this.src='https://images.unsplash.com/photo-1601581975053-7c034f37bf82?w=800'">
           <div class="star-badge">Hotel Panaya ★★★</div>
           <div style="position:absolute;bottom:16px;left:16px;background:#dcae1d;color:#003580;font-size:11px;font-weight:700;padding:4px 10px;border-radius:12px;">9.5/10 ⭐</div>
         </div>
@@ -273,10 +262,9 @@
         </div>
       </a>
 
-      <!-- CARD 2: АЙВАЛЪК -->
       <a href="ayvalik-bacacan.html" class="dest-card">
         <div class="dest-card-img">
-          <img src="../img/ayvalik/hero.avif" alt="Айвалък" onerror="this.src='https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800'">
+          <img src="../img/ayvalik/ayvalik-cover.avif" alt="Айвалък" onerror="this.src='https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800'">
           <div class="star-badge">Hotel Bacacan ★★★★</div>
           <div style="position:absolute;bottom:16px;left:16px;background:#dcae1d;color:#003580;font-size:11px;font-weight:700;padding:4px 10px;border-radius:12px;">4 звезди · На брега</div>
         </div>
@@ -302,10 +290,9 @@
         </div>
       </a>
 
-      <!-- CARD 3: САРАМСАКЛЪ -->
       <a href="sarimsakli-dobra.html" class="dest-card">
         <div class="dest-card-img">
-          <img src="../img/sarimsakli/hero.avif" alt="Сарамсаклъ" onerror="this.src='https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800'">
+          <img src="../img/ayvalik/ayvalik-seaside-big.avif" alt="Сарамсаклъ" onerror="this.src='https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800'">
           <div class="star-badge">Hotel Dobra ★★★</div>
           <div style="position:absolute;bottom:16px;left:16px;background:#dcae1d;color:#003580;font-size:11px;font-weight:700;padding:4px 10px;border-radius:12px;">🏖️ Сини знаме</div>
         </div>
@@ -335,7 +322,6 @@
   </div>
 </section>
 
-<!-- WHY STELLA TOUR — Grand Slam Value Stack -->
 <section style="padding:80px 24px;background:white;">
   <div style="max-width:1000px;margin:0 auto;">
     <div style="text-align:center;margin-bottom:56px;">
@@ -378,7 +364,6 @@
   </div>
 </section>
 
-<!-- FAQ -->
 <section style="padding:80px 24px;background:#fdf8f0;">
   <div style="max-width:760px;margin:0 auto;">
     <div style="text-align:center;margin-bottom:48px;">
@@ -417,7 +402,6 @@
   </div>
 </section>
 
-<!-- CTA SECTION -->
 <section style="background:#003580;padding:80px 24px;text-align:center;">
   <div style="max-width:700px;margin:0 auto;">
     <h2 style="font-family:'Playfair Display',serif;font-size:clamp(28px,5vw,52px);font-weight:900;color:white;margin-bottom:16px;" class="bg-content">Готови ли сте за Егея?</h2>
@@ -437,7 +421,6 @@
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer style="background:#0f172a;color:rgba(255,255,255,0.5);padding:32px 24px;text-align:center;font-size:13px;">
   <div style="font-family:'Playfair Display',serif;font-size:20px;color:white;margin-bottom:8px;">Stella<span style="color:#dcae1d;">Tour</span></div>
   <p>© 2026 Stella Tour · Бургас · Всички права запазени</p>
@@ -446,14 +429,19 @@
 
 <script>
 function setLang(lang) {
-  if (lang === 'en') {
-    document.body.classList.add('lang-en');
-    document.getElementById('btn-bg').classList.replace('active','inactive');
-    document.getElementById('btn-en').classList.replace('inactive','active');
-  } else {
-    document.body.classList.remove('lang-en');
-    document.getElementById('btn-en').classList.replace('active','inactive');
-    document.getElementById('btn-bg').classList.replace('inactive','active');
+  const btnBg = document.getElementById('btn-bg');
+  const btnEn = document.getElementById('btn-en');
+  const activeClass = "px-3 py-1 rounded-full text-xs font-bold transition-all bg-brandGold text-brandBlue shadow-sm";
+  const inactiveClass = "px-3 py-1 rounded-full text-xs font-bold transition-all text-brandBlue/60 hover:text-brandBlue";
+
+  if (lang === 'en') { 
+    document.body.classList.add('lang-en'); 
+    btnBg.className = inactiveClass;
+    btnEn.className = activeClass;
+  } else { 
+    document.body.classList.remove('lang-en'); 
+    btnEn.className = inactiveClass;
+    btnBg.className = activeClass;
   }
 }
 

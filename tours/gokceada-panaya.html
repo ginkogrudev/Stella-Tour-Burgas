@@ -12,8 +12,8 @@
   body { background:#fdf8f0; font-family:'Inter',sans-serif; }
   .back-nav { position:fixed; top:0; left:0; right:0; z-index:100; background:rgba(0,53,128,0.97); backdrop-filter:blur(12px); }
   .hero { min-height:88vh; background:#0f172a; position:relative; display:flex; align-items:flex-end; overflow:hidden; }
-  .hero-bg { position:absolute; inset:0; background:url('../img/gokceada/hero.avif') center/cover; opacity:0.55; }
-  .hero-bg-fb { position:absolute; inset:0; background:url('https://images.unsplash.com/photo-1601581975053-7c034f37bf82?w=1800') center/cover; opacity:0.55; }
+  .hero-bg { position:absolute; inset:0; background:url('../img/ayvalik/gokceada-beach.avif') center/cover; opacity:0.55; }
+  .hero-bg-fb { position:absolute; inset:0; background:url('../img/ayvalik/gokceada-beach-1.avif') center/cover; opacity:0.55; }
   .hero-gradient { position:absolute; inset:0; background:linear-gradient(to bottom, rgba(0,30,80,0.1) 0%, rgba(0,50,40,0.7) 60%, rgba(0,30,50,0.97) 100%); }
   .hero-content { position:relative; z-index:2; width:100%; max-width:1200px; margin:0 auto; padding:0 24px 80px; }
   .check-item { display:flex; gap:12px; align-items:flex-start; padding:12px 0; border-bottom:1px solid #f0ebe0; }
@@ -38,10 +38,10 @@
 
 <nav class="back-nav">
   <div style="max-width:1200px;margin:0 auto;padding:0 24px;height:60px;display:flex;align-items:center;justify-content:space-between;">
-    <a href="turkey-destinations.html" style="color:rgba(255,255,255,0.8);text-decoration:none;font-size:14px;display:flex;align-items:center;gap:6px;">
+    <a href="../tours/turkey-destinations.html" style="color:rgba(255,255,255,0.8);text-decoration:none;font-size:14px;display:flex;align-items:center;gap:6px;">
       ← <span class="bg-content">Всички дестинации</span><span class="en-content">All destinations</span>
     </a>
-    <a href="index.html" style="font-family:'Playfair Display',serif;font-weight:700;font-size:20px;color:white;text-decoration:none;">Stella<span style="color:#dcae1d;">Tour</span></a>
+    <a href="../index.html" style="font-family:'Playfair Display',serif;font-weight:700;font-size:20px;color:white;text-decoration:none;">Stella<span style="color:#dcae1d;">Tour</span></a>
     <div style="display:flex;gap:8px;">
       <button class="lang-btn active" id="btn-bg" onclick="setLang('bg')">БГ</button>
       <button class="lang-btn inactive" id="btn-en" onclick="setLang('en')">EN</button>
@@ -51,6 +51,7 @@
 
 <!-- HERO -->
 <section class="hero" style="padding-top:60px;">
+  <div class="hero-bg"></div>
   <div class="hero-bg-fb"></div>
   <div class="hero-gradient"></div>
   <div class="hero-content">
@@ -183,19 +184,19 @@
     <!-- GALLERY -->
     <div class="gallery-grid">
       <div class="gallery-img main-img">
-        <img src="../img/gokceada/beach.avif" alt="Гьокчеада плаж" onerror="this.src='https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800'">
+        <img src="../img/ayvalik/gokceada-beach-2.avif" alt="Гьокчеада плаж" onerror="this.src='https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800'">
       </div>
       <div class="gallery-img">
-        <img src="../img/gokceada/village.avif" alt="Гръцко село" onerror="this.src='https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=400'">
+        <img src="../img/ayvalik/gokceada-wall.avif" alt="Гръцко село" onerror="this.src='https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=400'">
       </div>
       <div class="gallery-img">
-        <img src="../img/gokceada/kitesurf.avif" alt="Кайтсърф" onerror="this.src='https://images.unsplash.com/photo-1533750546698-94f0cd6dc2dc?w=400'">
+        <img src="../img/ayvalik/gokceada-surf.avif" alt="Кайтсърф" onerror="this.src='https://images.unsplash.com/photo-1533750546698-94f0cd6dc2dc?w=400'">
       </div>
       <div class="gallery-img">
-        <img src="../img/gokceada/diving.avif" alt="Гмуркане" onerror="this.src='https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=400'">
+        <img src="../img/ayvalik/gokceada-underwater.avif" alt="Гмуркане" onerror="this.src='https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=400'">
       </div>
       <div class="gallery-img">
-        <img src="../img/gokceada/food.avif" alt="Местна кухня" onerror="this.src='https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=400'">
+        <img src="../img/ayvalik/gokceada-food.avif" alt="Местна кухня" onerror="this.src='https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=400'">
       </div>
     </div>
   </div>
@@ -216,14 +217,14 @@
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;">
       <div>
         <div style="border-radius:16px;overflow:hidden;margin-bottom:16px;height:320px;">
-          <img src="../img/gokceada/panaya-front.avif" alt="Hotel Panaya" onerror="this.src='https://images.unsplash.com/photo-1564501049412-61c2a3083791?w=800'" style="width:100%;height:100%;object-fit:cover;">
+          <img src="../img/ayvalik/panaya-cover.avif" alt="Hotel Panaya" onerror="this.src='https://images.unsplash.com/photo-1564501049412-61c2a3083791?w=800'" style="width:100%;height:100%;object-fit:cover;">
         </div>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
           <div style="border-radius:10px;overflow:hidden;height:160px;">
-            <img src="../img/gokceada/panaya-room.avif" alt="Стая" onerror="this.src='https://images.unsplash.com/photo-1590490360182-c33d57733427?w=400'" style="width:100%;height:100%;object-fit:cover;">
+            <img src="../img/ayvalik/panaya-dbl-1.avif" alt="Стая" onerror="this.src='https://images.unsplash.com/photo-1590490360182-c33d57733427?w=400'" style="width:100%;height:100%;object-fit:cover;">
           </div>
           <div style="border-radius:10px;overflow:hidden;height:160px;">
-            <img src="../img/gokceada/panaya-breakfast.avif" alt="Закуска" onerror="this.src='https://images.unsplash.com/photo-1533089860892-a7c6f0a88666?w=400'" style="width:100%;height:100%;object-fit:cover;">
+            <img src="../img/ayvalik/panaya-stairs.avif" alt="Стълбище" onerror="this.src='https://images.unsplash.com/photo-1533089860892-a7c6f0a88666?w=400'" style="width:100%;height:100%;object-fit:cover;">
           </div>
         </div>
       </div>
