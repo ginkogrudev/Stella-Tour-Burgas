@@ -12,21 +12,13 @@
     <meta property="og:title" content="Мистична Странджа: Енергийно Пътуване">
     <meta property="og:image" content="https://images.unsplash.com/photo-1511497584788-876760111969?q=80&w=1600"> 
     
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../style/tailwind.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style/style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" />
 
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: { brandBlue: '#003580', brandGold: '#dcae1d', surface: '#f8fafc' },
-                    fontFamily: { sans: ['Inter', 'sans-serif'], serif: ['Playfair Display', 'serif'] }
-                }
-            }
-        }
-    </script>
     <style>
         .hide-scrollbar::-webkit-scrollbar { display: none; }
         .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
@@ -123,7 +115,7 @@
                     </p>
                 </div>
                 
-                <div class="bg-white p-6 rounded-lg shadow-2xl min-w-[320px] border-t-4 border-brandBlue transform translate-y-8">
+                <div class="bg-white p-6 rounded-lg shadow-2xl w-full md:w-auto md:min-w-[320px] border-t-4 border-brandBlue transform translate-y-8">
                     <p class="text-gray-500 text-sm">Цена от (на човек в двойна стая)</p>
                     <div class="flex items-end gap-2 mb-4">
                         <span class="text-4xl font-bold text-brandBlue">1130 лв</span>

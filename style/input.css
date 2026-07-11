@@ -1,0 +1,40 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   MOBILE FIXES — Turkey hotel pages (Ayvalık, Sarımsaklı, Gökçeada)
+   These pages use inline styles, which need !important overrides.
+   ============================================================ */
+@media (max-width: 767px) {
+
+  /* Every inline two-column grid collapses to one column */
+  [style*="grid-template-columns:1fr 1fr"] {
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+  }
+
+  /* Photo gallery: 3 crammed columns → 2 columns, main photo full width */
+  .gallery-grid {
+    grid-template-columns: 1fr 1fr !important;
+    grid-template-rows: auto !important;
+  }
+  .gallery-grid .main-img {
+    grid-column: 1 / -1;
+    grid-row: auto !important;
+    height: 220px;
+  }
+  .gallery-grid .gallery-img:not(.main-img) {
+    height: 130px;
+  }
+
+  /* Hero: tighter bottom padding so booking card fits above the fold */
+  .hero-content {
+    padding: 100px 20px 96px !important;
+  }
+
+  /* Sections: 80px padding is desktop-scale */
+  section[style*="padding:80px"] {
+    padding: 48px 20px !important;
+  }
+}
